@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+	<title>Velkommen</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../CSS/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600" rel="stylesheet">
+</head>
+<body>
+	<!-- <section class="darken hide" id="darken"></section> -->
+	<div class="wrapper">
+		<nav class="main-nav">
+			<ul>
+				<li><a href="index.html">Hjem</a></li>
+				<li><a href="omoss.html">Om Oss</a></li>
+				<li><a href="#">Grupper</a></li>
+				<li><a id="click">Logg Inn</a>
+					<div class="log-in hide" id="dropdown">
+					<div class="dropdown-content">
+					<form method="post">
+		        	<label>Brukernavn (E-post)</label>
+		        		<div class="inputContainer">
+						<i class="fas fa-at input-icon"></i>
+						<input type="text" class="input" name="brukernavn" placeholder="eksempel@epost.no" required>
+						</div>
+					<label>Passord</label>
+						<div class="inputContainer" >
+						<i class="fas fa-key input-icon"></i>
+						<input type="password" class="input" name="passord" placeholder="••••••••••" required>
+						</div>
+					<p id="feil">Feil brukernavn eller passord</p>
+					<input type="submit" class="btn" onclick="return checkPsw(form)" value="Logg inn">
+					</form>
+					<p><a href="Registrering.html">Har du ikke bruker?</a></p>
+					<p><a href="Registrering.html">Glemt passord</a></p>
+					</div>
+		        	</div> 
+	    		</li>
+			</ul>
+		</nav>
+		<section class="top-container">
+			<header class="showcase">
+				<h1>Velkommen</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+				<a class="btn" href="#">Finn din gruppe</a>
+			</header>
+		</section>
+
+		<section class="search-index">
+			<div class="inputContainer">
+				<i class="fas fa-search input-icon"></i>
+				<form>
+				<input type="text" class="input" name="søk" placeholder="Søk etter gruppe">
+				<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
+				</form>
+			</div>
+		</section>
+		<section class="boxes">
+			<a href="#"><div class="box">
+				<i class="fas fa-table-tennis fa-4x"></i>
+				<h3>Bordtennis</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+			</div></a>
+			<a href="#"><div class="box">
+				<i class="fas fa-futbol fa-4x"></i>
+				<h3>Fotball</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+			</div></a>
+			<a href="#"><div class="box">
+				<i class="fas fa-volleyball-ball fa-4x"></i>
+				<h3>Volleyball</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+			</div></a>
+			<a href="#"><div class="box">
+				<i class="fas fa-basketball-ball fa-4x"></i>
+				<h3>Basketball</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+			</div></a>
+			<a href="gruppeEksempel.html"><div class="box">
+				<i class="fas fa-golf-ball fa-4x"></i>
+				<h3>Golf</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+			</div></a>
+			<a href="#"><div class="box">
+				<i class="fas fa-gamepad fa-4x"></i>
+				<h3>Spilling</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+			</div></a>
+			<a href="#"><div class="box">
+				<i class="fas fa-camera fa-4x"></i>
+				<h3>Fotografering</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+			</div></a>
+			<a href="#"><div class="box">
+				<i class="fas fa-book fa-4x"></i>
+				<h3>Bokklubb</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+			</div></a>
+		</section>
+
+		<!-- <footer>
+			<div>
+			<img src="https://en.facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png">
+			<img src="https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png">
+			<img src="https://i.kinja-img.com/gawker-media/image/upload/s--OPwjwQZd--/c_scale,f_auto,fl_progressive,q_80,w_800/vsbj7xu992tmklw7hbjj.jpg">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png">
+		</div>
+		<div>
+		<a class="btn">Knapp</a>
+		<a class="btn">Knapp</a>
+		</div>
+		<hr>
+			<p>Sindre Haavaldsen &copy; 2018</p>
+		</footer> -->
+
+	</div>
+		<footer>
+			<div class="footer-shortcut-container">
+			<div class="footer-shortcut">
+	          	<h3>Snareveier</h3>
+	            <p><a target="blank" href="https://min.usn.no/student/">Mine grupper</a></p>
+	            <p><a href="logginn.html">Mine profilinstillinger</a></p>
+	            <p><a href="logginn.html">Arrangementer</a></p>
+	            <p><a href="kontakt.html">Labore et dolore</a></p>
+	            <p><a href="gisisamfunnet.html">Lorem ipsum</a></p>
+        	</div>
+
+        	<div class="footer-shortcut">
+	          	<h3>Informasjon</h3>
+	            <p><a href="gisstudiet.html">Om oss</a></p>
+	            <p><a href="gisstudiet.html">Kontakt oss</a></p>
+	            <p><a href="gisstudiet.html">Finn oss</a></p>
+	            <p><a href="faq.html">Ofte stilte spørsmål</a></p>
+        	</div>
+
+        	<div class="footer-shortcut">
+	          	<h3>Støtte</h3>
+	            <p><a href="kontakt.html">Kontakt informasjon</a></p>
+	            <p><a href="kontakt.html">Dolor sit amet</a></p>
+	            <p><a href="kontakt.html">Consectetur adipisicing elit</a></p>
+	            <p><a href="kontakt.html">Labore et dolore</a></p>
+	            <p><a href="gisisamfunnet.html">Lorem ipsum</a></p>
+        	</div>
+
+        	<div class="footer-shortcut">
+	          	<h3>Sosiale medier</h3>
+	          	<a href="#"><img src="https://en.facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png">Facebook</a>
+	          	<a href="#"><img src="https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png">Twitter</a>
+	          	<a href="#"><img src="https://i.kinja-img.com/gawker-media/image/upload/s--OPwjwQZd--/c_scale,f_auto,fl_progressive,q_80,w_800/vsbj7xu992tmklw7hbjj.jpg">Snapchat</a>
+        	</div>
+        	</div>
+
+        	<div class="footer-info">
+	            <p>Sindre Haavaldsen &copy; 2018</p>
+	            <p><a href="gisisamfunnet.html">Opphavsrettsinformasjon</a></p>
+        	</div>
+
+        	<div class="footer-lang">
+        		<div class="lang-selector">
+	            <ul>
+	            	<a href="#">
+	            		<li>
+						<img src="../Pictures/norwegian.svg"/>
+						Norsk
+	            		</li>
+	            	</a>
+	            	<a href="#">
+	            		<li>
+						<img src="../Pictures/english.svg"/>
+						English
+	            		</li>
+	            	</a>
+	            </ul>
+	            </div>
+        	</div>
+		</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../JS/js.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHJDa2YV51FDV-MCD1V6JAxU5NqDgTQrc&callback=myMap"></script>
+</body>
+</html>
