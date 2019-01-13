@@ -487,8 +487,12 @@ footer p{
 }
 
 .footer-shortcut h3{
-	margin: 10px 14px 20px;
+	margin: 10px 14px 10px;
+	padding-bottom: 10px;
+	font-size: 1.3rem;
 	font-weight: 400;
+	text-transform: uppercase;
+	border-bottom: 0.5px solid var(--orange);
 }
 
 .footer-shortcut p{
