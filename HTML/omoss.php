@@ -13,8 +13,8 @@
 	<div class="wrapper">
 		<nav class="main-nav">
 			<ul>
-				<li><a href="index.html">Hjem</a></li>
-				<li><a href="omoss.html">Om Oss</a></li>
+				<li><a href="index.php">Hjem</a></li>
+				<li><a href="omoss.php">Om Oss</a></li>
 				<li><a href="#">Grupper</a></li>
 				<li><a id="click">Logg Inn</a>
 					<div class="log-in hide" id="dropdown">
@@ -100,9 +100,10 @@
 			</div>
 		</section>
 
-        <?php include '../PHP/footer.php';?>
-        
-	
+	</div>
+
+<?php include '../PHP/footer.php';?>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHJDa2YV51FDV-MCD1V6JAxU5NqDgTQrc&callback=myMap"></script>

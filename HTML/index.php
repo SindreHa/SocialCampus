@@ -13,8 +13,8 @@
 	<div class="wrapper">
 		<nav class="main-nav">
 			<ul>
-				<li><a href="index.html">Hjem</a></li>
-				<li><a href="omoss.html">Om Oss</a></li>
+				<li><a href="index.php">Hjem</a></li>
+				<li><a href="omoss.php">Om Oss</a></li>
 				<li><a href="#">Grupper</a></li>
 				<li><a id="click">Logg Inn</a>
 					<div class="log-in hide" id="dropdown">
@@ -78,7 +78,7 @@
 				<h3>Basketball</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
 			</div></a>
-			<a href="gruppeEksempel.html"><div class="box">
+			<a href="gruppeEksempel.php"><div class="box">
 				<i class="fas fa-golf-ball fa-4x"></i>
 				<h3>Golf</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
@@ -99,26 +99,10 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
 			</div></a>
 		</section>
-
-		<!-- <footer>
-			<div>
-			<img src="https://en.facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png">
-			<img src="https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png">
-			<img src="https://i.kinja-img.com/gawker-media/image/upload/s--OPwjwQZd--/c_scale,f_auto,fl_progressive,q_80,w_800/vsbj7xu992tmklw7hbjj.jpg">
-			<img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png">
-		</div>
-		<div>
-		<a class="btn">Knapp</a>
-		<a class="btn">Knapp</a>
-		</div>
-		<hr>
-			<p>Sindre Haavaldsen &copy; 2018</p>
-		</footer> -->
+	</div>
         
 <?php include '../PHP/footer.php';?>
         
-		
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHJDa2YV51FDV-MCD1V6JAxU5NqDgTQrc&callback=myMap"></script>
