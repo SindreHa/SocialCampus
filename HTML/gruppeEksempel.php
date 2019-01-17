@@ -51,21 +51,94 @@
 			</section>
 
 			<section class="group-post">
-				<div class="group-post-box">
+				<!-- <div class="group-post-box">
 					<h2>Overskrift</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+				</div> -->
+
+				<div class="group-post-box">
+					<div class="user-container">
+						<div class="imgContainer">
+							<img src="../Pictures/Sindre.jpg">
+						</div>
+						<h4>Sosinondodrore</h4>
+					</div>
+					<div class="post-container">
+						<h2>Min post</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<h4>17.01.2019 - 00:41</h4>
+					</div>
 				</div>
 				<div class="group-post-box">
-					<h2>Overskrift</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<div class="user-container">
+						<div class="imgContainer">
+							<img src="../Pictures/kristian.jpg">
+						</div>
+						<h4>Elementz</h4>
+					</div>
+					<div class="post-container">
+						<h2>Din post</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<h4>17.01.2019 - 00:43</h4>
+					</div>
 				</div>
+				<div class="group-post-box">
+					<div class="user-container">
+						<div class="imgContainer">
+							<img src="../Pictures/torbjorn.jpg">
+						</div>
+						<h4>Turbobjørn</h4>
+					</div>
+					<div class="post-container">
+						<h2>Han sin post</h2>
+						<p>
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<h4>17.01.2019 - 00:45</h4>
+					</div>
+				</div>
+				<div class="group-post-box">
+					<div class="user-container">
+						<div class="imgContainer">
+							<img src="../Pictures/jan.jpg">
+						</div>
+						<h4>Ryouta</h4>
+					</div>
+					<div class="post-container">
+						<h2>Ikke min post</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<h4>17.01.2019 - 00:48</h4>
+					</div>
+				</div>
+				<!-- 
+
 				<div class="group-post-box">
 					<h2>Overskrift</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -106,10 +179,9 @@
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div>
-			</section>
+				</div> -->
 
-		</section>
+			</section>
 	</div>
 		
 <?php include '../PHP/footer.php';?>
