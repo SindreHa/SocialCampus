@@ -3,7 +3,7 @@
 		<li><a href="index.php">Hjem</a></li>
 		<li><a href="omoss.php">Om Oss</a></li>
 		<li><a href="#">Grupper</a></li>
-		<li><a id="click">Logg Inn</a>
+		<li id="click"><a>Logg Inn</a>
 			
 			<div class="log-in">
 				<div class="dropdown-content" id="dropdown">
