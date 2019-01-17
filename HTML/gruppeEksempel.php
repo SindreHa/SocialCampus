@@ -33,13 +33,6 @@
 			</div>
 			</section>
 
-			<section class="group-type">
-				<h2>Golf</h2>
-				<div class="group-image">
-					<img src="../Pictures/Golf.jpg">
-				</div>
-			</section>
-
 			<section class="group-info">
 				<h2>Om denne gruppen</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
