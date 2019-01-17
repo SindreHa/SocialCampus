@@ -107,7 +107,7 @@ img {
 /*Logg inn*/
 
 .log-in {
-	opacity: 1;
+	display: block;
 	z-index: 99;
 	transition: opacity .2s;
 	position: relative;
@@ -141,13 +141,20 @@ img {
 	box-shadow: var(--shadow);
 	display: flex;
 	flex-direction: column;
-	padding: 15px 0 20px;
+	padding: 0;
+	height: 0;
+	overflow: hidden;
+	transition: height .3s;
 }
 
 .dropdown-content label{
 	margin: 0 20px 5px;
 	font-size: 1.2rem;
 	font-weight: bold;
+}
+
+.dropdown-content label:first-child{
+	padding-top: 15px;
 }
 
 .dropdown-content h2{
@@ -169,6 +176,10 @@ img {
 	transition: none;
 }
  
+.dropdown-content a, .dropdown-content p:nth-child(3) { 
+	padding-bottom: 20px;
+}
+ 
 .dropdown-content a:hover { 
 	background-color: transparent;
 	color: var(--link);
@@ -176,13 +187,17 @@ img {
 }
 
 .hide {
-	opacity: 0;
+	height: 292px;
 }
 
 form {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
+}
+
+.dropdown-content form {
+	min-height: 228px;
 }
 
 /*Topp bilde*/
@@ -322,10 +337,8 @@ form {
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
-	grid-column-start: 1;
-	grid-column-end: 2; 
-	grid-row-start: 2;
-  	grid-row-end: 3;
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
 	background-color: var(--primary);
 	box-shadow: var(--shadow);
 }
@@ -346,18 +359,14 @@ form {
 }
 
 .group-search {
-	grid-column-start: 1;
-	grid-column-end: 2; 
-	grid-row-start: 1;
-  	grid-row-end: 2;
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
 }
 
 .group-info {
 	padding: 20px;
-	grid-column-start: 1;
-	grid-column-end: 2; 
-	grid-row-start: 3;
-  	grid-row-end: 4;
+	grid-column: 1 / 2;
+	grid-row: 3 / 4;
 	background-color: var(--primary);
 	box-shadow: var(--shadow);
 }
@@ -367,10 +376,8 @@ form {
 }
 
 .group-post {
-	grid-column-start: 2;
-	grid-column-end: 4; 
-	grid-row-start: 1;
-	grid-row-end: var(--postNumber); /* Sett en teller for antall? */
+	grid-column: 2 / 4; 
+	grid-row: 1 / var(--postNumber); /* Sett en teller for antall? */
 }
 
 .group-post-box {
@@ -570,9 +577,9 @@ footer p{
 }
 
 .footer-lang {
-  height: 40px;
-  overflow: visible;
-  padding-right: .5px;
+	height: 40px;
+	overflow: visible;
+	padding-right: .5px;
 }
 
 .lang-selector {
