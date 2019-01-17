@@ -63,7 +63,7 @@
 			</div>
 			<div class="personBox">
 				<div class="imgContainer">
-					<img src="../Pictures/Jan.jpg">
+					<img src="../Pictures/jan2.png">
 				</div>
 				<h2>Jan - JavaScript</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
