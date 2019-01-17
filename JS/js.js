@@ -2,8 +2,8 @@
 /* Variabler */
 
 // Class toggle
-var btnOne = document.getElementById("click");
-btnOne.addEventListener("click", toggleClass);
+var logInDropdown = document.getElementById("dropdown");
+
 
 // Kart
 var map, infoWindow;
@@ -11,25 +11,30 @@ var map, infoWindow;
 //Telling av klasser
 $(document).ready(function()
 {
-var numClasses = $('.group-post-box').length;
+var numClasses = $('.group-post-box').length + 1;
 document.documentElement.style.setProperty('--postNumber', numClasses);
 });
 
+//Variabler brukt for å hindre GMaps i å hente inn egen font
+var head = document.getElementsByTagName( 'head' )[0];
+var insertBefore = head.insertBefore;
+
 /* Funksjoner */
 
-	function toggleClass() 
+	/*Vis og skjul logg in boks*/
+	window.addEventListener('click', function(e)
 	{
-		var element1 = document.getElementById("dropdown");
-		element1.classList.toggle('hide');
-		// var element2 = document.getElementById("darken");
-		// element2.classList.toggle('show');
-	}
-var head = document.getElementsByTagName( 'head' )[0];
+	var element2 = document.getElementById("dropdown");
+		if (document.getElementById('click').contains(e.target))
+		{
+	  		logInDropdown.classList.add("hide");
+	  	} 
+	  	else {
+			logInDropdown.classList.remove("hide");
+	  	}
+	})
 
-	// Save the original method
-	var insertBefore = head.insertBefore;
-
-	// Replace it!
+	/*Hinder GMaps i å hente egen font*/
 	head.insertBefore = function( newElement, referenceElement ) {
 
 	    if ( newElement.href && newElement.href.indexOf( 'https://fonts.googleapis.com/css?family=Roboto' ) === 0 ) {
@@ -39,6 +44,7 @@ var head = document.getElementsByTagName( 'head' )[0];
 	    insertBefore.call( head, newElement, referenceElement );
 	};
 
+	/*Google maps*/
 	function myMap() 
 	{
 		// Oppretter instans av kart fra Google api
@@ -57,8 +63,8 @@ var head = document.getElementsByTagName( 'head' )[0];
 	{
 		empty(form);
 			login(form);
-		
 	}
+
 	function login(form)
 	{
 	 if(form.brukernavn.value == "test" && form.passord.value == "test")
@@ -82,10 +88,19 @@ var head = document.getElementsByTagName( 'head' )[0];
     else
     	login(form)
 	}
-
 	
 
 /* Utkast av funksjoner */
+
+
+	/*Viser og skjuler logg inn boks ved trykk på "logg inn" i navbar*/
+	// function toggleClass() 
+	// {
+	// 	var element1 = document.getElementById("dropdown");
+	// 	element1.classList.toggle('hide');
+	// 	// var element2 = document.getElementById("darken");
+	// 	// element2.classList.toggle('show');
+	// }
 
 	/* Automatisk posisjon i kart */
 
