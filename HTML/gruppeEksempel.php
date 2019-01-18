@@ -16,10 +16,29 @@
 
 		<section class="group-container">
 
-			<section class="group-type">
-				<h2>Golf</h2>
-				<div class="group-image">
-					<img src="../Pictures/Golf.jpg">
+			<section class="group-info">
+				<div class="info-wrapper">
+					<div class="group-name">
+						<i class="fas fa-golf-ball fa-3x"></i>
+						<h2>Golf</h2>
+					</div>
+					<div class="group-stats">
+						<h5>192</h5>
+						<h6>Antall medlemmer</h6>
+					</div>
+					<div class="group-stats border">
+						<h5>5</h5>
+						<h6>Antall poster</h6>
+					</div>
+				</div>
+				<div class="group-description">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
 				</div>
 			</section>
 
@@ -33,23 +52,7 @@
 			</div>
 			</section>
 
-			<section class="group-info">
-				<h2>Om denne gruppen</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</section>
-
 			<section class="group-post">
-				<!-- <div class="group-post-box">
-					<h2>Overskrift</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-				</div> -->
 
 				<div class="group-post-box">
 					<div class="user-container">
@@ -66,7 +69,13 @@
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<h4>17.01.2019 - 00:41</h4>
+						<div class="post-stats">
+								<a href="#" class="like-button">
+									<i class="fas fa-thumbs-up"></i>
+									14 <!-- antall likes  -->
+								</a>
+							<h4>17.01.2019 - 00:41</h4>
+						</div>
 					</div>
 				</div>
 				<div class="group-post-box">
@@ -87,7 +96,13 @@
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<h4>17.01.2019 - 00:43</h4>
+						<div class="post-stats">
+								<a href="#" class="like-button">
+									<i class="fas fa-thumbs-up"></i>
+									11 <!-- antall likes  -->
+								</a>
+							<h4>17.01.2019 - 00:43</h4>
+						</div>
 					</div>
 				</div>
 				<div class="group-post-box">
@@ -103,7 +118,13 @@
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<h4>17.01.2019 - 00:45</h4>
+						<div class="post-stats">
+								<a href="#" class="like-button">
+									<i class="fas fa-thumbs-up"></i>
+									10 <!-- antall likes  -->
+								</a>
+							<h4>17.01.2019 - 00:45</h4>
+						</div>
 					</div>
 				</div>
 				<div class="group-post-box">
@@ -127,52 +148,38 @@
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<h4>17.01.2019 - 00:48</h4>
+						<div class="post-stats">
+								<a href="#" class="like-button">
+									<i class="fas fa-thumbs-up"></i>
+									13 <!-- antall likes  -->
+								</a>
+							<h4>17.01.2019 - 00:48</h4>
+						</div>
 					</div>
 				</div>
-				<!-- 
-
 				<div class="group-post-box">
-					<h2>Overskrift</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<div class="user-container">
+						<div class="imgContainer">
+							<img src="../Pictures/placeholder-profile.png">
+						</div>
+						<h4>User2</h4>
+					</div>
+					<div class="post-container">
+						<h2>En annen sin post</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
+						<div class="post-stats">
+								<a href="#" class="like-button">
+									<i class="fas fa-thumbs-up"></i>
+									19 <!-- antall likes  -->
+								</a>
+							<h4>17.01.2019 - 00:49</h4>
+						</div>
+					</div>
 				</div>
-				<div class="group-post-box">
-					<h2>Overskrift</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-				</div>
-				<div class="group-post-box">
-					<h2>Overskrift</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div> -->
 
 			</section>
 	</div>
