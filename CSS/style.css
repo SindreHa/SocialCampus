@@ -4,7 +4,7 @@
 	--dark: #333;
 	--darker: #222;
 	--light: #fff;
-	--orange: #E63600;
+	--accent: #E63600;
 	--link: #0078FF;
 	--shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 	--shadowWide: 0 1px 15px rgba(80, 80, 80, 0.8);
@@ -37,7 +37,7 @@ body {
 
 
 /*::selection {
-    background: var(--orange);
+    background: var(--accent);
 }*/
 
 /*Knapper*/
@@ -56,7 +56,7 @@ body {
 	background-color: var(--light);
 	color: var(--dark);
 	cursor: pointer;
-	border: 2px solid var(--orange);
+	border: 2px solid var(--accent);
 }
 
 .btn:focus {
@@ -97,7 +97,7 @@ img {
 	font-size: 1.1rem;
 	box-shadow: var(--shadow);
 	transition: background-color .2s, color .3s;
-	border-bottom: 2px solid var(--orange);
+	border-bottom: 2px solid var(--accent);
 }
 
 .main-nav a:hover {
@@ -280,12 +280,12 @@ form {
 
 .box:hover, .boxes a:hover{
 	box-shadow: var(--shadowWide);
-	outline-color: var(--orange);
+	outline-color: var(--accent);
 	/*background: var(--light);*/
 }
 
 .box:hover i{
-	color: var(--orange);
+	color: var(--accent);
 	/*background: var(--light);*/
 }
 
@@ -301,7 +301,7 @@ form {
 }
 
 .inputContainer:focus-within {
-	border: 2px solid var(--orange);
+	border: 2px solid var(--accent);
 }
 
 .inputContainer .input{
@@ -326,7 +326,7 @@ form {
 }
 
 .inputContainer:focus-within .input-icon {
-	background-color: var(--orange);
+	background-color: var(--accent);
 }
 
 /*Grupper*/
@@ -387,7 +387,7 @@ form {
 }
 
 .group-info .group-name i{
-	color: var(--orange);
+	color: var(--accent);
 }
 
 .group-info .group-stats {
@@ -398,7 +398,7 @@ form {
 
 .group-info .group-stats:nth-child(3){
 	margin-left: 20px;
-	border-left: .5px solid var(--orange)
+	border-left: .5px solid var(--accent)
 }
 
 .group-info .group-stats h5{
@@ -525,7 +525,7 @@ form {
 }
 
 .post-stats a:hover i{
-	color: var(--orange);
+	color: var(--accent);
 }
 
  /*Om oss*/
@@ -541,7 +541,7 @@ form {
 	flex-direction: column;
 	background: var(--primary);
 	box-shadow: var(--shadow); 
-	border: 1px solid var(--orange);
+	border: 1px solid var(--accent);
 	transition: box-shadow .6s, border-color .6s;
 	overflow: hidden;
 }
@@ -566,7 +566,7 @@ form {
 }
 
 .personBox:hover .personBox-image-wrapper .imgContainer{
-	border-color: var(--orange);
+	border-color: var(--accent);
 }
 
 .personBox-image-wrapper {
@@ -650,7 +650,7 @@ footer p{
 	font-size: 1.3rem;
 	font-weight: 400;
 	text-transform: uppercase;
-	border-bottom: 0.5px solid var(--orange);
+	border-bottom: 0.5px solid var(--accent);
 }
 
 .footer-shortcut p{
@@ -685,7 +685,7 @@ footer p{
 
 .footer-info, .footer-lang {
 	padding-top: 10px;
-	border-top: .5px solid var(--orange);
+	border-top: .5px solid var(--accent);
 }
 
 .footer-lang {
@@ -702,7 +702,7 @@ footer p{
 	height: 40px;
   	position: relative;
   	top: 0;
-  	outline: .5px solid var(--orange);
+  	outline: .5px solid var(--accent);
 	transition: all .2s;
 }
 
