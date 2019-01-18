@@ -74,7 +74,9 @@
 									<i class="fas fa-thumbs-up"></i>
 									14 <!-- antall likes  -->
 								</a>
-							<h4>17.01.2019 - 00:41</h4>
+							<h4>Publisert</h4>
+							<h4>17.01.2019</h4> <!-- Dato -->
+							<h4>00:41</h4> <!-- Klokkeslett -->
 						</div>
 					</div>
 				</div>
@@ -101,7 +103,9 @@
 									<i class="fas fa-thumbs-up"></i>
 									11 <!-- antall likes  -->
 								</a>
-							<h4>17.01.2019 - 00:43</h4>
+							<h4>Publisert</h4>
+							<h4>17.01.2019</h4> <!-- Dato -->
+							<h4>00:43</h4> <!-- Klokkeslett -->
 						</div>
 					</div>
 				</div>
@@ -123,7 +127,9 @@
 									<i class="fas fa-thumbs-up"></i>
 									10 <!-- antall likes  -->
 								</a>
-							<h4>17.01.2019 - 00:45</h4>
+							<h4>Publisert</h4>
+							<h4>17.01.2019</h4> <!-- Dato -->
+							<h4>00:45</h4> <!-- Klokkeslett -->
 						</div>
 					</div>
 				</div>
@@ -153,7 +159,9 @@
 									<i class="fas fa-thumbs-up"></i>
 									13 <!-- antall likes  -->
 								</a>
-							<h4>17.01.2019 - 00:48</h4>
+							<h4>Publisert</h4>
+							<h4>17.01.2019</h4> <!-- Dato -->
+							<h4>00:48</h4> <!-- Klokkeslett -->
 						</div>
 					</div>
 				</div>
@@ -176,7 +184,9 @@
 									<i class="fas fa-thumbs-up"></i>
 									19 <!-- antall likes  -->
 								</a>
-							<h4>17.01.2019 - 00:49</h4>
+							<h4>Publisert</h4>
+							<h4>17.01.2019</h4> <!-- Dato -->
+							<h4>00:49</h4> <!-- Klokkeslett -->
 						</div>
 					</div>
 				</div>
