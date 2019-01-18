@@ -8,7 +8,7 @@
 			<div class="log-in">
 				<div class="dropdown-content" id="dropdown">
 				<form method="post">
-	        	<label>Brukernavn (E-post)</label>
+	        	<label>Brukernavn</label>
 	        		<div class="inputContainer">
 					<i class="fas fa-at input-icon"></i>
 					<input type="text" class="input" name="brukernavn" placeholder="eksempel@epost.no" required>
