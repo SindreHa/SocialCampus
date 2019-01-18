@@ -27,10 +27,12 @@
 
 		<section class="aboutUs">
 			<div class="personBox">
-				<div class="imgContainer">
-					<img src="../Pictures/Sindre.jpg">
+				<div class="personBox-image-wrapper">
+					<div class="imgContainer">
+						<img src="../Pictures/Sindre.jpg">
+					</div>
+					<h2>Sindre - Webdesign</h2>
 				</div>
-				<h2>Sindre - Webdesign</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -39,10 +41,12 @@
 				proident, sunt in culpa qui</p>
 			</div>
 			<div class="personBox">
-				<div class="imgContainer">
-					<img src="../Pictures/Kristian.jpg">
+				<div class="personBox-image-wrapper">
+					<div class="imgContainer">
+						<img src="../Pictures/Kristian.jpg">
+					</div>
+					<h2>Kristian - PHP</h2>
 				</div>
-				<h2>Kristian - PHP</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -50,10 +54,12 @@
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 			<div class="personBox">
-				<div class="imgContainer">
-					<img src="../Pictures/Torbjorn.jpg">
+				<div class="personBox-image-wrapper">
+					<div class="imgContainer">
+						<img src="../Pictures/Torbjorn.jpg">
+					</div>
+					<h2>Torbjørn - Database</h2>
 				</div>
-				<h2>Torbjørn - Database</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -62,10 +68,12 @@
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 			<div class="personBox">
-				<div class="imgContainer">
-					<img src="../Pictures/jan2.png">
+				<div class="personBox-image-wrapper">
+					<div class="imgContainer">
+						<img src="../Pictures/jan2.png">
+					</div>
+					<h2>Jan - JavaScript</h2>
 				</div>
-				<h2>Jan - JavaScript</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
