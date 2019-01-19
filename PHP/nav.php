@@ -21,7 +21,7 @@
 				<p id="feil">Feil brukernavn eller passord</p>
 				<input type="submit" class="btn" onclick="return checkPsw(form)" value="Logg inn">
 				</form>
-				<p><a href="Registrering.html">Har du ikke bruker?</a></p>
+				<p><a href="register.php">Har du ikke bruker?</a></p>
 				<p><a href="Registrering.html">Glemt passord</a></p>
 				</div>
         	</div> 
