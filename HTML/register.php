@@ -98,35 +98,60 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
- 
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
-        <h2>Registrer deg</h2>
-        <p>Fyll ut alle feltene for å lage en konto.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Brukernavn</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Passord</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                <span class="help-block"><?php echo $password_err; ?></span>
+        
+        <?php include '../PHP/nav.php';?>
+
+        <div class="register">
+            <div class="register-header">
+                <h1><i class="fas fa-user-plus"></i>Registrer deg</h1>
+                <p>Fyll ut alle feltene for å lage en konto.</p>
             </div>
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Bekreft passord</label>
-                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-default" value="Reset">
-            </div>
-            <p>Har du allerede en bruker? <a href="index.php">Logg inn her</a>.</p>
-        </form>
-    </div>    
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-register <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <label>Brukernavn</label>
+                    <div class="inputContainer">
+                        <i class="fas fa-at input-icon"></i>
+                        <input type="text" name="username" placeholder="eksempel@epost.no" class="input" value="<?php echo $username; ?>">
+                    </div>
+                    <span class="help-block"><?php echo $username_err; ?></span>
+                </div>    
+                <div class="form-register <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                    <label>Passord</label>
+                    <div class="inputContainer">
+                        <i class="fas fa-key input-icon"></i>
+                        <input type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>">
+                    </div>
+                    <span class="help-block"><?php echo $password_err; ?></span>
+                </div>
+                <div class="form-register <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                    <label>Bekreft passord</label>
+                        <div class="inputContainer">
+                        <i class="fas fa-key input-icon"></i>
+                        <input type="password" name="confirm_password" placeholder="••••••••••" class="input" value="<?php echo $confirm_password; ?>">
+                    </div>
+                    <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                </div>
+                <div class="button-wrapper">
+                    <input type="submit" class="btn" value="Submit">
+                    <input type="reset" class="btn" value="Reset">
+                </div>
+                <p>Har du allerede en bruker? <a href="index.php">Logg inn her</a>.</p>
+            </form>
+        </div>
+        
+    </div>  
+
+<?php include '../PHP/footer.php';?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../JS/js.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHJDa2YV51FDV-MCD1V6JAxU5NqDgTQrc&callback=myMap"></script>
 </body>
 </html>
