@@ -98,49 +98,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<li><a href="index.php">Hjem</a></li>
 		<li><a href="omoss.php">Om Oss</a></li>
 		<li><a href="#">Grupper</a></li>
-		<li id="click"><a>Logg Inn</a>
-			
-			<div class="log-in">
-				<div class="dropdown-content" id="dropdown">
-			 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            
-        </form>
-				<p><a href="../PHP/register.php">Har du ikke bruker?</a></p>
-				<p><a href="../PHP/register.php">Glemt passord</a></p>
-				</div>
-        	</div> 
-		</li>
+		<li><a href="login.php">Logg Inn</a></li>
 	</ul>
 </nav>
-
-
-<!--
-<form id='login' action='index.php' method='post' accept-charset='UTF-8'>
-	        	<label  for='username' >Brukernavn</label>
-	        		<div class="inputContainer">
-					<i class="fas fa-at input-icon"></i>
-					<input type="text" class="input" name="username" placeholder="eksempel@epost.no" required>
-					</div>
-				<label for='password' >Passord</label>
-					<div class="inputContainer" >
-					<i class="fas fa-key input-icon"></i>
-					<input type="password" class="input" name="username" placeholder="••••••••••" required>
-					</div>
-				<p id="feil">Feil brukernavn eller passord</p>
-				<input type="submit" class="btn" onclick="return checkPsw(form)" value="Logg inn" maxlength="40">
-				</form>
-
--->
