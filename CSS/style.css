@@ -6,6 +6,7 @@
 	--light: #fff;
 	--accent: #E63600;
 	--link: #0078FF;
+	--error: #C90000;
 	--shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 	--shadowWide: 0 1px 15px rgba(80, 80, 80, 0.8);
 	/*--postNumber: 0;*/
@@ -206,7 +207,7 @@ form {
 .form-login span{
 	margin: 0 20px;
 	font-size: 1rem;
-	color: var(--accent);
+	color: var(--error);
 }
 
 .login .help-block {
