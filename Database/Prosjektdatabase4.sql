@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker` (
   `email` VARCHAR(245) NOT NULL,
   `bilde` BLOB NOT NULL,
   `er_moderator` TINYINT(1) NOT NULL,
-  `siste_aktivitet` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `siste_aktivitet` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `bruker_status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `bruker_status_id` (`bruker_status_id` ASC),
