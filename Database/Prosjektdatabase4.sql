@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS `applikasjon`.`bruker_status` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker_status` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `navn` VARCHAR(100) NOT NULL,
+  `brukernavn` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `applikasjon`.`bruker` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `navn` VARCHAR(50) NOT NULL,
+  `brukernavn` VARCHAR(50) NOT NULL,
   `passord` VARCHAR(50) NOT NULL,
   `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `email` VARCHAR(245) NOT NULL,
@@ -58,7 +58,7 @@ DROP TABLE IF EXISTS `applikasjon`.`status` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`status` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `navn` VARCHAR(100) NOT NULL,
+  `brukernavn` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -124,7 +124,7 @@ DROP TABLE IF EXISTS `applikasjon`.`kategori` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`kategori` (
   `kategori_id` INT NOT NULL AUTO_INCREMENT,
-  `navn` VARCHAR(45) NOT NULL,
+  `brukernavn` VARCHAR(45) NOT NULL,
   `beskrivelse` VARCHAR(45) NOT NULL,
   `skaper` INT NOT NULL,
   `laget` TIMESTAMP NOT NULL,
@@ -184,7 +184,7 @@ DROP TABLE IF EXISTS `applikasjon`.`grupper` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`grupper` (
   `id` INT NOT NULL,
-  `navn` VARCHAR(45) NOT NULL,
+  `brukernavn` VARCHAR(45) NOT NULL,
   `kategori_kategori_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_grupper_kategori1_idx` (`kategori_kategori_id` ASC),
