@@ -2,34 +2,32 @@
 // Bruk Config fil
 require_once "../PHP/config.php";
  
-// Define variables and initialize with empty values
+// Definer variabler initialiser med tomme verdier
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
  
-// Processing form data when form is submitted
+// Tar i mot data fra et "post form"
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Validate username
+    // Valider username
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
+        $username_err = "Skriv inn brukernavn";
     } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+        // Select spørring for username           
+        $sql = "SELECT id FROM bruker WHERE username = ?";
+         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
-            // Set parameters
+            // Velg parametre 
             $param_username = trim($_POST["username"]);
             
-            // Attempt to execute the prepared statement
+            // Utfør statement
             if(mysqli_stmt_execute($stmt)){
-                /* store result */
+                /* Lagre resultatet */
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
+                    $username_err = "Dette brukernavnet er allerede i bruk.";
                 } else{
                     $username = trim($_POST["username"]);
                 }
@@ -38,57 +36,55 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
          
-        // Close statement
+        // Close username statement       
         mysqli_stmt_close($stmt);
     }
     
-    // Validate password
+    // Valider passord
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Skriv inn ett passord.";   
+        
+        // Passord må ha minst 8 tegn
+    } elseif(strlen(trim($_POST["password"])) < 8){
+        $password_err = "Passordet må ha minst 8 tegn.";
     } else{
         $password = trim($_POST["password"]);
     }
     
-    // Validate confirm password
+    // Valider bekreft passord
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";     
+        $confirm_password_err = "Bekreft passord.";     
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+        if(empty(password_err) && (password != $confirm_password)){
+            $confirm_password_err = "Passord matchet ikke.";
         }
     }
     
-    // Check input errors before inserting in database
+    // Se etter input feil før insetting i database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        // Lage insert for username og passord
+        $sql = "INSERT INTO bruker (username, password) VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
             
-            // Set parameters
             $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_password = password_hash($password, PASSWORD_DEFAULT); // Lage passord hash
             
-            // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                header("location: login.php");
+                // sender bruker til login
+                header("location: ../HTML/index.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
         }
          
-        // Close statement
-        mysqli_stmt_close($stmt);
+
     }
     
-    // Close connection
+    // Lukke tilkobling til database
     mysqli_close($link);
 }
 ?>
@@ -147,7 +143,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
 
                     <p>Har du allerede en bruker? <a href="login.php">Logg inn her</a>.</p>
-                    
+
                 </form>
             </section>
         </div>
