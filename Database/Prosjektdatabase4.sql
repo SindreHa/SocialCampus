@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS `applikasjon`.`bruker` ;
 CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
-  `password` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `email` VARCHAR(245) NOT NULL,
   `bilde` BLOB NOT NULL,
@@ -219,6 +219,7 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`grupper_har_brukere` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+ALTER TABLE bruker MODIFY COLUMN password VARCHAR(255) --Kjør for å fikse passordsjekk i logg inn
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
