@@ -76,7 +76,6 @@
 								</a>
 								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
 									<i class="fas fa-thumbs-down"></i>
-									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -109,7 +108,6 @@
 								</a>
 								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
 									<i class="fas fa-thumbs-down"></i>
-									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -137,7 +135,6 @@
 								</a>
 								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
 									<i class="fas fa-thumbs-down"></i>
-									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -173,7 +170,6 @@
 								</a>
 								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
 									<i class="fas fa-thumbs-down"></i>
-									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -202,7 +198,6 @@
 								</a>
 								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
 									<i class="fas fa-thumbs-down"></i>
-									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
