@@ -145,7 +145,7 @@
 				<div class="group-post-box">
 					<div class="user-container">
 						<div class="imgContainer">
-							<img src="../Pictures/jan3.png">
+							<img src="../Pictures/Jan.png">
 						</div>
 						<h4>Ryouta</h4>
 					</div>
