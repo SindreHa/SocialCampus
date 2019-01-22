@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             if(mysqli_stmt_execute($stmt)){
                 // sender bruker til login
-                header("location: ../HTML/index.php");
+                header("location: ../HTML/login.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
