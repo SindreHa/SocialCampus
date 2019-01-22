@@ -5,6 +5,7 @@ function IncrementPostLikes(element){
 }
 
 function DecrementPostLikes(element){
-    var currentLikes = element.innerHTML;
-    element.children[1].innerHTML--;
+    var stats = element.parentElement;
+    var dislikeButton = stats.children[0];
+    dislikeButton.children[1].innerHTML--;
 }
