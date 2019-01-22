@@ -70,9 +70,9 @@
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 						<div class="post-stats">
-								<a href="#" class="like-button">
+								<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 									<i class="fas fa-thumbs-up"></i>
-									14 <!-- antall likes  -->
+									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -99,9 +99,9 @@
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 						<div class="post-stats">
-								<a href="#" class="like-button">
+								<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 									<i class="fas fa-thumbs-up"></i>
-									11 <!-- antall likes  -->
+									<p id="antLikes">21 </p> <!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -123,9 +123,9 @@
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 						<div class="post-stats">
-								<a href="#" class="like-button">
+								<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 									<i class="fas fa-thumbs-up"></i>
-									10 <!-- antall likes  -->
+									<p id="antLikes">14 </p> <!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -155,9 +155,9 @@
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 						<div class="post-stats">
-								<a href="#" class="like-button">
+								<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 									<i class="fas fa-thumbs-up"></i>
-									13 <!-- antall likes  -->
+									<p id="antLikes">657 </p> <!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -180,9 +180,9 @@
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
 						<div class="post-stats">
-								<a href="#" class="like-button">
+								<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 									<i class="fas fa-thumbs-up"></i>
-									19 <!-- antall likes  -->
+									<p id="antLikes">1 </p> <!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -198,5 +198,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
+<script src="../JS/NumberHandler.js"></script>
 </body>
 </html>
