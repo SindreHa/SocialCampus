@@ -79,6 +79,7 @@
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
+<script src="../JS/NumberHandler.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHJDa2YV51FDV-MCD1V6JAxU5NqDgTQrc&callback=myMap"></script>
 </body>
 </html>
