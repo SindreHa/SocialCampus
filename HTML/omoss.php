@@ -70,7 +70,7 @@
 			<div class="personBox">
 				<div class="personBox-image-wrapper">
 					<div class="imgContainer">
-						<img src="../Pictures/jan2.png">
+						<img src="../Pictures/jan3.png">
 					</div>
 					<h2>Jan - JavaScript</h2>
 				</div>
