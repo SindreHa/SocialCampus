@@ -74,6 +74,10 @@
 									<i class="fas fa-thumbs-up"></i>
 									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
+								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+									<i class="fas fa-thumbs-down"></i>
+									<p id="antLikes">-1 </p><!-- antall likes  -->
+								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
 							<h4>00:41</h4> <!-- Klokkeslett -->
@@ -103,6 +107,10 @@
 									<i class="fas fa-thumbs-up"></i>
 									<p id="antLikes">21 </p> <!-- antall likes  -->
 								</a>
+								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+									<i class="fas fa-thumbs-down"></i>
+									<p id="antLikes">-1 </p><!-- antall likes  -->
+								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
 							<h4>00:43</h4> <!-- Klokkeslett -->
@@ -126,6 +134,10 @@
 								<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 									<i class="fas fa-thumbs-up"></i>
 									<p id="antLikes">14 </p> <!-- antall likes  -->
+								</a>
+								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+									<i class="fas fa-thumbs-down"></i>
+									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
@@ -159,6 +171,10 @@
 									<i class="fas fa-thumbs-up"></i>
 									<p id="antLikes">657 </p> <!-- antall likes  -->
 								</a>
+								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+									<i class="fas fa-thumbs-down"></i>
+									<p id="antLikes">-1 </p><!-- antall likes  -->
+								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
 							<h4>00:48</h4> <!-- Klokkeslett -->
@@ -183,6 +199,10 @@
 								<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 									<i class="fas fa-thumbs-up"></i>
 									<p id="antLikes">1 </p> <!-- antall likes  -->
+								</a>
+								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+									<i class="fas fa-thumbs-down"></i>
+									<p id="antLikes">-1 </p><!-- antall likes  -->
 								</a>
 							<h4>Publisert</h4>
 							<h4>17.01.2019</h4> <!-- Dato -->
