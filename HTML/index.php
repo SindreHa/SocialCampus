@@ -15,10 +15,17 @@
 	<?php include '../PHP/nav.php';?>
         
 		<section class="top-container">
+			
 			<div id="slider-container">
-				<img class="slide" id="b1" src="../Pictures/bilde1.png" >
-				<img class="slide" id="b2" src="../Pictures/bilde2.png">
-				<img class="slide" id="b3" src="../Pictures/bilde3.png">
+				<div class="sliderKnapp knapp-venstre" id="knapp-venstre">
+					<img id="knapp-venstre" src="../Pictures/venstre.png" >
+				</div>
+					<img class="slide" id="b1" src="../Pictures/bilde1.png" >
+					<img class="slide" id="b2" src="../Pictures/bilde2.png">
+					<img class="slide" id="b3" src="../Pictures/bilde3.png">
+				<div class="sliderKnapp knapp-hoyre" id="knapp-høyre">
+					<img id="knapp-hoyre" src="../Pictures/hoyre.png" >
+				</div>
 			</div>
 		</section>
 
