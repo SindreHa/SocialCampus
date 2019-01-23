@@ -9,6 +9,6 @@ $_SESSION = array();
 session_destroy();
  
 // Sendes tilbake til hovedside etter login
-header("location: index.php");
+     header("location: ../HTML/index.php");
 exit;
 ?>
