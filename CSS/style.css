@@ -255,6 +255,30 @@ form {
 
 }
 
+.sliderKnapp{
+	width:40px;
+	height:40px;
+	background-color:black;
+	border-radius: 4px;
+	position: absolute;
+	top:140px;
+	z-index: 10;
+	opacity: 0.6;
+	cursor:pointer;
+}
+
+.sliderKnapp:hover{
+	opacity:0.9;
+}
+
+.knapp-venstre{
+	left: 5px;
+}
+
+.knapp-hoyre{
+	right:5px;
+}
+
 #mapContainer {
 	display: flex;
 	min-height: 250px;
