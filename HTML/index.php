@@ -15,11 +15,18 @@
 	<?php include '../PHP/nav.php';?>
         
 		<section class="top-container">
-			<header class="showcase">
-				<h1>Velkommen</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-				<a class="btn" href="#">Finn din gruppe</a>
-			</header>
+			
+			<div id="slider-container">
+				<div class="sliderKnapp knapp-venstre" id="knapp-venstre">
+					<img id="knapp-venstre" src="../Pictures/venstre.png" >
+				</div>
+					<img class="slide" id="b1" src="../Pictures/bilde1.png" >
+					<img class="slide" id="b2" src="../Pictures/bilde2.png">
+					<img class="slide" id="b3" src="../Pictures/bilde3.png">
+				<div class="sliderKnapp knapp-hoyre" id="knapp-høyre">
+					<img id="knapp-hoyre" src="../Pictures/hoyre.png" >
+				</div>
+			</div>
 		</section>
 
 		<section class="search-index">
@@ -79,6 +86,7 @@
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHJDa2YV51FDV-MCD1V6JAxU5NqDgTQrc&callback=myMap"></script>
+<script src="../JS/NumberHandler.js"></script>
+<script src="../JS/slider.js"></script>
 </body>
 </html>

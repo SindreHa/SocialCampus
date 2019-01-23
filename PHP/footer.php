@@ -35,7 +35,7 @@
 	</div>
 
 	<div class="footer-info">
-        <p>Sindre Haavaldsen &copy; 2018</p>
+        <p>Gruppe 7 &copy; <?php echo date("Y");?></p>
         <p><a href="gisisamfunnet.html">Opphavsrettsinformasjon</a></p>
 	</div>
 
