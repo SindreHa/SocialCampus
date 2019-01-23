@@ -219,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`grupper_har_brukere` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-ALTER TABLE bruker MODIFY COLUMN password VARCHAR(255) --Kjør for å fikse passordsjekk i logg inn
+ALTER TABLE bruker MODIFY COLUMN password VARCHAR(255) -- Kjør for å fikse passordsjekk i logg inn
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
