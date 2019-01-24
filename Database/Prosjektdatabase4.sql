@@ -53,6 +53,21 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+-- -----------------------------------------------------
+-- Table `applikasjon`.`profil`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `applikasjon`.`profil` ;
+
+CREATE TABLE IF NOT EXISTS `applikasjon`.`profil` (
+  `id` INT(11) NOT NULL,
+  `fornavn` VARCHAR(45) NOT NULL,
+  `etternavn` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `newpassword` VARCHAR(255) NOT NULL,
+  `bilde` BLOB NOT NULL,
+  `moderator` TINYINT(1) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `applikasjon`.`status`
