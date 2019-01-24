@@ -1,6 +1,7 @@
 $(document).ready(function () 
 {
     $("#Username-ID").keyup(checkUsernameLength);
+    $("#Email-ID").keyup(validateEmail);
 });
 
 function checkUsernameLength()
@@ -17,5 +18,25 @@ function checkUsernameLength()
     }
 }
 
+function validateEmail()
+{
+    var email = $("#Email-ID").val();
+    if (validateEmailCheck(email)) 
+    {
+        $("#input-error-email").css("display", "none"); 
+        $("#input-approved-email").css("display", "inline-block");
+    } 
+    else 
+    {
+        $("#input-error-email").css("display", "inline-block"); 
+        $("#input-approved-email").css("display", "none");
+    return false;
+    }
+}
 
+function validateEmailCheck(email) 
+{
+    var regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+}
 
