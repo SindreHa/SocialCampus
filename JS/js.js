@@ -22,17 +22,23 @@ var insertBefore = head.insertBefore;
 /* Funksjoner */
 
 	/*Vis og skjul logg in boks*/
+	
 	window.addEventListener('click', function(e)
 	{
 	var element2 = document.getElementById("dropdown");
+	try{
 		if (document.getElementById('click').contains(e.target))
 		{
 	  		logInDropdown.classList.add("hide");
-	  	} 
+			} 			
 	  	else {
 			logInDropdown.classList.remove("hide");
-	  	}
+			}
+			}catch(TypeError){
+				console.log("TypeError tatt imot");
+			}
 	})
+
 
 	/*Hinder GMaps i å hente egen font*/
 	head.insertBefore = function( newElement, referenceElement ) {

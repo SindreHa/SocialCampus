@@ -2,18 +2,14 @@
 // Initialize the session
 session_start();
  
-
-/* Check if the user is already logged in, if yes then redirect him to welcome page
-
- if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){    header("location: ../HTML/index.php");
- exit;
-
-}
-
-*/
-
+// Check if the user is already logged in, if yes then redirect him to welcome page
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//   header("location: index.php");
+//   exit;
+// }
+ 
 // Include config file
- require_once "../PHP/config.php";
+require_once "../php/config.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -24,14 +20,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Vennligst oppgi brukernavn";
     } else{
         $username = trim($_POST["username"]);
     }
     
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Vennligst oppgi passord";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -68,15 +64,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: welcome.php");
+                            header("location: index.php");
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
-                        }     
+                            $password_err = "Feil passord";
+                        }
                     }
                 } else{
                     // Display an error message if username doesn't exist
-                    $username_err = "Ingen bruker funnet med valg brukernavn.";
+                    $username_err = "Ingen bruker funnet med det brukernavnet";
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -147,6 +143,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHJDa2YV51FDV-MCD1V6JAxU5NqDgTQrc&callback=myMap"></script>
 </body>
 </html>

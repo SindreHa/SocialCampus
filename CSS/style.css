@@ -6,6 +6,7 @@
 	--light: #fff;
 	--accent: #E63600;
 	--link: #0078FF;
+	--error: #C90000;
 	--shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 	--shadowWide: 0 1px 15px rgba(80, 80, 80, 0.8);
 	/*--postNumber: 0;*/
@@ -206,7 +207,7 @@ form {
 .form-login span{
 	margin: 0 20px;
 	font-size: 1rem;
-	color: var(--accent);
+	color: var(--error);
 }
 
 .login .help-block {
@@ -224,7 +225,6 @@ form {
 
 .showcase {
 	min-height: 250px;
-	background: url(../Pictures/Tennis.jpg);
 	background-size: cover;
 	background-position: center;
 	padding: 3rem;
@@ -234,6 +234,49 @@ form {
 	align-items: start;
 	color: var(--light);
 	box-shadow: var(--shadow);
+}
+
+/* Sindre fiks width/height plox */
+#slider-container{
+	position: relative;
+	overflow:hidden;
+	width:1500px;
+	height:300px;
+}
+
+.slide{
+	position: absolute;
+	width:100%;
+	height:100%;
+	transition:all ease-in-out 500ms;
+	-webkit-transition:all ease-in-out 500ms;
+	-moz-transition:all ease-in-out 500ms;
+	-o-transition:all ease-in-out 500ms;
+
+}
+
+.sliderKnapp{
+	width:40px;
+	height:40px;
+	background-color:black;
+	border-radius: 4px;
+	position: absolute;
+	top:140px;
+	z-index: 10;
+	opacity: 0.6;
+	cursor:pointer;
+}
+
+.sliderKnapp:hover{
+	opacity:0.9;
+}
+
+.knapp-venstre{
+	left: 5px;
+}
+
+.knapp-hoyre{
+	right:5px;
 }
 
 #mapContainer {
@@ -520,10 +563,16 @@ form {
 }
 
 .post-stats .like-button {
+	display: flex;
+	align-items: center;
 	background-color: var(--primary);
 	padding: 8px 15px;
 	margin-right: 15px;
 	border-radius: 5px;
+}
+
+.like-button p {
+	margin: 0 0 0 5px;
 }
 
 .post-stats a{

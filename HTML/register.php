@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             if(mysqli_stmt_execute($stmt)){
                 // sender bruker til login
-                header("location: ../HTML/index.php");
+                header("location: ../HTML/login.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -154,6 +154,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHJDa2YV51FDV-MCD1V6JAxU5NqDgTQrc&callback=myMap"></script>
 </body>
 </html>
