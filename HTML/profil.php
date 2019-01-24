@@ -30,7 +30,7 @@
 	        			<h3>Brukernavn</h3>
 	        			<div class="inputContainer">
                             <i class="fas fa-user"></i>
-	        				<input class="input" disabled value="<?php echo htmlspecialchars($_SESSION["username"])?>"></input>
+	        				<input type="text"class="input" disabled value="<?php echo htmlspecialchars($_SESSION["username"])?>">
 	        			</div>
 	        		</div>
 
@@ -38,7 +38,7 @@
 	        			<h3>E-post</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-at"></i>
-	        				<input class="input" disabled value="Sindre.h@outlook.com"></input>
+	        				<input type="text" class="input" disabled value="Sindre.h@outlook.com">
 	        			</div>
 	        			<!-- <h4>Sindre.h@outlook.com</h4> -->
 	        		</div>
@@ -47,7 +47,7 @@
 	        			<h3>Fullt navn</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-address-book"></i>
-	        				<input class="input" value="Sindre Haavaldsen" disabled></input>
+	        				<input type="text" class="input" value="Sindre Haavaldsen" disabled>
 	        			</div>
 	        		</div>
 
@@ -59,7 +59,7 @@
 	        			<h3>Gammelt passord</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-key"></i>
-	        				<input class="input" type="password" placeholder="••••••••••"></input>
+	        				<input class="input" type="password" placeholder="••••••••••">
 	        			</div>
 	        		</div>
 
@@ -67,7 +67,7 @@
 	        			<h3>Nytt passord</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-key"></i>
-	        				<input class="input" type="password" placeholder="••••••••••"></input>
+	        				<input class="input" type="password" placeholder="••••••••••">
 	        			</div>
 	        		</div>
 
@@ -75,7 +75,7 @@
 	        			<h3>Bekreft passord</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-key"></i>
-	        				<input class="input" type="password" placeholder="••••••••••"></input>
+	        				<input class="input" type="password" placeholder="••••••••••">
 	        			</div>
 	        		</div>
 
