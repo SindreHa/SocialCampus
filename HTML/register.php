@@ -3,8 +3,8 @@
 require_once "../PHP/config.php";
  
 // Definer variabler initialiser med tomme verdier
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username = $email = $password = $confirm_password = "";
+$username_err = $email_err = $password_err = $confirm_password_err  = "";
  
 // Tar i mot data fra et "post form"
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -61,6 +61,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
+    
+        // Valider email
+    if(empty(trim($_POST["email"]))){
+        $email_err = "Skriv inn email";
+    } else{
+        // Select spørring for email           
+        $sql = "SELECT id FROM bruker WHERE email = ?";
+         if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "s", $param_email);
+            
+            // Velg parametre 
+            $param_email = trim($_POST["email"]);
+            
+            // Utfør statement
+            if(mysqli_stmt_execute($stmt)){
+                /* Lagre resultatet */
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    $email_err = "Denne email er allerede i bruk.";
+                } else{
+                    $email = trim($_POST["email"]);
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+         
+        // Close username statement       
+        mysqli_stmt_close($stmt);
+    }
+    
     // Se etter input feil før insetting i database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
@@ -75,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             if(mysqli_stmt_execute($stmt)){
                 // sender bruker til login
-                header("location: ../HTML/login.php");
+                header("location: ../HTML/index.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -120,7 +152,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="text" name="username" placeholder="Ola Nordmann" class="input" value="<?php echo $username; ?>">
                         </div>
                         <span class="help-block"><?php echo $username_err; ?></span>
-                    </div>    
+                    </div>   
+                     <div class="form-login <?php echo (!empty($emails_err)) ? 'has-error' : ''; ?>">
+                        <label>Email</label>
+                        <div class="inputContainer">
+                            <i class="fas fa-at input-icon"></i>
+                            <input type="text" name="email" placeholder="jan@jan.jan" class="input" value="<?php echo $email; ?>">
+                        </div>
+                        <span class="help-block"><?php echo $email_err; ?></span>
+                    </div> 
                     <div class="form-login <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                         <label>Passord</label>
                         <div class="inputContainer">

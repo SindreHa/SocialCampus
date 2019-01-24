@@ -68,7 +68,7 @@ img {
 	max-width: 100%;
 }
 /*Display grid*/
-.wrapper, .main-nav ul, .top-container, .top-container-double, .boxes, .group-container, .login-wrapper {
+.wrapper, .main-nav ul, .top-container, .top-container-double, .boxes, .group-container, .login-wrapper, .profile-wrapper {
 	display: grid;
 	grid-gap: 20px;
 }
@@ -214,6 +214,72 @@ form {
 	margin-bottom: 10px;
 }
 
+/*Profil*/
+
+.profile-wrapper {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.profile-container {
+	grid-column: 1/5;
+	margin: 0 200px;
+	background-color: var(--primary);
+	box-shadow: var(--shadow);
+}
+
+.profile-header {
+	display: flex;
+	align-items: center;
+	background-color: var(--darker);
+	border-bottom: 2px solid var(--accent);
+}
+
+.profile-header .imgContainer{
+	margin: 20px 0 20px 30px;
+}
+
+.profile-header h1{
+	font-size: 3rem;
+	margin: 0;
+	margin-left: 40px;
+	color: var(--light);
+}
+
+.profile-info {
+	padding: 20px;
+}
+
+.profile-info .container {
+	display: grid;
+	grid-template-columns: 2fr 2fr;
+	border-bottom: 1px solid var(--dark);
+	align-items: center;
+}
+
+.profile-info .container .inputContainer{
+	box-shadow: none;
+	margin-right: 10px;
+}
+
+.profile-info .container .inputContainer .input:disabled{
+	/*color: black;*/
+}
+
+.profile-info .container .inputContainer .input:focus::-webkit-input-placeholder { 
+  color:transparent; 
+}
+
+.profile-info .container h3, .profile-info .container h4{
+	margin: 20px 10px;
+	font-weight: normal;
+}
+
+.profile-info .container h2{
+	margin: 40px 10px 20px;
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
 /*Topp bilde*/
 .top-container {
 	grid-template-columns: 1fr;
@@ -225,6 +291,7 @@ form {
 
 .showcase {
 	min-height: 250px;
+	background-image: url(../Pictures/Tennis.jpg);
 	background-size: cover;
 	background-position: center;
 	padding: 3rem;
@@ -372,14 +439,14 @@ form {
 	background-color: var(--light);
 }
 
-.inputContainer .input-icon {
+.inputContainer i {
 	color: var(--light);
 	background-color: var(--dark);
 	padding: .6rem .8rem;
 	transition: background-color .3s;
 }
 
-.inputContainer:focus-within .input-icon {
+.inputContainer:focus-within i {
 	background-color: var(--accent);
 }
 
@@ -818,6 +885,13 @@ footer p{
   	background-color: var(--darker);
 }
 
+@media(max-width: 1350px) {
+	.profile-container {
+		grid-column: 1/5;
+		margin: 0 150px;
+	}
+}
+
 @media(max-width: 1100px) {
 	footer {
 	grid-template-columns: repeat(2, minmax(200px, 1fr));
@@ -827,6 +901,12 @@ footer p{
 	}
 	.login {
 		margin: 20px 0;
+	}
+	.profile-container {
+		margin: 0 100px;
+	}
+	.profile-header h1 {
+		margin-left: 20px;
 	}
 }
 
@@ -839,6 +919,18 @@ footer p{
 	}
 	.main-nav ul {
 		grid-template-columns: 1fr;
+	}
+	.profile-container {
+		margin: 0;
+	}
+	.profile-header {
+		flex-direction: column;
+	}
+	.profile-header .imgContainer {
+		margin: 20px;
+	}
+	.profile-header h1 {
+		margin-bottom: 20px;
 	}
 	.group-container {
 		grid-template-columns: 1fr 1fr;

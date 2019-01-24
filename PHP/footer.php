@@ -4,7 +4,7 @@
       	<h3>Snareveier</h3>
         <p><a target="blank" href="https://min.usn.no/student/">Mine grupper</a></p>
         <p><a href="logginn.html">Mine profilinstillinger</a></p>
-        <p><a href="logginn.html">Arrangementer</a></p>
+        <p><a href="../PHP/logout.php">Logout</a></p>
         <p><a href="kontakt.html">Labore et dolore</a></p>
         <p><a href="gisisamfunnet.html">Lorem ipsum</a></p>
 	</div>
