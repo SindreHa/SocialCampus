@@ -158,7 +158,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label>Email</label>
                         <div class="inputContainer">
                             <i class="fas fa-at input-icon"></i>
-                            <input type="text" name="email" placeholder="jan@jan.jan" class="input" value="<?php echo $email; ?>">
+                            <input type="text" name="email" placeholder="jan@jan.jan" class="input" value="<?php echo $email; ?>" id="Email-ID">
                             <i class="fas fa-exclamation input-error"></i>
                         </div>
                         <span class="help-block"><?php echo $email_err; ?></span>
@@ -167,7 +167,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label>Passord</label>
                         <div class="inputContainer">
                             <i class="fas fa-key input-icon"></i>
-                            <input type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>">
+                            <input type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>" id="Password-ID">
                             <i class="fas fa-exclamation input-error"></i>
                         </div>
                         <span class="help-block"><?php echo $password_err; ?></span>
@@ -176,7 +176,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label>Bekreft passord</label>
                             <div class="inputContainer">
                             <i class="fas fa-key input-icon"></i>
-                            <input type="password" name="confirm_password" placeholder="••••••••••" class="input" value="<?php echo $confirm_password; ?>">
+                            <input type="password" name="confirm_password" placeholder="••••••••••" class="input" value="<?php echo $confirm_password; ?>" id="ConfirmPassword-ID" >
                             <i class="fas fa-exclamation input-error"></i>
                         </div>
                         <span class="help-block"><?php echo $confirm_password_err; ?></span>
@@ -198,5 +198,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
+<script src="../JS/AjaxFunctions.js"></script>
 </body>
 </html>
