@@ -439,13 +439,6 @@ form {
 	background-color: var(--light);
 }
 
-.inputContainer input:-webkit-autofill,
-.inputContainer input:-webkit-autofill:hover, 
-.inputContainer input:-webkit-autofill:focus, 
-.inputContainer input:-webkit-autofill:active  {
-    -webkit-box-shadow: 0 0 0 30px var(--light) inset !important;
-}
-
 .inputContainer i {
 	color: var(--light);
 	background-color: var(--dark);
