@@ -20,7 +20,7 @@
 
 	        	<div class="profile-header">
 	        		<div class="imgContainer">
-	        		<img src="../Pictures/Sindre.jpg">
+	        		<img src="../Pictures/placeholder-profile.png">
 	        		</div>
 	        		<h1><?php echo htmlspecialchars($_SESSION["username"])?></h1>
 	        	</div>
@@ -38,7 +38,7 @@
 	        			<h3>E-post</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-at"></i>
-	        				<input type="text" class="input" disabled value="Sindre.h@outlook.com">
+	        				<input type="text" class="input" disabled value="eksempel@outlook.com">
 	        			</div>
 	        			<!-- <h4>Sindre.h@outlook.com</h4> -->
 	        		</div>
@@ -47,7 +47,7 @@
 	        			<h3>Fullt navn</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-address-book"></i>
-	        				<input type="text" class="input" value="Sindre Haavaldsen" disabled>
+	        				<input type="text" class="input" value="Ola Nordmann" disabled>
 	        			</div>
 	        		</div>
 
