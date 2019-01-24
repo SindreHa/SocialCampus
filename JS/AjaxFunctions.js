@@ -3,6 +3,7 @@ $(document).ready(function ()
     $("#Username-ID").keyup(checkUsernameLength);
     $("#Email-ID").keyup(validateEmail);
     $("#Password-ID").keyup(checkPasswordLength);
+    $("#ConfirmPassword-ID").keyup(checkPasswordMatch);
 });
 
 function checkUsernameLength()
@@ -43,6 +44,7 @@ function validateEmailCheck(email)
 
 function checkPasswordLength()
 {
+    checkPasswordMatch();
     var password = $("#Password-ID").val();
     if(password.length >= 8 && password.length <= 20){
         $("#input-error-password").css("display", "none");
@@ -71,5 +73,20 @@ function checkPasswordLength()
     });
 }
 
+function checkPasswordMatch() 
+{
+    var password = $("#Password-ID").val();
+    var confirmPassword = $("#ConfirmPassword-ID").val();
+
+    if (password != confirmPassword)
+    {
+        $("#input-error-confirmPassword").css("display", "inline-block");
+        $("#input-approved-confirmPassword").css("display", "none");
+    }
+    else{
+        $("#input-error-confirmPassword").css("display", "none");
+        $("#input-approved-confirmPassword").css("display", "inline-block");
+    }
+}
 
 
