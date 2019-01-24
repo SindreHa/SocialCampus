@@ -12,7 +12,9 @@
 	<!-- <section class="darken hide" id="darken"></section> -->
 	<div class="wrapper">
         
-	<?php include '../PHP/nav.php';?>
+	<?php
+        session_start();
+        include '../PHP/nav.php';?>
         
 		<section class="top-container">
 			
