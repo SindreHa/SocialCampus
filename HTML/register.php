@@ -149,8 +149,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label>Brukernavn</label>
                         <div class="inputContainer">
                             <i class="fas fa-at input-icon"></i>
-                            <input type="text" name="username" placeholder="Ola Nordmann" class="input" value="<?php echo $username; ?>">
-                            <i class="fas fa-exclamation input-error"></i>
+                            <input type="text" name="username" placeholder="Ola Nordmann" class="input" value="<?php echo $username; ?>" id="Username-ID">
+                            <i class="fas fa-exclamation input-error" id="input-error-username"></i>
+                            <i class="fa fa-check-circle input-approved" id="input-approved-username"></i>
                         </div>
                         <span class="help-block"><?php echo $username_err; ?></span>
                     </div>   
@@ -159,7 +160,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="inputContainer">
                             <i class="fas fa-at input-icon"></i>
                             <input type="text" name="email" placeholder="jan@jan.jan" class="input" value="<?php echo $email; ?>" id="Email-ID">
-                            <i class="fas fa-exclamation input-error"></i>
+                            <i class="fas fa-exclamation input-error" id="input-error-email"></i>
+                            <i class="fa fa-check-circle input-approved" id="input-approved-email"></i>
                         </div>
                         <span class="help-block"><?php echo $email_err; ?></span>
                     </div> 
@@ -168,7 +170,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="inputContainer">
                             <i class="fas fa-key input-icon"></i>
                             <input type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>" id="Password-ID">
-                            <i class="fas fa-exclamation input-error"></i>
+                            <i class="fas fa-exclamation input-error" id="input-error-password"></i>
+                            <i class="fa fa-check-circle input-approved" id="input-approved-password"></i>
                         </div>
                         <span class="help-block"><?php echo $password_err; ?></span>
                     </div>
@@ -177,7 +180,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <div class="inputContainer">
                             <i class="fas fa-key input-icon"></i>
                             <input type="password" name="confirm_password" placeholder="••••••••••" class="input" value="<?php echo $confirm_password; ?>" id="ConfirmPassword-ID" >
-                            <i class="fas fa-exclamation input-error"></i>
+                            <i class="fas fa-exclamation input-error" id="input-error-confirmPassword"></i>
+                            <i class="fa fa-check-circle input-approved" id="input-approved-confirmPassword"></i>
                         </div>
                         <span class="help-block"><?php echo $confirm_password_err; ?></span>
                     </div>
