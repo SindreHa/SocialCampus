@@ -116,6 +116,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="inputContainer">
                             <i class="fas fa-at"></i>
                             <input type="text" name="username" placeholder="Ola Nordmann" class="input" value="<?php echo $username; ?>">
+                        <i class="fas fa-exclamation input-error"></i>
                         </div>
                         <span class="help-block"><?php echo $username_err; ?></span>
                     </div>    
@@ -124,6 +125,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="inputContainer">
                             <i class="fas fa-key"></i>
                             <input type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>">
+                        <i class="fas fa-exclamation input-error"></i>
                         </div>
                         <span class="help-block"><?php echo $password_err; ?></span>
                     </div>

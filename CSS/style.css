@@ -454,6 +454,18 @@ form {
 	background-color: var(--accent);
 }
 
+.inputContainer .input-error {
+	display: none; /*Endre den her til "inline-block"*/
+	color: var(--error);
+	background-color: var(--light);
+	padding: .6rem .8rem;
+	transition: background-color .3s;
+}
+
+.inputContainer:focus-within .input-error {
+	background-color: var(--light);
+}
+
 /*Grupper*/
 
 .group-container {
