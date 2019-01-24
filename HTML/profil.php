@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if(!(isset($_SESSION['username'])))
+{
+    header("Location: index.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -13,7 +23,6 @@
 	<div class="wrapper">
 
 	<?php
-        session_start();
         include '../PHP/nav.php';?>
         <section class="profile-wrapper">
         	<div class="profile-container">
