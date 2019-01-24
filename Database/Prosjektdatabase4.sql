@@ -14,7 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema applikasjon
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `applikasjon` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `applikasjon` DEFAULT CHARACTER SET latin1 ;
 USE `applikasjon` ;
 
 -- -----------------------------------------------------
@@ -53,21 +53,6 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
--- -----------------------------------------------------
--- Table `applikasjon`.`profil`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`profil` ;
-
-CREATE TABLE IF NOT EXISTS `applikasjon`.`profil` (
-  `id` INT(11) NOT NULL,
-  `fornavn` VARCHAR(45) NOT NULL,
-  `etternavn` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `newpassword` VARCHAR(255) NOT NULL,
-  `bilde` BLOB NOT NULL,
-  `moderator` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `applikasjon`.`status`
@@ -88,14 +73,14 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `applikasjon`.`kategori` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`kategori` (
-  `kategori_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `beskrivelse` VARCHAR(45) NOT NULL,
   `skaper` INT(11) NOT NULL,
   `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status_id` INT(11) NOT NULL,
   `bruker_status_id` INT(11) NOT NULL,
-  PRIMARY KEY (`kategori_id`),
+  PRIMARY KEY (`id`),
   INDEX `skaper_idx` (`skaper` ASC),
   INDEX `fk_kategori_status1_idx` (`status_id` ASC),
   INDEX `fk_kategori_bruker_status1_idx` (`bruker_status_id` ASC),
@@ -111,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`kategori` (
     ON UPDATE NO ACTION,
   CONSTRAINT `skaper`
     FOREIGN KEY (`skaper`)
-    REFERENCES `applikasjon`.`kategori` (`kategori_id`)
+    REFERENCES `applikasjon`.`kategori` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -126,12 +111,12 @@ DROP TABLE IF EXISTS `applikasjon`.`grupper` ;
 CREATE TABLE IF NOT EXISTS `applikasjon`.`grupper` (
   `id` INT(11) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
-  `kategori_kategori_id` INT(11) NOT NULL,
+  `kategori_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_grupper_kategori1_idx` (`kategori_kategori_id` ASC),
+  INDEX `fk_grupper_kategori1_idx` (`kategori_id` ASC),
   CONSTRAINT `fk_grupper_kategori1`
-    FOREIGN KEY (`kategori_kategori_id`)
-    REFERENCES `applikasjon`.`kategori` (`kategori_id`)
+    FOREIGN KEY (`kategori_id`)
+    REFERENCES `applikasjon`.`kategori` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -169,12 +154,12 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `applikasjon`.`tråd` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`tråd` (
-  `tråd_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `subjekt` VARCHAR(100) NOT NULL,
   `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `bruker_id` INT(11) NULL DEFAULT NULL,
   `status_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`tråd_id`),
+  PRIMARY KEY (`id`),
   INDEX `bruker_id` (`bruker_id` ASC),
   INDEX `status_id` (`status_id` ASC),
   CONSTRAINT `tråd_ibfk_1`
@@ -193,19 +178,19 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `applikasjon`.`post` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`post` (
-  `post_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `innhold` VARCHAR(100) NOT NULL,
   `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tråd_id` INT(11) NULL DEFAULT NULL,
   `bruker_id` INT(11) NULL DEFAULT NULL,
   `status_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`post_id`),
+  PRIMARY KEY (`id`),
   INDEX `tråd_id` (`tråd_id` ASC),
   INDEX `bruker_id` (`bruker_id` ASC),
   INDEX `status_id` (`status_id` ASC),
   CONSTRAINT `post_ibfk_1`
     FOREIGN KEY (`tråd_id`)
-    REFERENCES `applikasjon`.`tråd` (`tråd_id`),
+    REFERENCES `applikasjon`.`tråd` (`id`),
   CONSTRAINT `post_ibfk_2`
     FOREIGN KEY (`bruker_id`)
     REFERENCES `applikasjon`.`bruker` (`id`),
@@ -217,24 +202,43 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `applikasjon`.`profil`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `applikasjon`.`profil` ;
+
+CREATE TABLE IF NOT EXISTS `applikasjon`.`profil` (
+  `id` INT(11) NOT NULL,
+  `fornavn` VARCHAR(45) NOT NULL,
+  `etternavn` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `newpassword` VARCHAR(255) NOT NULL,
+  `bilde` BLOB NOT NULL,
+  `moderator` TINYINT(1) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
 -- Table `applikasjon`.`stemmegivning`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `applikasjon`.`stemmegivning` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`stemmegivning` (
-  `post_post_id` INT(11) NOT NULL,
-  `tråd_tråd_id` INT(11) NOT NULL,
-  PRIMARY KEY (`post_post_id`, `tråd_tråd_id`),
-  INDEX `fk_post_has_tråd_tråd1_idx` (`tråd_tråd_id` ASC),
-  INDEX `fk_post_has_tråd_post1_idx` (`post_post_id` ASC),
+  `post_id` INT(11) NOT NULL,
+  `tråd_id` INT(11) NOT NULL,
+  `innhold` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`post_id`, `tråd_id`),
+  INDEX `fk_post_has_tråd_tråd1_idx` (`tråd_id` ASC),
+  INDEX `fk_post_has_tråd_post1_idx` (`post_id` ASC),
   CONSTRAINT `fk_post_has_tråd_post1`
-    FOREIGN KEY (`post_post_id`)
-    REFERENCES `applikasjon`.`post` (`post_id`)
+    FOREIGN KEY (`post_id`)
+    REFERENCES `applikasjon`.`post` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_post_has_tråd_tråd1`
-    FOREIGN KEY (`tråd_tråd_id`)
-    REFERENCES `applikasjon`.`tråd` (`tråd_id`)
+    FOREIGN KEY (`tråd_id`)
+    REFERENCES `applikasjon`.`tråd` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
