@@ -14,7 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema applikasjon
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `applikasjon` DEFAULT CHARACTER SET latin1 ;
+CREATE SCHEMA IF NOT EXISTS `applikasjon` DEFAULT CHARACTER SET utf8 ;
 USE `applikasjon` ;
 
 -- -----------------------------------------------------
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`profil` (
   `moderator` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -241,6 +241,7 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`stemmegivning` (
     REFERENCES `applikasjon`.`tråd` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+  CONSTRAINT 'bruker_stemme_info' UNIQUE ('post_id', 'tråd_id'); -- It cannot be two records of a particular user.
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
