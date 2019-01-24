@@ -17,18 +17,11 @@
         include '../PHP/nav.php';?>
         
 		<section class="top-container">
-			
-			<div id="slider-container">
-				<div class="sliderKnapp knapp-venstre" id="knapp-venstre">
-					<img id="knapp-venstre" src="../Pictures/venstre.png" >
-				</div>
-					<img class="slide" id="b1" src="../Pictures/bilde1.png" >
-					<img class="slide" id="b2" src="../Pictures/bilde2.png">
-					<img class="slide" id="b3" src="../Pictures/bilde3.png">
-				<div class="sliderKnapp knapp-hoyre" id="knapp-høyre">
-					<img id="knapp-hoyre" src="../Pictures/hoyre.png" >
-				</div>
-			</div>
+			<header class="showcase">
+				<h1>Velkommen</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+				<a class="btn" href="#">Finn din gruppe</a>
+			</header>
 		</section>
 
 		<section class="search-index">
