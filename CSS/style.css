@@ -256,6 +256,10 @@ form {
 	align-items: center;
 }
 
+.profile-info .container:last-child {
+	border-bottom: none;
+}
+
 .profile-info .container .inputContainer{
 	box-shadow: none;
 	margin-right: 10px;
@@ -703,7 +707,7 @@ form {
 }
 
 .personBox-image-wrapper {
-	background-color: var(--dark);
+	background-color: var(--darker);
 	height: 293px;
 }
 
