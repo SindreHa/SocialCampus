@@ -703,7 +703,7 @@ form {
 }
 
 .personBox-image-wrapper {
-	background-color: var(--dark);
+	background-color: var(--darker);
 	height: 293px;
 }
 
