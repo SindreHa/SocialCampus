@@ -7,6 +7,7 @@
 	--accent: #E63600;
 	--link: #0078FF;
 	--error: #C90000;
+	--approved: #00B800;
 	--shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 	--shadowWide: 0 1px 15px rgba(80, 80, 80, 0.8);
 	/*--postNumber: 0;*/
@@ -416,6 +417,18 @@ form {
 
 /*Søkefelt*/
 
+/*Fjern gulfarge når autofill brukes*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+/* 
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--primary) !important;
+}*/
+
 .inputContainer {
 	display: flex;
 	flex: 1;
@@ -446,7 +459,7 @@ form {
 .inputContainer i {
 	color: var(--light);
 	background-color: var(--dark);
-	padding: .6rem .8rem;
+	padding: 9px 12px;
 	transition: background-color .3s;
 }
 
@@ -458,20 +471,22 @@ form {
 	display: none; /*Endre den her til "inline-block"*/
 	color: var(--error);
 	background-color: var(--light);
-	padding: .6rem .8rem;
+	padding: 9px 18px;
 	transition: background-color .3s;
+}
+
+.inputContainer:focus-within .input-error {
+	background-color: var(--light);
 }
 
 .inputContainer .input-approved  {
 	display: none; /*Endre den her til "inline-block"*/
-	color: green;
+	color: var(--approved);
 	background-color: var(--light);
-	padding: .6rem .8rem;
 	transition: background-color .3s;
 }
 
-
-.inputContainer:focus-within .input-error {
+.inputContainer:focus-within .input-approved {
 	background-color: var(--light);
 }
 
