@@ -186,7 +186,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <span class="help-block"><?php echo $confirm_password_err; ?></span>
                     </div>
                     <div class="button-wrapper">
-                        <input type="submit" class="btn" value="Opprett bruker">
+                        <input type="submit" class="btn" value="Opprett bruker" id="Submit-Toggle">
                         <input type="reset" class="btn" value="Klarer felt">
                     </div>
 
