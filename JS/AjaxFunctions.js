@@ -22,6 +22,11 @@ function checkUsernameLength()
         $("#input-approved-username").css("display", "inline-block");
         return true;
     }
+    else if(username.length == 0)
+    {
+        $("#input-error-username").css("display", "none");
+        $("#input-approved-username").css("display", "none");
+    }
     else
     {
         $("#input-error-username").css("display", "inline-block");
@@ -38,6 +43,11 @@ function validateEmail()
         $("#input-approved-email").css("display", "inline-block");
         return true;
     } 
+    else if(email.length == 0)
+    {
+        $("#input-error-email").css("display", "none");
+        $("#input-approved-email").css("display", "none");
+    }
     else 
     {
         $("#input-error-email").css("display", "inline-block"); 
