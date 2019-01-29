@@ -1,24 +1,17 @@
 <?php
-// Initialize the session
 session_start();
  
-// Check if the user is logged in, if not then redirect to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
-}
- 
-// Include config file
+// Definer variabler initialiser med tomme verdier
 require_once "config.php";
  
-// Define variables and initialize with empty values
+// Definer variabler initialiser med tomme verdier
 $new_password = $confirm_password = "";
 $new_password_err = $confirm_password_err = "";
  
-// Processing form data when form is submitted
+// Definer variabler initialiser med tomme verdier
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Validate new password
+    // Valider nytt passord
     if(empty(trim($_POST["new_password"]))){
         $new_password_err = "Please enter the new password.";     
     } elseif(strlen(trim($_POST["new_password"])) < 6){
@@ -27,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $new_password = trim($_POST["new_password"]);
     }
     
-    // Validate confirm password
+    // Valider confirm passord
     if(empty(trim($_POST["confirm_password"]))){
         $confirm_password_err = "Please confirm the password.";
     } else{
@@ -37,35 +30,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
         
-    // Check input errors before updating the database
+    // Se etter input-error før insetting i database
     if(empty($new_password_err) && empty($confirm_password_err)){
-        // Prepare an update statement
-        $sql = "UPDATE users SET password = ? WHERE id = ?";
+        $sql = "UPDATE bruker SET password = ? WHERE id = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "si", $param_password, $param_id);
             
-            // Set parameters
+            // Velg parametre 
             $param_password = password_hash($new_password, PASSWORD_DEFAULT);
             $param_id = $_SESSION["id"];
             
-            // Attempt to execute the prepared statement
+            // Utfør statement
             if(mysqli_stmt_execute($stmt)){
-                // Password updated successfully. Destroy the session, and redirect to login page
+                // Passord endret, exit stopp session og gå til profilsiden
                 session_destroy();
-                header("location: login.php");
+                header("location: profil.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
         }
         
-        // Close statement
+        // Lukk statement
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
+    // Lukk connection
     mysqli_close($link);
 }
 ?>
@@ -87,9 +78,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <div class="wrapper">
         <h2>Tilbakestill Passord</h2>
-        <p>Fyll ut skjema for å tilbakestille ditt passord</p>
+        
+    
+	        		
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
-            <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
+            <div class="container <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
                 <label>Nytt Passord</label>
                 <input type="password" name="new_password" class="form-control" value="<?php echo $new_password; ?>">
                 <span class="help-block"><?php echo $new_password_err; ?></span>
@@ -101,7 +94,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link" href="welcome.php">Cancel</a>
+                
             </div>
         </form>
     </div>    
