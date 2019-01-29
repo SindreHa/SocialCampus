@@ -62,57 +62,55 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
  
 <!DOCTYPE html>
-
-
-
-
-
-
-<html>
-
+<html lang="no">
 <head>
-    <meta charset="UTF-8">
     <title>Tilbakestill Passord</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600" rel="stylesheet">
 </head>
-
 <body>
-    <div class="wrapper">
-        <h2>Tilbakestill Passord</h2>
-        <form action="
-					<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
-            <div class="container">
-                <h3>Gammelt passord</h3>
-                <div class="inputContainer">
-                    <i class="fas fa-key"></i>
-                    <input class="input" type="password" placeholder="••••••••••">
-                </div>
+    <div class="wrapper profile-info">
+
+    <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
+
+        <div class="container">
+            <h2>Endre passord</h2>
+        </div>
+
+        <div class="container">
+            <h3>Gammelt passord</h3>
+            <div class="inputContainer">
+            <i class="fas fa-key"></i>
+            <input class="input" type="password" placeholder="••••••••••">
             </div>
-            <div class="container 
-							<?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
-                <h3>Nytt passord</h3>
-                <div class="inputContainer">
-                    <i class="fas fa-key"></i>
-                    <input class="input" type="password" name="new_password" placeholder="••••••••••" value="
-									<?php echo $new_password; ?>">
-                    <span class="help-block">
-										<?php echo $new_password_err; ?>
-									</span>
-                </div>
+        </div>
+
+        <div class="container 
+        	<?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
+            <h3>Nytt passord</h3>
+            <div class="inputContainer">
+                <i class="fas fa-key"></i>
+                <input class="input" type="password" name="new_password" placeholder="••••••••••" value="
+                <?php echo $new_password; ?>">
+                <span class="help-block">
+                <?php echo $new_password_err; ?></span>
             </div>
-            <div class="container">
-                <h3>Bekreft passord</h3>
-                <div class="inputContainer
-									<?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                    <i class="fas fa-key"></i>
-                    <input class="input" type="password" ame="confirm_password" placeholder="••••••••••">
-                    <span class="help-block">
-											<?php echo $confirm_password_err; ?>
-										</span>
-                </div>
+        </div>
+
+        <div class="container">
+            <h3>Bekreft passord</h3>
+            <div class="inputContainer <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                <i class="fas fa-key"></i>
+                <input class="input" type="password" ame="confirm_password" placeholder="••••••••••">
+                <span class="help-block">
+                <?php echo $confirm_password_err; ?></span>
             </div>
-        </form>
+        </div>
+    </form>
+
     </div>
 </body>
-
 </html>
-
