@@ -13,20 +13,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Valider nytt passord
     if(empty(trim($_POST["new_password"]))){
-        $new_password_err = "Please enter the new password.";     
-    } elseif(strlen(trim($_POST["new_password"])) < 6){
-        $new_password_err = "Password must have atleast 6 characters.";
+        $new_password_err = "Skriv inn et nytt passord";     
+    } elseif(strlen(trim($_POST["new_password"])) < 8){
+        $new_password_err = "Passord må ha minst 8 karakterer";
     } else{
         $new_password = trim($_POST["new_password"]);
     }
     
     // Valider confirm passord
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm the password.";
+        $confirm_password_err = "Bekreft ditt passord";
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($new_password_err) && ($new_password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+            $confirm_password_err = "Passordene er ikke like";
         }
     }
         
