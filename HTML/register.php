@@ -202,6 +202,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
-<script src="../JS/AjaxFunctions.js"></script>
+<script src="../JS/FormValidering.js"></script>
 </body>
 </html>
