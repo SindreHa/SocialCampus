@@ -18,8 +18,19 @@
         include '../PHP/nav.php';?>
 
 		<section class="group-container">
+			<section class="group-info-wrapper">
 
-			<section class="group-info">
+			<div class="group-search">
+				<div class="inputContainer">
+					<i class="fas fa-search input-icon"></i>
+					<form>
+					<input type="text" class="input" name="søk" placeholder="Søk i gruppe">
+					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
+					</form>
+				</div>
+			</div>
+
+			<div class="group-info">
 				<div class="info-wrapper">
 					<div class="group-name">
 						<i class="fas fa-golf-ball fa-3x"></i>
@@ -43,22 +54,14 @@
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 					</p>
 				</div>
-			</section>
-
-			<section class="group-search">
-				<div class="inputContainer">
-				<i class="fas fa-search input-icon"></i>
-				<form>
-				<input type="text" class="input" name="søk" placeholder="Søk i gruppe">
-				<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
-				</form>
 			</div>
 			</section>
 
 			<section class="group-post">
 				<?php include '../PHP/post.php';?>
-				<button class="btn" id="newCommentButton-ID"> Last inn flere kommentarer </button>
+				<button class="btn" id="newCommentButton-ID">Last inn mer</button>
 			</section>
+		</section>
 	</div>
 		
 <?php include '../PHP/footer.php';?>
