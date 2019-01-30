@@ -35,26 +35,19 @@
 	</div>
 
 	<div class="footer-info">
-        <p>Gruppe 7 &copy; <?php echo date("Y");?></p>
-        <p><a href="gisisamfunnet.html">Opphavsrettsinformasjon</a></p>
+    <div class="footer-copy">
+      <p>Gruppe 7 &copy; <?php echo date("Y");?></p>
+      <p><a href="gisisamfunnet.html">Opphavsrettsinformasjon</a></p>
+    </div>
+
+    <div class="footer-lang">
+            <a href="#">
+              <img src="../Pictures/norwegian.svg"/>
+            </a>
+            <a href="#">
+              <img src="../Pictures/english.svg"/>
+            </a>
+    </div>
 	</div>
 
-	<div class="footer-lang">
-		<div class="lang-selector">
-        <ul>
-        	<a href="#">
-        		<li>
-				<img src="../Pictures/norwegian.svg"/>
-				Norsk
-        		</li>
-        	</a>
-        	<a href="#">
-        		<li>
-				<img src="../Pictures/english.svg"/>
-				English
-        		</li>
-        	</a>
-        </ul>
-        </div>
-	</div>
 </footer>

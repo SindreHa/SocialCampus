@@ -763,7 +763,7 @@ footer {
 	grid-template-columns: repeat(4, minmax(200px, 300px));
 	grid-template-areas: 
 		"footer-shortcut-container footer-shortcut-container footer-shortcut-container footer-shortcut-container"
-		"footer-info footer-info footer-info footer-lang";
+		"footer-info footer-info footer-info footer-info";
 	background: var(--darker);
 	color: var(--light);
 	padding: .7rem 1rem; 
@@ -829,7 +829,6 @@ footer p{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding-right: 10px;
 	font-weight: 100;
 }
 
@@ -842,74 +841,46 @@ footer p{
 	text-decoration: underline;
 }
 
-.footer-info, .footer-lang {
+.footer-info {
 	padding-top: 10px;
 	border-top: .5px solid var(--accent);
 }
 
-.footer-lang {
-	height: 40px;
-	overflow: visible;
-	padding-right: .5px;
-}
-
-.lang-selector {
-	width: 100%;
-	background-color: var(--dark);
-	display: inline-block;
-	overflow: hidden;
-	height: 40px;
-  	position: relative;
-  	top: 0;
-  	outline: .5px solid var(--accent);
-	transition: all .2s;
-}
-
-.lang-selector:hover {
-	height: 80px;
-  	margin-top: -40px;
-  	/*outline-color: var(--primary)*/
-}
-
-.lang-selector ul{
-	margin: 0;
-	padding: 0;
-  	position: relative;
-  	height:100%;
-}
-
-.lang-selector ul>a:first-child{
-  	position: absolute; 
-  	bottom: 0;
-  	width:100%;
-  	z-index: 20;
-}
-
-.lang-selector li {
+.footer-copy {
 	display: flex;
-	padding: 0px 15px;
-	line-height: 40px;
-	transition: background-color .3s;
+	width: 100%;
+	justify-content: space-between;
+	margin-right: 20px;
 }
 
-.lang-selector li img {
-	height: 20px;
-	width: 20px;
-	margin: 10px 10px 10px 0;
+.footer-lang {
+	display: flex;
+	justify-content: space-between;
+	overflow: visible;
 }
 
-.lang-selector a{
-	display: block;
-	color: var(--primary);
-	text-decoration: none;
-  	background-color: var(--dark);
-  	z-index:10;
-  	transition: background-color .2s, color .2s;
+.footer-lang img{
+	border-radius: 50%;
+	border: 2px solid transparent;
+	transition: border-color .2s;
+	width: 30px;
 }
 
-.lang-selector a:hover{
-  	background-color: var(--darker);
+.footer-lang a {
+	display: flex;
+	align-items: center;
+	border-radius: 50%;
 }
+
+.footer-lang a:first-child {
+	margin-right: 10px;
+}
+
+.footer-lang a:hover img{
+	border-color: var(--light)
+}
+
+/*Responsivt design*/
 
 @media(max-width: 1350px) {
 	.profile-container {
@@ -958,33 +929,6 @@ footer p{
 	.profile-header h1 {
 		margin-bottom: 20px;
 	}
-	.group-container {
-		grid-template-columns: 1fr 1fr;
-	}
-	.group-type {
-	grid-column-start: 1;
-	grid-column-end: 2; 
-	grid-row-start: 2;
-  	grid-row-end: 2;
-  	}
-	.group-search {
-	grid-column-start: 1;
-	grid-column-end: 3; 
-	grid-row-start: 1;
-  	grid-row-end: 2;
-  	}
-	.group-info {
-	grid-column-start: 1;
-	grid-column-end: 3; 
-	grid-row-start: 2;
-  	grid-row-end: 2;
-  	}
-	.group-post {
-	grid-column-start: 1;
-	grid-column-end: 3; 
-	grid-row-start: 3;
-  	grid-row-end: 8;
-  	}
 }
 
 @media(max-width: 740px) {
@@ -995,10 +939,36 @@ footer p{
 
 @media(max-width: 550px) {
 	footer {
-	grid-template-columns: repeat(1, minmax(200px, 1fr));
+		grid-template-columns: repeat(1, minmax(200px, 1fr));
+		padding: .7rem 0 0;
+	}
+	.top-container-double {
+		grid-template-columns: 1fr;
+	}
+	.footer-info {
+		flex-direction: column;
+		background-color: #181818;
+		padding-bottom: .7rem;
+	}
+	.footer-copy {
+		flex-direction: column;
+		text-align: center;
+		line-height: 2rem;
+		margin-right: 0;
+	}
+	.footer-lang {
+		margin-top: 10px;
+		justify-content: center;
+	}
+	.footer-lang a{
+		justify-content: center;
+	}
+	.footer-lang a img{
+		width: 40px;
 	}
 	.footer-shortcut-container {
-	grid-template-columns: repeat(1, minmax(200px, 400px));
+		grid-template-columns: repeat(1, minmax(200px, 400px));
+		padding-bottom: 20px;
 	}
 }
 
@@ -1006,22 +976,4 @@ footer p{
 	.wrapper {
 		padding: 0 20px;
 	}
-	.group-type {
-	grid-column-start: 1;
-	grid-column-end: 3; 
-	grid-row-start: 2;
-  	grid-row-end: 2;
-  	}
-	.group-info {
-	grid-column-start: 1;
-	grid-column-end: 3; 
-	grid-row-start: 3;
-  	grid-row-end: 4;
-  	}
-	.group-post {
-	grid-column-start: 1;
-	grid-column-end: 3; 
-	grid-row-start: 4;
-  	grid-row-end: 100;
-  	}
 }
