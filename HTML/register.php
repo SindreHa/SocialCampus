@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username = trim($_POST["name"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Oops! Something went wrong with username. Please try again later.";
             }
         }
          
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $confirm_password_err = "Bekreft passord.";     
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
-        if(empty(password_err) && (password != $confirm_password)){
+        if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Passord matchet ikke.";
         }
     }
@@ -85,7 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $email = trim($_POST["email"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Oops! Something went wrong with email. Please try again later.";
             }
         }
          
@@ -110,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // sender bruker til login
                 header("location: ../HTML/login.php");
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Something went wrong with insert. Please try again later.";
             }
         }
          

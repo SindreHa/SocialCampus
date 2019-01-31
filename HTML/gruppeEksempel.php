@@ -50,11 +50,11 @@
 					<h2>Publiser innlegg</h2>
 				</div>
 				<form class="form-input" id="group-form">
-					<input type="text" name="headline" placeholder="Tittel">
-					<textarea name="text" form="group-form" placeholder="Tekst"></textarea>
+					<input type="text" name="headline" placeholder="Tittel" id="post-title-ID">
+					<textarea name="text" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="256"></textarea>
 					<div class="post-submit-container">
 						<button class="btn" id="post-submit-ID">Publiser</button>
-						<h5 id="ord-teller-ID">143/256</h5>
+						<h5 id="ord-teller-ID">0/256</h5>
 					</div>
 				</form>
 			</div>
@@ -72,7 +72,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
-<script src="../JS/NummerBeregner.js"></script>
+<script src="../JS/PostManager.js"></script>
 <script src="../JS/Kommentarfelt.js"></script>
 </body>
 </html>
