@@ -64,6 +64,17 @@ body {
 .btn:focus {
 	outline: 0;
 }
+
+.btn:disabled{
+	color: #aaa;
+}
+
+.btn:disabled:hover{
+	cursor: not-allowed;
+	background-color: var(--dark);
+	border-color: var(--dark);
+}
+
 /*Bilder*/
 img {
 	max-width: 100%;
@@ -147,17 +158,6 @@ img {
 
 .button-wrapper .btn{
 	margin: 0 5px;
-}
-
-.button-wrapper .btn:disabled{
-	color: var(--primary)
-}
-
-.button-wrapper .btn:disabled:hover{
-	cursor: not-allowed;
-	background-color: var(--dark);
-	border-color: var(--dark);
-	color: var(--primary)
 }
 
 .login-header {
