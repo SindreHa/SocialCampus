@@ -49,20 +49,18 @@
 			</div>
 
 			<div class="group-post-creator-wrapper">
-				<div class="group-post-creator">
-					<div class="post-input-header">
-					<i class="fas fa-comment fa-3x"></i>
-					<h2>Opprett post</h2>
-					</div>
+				<div class="post-input-header">
+					<i class="far fa-comment fa-3x"></i>
+					<h2>Publiser innlegg</h2>
+				</div>
 				<form class="form-input" id="group-form">
-					<input class="headline" type="text" name="headline" placeholder="Tittel">
-					<textarea class="text" name="text" form="group-form" placeholder="Tekst"></textarea>
+					<input type="text" name="headline" placeholder="Tittel">
+					<textarea name="text" form="group-form" placeholder="Tekst"></textarea>
 					<div class="post-submit-container">
-						<button class="btn" id="post-submit-ID">Submit</button>
+						<button class="btn" id="post-submit-ID">Publiser</button>
 						<h5 id="ord-teller-ID">143/256</h5>
 					</div>
 				</form>
-				</div>
 			</div>
 
 			</section>
