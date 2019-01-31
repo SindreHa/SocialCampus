@@ -20,15 +20,7 @@
 		<section class="group-container">
 			<section class="group-info-wrapper">
 
-			<div class="group-search">
-				<div class="inputContainer">
-					<i class="fas fa-search input-icon"></i>
-					<form>
-					<input type="text" class="input" name="søk" placeholder="Søk i gruppe">
-					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
-					</form>
-				</div>
-			</div>
+			
 
 			<div class="group-info">
 				<div class="info-wrapper">
@@ -55,6 +47,24 @@
 					</p>
 				</div>
 			</div>
+
+			<div class="group-post-creator-wrapper">
+				<div class="group-post-creator">
+					<div class="post-input-header">
+					<i class="fas fa-comment fa-3x"></i>
+					<h2>Opprett post</h2>
+					</div>
+				<form class="form-input" id="group-form">
+					<input class="headline" type="text" name="headline" placeholder="Tittel">
+					<textarea class="text" name="text" form="group-form" placeholder="Tekst"></textarea>
+					<div class="post-submit-container">
+						<button class="btn" id="post-submit-ID">Submit</button>
+						<h5 id="ord-teller-ID">143/256</h5>
+					</div>
+				</form>
+				</div>
+			</div>
+
 			</section>
 
 			<section class="group-post">

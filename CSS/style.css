@@ -523,8 +523,6 @@ input:-webkit-autofill {
 .group-info {
 	display: flex;
 	flex-direction: column;
-	grid-column: 1 / 2;
-	grid-row: 2 / 3;
 	color: var(--light);
 	background-color: var(--dark);
 	box-shadow: var(--shadow);
@@ -582,6 +580,121 @@ input:-webkit-autofill {
 .group-info .group-description p{
 	margin: 0;
 	color: black;
+}
+
+.group-post-creator-wrapper {
+	background-color: var(--light);
+	box-shadow: var(--shadow);
+	color: var(--light);
+	min-width: 450px;
+	max-width: 600px;
+	margin: 20px 20px 20px 0;
+}
+
+.group-post-creator {
+	display: flex;
+	flex-direction: column;
+}
+
+.post-input-header {
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	background-color: var(--dark)
+}
+
+.post-input-header h2 {
+	margin: 0px;
+	font-size: 2rem;
+}
+
+.post-input-header i {
+	margin-right: 10px;
+	color: var(--accent);
+}
+
+.form-input {
+	flex-direction: column;
+	padding: 20px;
+}
+
+.form-input input {
+	border: 2px solid var(--dark);
+	background-color: var(--light);
+	color: black;
+	font-size: 1rem;
+	padding: 10px;
+	outline: none;
+	transition: border-color .2s, background-color .2s, color .2s;
+}
+
+.form-input input::placeholder {
+	color: black;
+}
+
+.form-input input:focus {
+	border-color: var(--accent);
+	background-color: var(--light);
+	color: black;
+}
+
+.form-input input:first-child {
+	margin-bottom: 10px;
+}
+
+.form-input textarea {
+	font-family: roboto;
+	color: black;
+	font-size: 1rem;
+	min-height: 200px;
+	resize: none;
+	padding: 10px;
+	outline: none;
+	background-color: var(--light);
+	border: 2px solid var(--dark);
+	transition: border-color .2s;
+}
+
+.form-input textarea:focus {
+	/*background-color: var(--light);*/
+	border: 2px solid var(--accent);
+	/*color: black;*/
+}
+
+.form-input textarea::placeholder {
+	color: black;
+}
+
+.form-input textarea::placeholder {
+	color: var(--light);
+}
+
+textarea::-webkit-scrollbar {
+	width: 10px;
+}
+
+textarea::-webkit-scrollbar-track {
+	background: var(--light);
+}
+
+textarea::-webkit-scrollbar-thumb {
+	background: var(--primary);
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+	background: var(--dark);
+}
+
+.form-input h5 {
+	margin: 0 5px 0 0;
+	color: black;
+	font-weight: normal;
+}
+
+.post-submit-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
 }
 
 .group-post {
