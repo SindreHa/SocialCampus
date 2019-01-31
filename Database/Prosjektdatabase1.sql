@@ -31,6 +31,24 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `applikasjon`.`profil`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `applikasjon`.`profil` ;
+
+CREATE TABLE IF NOT EXISTS `applikasjon`.`profil` (
+  `id` INT(11) NOT NULL,
+  `fornavn` VARCHAR(45) NOT NULL,
+  `etternavn` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `newpassword` VARCHAR(255) NOT NULL,
+  `bilde` BLOB NOT NULL,
+  `moderator` TINYINT(1) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `applikasjon`.`bruker`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `applikasjon`.`bruker` ;
@@ -45,11 +63,18 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker` (
   `er_moderator` TINYINT(1) NOT NULL,
   `siste_aktivitet` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `bruker_status_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `profil_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`, `profil_id`),
   INDEX `bruker_status_id` (`bruker_status_id` ASC),
+  INDEX `fk_bruker_profil1_idx` (`profil_id` ASC),
   CONSTRAINT `bruker_ibfk_1`
     FOREIGN KEY (`bruker_status_id`)
-    REFERENCES `applikasjon`.`bruker_status` (`id`))
+    REFERENCES `applikasjon`.`bruker_status` (`id`),
+  CONSTRAINT `fk_bruker_profil1`
+    FOREIGN KEY (`profil_id`)
+    REFERENCES `applikasjon`.`profil` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -179,7 +204,7 @@ DROP TABLE IF EXISTS `applikasjon`.`post` ;
 
 CREATE TABLE IF NOT EXISTS `applikasjon`.`post` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `innhold` VARCHAR(100) NOT NULL,
+  `innhold` VARCHAR(255) NOT NULL,
   `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tråd_id` INT(11) NULL DEFAULT NULL,
   `bruker_id` INT(11) NULL DEFAULT NULL,
@@ -197,24 +222,6 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`post` (
   CONSTRAINT `post_ibfk_3`
     FOREIGN KEY (`status_id`)
     REFERENCES `applikasjon`.`status` (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `applikasjon`.`profil`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`profil` ;
-
-CREATE TABLE IF NOT EXISTS `applikasjon`.`profil` (
-  `id` INT(11) NOT NULL,
-  `fornavn` VARCHAR(45) NOT NULL,
-  `etternavn` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `newpassword` VARCHAR(255) NOT NULL,
-  `bilde` BLOB NOT NULL,
-  `moderator` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -241,7 +248,6 @@ CREATE TABLE IF NOT EXISTS `applikasjon`.`stemmegivning` (
     REFERENCES `applikasjon`.`tråd` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-  CONSTRAINT 'bruker_stemme_info' UNIQUE ('post_id', 'tråd_id'); -- It cannot be two records of a particular user.
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
