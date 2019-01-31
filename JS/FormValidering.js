@@ -89,8 +89,6 @@ function checkPasswordLength()
         { 
             $("#input-error-password").css("display", "inline-block");
             $("#input-approved-password").css("display", "none");
-            // Bruker vil ikke kunne fylle ut et annet felt før passord er 8 eller 0 langt (kan eventuelt fjernes)
-            $(this).focus(); 
             return false; 
         }
         else
