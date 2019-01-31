@@ -462,6 +462,10 @@ input:-webkit-autofill {
 	background-color: var(--light);
 }
 
+.input:disabled {
+	cursor: not-allowed;
+}
+
 .inputContainer i {
 	color: var(--light);
 	background-color: var(--dark);
