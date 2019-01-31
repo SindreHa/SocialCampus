@@ -10,7 +10,7 @@ $username_err = $email_err = $password_err = $confirm_password_err  = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Valider username
-    if(empty(trim($_POST["username"]))){
+    if(empty(trim($_POST["name"]))){
         $username_err = "Skriv inn brukernavn";
     } else{
         // Select spørring for username           
@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
             // Velg parametre 
-            $param_username = trim($_POST["username"]);
+            $param_username = trim($_POST["name"]);
             
             // Utfør statement
             if(mysqli_stmt_execute($stmt)){
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     $username_err = "Dette brukernavnet er allerede i bruk.";
                 } else{
-                    $username = trim($_POST["username"]);
+                    $username = trim($_POST["name"]);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -94,20 +94,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Se etter input feil før insetting i database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
         
         // Lage insert for username og passord
-        $sql = "INSERT INTO bruker (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO bruker (username, password, email) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_email);
             
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Lage passord hash
+            $param_email = $email;
             
             if(mysqli_stmt_execute($stmt)){
                 // sender bruker til login
-                header("location: ../HTML/index.php");
+                header("location: ../HTML/login.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -149,7 +150,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label>Brukernavn</label>
                         <div class="inputContainer">
                             <i class="fas fa-at input-icon"></i>
-                            <input type="text" name="username" placeholder="Ola Nordmann" class="input" value="<?php echo $username; ?>">
+                            <input type="text" name="name" autocomplete="cc-name" placeholder="Ola Nordmann" class="input" value="<?php echo $username; ?>" id="Username-ID">
+                            <i class="fas fa-exclamation input-error" id="input-error-username"></i>
+                            <i class="fa fa-check input-approved" id="input-approved-username"></i>
                         </div>
                         <span class="help-block"><?php echo $username_err; ?></span>
                     </div>   
@@ -157,7 +160,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label>Email</label>
                         <div class="inputContainer">
                             <i class="fas fa-at input-icon"></i>
-                            <input type="text" name="email" placeholder="jan@jan.jan" class="input" value="<?php echo $email; ?>">
+                            <input type="email" name="email" autocomplete="email" placeholder="eksempel@email.com" class="input" value="<?php echo $email; ?>" id="Email-ID">
+                            <i class="fas fa-exclamation input-error" id="input-error-email"></i>
+                            <i class="fa fa-check input-approved" id="input-approved-email"></i>
                         </div>
                         <span class="help-block"><?php echo $email_err; ?></span>
                     </div> 
@@ -165,7 +170,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label>Passord</label>
                         <div class="inputContainer">
                             <i class="fas fa-key input-icon"></i>
-                            <input type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>">
+                            <input autocomplete="new-password" type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>" id="Password-ID">
+                            <i class="fas fa-exclamation input-error" id="input-error-password"></i>
+                            <i class="fa fa-check input-approved" id="input-approved-password"></i>
                         </div>
                         <span class="help-block"><?php echo $password_err; ?></span>
                     </div>
@@ -173,12 +180,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <label>Bekreft passord</label>
                             <div class="inputContainer">
                             <i class="fas fa-key input-icon"></i>
-                            <input type="password" name="confirm_password" placeholder="••••••••••" class="input" value="<?php echo $confirm_password; ?>">
+                            <input autocomplete="new-password" type="password" name="confirm_password" placeholder="••••••••••" class="input" value="<?php echo $confirm_password; ?>" id="ConfirmPassword-ID" >
+                            <i class="fas fa-exclamation input-error" id="input-error-confirmPassword"></i>
+                            <i class="fa fa-check input-approved" id="input-approved-confirmPassword"></i>
                         </div>
                         <span class="help-block"><?php echo $confirm_password_err; ?></span>
                     </div>
                     <div class="button-wrapper">
-                        <input type="submit" class="btn" value="Opprett bruker">
+                        <input type="submit" class="btn" value="Opprett bruker" id="Submit-Toggle">
                         <input type="reset" class="btn" value="Klarer felt">
                     </div>
 
@@ -194,5 +203,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
+<script src="../JS/FormValidering.js"></script>
 </body>
 </html>

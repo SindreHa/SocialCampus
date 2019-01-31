@@ -35,7 +35,7 @@ var insertBefore = head.insertBefore;
 			logInDropdown.classList.remove("hide");
 			}
 			}catch(TypeError){
-				console.log("TypeError tatt imot");
+				
 			}
 	})
 
