@@ -51,10 +51,10 @@
 				</div>
 				<form class="form-input" id="group-form">
 					<input type="text" name="headline" placeholder="Tittel">
-					<textarea name="text" form="group-form" placeholder="Tekst"></textarea>
+					<textarea name="text" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="256"></textarea>
 					<div class="post-submit-container">
 						<button class="btn" id="post-submit-ID">Publiser</button>
-						<h5 id="ord-teller-ID">143/256</h5>
+						<h5 id="ord-teller-ID">0/256</h5>
 					</div>
 				</form>
 			</div>
