@@ -10,7 +10,7 @@ $username_err = $email_err = $password_err = $confirm_password_err  = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Valider username
-    if(empty(trim($_POST["username"]))){
+    if(empty(trim($_POST["name"]))){
         $username_err = "Skriv inn brukernavn";
     } else{
         // Select spørring for username           
@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
             // Velg parametre 
-            $param_username = trim($_POST["username"]);
+            $param_username = trim($_POST["name"]);
             
             // Utfør statement
             if(mysqli_stmt_execute($stmt)){
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     $username_err = "Dette brukernavnet er allerede i bruk.";
                 } else{
-                    $username = trim($_POST["username"]);
+                    $username = trim($_POST["name"]);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -94,20 +94,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Se etter input feil før insetting i database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
         
         // Lage insert for username og passord
-        $sql = "INSERT INTO bruker (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO bruker (username, password, email) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_email);
             
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Lage passord hash
+            $param_email = $email;
             
             if(mysqli_stmt_execute($stmt)){
                 // sender bruker til login
-                header("location: ../HTML/index.php");
+                header("location: ../HTML/login.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
