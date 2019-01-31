@@ -20,7 +20,6 @@
 			<header class="showcase">
 				<h1>Velkommen</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-				<a class="btn" href="#">Finn din gruppe</a>
 			</header>
 		</section>
 
