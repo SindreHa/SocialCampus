@@ -1,18 +1,41 @@
-var newComment = document.getElementById("newCommentButton-ID");
+/*
+document.getElementById("post-submit-ID").addEventListener("click", function(event){
+    event.preventDefault()
+  });
 
-newComment.onclick = function loadComment(){
+var submit = document.getElementById("post-submit-ID");
 
-    var request = new XMLHttpRequest();
-    request.open('GET', '../PHP/post.php');
-    request.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200)
-        {
-            var comment = request.responseText;
-            newComment.insertAdjacentHTML('beforebegin', comment);
+function listComments()
+{
+    $.ajax({
+        url:'../PHP/getComment.php',
+        success:function(res){
+            $('.group-post').html(res);
         }
-    }
-    request.onerror = function(){
-        console.log("error");
-    }  
-    request.send();
+    })
 }
+$(function()
+{
+    setInterval(function()
+    {
+        listComments();
+    }, 1000);
+    })
+
+    $('.submit').click(function()
+    {
+        var comment = $(".innhold").val();
+        $.ajax({
+            url:'../HTML/gruppeEksempel.php',
+            data: comment,
+            type:'post',
+            success:function(res){
+                $(comment).html(res);
+                console.log(comment);
+            }
+        })
+    })
+
+*/
+
+

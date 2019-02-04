@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username = trim($_POST["name"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Oops! Something went wrong with username. Please try again later.";
             }
         }
          
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $confirm_password_err = "Bekreft passord.";     
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
-        if(empty(password_err) && (password != $confirm_password)){
+        if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Passord matchet ikke.";
         }
     }
@@ -85,7 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $email = trim($_POST["email"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Oops! Something went wrong with email. Please try again later.";
             }
         }
          
@@ -110,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // sender bruker til login
                 header("location: ../HTML/login.php");
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Something went wrong with insert. Please try again later.";
             }
         }
          
@@ -125,12 +125,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Sign Up</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600" rel="stylesheet">
+    <?php include '../PHP/head.php';?>
 </head>
 <body>
     <div class="wrapper">

@@ -1,12 +1,26 @@
+
+<?php
+// Bruk Config fil
+require_once "../PHP/config.php";
+//$tittel = $_POST('tittel');
+$kommentar = $_POST['text']; 
+
+$sql ="INSERT INTO post (innhold) VALUES('$kommentar')";
+
+if (mysqli_query($link, $sql)) {
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($link);
+}
+
+mysqli_close($link);
+?>
+
+
 <!DOCTYPE html>
 <html lang="no">
 <head>
 	<title>Golf</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../CSS/style.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600" rel="stylesheet">
+	<?php include '../PHP/head.php';?>
 </head>
 <body>
 	<!-- <section class="darken hide" id="darken"></section> -->
@@ -20,15 +34,7 @@
 		<section class="group-container">
 			<section class="group-info-wrapper">
 
-			<div class="group-search">
-				<div class="inputContainer">
-					<i class="fas fa-search input-icon"></i>
-					<form>
-					<input type="text" class="input" name="søk" placeholder="Søk i gruppe">
-					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
-					</form>
-				</div>
-			</div>
+			
 
 			<div class="group-info">
 				<div class="info-wrapper">
@@ -55,10 +61,26 @@
 					</p>
 				</div>
 			</div>
+
+			<div class="group-post-creator-wrapper">
+				<div class="post-input-header">
+					<i class="far fa-comment fa-3x"></i>
+					<h2>Publiser innlegg</h2>
+				</div>
+				<form class="form-input" id="group-form">
+					<input type="text" name="headline" placeholder="Tittel" id="post-title-ID">
+					<textarea name="text" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="256"></textarea>
+					<div class="post-submit-container">
+						<button class="btn" id="post-submit-ID">Publiser</button>
+						<h5 id="ord-teller-ID">0/256</h5>
+					</div>
+				</form>
+			</div>
+
 			</section>
 
 			<section class="group-post">
-				<?php include '../PHP/post.php';?>
+			
 				<button class="btn" id="newCommentButton-ID">Last inn mer</button>
 			</section>
 		</section>
@@ -68,7 +90,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
-<script src="../JS/NummerBeregner.js"></script>
+<script src="../JS/PostManager.js"></script>
 <script src="../JS/Kommentarfelt.js"></script>
 </body>
 </html>
