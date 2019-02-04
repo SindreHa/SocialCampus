@@ -1,3 +1,21 @@
+
+<?php
+// Bruk Config fil
+require_once "../PHP/config.php";
+//$tittel = $_POST('tittel');
+$kommentar = $_POST['text']; 
+
+$sql ="INSERT INTO post (innhold) VALUES('$kommentar')";
+
+if (mysqli_query($link, $sql)) {
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($link);
+}
+
+mysqli_close($link);
+?>
+
+
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -62,7 +80,7 @@
 			</section>
 
 			<section class="group-post">
-				<?php include '../PHP/post.php';?>
+			
 				<button class="btn" id="newCommentButton-ID">Last inn mer</button>
 			</section>
 		</section>
