@@ -83,7 +83,8 @@ if(!(isset($_SESSION['username'])))
 	        				<input class="input" type="password" placeholder="••••••••••">
 	        			</div>
 	        		</div>
-
+                   <input type="submit" class="btn btn-primary" value="Submit">
+                <a class="btn btn-link" href="profil.php">Cancel</a>
 	        	</div>
         	</div>
         </section>
