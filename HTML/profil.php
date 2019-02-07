@@ -122,7 +122,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	        			<h3>Gammelt passord</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-key"></i>
-	        				<input class="input" type="password" placeholder="••••••••••">
+	        				<input class="input" type="password" placeholder="••••••••••" autocomplete="false">
 	        			</div>
 	        		</div>
 
@@ -131,14 +131,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <h3>Nytt passord</h3>
             <div class="inputContainer">
                 <i class="fas fa-key"></i>
-                <input class="input" type="password" name="new_password" placeholder="••••••••••" value="
+                <input class="input" type="password" name="new_password" placeholder="••••••••••" autocomplete="false""
                 <?php echo $new_password; ?>">
                 <span class="help-block">
                 <?php echo $new_password_err; ?></span>
             </div>
         </div>
                     
-<div class="container">
+        <div class="container">
             <h3>Bekreft passord</h3>
             <div class="inputContainer <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
                 <i class="fas fa-key"></i>
@@ -147,10 +147,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <?php echo $confirm_password_err; ?></span>
             </div>
         </div>
-	        	
-                   <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link" href="profil.php">Cancel</a>
-	        	</div>
+	        	<div class="button-wrapper">
+                <input type="submit" class="btn btn-primary" value="Lagre endringer">
+                </div>
+
+	        </div>
         	</div>
         </section>
         
