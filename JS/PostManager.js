@@ -4,10 +4,6 @@ var ord = document.getElementById("ord-teller-ID");
 var ordBoks = document.getElementById("text-area-ID");
 var tittel = document.getElementById("post-title-ID")
 
-window.onload = function()
-{
-    document.getElementById("post-submit-ID").disabled = true;
-}
 
 $("#text-area-ID, #post-title-ID").keyup(function()
 {
@@ -49,6 +45,11 @@ function checkTitleLength()
     {
         return true;
     }
+}
+
+function loadMoreComments(){
+    alert("Funksjon under arbeid");
+    
 }
 
 function IncrementPostLikes(element)
