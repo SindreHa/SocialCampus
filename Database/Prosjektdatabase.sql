@@ -8,21 +8,21 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema applikasjon
+-- Schema application
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema applikasjon
+-- Schema application
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `applikasjon` DEFAULT CHARACTER SET utf8 ;
-USE `applikasjon` ;
+CREATE SCHEMA IF NOT EXISTS `application` DEFAULT CHARACTER SET latin1 ;
+USE `application` ;
 
 -- -----------------------------------------------------
--- Table `applikasjon`.`bruker_status`
+-- Table `application`.`user_status`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`bruker_status` ;
+DROP TABLE IF EXISTS `application`.`user_status` ;
 
-CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker_status` (
+CREATE TABLE IF NOT EXISTS `application`.`user_status` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -31,36 +31,36 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `applikasjon`.`bruker`
+-- Table `application`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`bruker` ;
+DROP TABLE IF EXISTS `application`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `applikasjon`.`bruker` (
+CREATE TABLE IF NOT EXISTS `application`.`user` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
   `password` VARCHAR(255) NULL DEFAULT NULL,
-  `fullt_navn` VARHCAR(255) NOT NULL,
-  `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `full_name` VARCHAR(255) NOT NULL,
+  `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `email` VARCHAR(245) NOT NULL,
-  `bilde` BLOB NOT NULL,
-  `er_moderator` TINYINT(1) NOT NULL,
-  `siste_aktivitet` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `bruker_status_id` INT(11) NULL DEFAULT NULL,
+  `picture` BLOB NOT NULL,
+  `moderator` TINYINT(1) NOT NULL,
+  `last_activity` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `bruker_status_id` (`bruker_status_id` ASC),
-  CONSTRAINT `bruker_ibfk_1`
-    FOREIGN KEY (`bruker_status_id`)
-    REFERENCES `applikasjon`.`bruker_status` (`id`))
+  INDEX `user_status_id` (`user_status_id` ASC),
+  CONSTRAINT `user_foreign_key`
+    FOREIGN KEY (`user_status_id`)
+    REFERENCES `application`.`user_status` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `applikasjon`.`status`
+-- Table `application`.`status`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`status` ;
+DROP TABLE IF EXISTS `application`.`status` ;
 
-CREATE TABLE IF NOT EXISTS `applikasjon`.`status` (
+CREATE TABLE IF NOT EXISTS `application`.`status` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -69,35 +69,35 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `applikasjon`.`kategori`
+-- Table `application`.`category`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`kategori` ;
+DROP TABLE IF EXISTS `application`.`category` ;
 
-CREATE TABLE IF NOT EXISTS `applikasjon`.`kategori` (
+CREATE TABLE IF NOT EXISTS `application`.`category` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
-  `beskrivelse` VARCHAR(45) NOT NULL,
-  `skaper` INT(11) NOT NULL,
-  `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `description` VARCHAR(45) NOT NULL,
+  `maker` INT(11) NOT NULL,
+  `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status_id` INT(11) NOT NULL,
-  `bruker_status_id` INT(11) NOT NULL,
+  `user_status_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `skaper_idx` (`skaper` ASC),
-  INDEX `fk_kategori_status1_idx` (`status_id` ASC),
-  INDEX `fk_kategori_bruker_status1_idx` (`bruker_status_id` ASC),
-  CONSTRAINT `fk_kategori_bruker_status1`
-    FOREIGN KEY (`bruker_status_id`)
-    REFERENCES `applikasjon`.`bruker_status` (`id`)
+  INDEX `maker_idx` (`maker` ASC),
+  INDEX `fk_category_status1_idx` (`status_id` ASC),
+  INDEX `fk_category_user_status1_idx` (`user_status_id` ASC),
+  CONSTRAINT `category_foreign_key1`
+    FOREIGN KEY (`user_status_id`)
+    REFERENCES `application`.`user_status` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_kategori_status1`
+  CONSTRAINT `category_foreign_key2`
     FOREIGN KEY (`status_id`)
-    REFERENCES `applikasjon`.`status` (`id`)
+    REFERENCES `application`.`status` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `skaper`
-    FOREIGN KEY (`skaper`)
-    REFERENCES `applikasjon`.`kategori` (`id`)
+  CONSTRAINT `category_foreign_key3`
+    FOREIGN KEY (`maker`)
+    REFERENCES `application`.`category` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -105,19 +105,19 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `applikasjon`.`grupper`
+-- Table `application`.`groups`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`grupper` ;
+DROP TABLE IF EXISTS `application`.`groups` ;
 
-CREATE TABLE IF NOT EXISTS `applikasjon`.`grupper` (
+CREATE TABLE IF NOT EXISTS `application`.`groups` (
   `id` INT(11) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
-  `kategori_id` INT(11) NOT NULL,
+  `category_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_grupper_kategori1_idx` (`kategori_id` ASC),
-  CONSTRAINT `fk_grupper_kategori1`
-    FOREIGN KEY (`kategori_id`)
-    REFERENCES `applikasjon`.`kategori` (`id`)
+  INDEX `fk_group_category1_idx` (`category_id` ASC),
+  CONSTRAINT `groups_foreign_key`
+    FOREIGN KEY (`category_id`)
+    REFERENCES `application`.`category` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -125,24 +125,24 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `applikasjon`.`grupper_har_brukere`
+-- Table `application`.`groups_has_users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`grupper_har_brukere` ;
+DROP TABLE IF EXISTS `application`.`groups_has_users` ;
 
-CREATE TABLE IF NOT EXISTS `applikasjon`.`grupper_har_brukere` (
-  `grupper_id` INT(11) NOT NULL,
-  `bruker_id` INT(11) NOT NULL,
-  PRIMARY KEY (`grupper_id`, `bruker_id`),
-  INDEX `fk_grupper_has_bruker_bruker1_idx` (`bruker_id` ASC),
-  INDEX `fk_grupper_has_bruker_grupper1_idx` (`grupper_id` ASC),
-  CONSTRAINT `fk_grupper_has_bruker_bruker1`
-    FOREIGN KEY (`bruker_id`)
-    REFERENCES `applikasjon`.`bruker` (`id`)
+CREATE TABLE IF NOT EXISTS `application`.`groups_has_users` (
+  `groups_id` INT(11) NOT NULL,
+  `user_id` INT(11) NOT NULL,
+  PRIMARY KEY (`groups_id`, `user_id`),
+  INDEX `fk_groups_has_users1_idx` (`user_id` ASC),
+  INDEX `fk_groups_has_users2_idx` (`groups_id` ASC),
+  CONSTRAINT `groups_has_users_foreign_key1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `application`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_grupper_has_bruker_grupper1`
-    FOREIGN KEY (`grupper_id`)
-    REFERENCES `applikasjon`.`grupper` (`id`)
+  CONSTRAINT `groups_has_users_foreign_key2`
+    FOREIGN KEY (`groups_id`)
+    REFERENCES `application`.`groups` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -150,99 +150,81 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `applikasjon`.`tråd`
+-- Table `application`.`post`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`tråd` ;
+DROP TABLE IF EXISTS `application`.`post` ;
 
-CREATE TABLE IF NOT EXISTS `applikasjon`.`tråd` (
+CREATE TABLE IF NOT EXISTS `application`.`post` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `subjekt` VARCHAR(100) NOT NULL,
-  `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `bruker_id` INT(11) NULL DEFAULT NULL,
+  `content` VARCHAR(100) NOT NULL,
+  `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` INT(11) NULL DEFAULT NULL,
   `status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `bruker_id` (`bruker_id` ASC),
-  INDEX `status_id` (`status_id` ASC),
-  CONSTRAINT `tråd_ibfk_1`
-    FOREIGN KEY (`bruker_id`)
-    REFERENCES `applikasjon`.`bruker` (`id`),
-  CONSTRAINT `tråd_ibfk_2`
+  INDEX `user_id_idx` (`user_id` ASC),
+  INDEX `status_id_idx` (`status_id` ASC),
+  CONSTRAINT `post_foreign_key1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `application`.`user` (`id`),
+  CONSTRAINT `post_foreign_key2`
     FOREIGN KEY (`status_id`)
-    REFERENCES `applikasjon`.`status` (`id`))
+    REFERENCES `application`.`status` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `applikasjon`.`post`
+-- Table `application`.`commentary`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`post` ;
+DROP TABLE IF EXISTS `application`.`commentary` ;
 
-CREATE TABLE IF NOT EXISTS `applikasjon`.`post` (
+CREATE TABLE IF NOT EXISTS `application`.`commentary` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `innhold` VARCHAR(100) NOT NULL,
-  `laget` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `tråd_id` INT(11) NULL DEFAULT NULL,
-  `bruker_id` INT(11) NULL DEFAULT NULL,
+  `content` VARCHAR(100) NOT NULL,
+  `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `post_id` INT(11) NULL DEFAULT NULL,
+  `user_id` INT(11) NULL DEFAULT NULL,
   `status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `tråd_id` (`tråd_id` ASC),
-  INDEX `bruker_id` (`bruker_id` ASC),
+  INDEX `post_id` (`post_id` ASC),
+  INDEX `user_id` (`user_id` ASC),
   INDEX `status_id` (`status_id` ASC),
-  CONSTRAINT `post_ibfk_1`
-    FOREIGN KEY (`tråd_id`)
-    REFERENCES `applikasjon`.`tråd` (`id`),
-  CONSTRAINT `post_ibfk_2`
-    FOREIGN KEY (`bruker_id`)
-    REFERENCES `applikasjon`.`bruker` (`id`),
-  CONSTRAINT `post_ibfk_3`
-    FOREIGN KEY (`status_id`)
-    REFERENCES `applikasjon`.`status` (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `applikasjon`.`profil`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`profil` ;
-
-CREATE TABLE IF NOT EXISTS `applikasjon`.`profil` (
-  `id` INT(11) NOT NULL,
-  `fornavn` VARCHAR(45) NOT NULL,
-  `etternavn` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `newpassword` VARCHAR(255) NOT NULL,
-  `bilde` BLOB NOT NULL,
-  `moderator` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `applikasjon`.`stemmegivning`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `applikasjon`.`stemmegivning` ;
-
-CREATE TABLE IF NOT EXISTS `applikasjon`.`stemmegivning` (
-  `post_id` INT(11) NOT NULL,
-  `tråd_id` INT(11) NOT NULL,
-  `innhold` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`post_id`, `tråd_id`),
-  INDEX `fk_post_has_tråd_tråd1_idx` (`tråd_id` ASC),
-  INDEX `fk_post_has_tråd_post1_idx` (`post_id` ASC),
-  CONSTRAINT `fk_post_has_tråd_post1`
+  CONSTRAINT `commentary_foreign_key1`
     FOREIGN KEY (`post_id`)
-    REFERENCES `applikasjon`.`post` (`id`)
+    REFERENCES `application`.`post` (`id`),
+  CONSTRAINT `commentary_foreign_key2`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `application`.`user` (`id`),
+  CONSTRAINT `commentary_foreign_key3`
+    FOREIGN KEY (`status_id`)
+    REFERENCES `application`.`status` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `application`.`likes`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`likes` ;
+
+CREATE TABLE IF NOT EXISTS `application`.`likes` (
+  `commentary_id` INT(11) NOT NULL,
+  `post_id` INT(11) NOT NULL,
+  `content` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`commentary_id`, `post_id`),
+  UNIQUE INDEX `user_commentary_info` (`commentary_id` ASC, `post_id` ASC),
+  INDEX `fk_commentary_has_post_idx1` (`post_id` ASC),
+  INDEX `fk_commentary_has_post_idx2` (`commentary_id` ASC),
+  CONSTRAINT `likes_foreign_key1`
+    FOREIGN KEY (`commentary_id`)
+    REFERENCES `application`.`commentary` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_post_has_tråd_tråd1`
-    FOREIGN KEY (`tråd_id`)
-    REFERENCES `applikasjon`.`tråd` (`id`)
+  CONSTRAINT `likes_foreign_key2`
+    FOREIGN KEY (`post_id`)
+    REFERENCES `application`.`post` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `bruker_stemme_info` UNIQUE (`post_id`, `tråd_id`))
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -250,4 +232,3 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
