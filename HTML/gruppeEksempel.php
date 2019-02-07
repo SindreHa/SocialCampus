@@ -27,7 +27,6 @@ mysqli_close($link);
 	<div class="wrapper">
         
 	<?php 
-                session_start();
 
         include '../PHP/nav.php';?>
 
@@ -67,23 +66,29 @@ mysqli_close($link);
 					<i class="far fa-comment fa-3x"></i>
 					<h2>Publiser innlegg</h2>
 				</div>
-				<form class="form-input" id="group-form">
+				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>"class="form-input" id="group-form" method="post">
 					<input type="text" name="headline" placeholder="Tittel" id="post-title-ID">
-					<textarea name="text" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="256"></textarea>
+					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="256"></textarea>
 					<div class="post-submit-container">
-						<button class="btn" id="post-submit-ID">Publiser</button>
+						<button class="btn submit-comment" id="post-submit-ID">Publiser</button>
 						<h5 id="ord-teller-ID">0/256</h5>
 					</div>
 				</form>
+				
 			</div>
+			<button class="btn" id="newCommentButton-ID" onclick="loadMoreComments()">Last inn tidligere kommentarer</button> <!-- Sindre fiks posisjon pls? <3 -->
 
 			</section>
 
 			<section class="group-post">
-			
-				<button class="btn" id="newCommentButton-ID">Last inn mer</button>
+			<div>
+				<!-- Her blir kommentarene lagt inn -->
+			</div>
 			</section>
+			
+			
 		</section>
+		
 	</div>
 		
 <?php include '../PHP/footer.php';?>
