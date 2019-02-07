@@ -105,7 +105,6 @@ mysqli_close($link);
 				</form>
 				
 			</div>
-			<button class="btn" id="newCommentButton-ID" onclick="loadMoreComments()">Last inn tidligere kommentarer</button> <!-- Sindre fiks posisjon pls? <3 -->
 
 			</section>
 
@@ -113,6 +112,7 @@ mysqli_close($link);
 			<div>
 				<!-- Her blir kommentarene lagt inn -->
 			</div>
+			<button class="btn" id="newCommentButton-ID" onclick="loadMoreComments()">Last inn tidligere kommentarer</button>
 			</section>
 			
 			

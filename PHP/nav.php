@@ -4,7 +4,7 @@
 	<ul>
 		<li><a href="index.php">Hjem</a></li>
 		<li><a href="omoss.php">Om Oss</a></li>
-		<li><a href="#">Grupper</a></li>
+		<li><a href="gruppeEksempel.php">Grupper</a></li>
 		<li><a href="profil.php"><?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
 	</ul>
 </nav>
