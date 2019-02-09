@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username = trim($_POST["name"]);
                 }
             } else{
-                echo "Oops! Something went wrong with username. Please try again later.";
+                echo "Woops! De skjedde en feil med brukernavnet";
             }
         }
          
@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Passord matchet ikke.";
+            $confirm_password_err = "Dine passord er ikke like";
         }
     }
     
@@ -85,7 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $email = trim($_POST["email"]);
                 }
             } else{
-                echo "Oops! Something went wrong with email. Please try again later.";
+                echo "Woops! Det skjedde noe feil med emailen";
             }
         }
          
