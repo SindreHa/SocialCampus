@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $email_err = "Denne email er allerede i bruk.";
+                    $email_err = "Denne mailen er allerede i bruk.";
                 } else{
                     $email = trim($_POST["email"]);
                 }
