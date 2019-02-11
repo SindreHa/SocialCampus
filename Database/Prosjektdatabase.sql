@@ -174,11 +174,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `application`.`commentary`
+-- Table `application`.`thread`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`commentary` ;
+DROP TABLE IF EXISTS `application`.`thread` ;
 
-CREATE TABLE IF NOT EXISTS `application`.`commentary` (
+CREATE TABLE IF NOT EXISTS `application`.`thread` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `content` VARCHAR(100) NOT NULL,
   `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -189,13 +189,13 @@ CREATE TABLE IF NOT EXISTS `application`.`commentary` (
   INDEX `post_id` (`post_id` ASC),
   INDEX `user_id` (`user_id` ASC),
   INDEX `status_id` (`status_id` ASC),
-  CONSTRAINT `commentary_foreign_key1`
+  CONSTRAINT `thread_foreign_key1`
     FOREIGN KEY (`post_id`)
     REFERENCES `application`.`post` (`id`),
-  CONSTRAINT `commentary_foreign_key2`
+  CONSTRAINT `thread_foreign_key2`
     FOREIGN KEY (`user_id`)
     REFERENCES `application`.`user` (`id`),
-  CONSTRAINT `commentary_foreign_key3`
+  CONSTRAINT `thread_foreign_key3`
     FOREIGN KEY (`status_id`)
     REFERENCES `application`.`status` (`id`))
 ENGINE = InnoDB
@@ -208,16 +208,16 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `application`.`likes` ;
 
 CREATE TABLE IF NOT EXISTS `application`.`likes` (
-  `commentary_id` INT(11) NOT NULL,
+  `thread_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
   `content` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`commentary_id`, `post_id`),
-  UNIQUE INDEX `user_commentary_info` (`commentary_id` ASC, `post_id` ASC),
-  INDEX `fk_commentary_has_post_idx1` (`post_id` ASC),
-  INDEX `fk_commentary_has_post_idx2` (`commentary_id` ASC),
+  PRIMARY KEY (`thread_id`, `post_id`),
+  UNIQUE INDEX `user_thread_info` (`thread_id` ASC, `post_id` ASC),
+  INDEX `fk_thread_has_post_idx1` (`post_id` ASC),
+  INDEX `fk_thread_has_post_idx2` (`thread_id` ASC),
   CONSTRAINT `likes_foreign_key1`
-    FOREIGN KEY (`commentary_id`)
-    REFERENCES `application`.`commentary` (`id`)
+    FOREIGN KEY (`thread_id`)
+    REFERENCES `application`.`thread` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `likes_foreign_key2`
