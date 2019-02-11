@@ -208,16 +208,16 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `application`.`likes` ;
 
 CREATE TABLE IF NOT EXISTS `application`.`likes` (
-  `thread_id` INT(11) NOT NULL,
+  `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
   `content` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`thread_id`, `post_id`),
-  UNIQUE INDEX `user_thread_info` (`thread_id` ASC, `post_id` ASC),
-  INDEX `fk_thread_has_post_idx1` (`post_id` ASC),
-  INDEX `fk_thread_has_post_idx2` (`thread_id` ASC),
+  PRIMARY KEY (`user_id`, `post_id`),
+  UNIQUE INDEX `user_user_info` (`user_id` ASC, `post_id` ASC),
+  INDEX `fk_user_has_post_idx1` (`post_id` ASC),
+  INDEX `fk_user_has_post_idx2` (`user_id` ASC),
   CONSTRAINT `likes_foreign_key1`
-    FOREIGN KEY (`thread_id`)
-    REFERENCES `application`.`thread` (`id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `application`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `likes_foreign_key2`
