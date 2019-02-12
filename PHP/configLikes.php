@@ -82,3 +82,34 @@ function getRating($id)
   ];
   return json_encode($rating);
 }
+
+// Sjekk om brukeren allerede liker posten
+function userLiked($post_id)
+{
+  global $conn;
+  global $user_id;
+  $sql = "SELECT * FROM likes WHERE user_id=$user_id 
+  		  AND post_id=$post_id AND content='like'";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result) > 0) {
+  	return true;
+  }else{
+  	return false;
+  }
+}
+
+
+//  Sjekk om brukeren allerede disliker posten
+function userDisliked($post_id)
+{
+  global $conn;
+  global $user_id;
+  $sql = "SELECT * FROM likes WHERE user_id=$user_id 
+  		  AND post_id=$post_id AND content='dislike'";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result) > 0) {
+  	return true;
+  }else{
+  	return false;
+  }
+}
