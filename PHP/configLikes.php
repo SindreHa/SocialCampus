@@ -3,7 +3,7 @@
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'applikasjon');
+define('DB_NAME', 'application');
  
 /* Connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -113,3 +113,8 @@ function userDisliked($post_id)
   	return false;
   }
 }
+
+$sql = "SELECT * FROM posts";
+$result = mysqli_query($conn, $sql);
+// hent alle poster fra datavasen
+$posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
