@@ -35,9 +35,50 @@ if (isset($_POST['action'])) {
   		break;
   }
 
-  // execute query to effect changes in the database ...
+  // kjør query for å fullføre endringer i databasen og exit
   mysqli_query($conn, $sql);
   echo getRating($post_id);
   exit(0);
 }
 
+
+// finn totalt antall likes for en post
+function getLikes($id)
+{
+  global $conn;
+  $sql = "SELECT COUNT(*) FROM likes 
+  		  WHERE post_id = $id AND content='like'";
+  $rs = mysqli_query($conn, $sql);
+  $result = mysqli_fetch_array($rs);
+  return $result[0];
+}
+
+// finn totalt antall dislikes for en post
+function getDislikes($id)
+{
+  global $conn;
+  $sql = "SELECT COUNT(*) FROM likes 
+  		  WHERE post_id = $id AND content='dislike'";
+  $rs = mysqli_query($conn, $sql);
+  $result = mysqli_fetch_array($rs);
+  return $result[0];
+}
+
+// finn antall likes og dislikes på en viss post
+function getRating($id)
+{
+  global $conn;
+  $rating = array();
+  $likes_query = "SELECT COUNT(*) FROM likes WHERE post_id = $id AND content='like'";
+  $dislikes_query = "SELECT COUNT(*) FROM likes 
+		  			WHERE post_id = $id AND content='dislike'";
+  $likes_rs = mysqli_query($conn, $likes_query);
+  $dislikes_rs = mysqli_query($conn, $dislikes_query);
+  $likes = mysqli_fetch_array($likes_rs);
+  $dislikes = mysqli_fetch_array($dislikes_rs);
+  $rating = [
+  	'likes' => $likes[0],
+  	'dislikes' => $dislikes[0]
+  ];
+  return json_encode($rating);
+}
