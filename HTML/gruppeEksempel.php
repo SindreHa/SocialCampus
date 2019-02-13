@@ -53,10 +53,10 @@
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>"class="form-input" id="group-form" method="post">
 					<input type="text" name="headline" placeholder="Tittel" id="post-title-ID">
-					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="256"></textarea>
+					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="850"></textarea>
 					<div class="post-submit-container">
 						<button class="btn submit-comment" id="post-submit-ID">Publiser</button>
-						<h5 id="ord-teller-ID">0/256</h5>
+						<h5 id="ord-teller-ID">0/850</h5>
 					</div>
 				</form>
 				

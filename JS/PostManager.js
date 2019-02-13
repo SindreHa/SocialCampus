@@ -1,5 +1,5 @@
 
-var maxOrd = 256;
+var maxOrd = 850;
 var ord = document.getElementById("ord-teller-ID");
 var ordBoks = document.getElementById("text-area-ID");
 var tittel = document.getElementById("post-title-ID")
@@ -26,13 +26,14 @@ function checkCharactersLength()
 {
     if(ordBoks.value.length == 0)
     {
-        return false;    
+        ord.innerHTML = "0/" + maxOrd;
+        return false;
     }
     else
     {
         ord.innerHTML = ordBoks.value.length + "/" + maxOrd;
-        return true;       
-    }        
+        return true;
+    }
 }
 
 function checkTitleLength()
