@@ -442,7 +442,8 @@ input:-webkit-autofill {
 	border: 2px solid var(--dark);
 	transition: border-color .3s;
 	overflow: hidden;
-	box-shadow: var(--shadow)
+	box-shadow: var(--shadow);
+	position: relative;
 }
 
 .inputContainer:focus-within {
@@ -479,26 +480,35 @@ input:-webkit-autofill {
 }
 
 .inputContainer .input-error  {
-	display: none; /*Endre den her til "inline-block"*/
+	display: flex;
+	position: absolute;
+	right: -40px;
 	color: var(--error);
 	background-color: var(--light);
 	padding: 9px 18px;
 	transition: background-color .3s;
+	transition: right .3s ease-out;
+	pointer-events: none;
 }
 
 .inputContainer:focus-within .input-error {
-	background-color: var(--light);
+	background-color: transparent;
 }
 
 .inputContainer .input-approved  {
-	display: none; /*Endre den her til "inline-block"*/
+	display: flex;
+	position: absolute;
+	right: -40px;
 	color: var(--approved);
 	background-color: var(--light);
 	transition: background-color .3s;
+	transition: right .3s ease-out;
+	pointer-events: none;
+	background-color: transparent;
 }
 
 .inputContainer:focus-within .input-approved {
-	background-color: var(--light);
+	background-color: transparent;
 }
 
 /*Grupper*/

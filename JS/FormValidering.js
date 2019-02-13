@@ -18,19 +18,19 @@ function checkUsernameLength()
 {
     var username = $("#Username-ID").val();
     if(username.length > 4 && username.length < 20){
-        $("#input-error-username").css("display", "none");
-        $("#input-approved-username").css("display", "inline-block");
+        $("#input-error-username").css("right", "-40px");
+        $("#input-approved-username").css("right", "0px");
         return true;
     }
     else if(username.length == 0)
     {
-        $("#input-error-username").css("display", "none");
-        $("#input-approved-username").css("display", "none");
+        $("#input-error-username").css("right", "-40px");
+        $("#input-approved-username").css("right", "-40px");
     }
     else
     {
-        $("#input-error-username").css("display", "inline-block");
-        $("#input-approved-username").css("display", "none");
+        $("#input-error-username").css("right", "0px");
+        $("#input-approved-username").css("right", "-40px");
     }
 }
 
@@ -39,19 +39,19 @@ function validateEmail()
     var email = $("#Email-ID").val();
     if (validateEmailCheck(email)) 
     {
-        $("#input-error-email").css("display", "none"); 
-        $("#input-approved-email").css("display", "inline-block");
+        $("#input-error-email").css("right", "-40px"); 
+        $("#input-approved-email").css("right", "0px");
         return true;
     } 
     else if(email.length == 0)
     {
-        $("#input-error-email").css("display", "none");
-        $("#input-approved-email").css("display", "none");
+        $("#input-error-email").css("right", "-40px");
+        $("#input-approved-email").css("right", "-40px");
     }
     else 
     {
-        $("#input-error-email").css("display", "inline-block"); 
-        $("#input-approved-email").css("display", "none");
+        $("#input-error-email").css("right", "0px"); 
+        $("#input-approved-email").css("right", "-40px");
         return false;
     }
 }
@@ -68,38 +68,38 @@ function checkPasswordLength()
     var password = $("#Password-ID").val();
     if(password.length >= 8 && password.length <= 20)
     {
-        $("#input-error-password").css("display", "none");
-        $("#input-approved-password").css("display", "inline-block");
+        $("#input-error-password").css("right", "-40px");
+        $("#input-approved-password").css("right", "0px");
         return true;
     }
     else if(password.length == 0)
     {
-        $("#input-error-password").css("display", "none");
-        $("#input-approved-password").css("display", "none");
+        $("#input-error-password").css("right", "-40px");
+        $("#input-approved-password").css("right", "-40px");
     }
     else
     {
-        $("#input-error-password").css("display", "inline-block");
-        $("#input-approved-password").css("display", "none");
+        $("#input-error-password").css("right", "0px");
+        $("#input-approved-password").css("right", "-40px");
     }
     $('#Password-ID').on('blur', function()
     {
         
         if(this.value.length < 8 && this.value.length > 0)
         { 
-            $("#input-error-password").css("display", "inline-block");
-            $("#input-approved-password").css("display", "none");
+            $("#input-error-password").css("right", "0px");
+            $("#input-approved-password").css("right", "-40px");
             return false; 
         }
         else
         {
-            $("#input-error-password").css("display", "none");
-            $("#input-approved-password").css("display", "inline-block");
+            $("#input-error-password").css("right", "-40px");
+            $("#input-approved-password").css("right", "0px");
         }
         if(this.value.length == 0)
         {
-            $("#input-error-password").css("display", "none");
-            $("#input-approved-password").css("display", "none");
+            $("#input-error-password").css("right", "-40px");
+            $("#input-approved-password").css("right", "-40px");
         } 
     });
 }
@@ -111,19 +111,19 @@ function checkPasswordMatch()
 
     if (password != confirmPassword)
     {
-        $("#input-error-confirmPassword").css("display", "inline-block");
-        $("#input-approved-confirmPassword").css("display", "none");
+        $("#input-error-confirmPassword").css("right", "0px");
+        $("#input-approved-confirmPassword").css("right", "-40px");
         return false;
     }
     else if(password.length == 0)
     {
-        $("#input-error-confirmPassword").css("display", "none");
-        $("#input-approved-confirmPassword").css("display", "none");
+        $("#input-error-confirmPassword").css("right", "-40px");
+        $("#input-approved-confirmPassword").css("right", "-40px");
     }
     else
     {
-        $("#input-error-confirmPassword").css("display", "none");
-        $("#input-approved-confirmPassword").css("display", "inline-block");
+        $("#input-error-confirmPassword").css("right", "-40px");
+        $("#input-approved-confirmPassword").css("right", "0px");
         return true;
     }
     
