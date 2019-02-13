@@ -64,11 +64,15 @@
 
 			</section>
 
-			<section class="group-post">
-			<div>
-				<!-- Her blir kommentarene lagt inn -->
+			<section class="group-post-wrapper">
+				<div class="group-post">
+					<div>
+						<!-- Her blir kommentarene lagt inn -->
+					</div>
+				</div>
+			<div class="button-wrapper">
+				<button class="btn" id="newCommentButton-ID" onclick="loadMoreComments()">Last inn tidligere kommentarer</button>
 			</div>
-			<button class="btn" id="newCommentButton-ID" onclick="loadMoreComments()">Last inn tidligere kommentarer</button>
 			</section>
 			
 			
