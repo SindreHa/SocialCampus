@@ -180,7 +180,7 @@ DROP TABLE IF EXISTS `application`.`thread` ;
 
 CREATE TABLE IF NOT EXISTS `application`.`thread` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `content` text NOT NULL
+  `content` VARCHAR(850) NOT NULL,
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `post_id` INT(11) NULL DEFAULT NULL,
   `user_id` INT(11) NULL DEFAULT NULL,
@@ -211,6 +211,7 @@ CREATE TABLE IF NOT EXISTS `application`.`likes` (
   `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
   `rating` VARCHAR(45) NOT NULL,
+CONSTRAINT UC_rating_info UNIQUE (user_id, post_id)
   PRIMARY KEY (`user_id`, `post_id`),
   UNIQUE INDEX `user_user_info` (`user_id` ASC, `post_id` ASC),
   INDEX `fk_user_has_post_idx1` (`post_id` ASC),
