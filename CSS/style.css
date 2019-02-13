@@ -703,10 +703,16 @@ textarea::-webkit-scrollbar-thumb:hover {
 	margin-top: 10px;
 }
 
+.group-post-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
 .group-post {
 	display: flex;
 	flex-direction: column;
-	width: 60%;
+	width: 100%;
 }
 
 .group-post .btn{
