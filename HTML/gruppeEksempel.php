@@ -71,7 +71,7 @@
 					</div>
 				</div>
 			<div class="button-wrapper">
-				<button class="btn" id="newCommentButton-ID" onclick="loadMoreComments()">Last inn tidligere kommentarer</button>
+				<button class="btn" id="newCommentButton-ID" onclick="loadMorePosts()">Last inn innlegg</button>
 			</div>
 			</section>
 			
