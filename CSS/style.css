@@ -4,7 +4,7 @@
 	--dark: #333;
 	--darker: #222;
 	--light: #fff;
-	--accent: #E63600;
+	--accent: #00a1c9;
 	--link: #0078FF;
 	--error: #C90000;
 	--approved: #00B800;
@@ -1070,7 +1070,7 @@ footer p{
 }
 
 .footer-lang a:hover img{
-	border-color: var(--light)
+	border-color: var(--accent)
 }
 
 /*Responsivt design*/
@@ -1165,8 +1165,12 @@ footer p{
 }
 
 @media(max-width: 740px) {
+	body {
+		margin-top: 5px;
+	}
 	.login {
 		grid-column: 1/5;
+		margin: 0;
 	}
 	.menu {
 		display: block;
@@ -1208,7 +1212,7 @@ footer p{
 	}
 	.main-nav a:hover {
 		border-color: var(--accent);
-		box-shadow: inset 10px 0px 0px -8px var(--accent);
+		box-shadow: inset 10px 0px 0px -6px var(--accent);
 	}
 	.main-nav li:hover i{
 		color: var(--accent)
