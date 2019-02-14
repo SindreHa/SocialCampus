@@ -211,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `application`.`likes` (
   `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
   `rating` VARCHAR(45) NOT NULL,
-CONSTRAINT UC_rating_info UNIQUE (user_id, post_id)
+CONSTRAINT UC_rating_info UNIQUE (user_id, post_id),
   PRIMARY KEY (`user_id`, `post_id`),
   UNIQUE INDEX `user_user_info` (`user_id` ASC, `post_id` ASC),
   INDEX `fk_user_has_post_idx1` (`post_id` ASC),
