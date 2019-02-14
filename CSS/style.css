@@ -112,9 +112,8 @@ img {
 	font-size: 1.1rem;
 	box-shadow: var(--shadow);
 	transition: 
-		background-color .25s ease-out, 
-		color .25s ease-out,
-		border-color .25s ease-out;
+		background-color .4s ease-out, 
+		border-color .25s;
 	border-bottom: 2px solid var(--accent);
 }	
 .main-nav a i{
@@ -122,12 +121,9 @@ img {
 }
 
 .main-nav a:hover {
-	/* background-color: var(--darker); */
-	/* color: var(--dark); */
 	border-color: var(--light);
 	cursor: pointer;
 }
-
 .menu {
 	display: none;
 }
@@ -329,49 +325,6 @@ form {
 	box-shadow: var(--shadow);
 }
 
-/* Sindre fiks width/height plox */
-#slider-container{
-	position: relative;
-	overflow:hidden;
-	width:1500px;
-	height:300px;
-}
-
-.slide{
-	position: absolute;
-	width:100%;
-	height:100%;
-	transition:all ease-in-out 500ms;
-	-webkit-transition:all ease-in-out 500ms;
-	-moz-transition:all ease-in-out 500ms;
-	-o-transition:all ease-in-out 500ms;
-
-}
-
-.sliderKnapp{
-	width:40px;
-	height:40px;
-	background-color:black;
-	border-radius: 4px;
-	position: absolute;
-	top:140px;
-	z-index: 10;
-	opacity: 0.6;
-	cursor:pointer;
-}
-
-.sliderKnapp:hover{
-	opacity:0.9;
-}
-
-.knapp-venstre{
-	left: 5px;
-}
-
-.knapp-hoyre{
-	right:5px;
-}
-
 #mapContainer {
 	display: flex;
 	min-height: 250px;
@@ -446,10 +399,6 @@ input:-webkit-autofill:active  {
 	-webkit-box-shadow: 0 0 0 30px white inset !important;
 	box-shadow: 0 0 0 30px white inset !important;
 }
-/* 
-input:-webkit-autofill {
-    -webkit-text-fill-color: var(--primary) !important;
-}*/
 
 .inputContainer {
 	display: flex;
@@ -501,7 +450,6 @@ input:-webkit-autofill {
 	color: var(--error);
 	background-color: var(--light);
 	padding: 9px 18px;
-	transition: background-color .3s;
 	transition: right .3s ease-out;
 	pointer-events: none;
 }
@@ -516,7 +464,6 @@ input:-webkit-autofill {
 	right: -40px;
 	color: var(--approved);
 	background-color: var(--light);
-	transition: background-color .3s;
 	transition: right .3s ease-out;
 	pointer-events: none;
 	background-color: transparent;
@@ -596,7 +543,6 @@ input:-webkit-autofill {
 	padding: 20px;
 	min-height: 50px;
 	align-items: center;
-	/*justify-content: space-between;*/
 }
 
 .group-info .group-description {
@@ -989,7 +935,7 @@ footer p{
 	padding: 10px 14px;
 	text-decoration: none;
 	color: var(--light);
-	transition: color .1s;
+	transition: color .15s ease-out;
 }
 
 .footer-shortcut a:hover{
@@ -1030,7 +976,6 @@ footer p{
 	color: var(--light);
 }
 
-
 .footer-info {
 	padding-top: 10px;
 	border-top: .5px solid var(--accent);
@@ -1045,7 +990,7 @@ footer p{
 
 .footer-copy i{
 	margin-right: 5px;
-	transition: color .3s ease-out;
+	transition: color .2s ease-out;
 }
 
 .footer-copy a:hover i{
@@ -1061,7 +1006,7 @@ footer p{
 .footer-lang img{
 	border-radius: 50%;
 	border: 2px solid transparent;
-	transition: border-color .2s;
+	transition: border-color .2s ease-out;
 	width: 30px;
 }
 
@@ -1140,9 +1085,15 @@ footer p{
 }
 
 @media(max-width: 900px) {
-	/*body {
-		margin: 20px 40px;
-	}*/
+	body {
+		margin-top: 5px;
+	}
+	.wrapper {
+		padding: 0 25px;
+	}
+	.showcase {
+		min-height: 150px;
+	}
 	.showcase h1 {
 		font-size: 2.5rem;
 	}
@@ -1167,16 +1118,6 @@ footer p{
 	}
 	.group-post-creator-wrapper {
 		width: 100%;
-	}
-}
-
-@media(max-width: 740px) {
-	body {
-		margin-top: 5px;
-	}
-	.login {
-		grid-column: 1/5;
-		margin: 0;
 	}
 	.menu {
 		display: block;
@@ -1284,6 +1225,16 @@ footer p{
 		width: 0%;
 		left: 50%;
 	}
+	.login {
+		margin: 0;
+	}
+}
+
+@media(max-width: 740px) {
+	.login {
+		grid-column: 1/5;
+	}
+	
 }
 
 @media(max-width: 620px) {
@@ -1337,6 +1288,34 @@ footer p{
 
 @media(max-width: 500px) {
 	.wrapper {
-		padding: 0 20px;
+		padding: 0 10px;
+	}
+	.boxes {
+		grid-template-columns: 1fr;
+	}
+	.showcase {
+		padding: 20px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.showcase h1 {
+		font-size: 1.8rem;
+	}
+	.showcase p {
+		font-size: 1rem;
+	}
+	.search-index {
+		overflow: hidden
+	}
+	.aboutUs {
+		grid-template-columns: 1fr;
+		overflow: hidden;
+		white-space: nowrap
+	}
+	.aboutUs p {
+		white-space: normal
+	}
+	.login form p {
+		padding: 0 10px;
 	}
 }
