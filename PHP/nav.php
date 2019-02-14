@@ -24,7 +24,7 @@
 			<i class="far fa-bookmark"></i>
 			Grupper
 		</a></li>
-		<li><a href="login.php">
+		<li><a href="profil.php">
 			<i class="fas fa-user"></i>
 			min Profil
 		</a></li>
