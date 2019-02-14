@@ -940,7 +940,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 	width: 220px;
 	animation-name: spin;
 	animation-timing-function: cubic-bezier(0.5, 0.1, 0.43, 1.1); 
-	animation-duration: 2s;
+	animation-duration: 1.75s;
 }
 
 @keyframes spin {
@@ -1186,12 +1186,15 @@ footer p{
 	}
 	.main-nav ul {
 		grid-template-columns: 1fr;
-		grid-gap: 0;
+		grid-gap: 0px;
 		overflow: hidden;
 		height: 48px;
 		transition: height .4s ease-in-out;
 		position: relative;
 		box-shadow: var(--shadow);
+	}
+	.main-nav li:not(:first-child){
+		position: relative;
 	}
 	.main-nav a {
 		border-bottom: 0;
@@ -1199,10 +1202,29 @@ footer p{
 		box-shadow: none;
 		text-align: left;
 		border-left: 2px solid var(--accent);
-		transition: 
-			background-color .25s ease-in-out,
-			border-color .2s ease-out,
-			box-shadow .2s ease-out;
+		transition: background-color .25s ease-in-out,
+	}
+	.main-nav a::before {
+		position: absolute;
+		content: "";
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 0px;
+		background-color: var(--accent);
+		transition: width .2s ease-out;
+	}
+	.main-nav li:first-child a {
+		border-bottom: 1px solid;
+		border-color: var(--accent);
+		box-shadow: none;
+		text-align: center;
+	}
+	.main-nav li:first-child a:hover::before {
+		width: 0px;
+	}
+	.main-nav a:hover::before {
+		width: 5px;
 	}
 	.main-nav a i{
 		display: inline-block;
@@ -1211,20 +1233,8 @@ footer p{
 		text-align: center;
 		transition: color .2s ease-out;
 	}
-	.main-nav li:first-child a {
-		border-bottom: 1px solid var(--accent);
-		box-shadow: none;
-		text-align: center;
-	}
-	.main-nav a:hover {
-		border-color: var(--accent);
-		box-shadow: inset 10px 0px 0px -6px var(--accent);
-	}
 	.main-nav li:hover i{
 		color: var(--accent)
-	}
-	.menyToggle:hover {
-		border-color: var(--accent) !important;
 	}
 	.menu-show ul{
 		height: calc(48*5px);
@@ -1247,7 +1257,6 @@ footer p{
 		background: var(--light);
 		opacity: 1;
 		left: 0;
-		transform: rotate(0deg);
 		transition: .3s ease-in-out;
 	}
 	.hamburger-icon span:nth-child(1) {
