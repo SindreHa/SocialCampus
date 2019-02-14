@@ -1030,9 +1030,6 @@ footer p{
 	color: var(--light);
 }
 
-.footer-info a:hover{
-	text-decoration: underline;
-}
 
 .footer-info {
 	padding-top: 10px;
@@ -1044,6 +1041,15 @@ footer p{
 	width: 100%;
 	justify-content: space-between;
 	margin-right: 20px;
+}
+
+.footer-copy i{
+	margin-right: 5px;
+	transition: color .3s ease-out;
+}
+
+.footer-copy a:hover i{
+	color: var(--accent)
 }
 
 .footer-lang {
