@@ -145,8 +145,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="form-login <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                         <label>Brukernavn</label>
                         <div class="inputContainer">
-                            <i class="fas fa-at input-icon"></i>
-                            <input type="text" name="name" autocomplete="cc-name" placeholder="Ola Nordmann" class="input" value="<?php echo $username; ?>" id="Username-ID">
+                            <i class="fas fa-user-tag input-icon"></i>
+                            <input type="text" name="name" autocomplete="cc-name" placeholder="OlaNord123" class="input" value="<?php echo $username; ?>" id="Username-ID">
                             <i class="fas fa-exclamation input-error" id="input-error-username"></i>
                             <i class="fa fa-check input-approved" id="input-approved-username"></i>
                         </div>
