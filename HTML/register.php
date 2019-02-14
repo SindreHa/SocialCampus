@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username_err = "Skriv inn brukernavn";
     } else{
         // Select spørring for username           
-        $sql = "SELECT id FROM bruker WHERE username = ?";
+        $sql = "SELECT id FROM user WHERE username = ?";
          if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $email_err = "Skriv inn email";
     } else{
         // Select spørring for email           
-        $sql = "SELECT id FROM bruker WHERE email = ?";
+        $sql = "SELECT id FROM user WHERE email = ?";
          if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $param_email);
             
@@ -97,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
         
         // Lage insert for username og passord
-        $sql = "INSERT INTO bruker (username, password, email) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO user (username, password, email) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_email);
