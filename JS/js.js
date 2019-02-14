@@ -22,12 +22,14 @@ var insertBefore = head.insertBefore;
 	$(".menyToggle").click(function() {
 		$(this).closest(".main-nav").toggleClass('menu-show');
 		$(".hamburger-icon").toggleClass('open');
+		$(".menyToggle").toggleClass('menyToggle-darker');
 	});
 
 	/* Gjør så man kan trykke på strekene på Meny bar */
 	$(".hamburger-icon span").click(function() {
 		$(this).closest(".main-nav").toggleClass('menu-show');
 		$(".hamburger-icon").toggleClass('open');
+		$(".menyToggle").toggleClass('menyToggle-darker');
 	});
 
 

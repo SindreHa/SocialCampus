@@ -1115,12 +1115,15 @@ footer p{
 	.menu {
 		display: block;
 	}
+	.menyToggle-darker {
+		background-color: var(--darker) !important;
+	}
 	.main-nav ul {
 		grid-template-columns: 1fr;
 		grid-gap: 0;
 		overflow: hidden;
 		height: 48px;
-		transition: height .3s ease-in-out;
+		transition: height .4s ease-in-out;
 		position: relative;
 		box-shadow: var(--shadow);
 	}
@@ -1145,6 +1148,7 @@ footer p{
 	.main-nav li:first-child a {
 		border-bottom: 1px solid var(--accent);
 		box-shadow: none;
+		text-align: center;
 	}
 	.main-nav a:hover {
 		border-color: var(--accent);
@@ -1160,10 +1164,10 @@ footer p{
 		height: calc(48*5px);
 	}
 	.hamburger-icon {
-		width: 30px;
+		width: 23px;
 		position: absolute;
-		top: 12px;
-		right: 14px;
+		top: 14px;
+		left: 14px;
 		transform: rotate(0deg);
 		transition: .5s ease-in-out;
 		cursor: pointer;
@@ -1178,25 +1182,19 @@ footer p{
 		opacity: 1;
 		left: 0;
 		transform: rotate(0deg);
-		transition: .25s ease-in-out;
-	}
-	.main-nav li:hover .hamburger-icon span{
-		background: var(--accent);
+		transition: .3s ease-in-out;
 	}
 	.hamburger-icon span:nth-child(1) {
 		top: 0px;
 	}
 	.hamburger-icon span:nth-child(2), .hamburger-icon span:nth-child(3) {
-		top: 10px;
+		top: 8px;
 	}
 	.hamburger-icon span:nth-child(4) {
-		top: 20px;
-	}
-	.hamburger-icon.open span{
-		background: var(--accent);
+		top: 16px;
 	}
 	.hamburger-icon.open span:nth-child(1) {
-		top: 10px;
+		top: 9px;
 		width: 0%;
 		left: 50%;
 	}
@@ -1207,7 +1205,7 @@ footer p{
 		transform: rotate(-45deg);
 	}
 	.hamburger-icon.open span:nth-child(4) {
-		top: 10px;
+		top: 9px;
 		width: 0%;
 		left: 50%;
 	}
