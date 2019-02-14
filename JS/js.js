@@ -1,10 +1,6 @@
 
 /* Variabler */
 
-// Class toggle
-var logInDropdown = document.getElementById("dropdown");
-
-
 // Kart
 var map, infoWindow;
 
@@ -21,23 +17,18 @@ var insertBefore = head.insertBefore;
 
 /* Funksjoner */
 
-	/*Vis og skjul logg in boks*/
-	
-	window.addEventListener('click', function(e)
-	{
-	var element2 = document.getElementById("dropdown");
-	try{
-		if (document.getElementById('click').contains(e.target))
-		{
-	  		logInDropdown.classList.add("hide");
-			} 			
-	  	else {
-			logInDropdown.classList.remove("hide");
-			}
-			}catch(TypeError){
-				
-			}
-	})
+
+	/*Toggle class for responsiv navigasjonsbar*/
+	$(".menyToggle").click(function() {
+		$(this).closest(".main-nav").toggleClass('menu-show');
+		$(".hamburger-icon").toggleClass('open');
+	});
+
+	/* Gjør så man kan trykke på strekene på Meny bar */
+	$(".hamburger-icon span").click(function() {
+		$(this).closest(".main-nav").toggleClass('menu-show');
+		$(".hamburger-icon").toggleClass('open');
+	});
 
 
 	/*Hinder GMaps i å hente egen font*/
