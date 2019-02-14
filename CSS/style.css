@@ -49,7 +49,10 @@ body {
 	padding: .6rem .6rem;
 	text-decoration: none;
 	border: 2px solid var(--dark);
-	transition: background-color .2s, color .2s, border-color .2s;
+	transition: 
+		background-color .2s ease-out, 
+		color .2s ease-out, 
+		border-color .2s ease-out;
 	font-size: 1rem;
 }
 
@@ -429,7 +432,8 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active  {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+	box-shadow: 0 0 0 30px white inset !important;
 }
 /* 
 input:-webkit-autofill {
@@ -632,7 +636,7 @@ input:-webkit-autofill {
 	padding: 10px;
 	margin-bottom: 10px;
 	outline: none;
-	transition: border-color .2s;
+	transition: border-color .2s ease-in-out;
 }
 
 .form-input input:focus {
@@ -660,11 +664,11 @@ input:-webkit-autofill {
 	resize: none;
 	padding: 10px;
 	outline: none;
-	transition: border-color .2s;
+	transition: border-color .2s ease-in-out;
 }
 
 .form-input textarea:focus {
-	border: 2px solid var(--accent);
+	border-color: var(--accent);
 }
 
 .form-input textarea::placeholder {
@@ -809,10 +813,6 @@ textarea::-webkit-scrollbar-thumb:hover {
 	color: inherit;
 	text-decoration: none;
 	transition: box-shadow .3s;
-}
-
-.post-stats a:hover{
-	/*background-color: var(--dark)*/
 }
 
 .post-stats i{
