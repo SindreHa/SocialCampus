@@ -850,47 +850,53 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 /*404*/
+
+.error{
+	height: 100%;
+}
+
 .error-wrapper {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	margin: 80px 0;
-	justify-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	position: relative;
 }
 
 .error-wrapper h1{
 	font-weight: 500;
-	font-size: 2.3rem;
+	font-size: 110px;
+	margin: 0 0 20px;
 }
 
-.error-wrapper p, .error-wrapper h1{
+.error-wrapper p{
+	font-size: 1.1rem;
 	margin: 0 0 10px;
 }
 
 .error-wrapper .btn{
-	width: 120px;
-	margin: 10px auto 0;;
+	margin: 10px auto 0;
 }
 
 .error-wrapper div{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	text-align: center;
-	grid-column: 3/4;
 }
 
 .error-wrapper img{
-	grid-column: 2/3;
-	width: 220px;
+	margin-bottom: 40px;
+	width: 280px;;
 	animation-name: spin;
-	animation-timing-function: cubic-bezier(0.5, 0.1, 0.43, 1.1); 
-	animation-duration: 1.75s;
+	animation-timing-function: cubic-bezier(0.15, 0.2, 0.3, 1.1); 
+	animation-duration: 4s;
+	animation-delay: .25s;
+	animation-iteration-count: infinite
 }
 
 @keyframes spin {
 	0% {transform: rotate(0deg)}
+	20% {transform: rotate(-10deg)}
+	/* 20% {transform: rotate(-10deg)} */
+	70% {transform: rotate(360deg)}
 	100% {transform: rotate(360deg)}
 }
 
@@ -1075,12 +1081,8 @@ footer p{
 		margin: 20px 0;
 		grid-gap: 20px;
 	}
-	.error-wrapper div {
-		grid-column: 2/4;
-		grid-row: 2;
-	}
-	.error-wrapper img {
-		grid-column: 2/4;
+	.error-wrapper h1{
+		font-size: 10vw;
 	}
 }
 
@@ -1096,6 +1098,9 @@ footer p{
 	}
 	.showcase h1 {
 		font-size: 2.5rem;
+	}
+	.showcase p {
+		font-size: 1.1rem;
 	}
 	.profile-container {
 		margin: 0;
@@ -1234,21 +1239,10 @@ footer p{
 	.login {
 		grid-column: 1/5;
 	}
-	
-}
-
-@media(max-width: 620px) {
-	.error-wrapper {
-		grid-template-columns: 1fr;
-	}
-	.error-wrapper div {
-		grid-column: 1;
-		grid-row: 2;
-	}
 	.error-wrapper img {
-		grid-column: 1;
-		grid-row: 1;
+		width: 38vw;
 	}
+	
 }
 
 @media(max-width: 550px) {
