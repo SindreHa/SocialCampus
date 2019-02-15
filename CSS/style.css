@@ -867,11 +867,25 @@ textarea::-webkit-scrollbar-thumb:hover {
 	font-weight: 500;
 	font-size: 110px;
 	margin: 0 0 20px;
+	color: var(--light);
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: var(--dark);
+	/* transition: all .1s; */
+}
+
+.error-wrapper h1:hover{
+	color: var(--dark);
+	-webkit-text-stroke-color: var(--light);
 }
 
 .error-wrapper p{
 	font-size: 1.1rem;
 	margin: 0 0 10px;
+	transition: word-spacing .5s cubic-bezier(0.1, 0.1, 0.2, 1.2);
+}
+
+.error-wrapper p:hover{
+	word-spacing: 100px;
 }
 
 .error-wrapper .btn{
