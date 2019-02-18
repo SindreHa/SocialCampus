@@ -32,6 +32,16 @@ var insertBefore = head.insertBefore;
 		$(".menyToggle").toggleClass('menyToggle-darker');
 	});
 
+	$(".inputContainer i").click(function() {
+	  $(this).next("input").focus();
+	});
+
+	if (window.location.href.includes("login.php")) {
+		$( document ).ready(function() {
+	    	$("input").first().focus();
+		});
+	}
+
 
 	/*Hinder GMaps i å hente egen font*/
 	head.insertBefore = function( newElement, referenceElement ) {
