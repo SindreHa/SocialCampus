@@ -32,11 +32,13 @@ var insertBefore = head.insertBefore;
 		$(".menyToggle").toggleClass('menyToggle-darker');
 	});
 
+	/*Gjør input felt aktivt ved trykk på tilhørende ikon*/
 	$(".inputContainer i").click(function() {
 	  $(this).next("input").focus();
 	});
 
-	if (window.location.href.includes("login.php")) {
+	/*Gjør første input felt aktivt på logg inn side load*/
+	if (window.location.href.match(/login/)) {
 		$( document ).ready(function() {
 	    	$("input").first().focus();
 		});
