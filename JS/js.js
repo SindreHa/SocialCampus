@@ -44,6 +44,20 @@ var insertBefore = head.insertBefore;
 		});
 	}
 
+	/*Funskjoner for scrolling til topp knapp*/ 
+	$(".toTop").click(function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+  	return false;
+	});
+
+	$(document).scroll(function() {
+		var y = $(this).scrollTop();
+		if (y > 200) {
+			$('.toTop').fadeIn();
+		} else {
+			$('.toTop').fadeOut();
+		}
+	});
 
 	/*Hinder GMaps i å hente egen font*/
 	head.insertBefore = function( newElement, referenceElement ) {

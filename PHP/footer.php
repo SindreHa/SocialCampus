@@ -56,3 +56,7 @@
 	</div>
 
 </footer>
+
+<div class="toTop">
+  <i class="fas fa-arrow-up"></i>
+</div>

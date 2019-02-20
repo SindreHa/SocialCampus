@@ -1044,6 +1044,32 @@ footer p{
 	border-color: var(--accent)
 }
 
+.toTop {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	overflow: hidden;
+	font-size: 1.3rem;
+	text-align: center;
+	color: white;
+	background-color: var(--dark);
+	border: 1px solid var(--accent);
+	box-shadow: var(--shadow);
+	cursor: pointer;
+}
+
+.toTop i{
+	padding: 15px 0;
+	transition: color .2s ease-out;
+}
+
+.toTop:hover i{
+	color: var(--accent);
+}
+
 /*Responsivt design*/
 
 @media(max-width: 1350px) {
