@@ -5,7 +5,7 @@ if(!empty($_FILES['picture']['name'])){
     
     //Konfigurer filopplastning
     $result = 0;
-    $uploadDir = "uploads/images/";
+    $uploadDir = "../Pictures/upload/";
     $fileName = time().'_'.basename($_FILES['picture']['name']);
     $targetPath = $uploadDir. $fileName;
     
