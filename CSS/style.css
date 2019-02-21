@@ -253,6 +253,44 @@ form {
 
 .profile-header .imgContainer{
 	margin: 20px 0 20px 30px;
+	position: relative;
+	overflow: visible;
+}
+
+.profile-header .imgContainer img{
+	border-radius: 50%;
+}
+
+.profile-header .img-upload input{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.profile-header .img-upload label{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	color: var(--light);
+	font-size: 1.2rem;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0);
+	transition: background-color .2s ease-out, opacity .2s ease-in-out;
+}
+
+.profile-header .img-upload label:hover{
+	background-color: rgba(0, 0, 0, 0.541);
+	cursor: pointer;
+	opacity: 1;
 }
 
 .profile-header h1{
@@ -1045,6 +1083,7 @@ footer p{
 }
 
 .toTop {
+	display: none;
 	position: fixed;
 	right: 20px;
 	bottom: 20px;
