@@ -38,7 +38,7 @@ $(function()
         var post = $(".innhold").val();
         $.ajax({
             url:'../HTML/gruppeEksempel.php',
-            data: { textarea: post },
+            data: { headline: post, textarea: post },
             type:'post',
             success:function()
             {
