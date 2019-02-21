@@ -94,9 +94,11 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 
 	        	<div class="profile-header">
 	        		<div class="imgContainer img-upload">
-	        		    <img id="img-upload-result" src="../Pictures/placeholder-profile.png">
+                    <form method="post" action="profilePhoto.php">
+	        		    <img id="img-upload-result" src="<?php echo $userPictureURL; ?>">
                         <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="readURL(this);">
                         <label id="img-name" for="avatar">Velg bilde</label>
+                        </form>
 	        		</div>
 	        		<h1><?php echo htmlspecialchars($_SESSION["username"])?></h1>
 	        	</div>
