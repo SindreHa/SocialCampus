@@ -22,7 +22,7 @@ if (!empty($_POST)) {
 */
 if (isset($_POST['textarea'])) {
 
-		$sql ="INSERT INTO post (innhold) VALUES('$kommentar')";
+		$sql ="INSERT INTO post (content) VALUES('$kommentar')";
 		if (mysqli_query($link, $sql)) 
 		{
 			header("gruppeEksempel.php");
