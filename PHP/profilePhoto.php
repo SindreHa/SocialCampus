@@ -1,17 +1,17 @@
 <?php
-if(!empty($_FILES['avatar']['name'])){
+if(!empty($_FILES['avatar']['username'])){
     //Inkluder config fil for databasen
     include_once 'config.php';
     
     //Konfigurer filopplastning
     $result = 0;
     $uploadDir = "../Pictures/upload/";
-    $fileName = time().'_'.basename($_FILES['avatar']['name']);
+    $fileName = time().'_'.basename($_FILES['avatar']['username']);
     $targetPath = $uploadDir. $fileName;
     $userId = $_SESSION['id'];
     
     //Last opp fil til server
-    if(@move_uploaded_file($_FILES['avatar']['tmp_name'], $targetPath)){
+    if(@move_uploaded_file($_FILES['avatar']['tmp_username'], $targetPath)){
         
         
         
