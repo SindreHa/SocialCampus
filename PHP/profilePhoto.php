@@ -37,5 +37,17 @@ if (file_exists("upload/" . $_FILES["file"]["name"]))
  $ext=$conv['1'];
  move_uploaded_file($_FILES["file"]["tmp_name"],"upload/". $user.".".$ext);
  echo "Stored in as: " . "upload/".$user.".".$ext;
- 
+ $url=$user.".".$ext;
+ $query="update profilePhoto set url='$url', lastUpload=now() where user='$user'";
+ if($upl=$db->query($query)){
+echo "<br/>Lagret i database";
+ }
+ }
+ }
+}else{
+ echo "Filen din er større enn 10MB, prøv igjen";
+}
+}
+?>     
+     
  
