@@ -1,29 +1,24 @@
 <?php
-if(!empty($_FILES['avatar']['username'])){
     //Inkluder config fil for databasen
     include_once 'config.php';
     
     //Konfigurer filopplastning
-    $result = 0;
-    $uploadDir = "../Pictures/upload/";
-    $fileName = time().'_'.basename($_FILES['avatar']['username']);
-    $targetPath = $uploadDir. $fileName;
-    $userId = $_SESSION['id'];
-    
-    //Last opp fil til server
-    if(@move_uploaded_file($_FILES['avatar']['tmp_username'], $targetPath)){
-        
-        
-        
-        //Oppdater bildenavn i databasen
-        $update = $db->query("UPDATE user SET avatar = '".$fileName."' WHERE id = $userId");
-        
-        //Oppdater status
-        if($update){
-            $result = 1;
+    $userId     = 2; // $_SESSION['id']; Returnerer null?
+    $name       = "USER_$userId ProfilePhoto.png";  
+    $temp_name  = $_FILES['avatar']['tmp_name']; 
+
+    if(isset($name)){
+        if(!empty($name)){      
+            $location = '../Pictures/upload/';      
+            if(move_uploaded_file($temp_name, $location.$name)){
+                $update = $link->query("UPDATE user SET avatar = '".$name."' WHERE id = $userId");
+                header("location: ../HTML/profil.php"); // Vei rundt blank skjerm
+            }
         }
+        else {
+            exit;
+        }       
+    }  else {
+        exit;
     }
-    
-    //JavaScript function for å vise opplastningstatus
-    echo '<script type="text/javascript">window.top.window.completeUpload(' . $result . ',\'' . $targetPath . '\');</script>  ';
-}
+?>
