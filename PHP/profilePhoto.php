@@ -27,6 +27,15 @@ if ((($_FILES["file"]["type"] == "image/gif")
  echo "Type: " . $_FILES["file"]["type"] . "<br/>";
  echo "Size: " . ceil(($_FILES["file"]["size"] / 1024)) . " KB";
      
-     
-     
+if (file_exists("upload/" . $_FILES["file"]["name"]))
+ {
+ unlink("upload/" . $_FILES["file"]["name"]);
+ }
+ else{
+ $pic=$_FILES["file"]["name"];
+ $conv=explode(".",$pic);
+ $ext=$conv['1'];
+ move_uploaded_file($_FILES["file"]["tmp_name"],"upload/". $user.".".$ext);
+ echo "Stored in as: " . "upload/".$user.".".$ext;
+ 
  
