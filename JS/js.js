@@ -44,6 +44,44 @@ var insertBefore = head.insertBefore;
 		});
 	}
 
+	/*Funskjoner for scrolling til topp knapp*/ 
+	$(".toTop").click(function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+  	return false;
+	});
+
+	$(document).scroll(function() {
+		var y = $(this).scrollTop();
+		if (y > 200) {
+			$('.toTop').fadeIn();
+		} else {
+			$('.toTop').fadeOut();
+		}
+	});
+
+
+	var labelVal = document.getElementById("img-name");
+
+	document.getElementById("avatar").addEventListener( 'change', function( e )
+	{
+		var fileName = this.value;
+		console.log(this.value);
+		fileName = fileName.substring(fileName.lastIndexOf("\\") + 1, fileName.length);
+		document.getElementById("img-name").innerHTML = fileName;
+	});
+
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function (e) {
+						$('#img-upload-result')
+								.attr('src', e.target.result)
+				};
+
+				reader.readAsDataURL(input.files[0]);
+		}
+	}
 
 	/*Hinder GMaps i å hente egen font*/
 	head.insertBefore = function( newElement, referenceElement ) {
