@@ -1,8 +1,8 @@
 /*CSS variabler*/
 :root {
 	--primary: #ddd;
-	--dark: #333;
-	--darker: #222;
+	--dark: #2e3136;
+	--darker: #1c1d1f;
 	--light: #fff;
 	--accent: #00a1c9;
 	--link: #0078FF;
@@ -10,7 +10,6 @@
 	--approved: #00B800;
 	--shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 	--shadowWide: 0 1px 15px rgba(80, 80, 80, 0.8);
-	/*--postNumber: 0;*/
 }
 
 /*.darken {
