@@ -31,8 +31,8 @@ if(mysqli_num_rows($result) > 0)
 		<h4>Brukernavn</h4>
 	</div>
 	<div class="post-container">
-		<h2>Tittel må inn i database 8)</h2>
-		<p><?php echo $row[1]; ?> </p> <!-- PHP KOMMENTAR -->
+		<h2><?php echo $row[1]; ?></h2>
+		<p><?php echo $row[2]; ?> </p> <!-- PHP KOMMENTAR -->
 		<div class="post-stats">
 				<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 					<i class="fas fa-thumbs-up"></i>
@@ -42,7 +42,7 @@ if(mysqli_num_rows($result) > 0)
 					<i class="fas fa-thumbs-down"></i>
 				</a>
 			<h4>Publisert</h4>
-			<h4><?php echo $row[2]; ?></h4> <!-- PHP DATO -->
+			<h4><?php echo $row[3]; ?></h4> <!-- PHP DATO -->
 		</div>
 	</div>
 </div>

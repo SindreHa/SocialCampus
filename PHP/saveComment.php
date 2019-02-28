@@ -6,9 +6,14 @@ if(session_id() == '') {
 // Henter config fila
 require_once "../PHP/config.php";
 //$tittel = $_POST('tittel');
-$kommentar = "";
+$kommentar = $title = "";
 
 // Ser etter tomme felt for å hindre php error
+if (!empty($_POST)) {
+	if (isset($_POST['headline']){
+		$title = $_POST['headline'];
+	}
+}
 if (!empty($_POST)) {
 	if (isset($_POST['textarea'])) {
 		$kommentar = $_POST['textarea'];
@@ -22,7 +27,7 @@ if (!empty($_POST)) {
 */
 if (isset($_POST['textarea'])) {
 
-		$sql ="INSERT INTO post (content) VALUES('$kommentar')";
+		$sql ="INSERT INTO post (title, content) VALUES('$title', '$kommentar')";
 		if (mysqli_query($link, $sql)) 
 		{
 			header("gruppeEksempel.php");
