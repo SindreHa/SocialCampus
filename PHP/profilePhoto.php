@@ -1,9 +1,10 @@
 <?php
     //Inkluder config fil for databasen
     include_once 'config.php';
-    
+    session_start();
     //Konfigurer filopplastning
-    $userId     = 2; // $_SESSION['id']; Returnerer null?
+  
+    $userId = $_SESSION['id'];
     $name       = "USER_$userId ProfilePhoto.png";  
     $temp_name  = $_FILES['avatar']['tmp_name']; 
 
