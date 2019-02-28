@@ -72,7 +72,7 @@ $result = $link->query("SELECT * FROM user WHERE id = $userId");
 $row = $result->fetch_assoc();
 
 //Profilbilde for bruker
-$userPicture = !empty($row['avatar'])?$row['avatar']:'no-image.png';
+$userPicture = !empty($row['avatar'])?$row['avatar']:'placeholder-profile.png';
 $userPictureURL = '../Pictures/upload/'.$userPicture;
 ?>
 
@@ -91,14 +91,14 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
         include '../PHP/nav.php';?>
         <section class="profile-wrapper">
         	<div class="profile-container">
-
 	        	<div class="profile-header">
 	        		<div class="imgContainer img-upload">
-                    <form method="post" action="profilePhoto.php">
+                    <form id="img-upload-post" method="post" action="../PHP/profilePhoto.php" enctype="multipart/form-data">
 	        		    <img id="img-upload-result" src="<?php echo $userPictureURL; ?>">
-                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="readURL(this);">
+                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="postImg()">
+                        <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
                         <label id="img-name" for="avatar">Velg bilde</label>
-                        </form>
+                    </form>
 	        		</div>
 	        		<h1><?php echo htmlspecialchars($_SESSION["username"])?></h1>
 	        	</div>
@@ -176,6 +176,7 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
+<script src="../JS/ImgUpload.js"></script>
 <script src="../JS/NumberHandler.js"></script>
 <script src="../JS/slider.js"></script>
 </body>
