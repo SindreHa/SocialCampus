@@ -4,14 +4,13 @@
       	<h3>Snareveier</h3>
         <p><a href="404.php">Mine grupper</a></p>
         <p><a href="profil.php">Mine profilinstillinger</a></p>
-        <p><a href="../PHP/logout.php">Logout</a></p>
         <p><a href="404.php">Labore et dolore</a></p>
         <p><a href="404.php">Lorem ipsum</a></p>
 	</div>
 
 	<div class="footer-shortcut">
       	<h3>Informasjon</h3>
-        <p><a href="404.php">Om oss</a></p>
+        <p><a href="omoss.php">Om oss</a></p>
         <p><a href="404.php">Kontakt oss</a></p>
         <p><a href="404.php">Finn oss</a></p>
         <p><a href="404.php">Ofte stilte spørsmål</a></p>
@@ -37,17 +36,27 @@
 	<div class="footer-info">
     <div class="footer-copy">
       <p>Gruppe 7 &copy; <?php echo date("Y");?></p>
-      <p><a href="404.php">Opphavsrettsinformasjon</a></p>
+      <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) 
+      {?>
+      <p><a href="../PHP/logout.php"><i class="fas fa-sign-out-alt"></i>Logg ut</a></p>
+      <?php } 
+      else {?> 
+      <p><a href="../HTML/login.php"><i class="fas fa-sign-in-alt"></i>Logg inn</a></p> <?php 
+      }?>
     </div>
 
     <div class="footer-lang">
-            <a href="#">
+            <a href="404.php">
               <img src="../Pictures/norwegian.svg"/>
             </a>
-            <a href="#">
+            <a href="404.php">
               <img src="../Pictures/english.svg"/>
             </a>
     </div>
 	</div>
 
 </footer>
+
+<div class="toTop">
+  <i class="fas fa-arrow-up"></i>
+</div>

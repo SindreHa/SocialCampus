@@ -6,7 +6,7 @@ require_once "../PHP/config.php";
 $_SESSION['count'] = 4;
 $antPoster = $_SESSION['count'];
 
-$sql = "SELECT * FROM post ORDER BY post_id DESC LIMIT $antPoster";
+$sql = "SELECT * FROM post ORDER BY id DESC LIMIT $antPoster";
 $result = mysqli_query($link, $sql);
 
 if ( false===$result ) 

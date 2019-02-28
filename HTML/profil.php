@@ -63,7 +63,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Lukk connection
     mysqli_close($link);
 }
+
+//Get current user ID from session
+$userId = $_SESSION['id'];
+
+//Get user data from database
+$result = $link->query("SELECT * FROM user WHERE id = $userId");
+$row = $result->fetch_assoc();
+
+//Profilbilde for bruker
+$userPicture = !empty($row['avatar'])?$row['avatar']:'no-image.png';
+$userPictureURL = '../Pictures/upload/'.$userPicture;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="no">
@@ -81,8 +93,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         	<div class="profile-container">
 
 	        	<div class="profile-header">
-	        		<div class="imgContainer">
-	        		<img src="../Pictures/placeholder-profile.png">
+	        		<div class="imgContainer img-upload">
+                    <form method="post" action="profilePhoto.php">
+	        		    <img id="img-upload-result" src="<?php echo $userPictureURL; ?>">
+                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="readURL(this);">
+                        <label id="img-name" for="avatar">Velg bilde</label>
+                        </form>
 	        		</div>
 	        		<h1><?php echo htmlspecialchars($_SESSION["username"])?></h1>
 	        	</div>

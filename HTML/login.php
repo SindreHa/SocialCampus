@@ -110,8 +110,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="form-login <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                         <label>Brukernavn</label>
                         <div class="inputContainer">
-                            <i class="fas fa-at"></i>
-                            <input type="text" name="username" placeholder="Ola Nordmann" class="input" value="<?php echo $username; ?>">
+                            <i class="fas fa-user-tag"></i>
+                            <input type="text" name="username" placeholder="OlaNord123" class="input" value="<?php echo $username; ?>">
                         <i class="fas fa-exclamation input-error"></i>
                         </div>
                         <span class="help-block"><?php echo $username_err; ?></span>
