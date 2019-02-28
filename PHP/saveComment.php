@@ -10,13 +10,9 @@ $kommentar = $title = "";
 
 // Ser etter tomme felt for å hindre php error
 if (!empty($_POST)) {
-	if (isset($_POST['headline']){
-		$title = $_POST['headline'];
-	}
-}
-if (!empty($_POST)) {
-	if (isset($_POST['textarea'])) {
+	if (isset($_POST['headline']) && isset($_POST['textarea'])) {
 		$kommentar = $_POST['textarea'];
+		$title = $_POST['headline'];
 	}
 }
 
