@@ -1086,9 +1086,8 @@ footer p{
 }
 
 .toTop {
-	display: none;
 	position: fixed;
-	right: 20px;
+	right: -53px;
 	bottom: 20px;
 	width: 50px;
 	height: 50px;
@@ -1101,6 +1100,12 @@ footer p{
 	border: 1px solid var(--accent);
 	box-shadow: var(--shadow);
 	cursor: pointer;
+	transition: right .3s , bottom .3s;
+	transition-timing-function: cubic-bezier(0.41, 0.74, 0.47, 1.35)
+}
+
+.show-toTop {
+	right: 20px;
 }
 
 .toTop i{

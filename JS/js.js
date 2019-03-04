@@ -50,12 +50,29 @@ var insertBefore = head.insertBefore;
   	return false;
 	});
 
+	function getScrollPercent() {
+    var h = document.documentElement, 
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+    return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+	}
+
+	/*
+	*	Viser og skjuler knapp, 
+	*	posisjonerer også i forhold til høyde og bredde
+	*/ 
 	$(document).scroll(function() {
 		var y = $(this).scrollTop();
-		if (y > 200) {
-			$('.toTop').fadeIn();
+		if (getScrollPercent() > 75) {
+			$('.toTop').addClass('show-toTop');
 		} else {
-			$('.toTop').fadeOut();
+			$('.toTop').removeClass('show-toTop');
+		}
+		if(getScrollPercent() > 99 && screen.width < 1380 && screen.width > 550) {
+			$('.toTop').css("bottom", "65px");
+		} else {
+			$('.toTop').css("bottom", "20px");
 		}
 	});
 
