@@ -1,5 +1,5 @@
 window.onload = function(){
-    listPosts();
+    // listPosts();
 }
 
 document.getElementById("post-submit-ID").addEventListener("click", function(event)
@@ -25,12 +25,12 @@ function listPosts()
 }
 $(function()
 {
-    document.getElementById("post-submit-ID").disabled = true;
-    setInterval(function()
-    {
-        listPosts();
-    }, 1000);
-    })
+    // document.getElementById("post-submit-ID").disabled = true;
+    // setInterval(function()
+    // {
+    //     listPosts();
+    // }, 1000);
+    // })
 
     $('.submit-comment').click(function()
     {

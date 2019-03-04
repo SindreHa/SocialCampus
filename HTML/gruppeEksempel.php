@@ -66,8 +66,59 @@
 
 			<section class="group-post-wrapper">
 				<div class="group-post">
-					<div>
-						<!-- Her blir kommentarene lagt inn -->
+
+					<div class="group-post-box">
+					<div class="user-container">
+						<div class="imgContainer">
+							<img src="../Pictures/placeholder-profile.png">
+						</div>
+						<h4>Brukernavn</h4>
+					</div>
+					<div class="post-container">
+						<h2>Overskrift</h2>
+						<p>Paragraf</p> <!-- PHP KOMMENTAR -->
+						<div class="post-stats">
+								<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
+									<i class="fas fa-thumbs-up"></i>
+									<p class="ant-likes">132</p>
+								</a>
+								<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+									<i class="fas fa-thumbs-down"></i>
+								</a>
+							<h4>Publisert</h4>
+							<h4>DATO</h4> <!-- PHP DATO -->
+						</div>
+					</div>
+					</div>
+
+					<div class="group-post-box">
+						<div class="user-container">
+							<div class="imgContainer">
+								<img src="../Pictures/placeholder-profile.png">
+							</div>
+							<h4>Brukernavn</h4>
+						</div>
+						<div class="post-container">
+							<h2>Overskrift</h2>
+							<p>Paragraf</p> <!-- PHP KOMMENTAR -->
+							<div class="post-stats">
+									<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
+										<i class="fas fa-thumbs-up"></i>
+										<p class="ant-likes">132</p>
+									</a>
+									<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+										<i class="fas fa-thumbs-down"></i>
+									</a>
+								<h4>Publisert</h4>
+								<h4>DATO</h4> <!-- PHP DATO -->
+							</div>
+						</div>
+						<div class="comment-container">
+							<div class="post-comment">
+								<h4>Username</h4>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore magnam dolor hic harum? Facilis possimus, tenetur aperiam facere molestiae eaque, quis soluta perferendis blanditiis mollitia eos, illum odio deserunt maiores?</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			<div class="button-wrapper">
