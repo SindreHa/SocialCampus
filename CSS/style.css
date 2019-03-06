@@ -807,7 +807,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	display: none;
 	background-color: var(--primary); 
 	grid-area: comment-container;
-	border-top: 1px solid var(--dark);
+	border-top: 1px solid var(--lightGray);
 	/* height: 100px; */
 	overflow: auto;
 	padding-left: 85px;
