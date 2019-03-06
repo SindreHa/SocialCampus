@@ -4,6 +4,7 @@
 	--dark: #2e3136;
 	--darker: #1c1d1f;
 	--light: #fff;
+	--lightGray: #aaa;
 	--accent: #00a1c9;
 	--link: #0078FF;
 	--error: #C90000;
@@ -25,7 +26,7 @@
 html {
     height: 100%;
 	box-sizing: border-box;
-	font-family: roboto;
+	font-family: 'Roboto', 'Segoe UI', Tahoma, sans-serif;
 	color: black;
 }
 
@@ -36,9 +37,9 @@ body {
 	line-height: 1.4;
 }
 
-/*::selection {
+::selection {
     background: var(--accent);
-}*/
+}
 
 /*Knapper*/
 
@@ -67,7 +68,7 @@ body {
 }
 
 .btn:disabled{
-	color: #aaa;
+	color: var(--lightGray);
 }
 
 .btn:disabled:hover{
@@ -681,19 +682,23 @@ input:-webkit-autofill:active  {
 	color: transparent;
 }
 
-textarea::-webkit-scrollbar {
+textarea::-webkit-scrollbar, .comment-container::-webkit-scrollbar {
 	width: 10px;
 }
 
-textarea::-webkit-scrollbar-track {
+textarea::-webkit-scrollbar-track, .comment-container::-webkit-scrollbar-track {
 	background: var(--light);
 }
 
-textarea::-webkit-scrollbar-thumb {
+.comment-container::-webkit-scrollbar-track {
+	border-left: 1px solid var(--lightGray);
+}
+
+textarea::-webkit-scrollbar-thumb, .comment-container::-webkit-scrollbar-thumb {
 	background: var(--primary);
 }
 
-textarea::-webkit-scrollbar-thumb:hover {
+textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-thumb:hover {
 	background: var(--dark);
 }
 
@@ -734,7 +739,6 @@ textarea::-webkit-scrollbar-thumb:hover {
 	background-color: var(--primary);
 	box-shadow: var(--shadow);
 	margin-bottom: 20px;
-	min-height: 190px;
 }
 
 .group-post-box h2, .group-post-box  p{
@@ -747,6 +751,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	min-height: 190px;
 }
 
 .group-post-box .user-container img{
@@ -776,31 +781,113 @@ textarea::-webkit-scrollbar-thumb:hover {
 	justify-content: space-between;
 }
 
-.group-post-box .post-container h4{
+.group-post-box h4{
 	text-align: right;
 	font-weight: normal;
 	margin: 0 0 0 5px;
 }
 
-.group-post-box .post-container h4:nth-child(4){
-	margin-left: 5px;
-	padding-left: 5px;
+.group-post-box .post-stats h4:nth-child(2){
+	margin-left: 10px;
+	padding-left: 10px;
+	border-left: 1px solid var(--accent)
+}
+
+.group-post-box .post-stats h4 a:hover{
+	text-decoration: underline;
+}
+
+.group-post-box .post-stats h4:nth-child(3){
+	margin-left: 10px;
+	padding-left: 10px;
 	border-left: 1px solid var(--accent)
 }
 
 .group-post-box .comment-container {
-	background-color: #aaa; 
+	display: none;
+	background-color: var(--primary); 
 	grid-area: comment-container;
+	border-top: 1px solid var(--dark);
+	/* height: 100px; */
+	overflow: auto;
+	padding-left: 85px;
+}
+
+.group-post-box .comment-submit-container {
+	display: grid;
+	grid-template-columns: 85px 1fr;
+	grid-template-areas: 
+		"user-container-comment input-content";
+	background-color: var(--light);
+	min-height: 70px;
+}
+
+.comment-submit-wrapper {
+	margin: 15px;
+}
+
+.group-post-box .inputContainer {
+	grid-area: input-content;
+	margin: 15px;
+	box-shadow: none;
+	border: none;
+}
+
+.group-post-box .inputContainer .input{
+	/* background-color: var(--primary); */
+	resize: none;
+	font-family: inherit;
+	border: 1px solid var(--lightGray);
+	border-radius: 5px;
+}
+
+.group-post-box .inputContainer .input:focus::placeholder{
+	color: var(--lightGray);
 }
 
 .group-post-box .post-comment {
-	margin-left: 10px;
+	display: grid;
+	grid-template-columns: 85px 1fr;
+	grid-template-areas: 
+		"user-container-comment comment-content";
+	align-items: center;
+	height: 100%;
 }
 
-.group-post-box .post-comment h4{
-	margin: 10px 0;
+.group-post-box .post-comment:not(:first-child){
+	border-top: 1px solid var(--lightGray);
+}
+
+.group-post-box .comment-container .user-container-comment{
+	grid-area: user-container-comment;
+	height: 100%;
+	display: grid;
+	align-items: center;
+	background-color: var(--primary);
+	border-left: 1px solid var(--lightGray);
+}
+
+.group-post-box .comment-container .imgContainer {
+	width: 50px;
+	height: 50px;
+	margin: 0 20px;
+	border-width: 3px;
+}
+
+.group-post-box .post-comment h3{
+	margin: 10px 15px 0;
 	font-size: 1.1rem;
 	font-weight: 500;
+}
+
+.group-post-box .comment-content{
+	grid-area: comment-content;
+	width: 100%;
+	background-color: var(--light);
+}
+
+.group-post-box .comment-content p{
+	margin: 5px 15px 10px;
 }
 
 .post-stats {
@@ -813,29 +900,49 @@ textarea::-webkit-scrollbar-thumb:hover {
 .post-stats .like-button {
 	display: flex;
 	align-items: center;
-	background-color: var(--primary);
-	padding: 8px 15px;
-	margin-right: 15px;
-	border-radius: 5px;
+	padding: 8px 10px;
+	margin-right: 4px;
+}
+
+.post-stats .like-button:nth-child(3) {
+	margin: 0 0 0 4px;
+}
+
+.post-stats div {
+	display: flex;
+	align-items: center;
 }
 
 .like-button p {
-	margin: 0 0 0 5px;
+	margin: 0 10px;
 }
 
 .post-stats a{
 	color: inherit;
 	text-decoration: none;
-	transition: box-shadow .3s;
+	transition: background-color .2s ease-out;
+	border-radius: 5px;
 }
 
 .post-stats i{
-	padding-right: 3px;
-	transition: color .2s;
+	transition: color .2s ease-out;
+	font-size: 1.2rem;
 }
 
-.post-stats a:hover i{
+.post-stats p{
+	margin: 0 5px;
+}
+
+.post-stats .like-button:hover {
+	background-color: var(--primary);
+}
+
+.post-stats .like-button:nth-child(1):hover i{
 	color: var(--accent);
+}
+
+.post-stats .like-button:nth-child(3):hover i{
+	color: var(--error);
 }
 
  /*Om oss*/
