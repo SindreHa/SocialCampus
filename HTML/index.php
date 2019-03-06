@@ -21,10 +21,11 @@
 
 		<section class="search-index">
 				<form>
-					<div class="inputContainer">
-				<i class="fas fa-search input-icon"></i>
-				<input type="text" class="input" name="søk" placeholder="Søk etter gruppe">
-				<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1"></div>
+				<div class="inputContainer">
+					<i class="fas fa-search input-icon"></i>
+					<input type="text" class="input" name="søk" placeholder="Søk etter gruppe">
+					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
+				</div>
 				</form>
 		</section>
 		<section class="boxes">
