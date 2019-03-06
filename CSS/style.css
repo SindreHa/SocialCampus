@@ -792,7 +792,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	/* display: none; */
 	background-color: var(--primary); 
 	grid-area: comment-container;
-	border-top: 1px solid var(--lightGray);
+	/* border-top: 1px solid var(--lightGray); */
 	/* max-height: 200px;
 	overflow: auto; */
 }
@@ -804,6 +804,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 		"user-container-comment input-content";
 	background-color: var(--light);
 	min-height: 70px;
+	border-top: 1px solid var(--lightGray);
 }
 
 .group-post-box .inputContainer {
@@ -844,7 +845,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	font-weight: 500;
 }
 
-.group-post-box .post-comment:not(:first-child){
+.group-post-box .post-comment{
 	border-top: 1px solid var(--lightGray);
 }
 

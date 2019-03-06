@@ -11,14 +11,10 @@
 	<!-- <section class="darken hide" id="darken"></section> -->
 	<div class="wrapper">
         
-	<?php 
-
-        include '../PHP/nav.php';?>
+	<?php include '../PHP/nav.php';?>
 
 		<section class="group-container">
 			<section class="group-info-wrapper">
-
-			
 
 			<div class="group-info">
 				<div class="info-wrapper">
@@ -138,6 +134,48 @@
 							</div>
 						</div>
 						<div class="comment-container">
+							<div class="comment-toggle">
+								<div class="post-comment">
+									<div class="user-container-comment">
+										<div class="imgContainer">
+											<img src="../Pictures/sindre.jpg">
+										</div>
+										<div class="comment-vote">
+											<a href="#">
+												<i class="fas fa-caret-up"></i>
+											</a>
+											<p class="ant-likes">27</p>
+											<a href="#">
+												<i class="fas fa-caret-down"></i>
+											</a>
+										</div>
+									</div>
+									<div class="comment-content">
+										<h3>Sosinondodrore</h3>
+										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore magnam dolor hic harum? Facilis possimus, tenetur aperiam facere molestiae eaque, quis soluta perferendis blanditiis mollitia eos, illum odio deserunt maiores? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium dignissimos illum quos reiciendis! Dolorem ea rem eligendi accusamus qui dolore cupiditate delectus vel? Vel enim optio repellat quasi, quo excepturi.</p>
+									</div>
+								</div>
+								<div class="post-comment">
+									<div class="user-container-comment">
+									<div class="imgContainer">
+										<img src="../Pictures/torbjorn.jpg">
+									</div>
+										<div class="comment-vote">
+											<a href="#">
+												<i class="fas fa-caret-up"></i>
+											</a>
+											<p class="ant-likes">5</p>
+											<a href="#">
+												<i class="fas fa-caret-down"></i>
+											</a>
+										</div>
+									</div>
+									<div class="comment-content">
+									<h3>Turbobjørn</h3>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+									</div>
+								</div>
+							</div>
 							<div class="comment-submit-container">
 								<div class="user-container-comment">
 								<div class="imgContainer">
@@ -150,46 +188,6 @@
 									<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
 								</div>
 								</form>
-							</div>
-							<div class="post-comment">
-								<div class="user-container-comment">
-									<div class="imgContainer">
-										<img src="../Pictures/sindre.jpg">
-									</div>
-									<div class="comment-vote">
-										<a href="#">
-											<i class="fas fa-caret-up"></i>
-										</a>
-										<p class="ant-likes">27</p>
-										<a href="#">
-											<i class="fas fa-caret-down"></i>
-										</a>
-									</div>
-								</div>
-								<div class="comment-content">
-									<h3>Sosinondodrore</h3>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore magnam dolor hic harum? Facilis possimus, tenetur aperiam facere molestiae eaque, quis soluta perferendis blanditiis mollitia eos, illum odio deserunt maiores? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium dignissimos illum quos reiciendis! Dolorem ea rem eligendi accusamus qui dolore cupiditate delectus vel? Vel enim optio repellat quasi, quo excepturi.</p>
-								</div>
-							</div>
-							<div class="post-comment">
-								<div class="user-container-comment">
-								<div class="imgContainer">
-									<img src="../Pictures/torbjorn.jpg">
-								</div>
-									<div class="comment-vote">
-										<a href="#">
-											<i class="fas fa-caret-up"></i>
-										</a>
-										<p class="ant-likes">5</p>
-										<a href="#">
-											<i class="fas fa-caret-down"></i>
-										</a>
-									</div>
-								</div>
-								<div class="comment-content">
-								<h3>Turbobjørn</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-								</div>
 							</div>
 						</div>
 					</div>
