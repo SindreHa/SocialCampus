@@ -75,15 +75,15 @@
 							<p>Lorem ipsum</p> <!-- PHP KOMMENTAR -->
 							<div class="post-stats">
 									<div>
-										<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
+										<a href="#/" class="like-button" onclick="IncrementPostLikes(this)">
 											<i class="fas fa-caret-up"></i>
 										</a>
 										<p class="ant-likes">4</p>
-										<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+										<a href="#/" class="like-button" onclick="DecrementPostLikes(this)">
 											<i class="fas fa-caret-down"></i>
 										</a>
 									</div>
-								<h4><a class="comment-collapse" href="#">0 kommentarer</a></h4>
+								<h4><a class="comment-collapse" href="#/">1 kommentar</a></h4>
 								<h4>10.12.19 16:34:23</h4> <!-- PHP DATO -->
 							</div>
 						</div>
@@ -95,11 +95,11 @@
 											<img src="../Pictures/kristian.jpg">
 										</div>
 										<div class="comment-vote">
-											<a href="#">
+											<a href="#/" onclick="IncrementPostLikes(this)">
 												<i class="fas fa-caret-up"></i>
 											</a>
 											<p class="ant-likes">2</p>
-											<a href="#">
+											<a href="#/" onclick="DecrementPostLikes(this)">
 												<i class="fas fa-caret-down"></i>
 											</a>
 										</div>
@@ -142,15 +142,15 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> <!-- PHP KOMMENTAR -->
 							<div class="post-stats">
 									<div>
-										<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
+										<a href="#/" class="like-button" onclick="IncrementPostLikes(this)">
 											<i class="fas fa-caret-up"></i>
 										</a>
 										<p class="ant-likes">24</p>
-										<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
+										<a href="#/" class="like-button" onclick="DecrementPostLikes(this)">
 											<i class="fas fa-caret-down"></i>
 										</a>
 									</div>
-								<h4><a class="comment-collapse" href="#">2 kommentarer</a></h4>
+								<h4><a class="comment-collapse" href="#/">2 kommentarer</a></h4>
 								<h4>10.12.19 16:34:23</h4> <!-- PHP DATO -->
 							</div>
 						</div>
@@ -162,11 +162,11 @@
 											<img src="../Pictures/sindre.jpg">
 										</div>
 										<div class="comment-vote">
-											<a href="#">
+										<a href="#/" class="like-button" onclick="IncrementPostLikes(this)">
 												<i class="fas fa-caret-up"></i>
 											</a>
 											<p class="ant-likes">27</p>
-											<a href="#">
+											<a href="#/" class="like-button" onclick="DecrementPostLikes(this)">
 												<i class="fas fa-caret-down"></i>
 											</a>
 										</div>
@@ -183,11 +183,11 @@
 										<img src="../Pictures/torbjorn.jpg">
 									</div>
 										<div class="comment-vote">
-											<a href="#">
+										<a href="#/" class="like-button" onclick="IncrementPostLikes(this)">
 												<i class="fas fa-caret-up"></i>
 											</a>
 											<p class="ant-likes">5</p>
-											<a href="#">
+											<a href="#/" class="like-button" onclick="DecrementPostLikes(this)">
 												<i class="fas fa-caret-down"></i>
 											</a>
 										</div>
