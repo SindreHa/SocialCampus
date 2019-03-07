@@ -893,12 +893,14 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	width: 20px;
 	height: 20px;
 	border-radius: 4px;
-	transition: color .1s ease-out, background-color .1s ease-out;
 }
 
-.group-post-box .comment-container .user-container-comment .comment-vote a:hover{
+.group-post-box .comment-container .user-container-comment .comment-vote i{
+	transition: color .1s ease-out, transform .1s ease-out;
+}
+
+.group-post-box .comment-container .user-container-comment .comment-vote a:hover i{
 	color: var(--accent);
-	background-color: var(--lightDark);
 }
 
 .group-post-box .comment-container .user-container-comment .comment-vote a:nth-child(3):hover i{
@@ -938,8 +940,8 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	border-radius: 5px;
 }
 
-.group-post-box .post-stats i{
-	transition: color .1s ease-out;
+.group-post-box .post-stats .like-button i{
+	transition: color .1s ease-out, transform .1s ease-out;
 	font-size: 1.2rem;
 }
 
@@ -977,16 +979,23 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 }
 
 .group-post-box .post-stats .like-button:hover {
-	color: white;
-	background-color: var(--lightDark);
+	background-color: var(--light);
 }
 
 .group-post-box .post-stats .like-button:nth-child(1):hover i{
 	color: var(--accent);
 }
 
+.group-post-box .post-stats .like-button:nth-child(1):active i, .group-post-box .comment-container .user-container-comment .comment-vote a:active i{
+	transform: translateY(-2px);
+}
+
 .group-post-box .post-stats .like-button:nth-child(3):hover i{
 	color: var(--error);
+}
+
+.group-post-box .post-stats .like-button:nth-child(3):active i, .group-post-box .comment-container .user-container-comment .comment-vote a:nth-child(3):active i{
+	transform: translateY(2px);
 }
 
  /*Om oss*/
