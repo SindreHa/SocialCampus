@@ -40,7 +40,7 @@ var insertBefore = head.insertBefore;
 
 	$(".comment-collapse").click( function(e) {
 		e.preventDefault(); 
-			$(".comment-toggle").slideToggle();
+		$(this).closest(".post-container").next().find(".comment-toggle").slideToggle();
 		return false; 
 	});
 

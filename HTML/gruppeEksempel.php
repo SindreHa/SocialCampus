@@ -61,8 +61,6 @@
 			</section>
 
 			<section class="group-post-wrapper">
-				<div class="group-post">
-
 				<div class="group-post-box">
 						<div class="user-container">
 							<div class="user-container-comment">
@@ -109,6 +107,7 @@
 									<div class="comment-content">
 										<h3>Kristian</h3>
 										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore magnam dolor hic harum? Facilis possimus, tenetur aperiam facere molestiae eaque, quis soluta perferendis blanditiis mollitia eos, illum odio deserunt maiores? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium dignissimos </p>
+										<p>10.12.19 16:34:23</p>
 									</div>
 								</div>
 								</div>
@@ -175,6 +174,7 @@
 									<div class="comment-content">
 										<h3>Sosinondodrore</h3>
 										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore magnam dolor hic harum? Facilis possimus, tenetur aperiam facere molestiae eaque, quis soluta perferendis blanditiis mollitia eos, illum odio deserunt maiores? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium dignissimos illum quos reiciendis! Dolorem ea rem eligendi accusamus qui dolore cupiditate delectus vel? Vel enim optio repellat quasi, quo excepturi.</p>
+										<p>10.12.19 16:34:23</p>
 									</div>
 								</div>
 								<div class="post-comment">
@@ -195,6 +195,7 @@
 									<div class="comment-content">
 									<h3>Turbobjørn</h3>
 									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+									<p>11.06.19 12:34:13</p>
 									</div>
 								</div>
 							</div>
