@@ -55,7 +55,6 @@ function loadMoreComments(){
 
 function IncrementPostLikes(element)
 {
-    // var currentLikes = element.children[1].innerHTML;
     element.nextElementSibling.innerHTML++;
 }
 

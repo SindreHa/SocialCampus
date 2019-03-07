@@ -782,6 +782,10 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	overflow: auto; */
 }
 
+.comment-toggle {
+	display: none;
+}
+
 .group-post-box .comment-submit-container {
 	display: grid;
 	grid-template-columns: 90px 1fr;
