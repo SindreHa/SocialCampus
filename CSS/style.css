@@ -813,6 +813,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	margin: 15px 15px 15px 0px;
 	box-shadow: none;
 	border: none;
+	border-radius: 5px;
 }
 
 .group-post-box .comment-submit-container form{
@@ -825,10 +826,15 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	font-family: inherit;
 	border: 1px solid var(--lightGray);
 	border-radius: 5px;
+	transition: border-color .3s ease-out;
 }
 
 .group-post-box .inputContainer .input:focus::placeholder{
 	color: var(--lightGray);
+}
+
+.group-post-box .inputContainer .input:focus{
+	border-color: var(--accent);
 }
 
 .group-post-box .post-comment {
@@ -911,6 +917,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	height: 50px;
 	margin: 0 0px 0 20px;
 	border-width: 3px;
+	box-shadow: var(--shadow);
 }
 
 .group-post-box .comment-submit-container .imgContainer {

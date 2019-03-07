@@ -48,7 +48,7 @@
 					<h2>Publiser innlegg</h2>
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>"class="form-input" id="group-form" method="post">
-					<input type="text" name="headline" placeholder="Tittel" id="post-title-ID">
+					<input type="text" name="headline" placeholder="Tittel" id="post-title-ID" autocomplete="off">
 					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="850"></textarea>
 					<div class="post-submit-container">
 						<button class="btn submit-comment" id="post-submit-ID">Publiser</button>
@@ -80,16 +80,38 @@
 										<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
 											<i class="fas fa-caret-up"></i>
 										</a>
-										<p class="ant-likes">24</p>
+										<p class="ant-likes">4</p>
 										<a href="#" class="like-button" onclick="DecrementPostLikes(this)">
 											<i class="fas fa-caret-down"></i>
 										</a>
 									</div>
-								<h4><a class="comment-collapse" href="#">Skriv en kommentar</a></h4>
+								<h4><a class="comment-collapse" href="#">0 kommentarer</a></h4>
 								<h4>10.12.19 16:34:23</h4> <!-- PHP DATO -->
 							</div>
 						</div>
 						<div class="comment-container">
+							<div class="comment-toggle">
+								<div class="post-comment">
+									<div class="user-container-comment">
+										<div class="imgContainer">
+											<img src="../Pictures/kristian.jpg">
+										</div>
+										<div class="comment-vote">
+											<a href="#">
+												<i class="fas fa-caret-up"></i>
+											</a>
+											<p class="ant-likes">2</p>
+											<a href="#">
+												<i class="fas fa-caret-down"></i>
+											</a>
+										</div>
+									</div>
+									<div class="comment-content">
+										<h3>Kristian</h3>
+										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore magnam dolor hic harum? Facilis possimus, tenetur aperiam facere molestiae eaque, quis soluta perferendis blanditiis mollitia eos, illum odio deserunt maiores? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium dignissimos </p>
+									</div>
+								</div>
+								</div>
 							<div class="comment-submit-container">
 								<div class="user-container-comment">
 								<div class="imgContainer">
