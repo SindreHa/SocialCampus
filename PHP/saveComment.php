@@ -26,7 +26,7 @@ if (!empty($_POST)) {
    en refresh vil trigre POST om igjen og legge tomme kommentarer inn i
    databasen 
 */
-if (isset($_POST['textarea'])) {
+if (isset($_POST['textarea']) && isset($_POST['tittel'])) {
 
 		$sql ="INSERT INTO post (title, content) VALUES('$tittel','$kommentar')";
 		if (mysqli_query($link, $sql)) 
@@ -38,9 +38,10 @@ if (isset($_POST['textarea'])) {
 			echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 
-	if (isset($_POST['textarea']))
+	if (isset($_POST['textarea']) && isset($_POST['tittel']))
 	{
 		$_POST['textarea'] = " ";
+		$_POST['tittel'] = " ";
 	}
 }
 
