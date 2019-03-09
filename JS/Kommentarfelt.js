@@ -35,10 +35,11 @@ $(function()
     $('.submit-comment').click(function()
     {
         document.getElementById("post-submit-ID").disabled = true;
+        var header = $(".tittel").val();
         var post = $(".innhold").val();
         $.ajax({
             url:'../HTML/gruppeEksempel.php',
-            data: { headline: post, textarea: post },
+            data: { tittel: header, textarea: post },
             type:'post',
             success:function()
             {

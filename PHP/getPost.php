@@ -31,7 +31,7 @@ if(mysqli_num_rows($result) > 0)
 		<h4>Brukernavn</h4>
 	</div>
 	<div class="post-container">
-		<h2><?php echo $row[1]; ?></h2>
+		<h2><?php echo $row[1]; ?></h2> <!-- PHP TITTEL -->
 		<p><?php echo $row[2]; ?> </p> <!-- PHP KOMMENTAR -->
 		<div class="post-stats">
 				<a href="#" class="like-button" onclick="IncrementPostLikes(this)">
