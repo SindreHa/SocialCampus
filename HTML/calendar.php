@@ -26,4 +26,16 @@ function draw_calendar($month,$year){
     $calendar.= '<tr class="calendar-row">';
     
     
+    /* print blanke dager til den første dagen i uka*/
+	for($x = 0; $x < $running_day; $x++):
+		$calendar.= '<td class="calendar-day-np"> </td>';
+		$week_days++;
+	endfor;
+
+	/* keep going with days.... */
+	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
+		$calendar.= '<td class="calendar-day">';
+			/* add in the day number */
+			$calendar.= '<div class="day-number">'.$list_day.'</div>';
+    
     ;?>
