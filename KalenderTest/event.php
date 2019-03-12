@@ -1,10 +1,10 @@
 <?php
-include_once("calendar_db.php");
+include_once("c_config.php");
 $sqlEvents = "SELECT id, title, start_date, end_date FROM events LIMIT 20";
 $resultset = mysqli_query($conn, $sqlEvents) or die("database error:". mysqli_error($conn));
 $calendar = array();
 while( $rows = mysqli_fetch_assoc($resultset) ) {	
-	// konvertere dato til millisekunder
+	// convert  date to milliseconds
 	$start = strtotime($rows['start_date']) * 1000;
 	$end = strtotime($rows['end_date']) * 1000;	
 	$calendar[] = array(

@@ -8,14 +8,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- jQuery -->
 
-
-<link rel="stylesheet" href="../css/calendar.css">
+<title>Kalender</title>
+<link rel="stylesheet" href="css/calendar.css">
 <div class="container">	
 	<div class="page-header">
 		<div class="pull-right form-inline">
 			<div class="btn-group">
 				<button class="btn btn-primary" data-calendar-nav="prev"><< Forrige</button>
-				<button class="btn btn-default" data-calendar-nav="today">i dag</button>
+				<button class="btn btn-default" data-calendar-nav="today">I dag</button>
 				<button class="btn btn-primary" data-calendar-nav="next">Neste >></button>
 			</div>
 			<div class="btn-group">
@@ -32,18 +32,19 @@
 			<div id="showEventCalendar"></div>
 		</div>
 		<div class="col-md-3">
-			<h4>Alle events</h4>
+			<h4>Events</h4>
 			<ul id="eventlist" class="nav nav-list"></ul>
 		</div>
 	</div>	
 	
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-<script type="text/javascript" src="../js/calendar.js"></script>
-<script type="text/javascript" src="../js/events.js"></script>
+<script type="text/javascript" src="js/calendar.js"></script>
+<script type="text/javascript" src="js/events.js"></script>
 <div class="insert-post-ads1" style="margin-top:20px;">
 
 </div>
 </div>
 </body></html>
+
 
