@@ -48,7 +48,7 @@
 					<h2>Publiser innlegg</h2>
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>"class="form-input" id="group-form" method="post">
-					<input type="text" name="headline" placeholder="Tittel" id="post-title-ID" autocomplete="off">
+					<input type="text" name="headline" placeholder="Tittel" class="tittel" id="post-title-ID" autocomplete="off">
 					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="850"></textarea>
 					<div class="post-submit-container">
 						<button class="btn submit-comment" id="post-submit-ID">Publiser</button>

@@ -30,7 +30,7 @@ if (!empty($_POST)) {
 */
 if (isset($_POST['textarea']) && isset($_POST['tittel'])) {
 
-		$sql ="INSERT INTO post (title, content) VALUES('$tittel','$innhold')";
+		$sql ="INSERT INTO post (title, content, user_id) VALUES('$tittel','$innhold', '$user_id')";
 		if (mysqli_query($link, $sql)) 
 		{
 			header("gruppeEksempel.php");
