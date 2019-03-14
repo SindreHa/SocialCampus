@@ -3,8 +3,8 @@
 require_once "../PHP/config.php";
  
 // Definer variabler initialiser med tomme verdier
-$username = $email = $password = $confirm_password = "";
-$username_err = $email_err = $password_err = $confirm_password_err  = "";
+$username = $email = $password = $confirm_password = $full_name = "";
+$username_err = $email_err = $password_err = $confirm_password_err = $full_name_err ="";
  
 // Tar i mot data fra et "post form"
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -93,18 +93,50 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         mysqli_stmt_close($stmt);
     }
     
+        // Valider navn
+    if(empty(trim($_POST["full_name"]))){
+        $full_name_err = "Skriv inn navn";
+    } else{
+        // Select spørring for navn           
+        $sql = "SELECT id FROM user WHERE full_name = ?";
+         if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "s", $param_full_name);
+            
+            // Velg parametre 
+            $param_full_name = trim($_POST["full_name"]);
+            
+            // Utfør statement
+            if(mysqli_stmt_execute($stmt)){
+                /* Lagre resultatet */
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    $full_name_err = "";
+                } else{
+                    $full_name = trim($_POST["full_name"]);
+                }
+            } else{
+                echo "Woops! Det skjedde noe feil med navnet";
+            }
+        }
+         
+        // Close userfull_name statement       
+        mysqli_stmt_close($stmt);
+    }
+    
     // Se etter input feil før insetting i database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($name_err) && empty($email_err)){
         
         // Lage insert for username og passord
-        $sql = "INSERT INTO user (username, password, email) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO user (username, password, full_name, email) VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_email);
+            mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password, $param_name, $param_email);
             
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Lage passord hash
             $param_email = $email;
+            $param_name = $full_name;
             
             if(mysqli_stmt_execute($stmt)){
                 // sender bruker til login
@@ -142,6 +174,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+
                     <div class="form-login <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                         <label>Brukernavn</label>
                         <div class="inputContainer">
@@ -151,8 +184,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <i class="fa fa-check input-approved" id="input-approved-username"></i>
                         </div>
                         <span class="help-block"><?php echo $username_err; ?></span>
-                    </div>   
-                     <div class="form-login <?php echo (!empty($emails_err)) ? 'has-error' : ''; ?>">
+                    </div>  
+
+                     <div class="form-login <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                         <label>Email</label>
                         <div class="inputContainer">
                             <i class="fas fa-at input-icon"></i>
@@ -162,6 +196,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <span class="help-block"><?php echo $email_err; ?></span>
                     </div> 
+
+                     <div class="form-login <?php echo (!empty($full_name_err)) ? 'has-error' : ''; ?>">
+                        <label>Fullt navn</label>
+                        <div class="inputContainer">
+                            <i class="fas fa-address-book"></i>
+                            <input type="text" name="full_name" autocomplete="full_name" placeholder="Ola Nordmann" class="input" value="<?php echo $full_name; ?>" id="full_name-ID">
+                            <i class="fas fa-exclamation input-error" id="input-error-full_name"></i>
+                            <i class="fa fa-check input-approved" id="input-approved-full_name"></i>
+                        </div>
+                        <span class="help-block"><?php echo $full_name_err; ?></span>
+                    </div> 
+
                     <div class="form-login <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                         <label>Passord</label>
                         <div class="inputContainer">
@@ -172,6 +218,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <span class="help-block"><?php echo $password_err; ?></span>
                     </div>
+
                     <div class="form-login <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
                         <label>Bekreft passord</label>
                             <div class="inputContainer">
@@ -182,6 +229,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <span class="help-block"><?php echo $confirm_password_err; ?></span>
                     </div>
+
                     <div class="button-wrapper">
                         <input type="submit" class="btn" value="Opprett bruker" id="Submit-Toggle">
                         <input type="reset" class="btn" value="Klarer felt">

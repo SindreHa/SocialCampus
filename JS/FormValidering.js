@@ -9,6 +9,7 @@ $(document).ready(function ()
 {
     $("#Username-ID").keyup(checkUsernameLength);
     $("#Email-ID").keyup(validateEmail);
+    $("#full_name-ID").keyup(checkNameLength);
     $("#Password-ID").keyup(checkPasswordLength);
     $("#ConfirmPassword-ID").keyup(checkPasswordMatch);
     $("#Username-ID, #Email-ID, #Password-ID, #ConfirmPassword-ID").keyup(SubmitToggle);
@@ -32,6 +33,33 @@ function checkUsernameLength()
         $("#input-error-username").css("right", "0px");
         $("#input-approved-username").css("right", "-40px");
     }
+}
+
+function checkNameLength()
+{
+    var name = $("#full_name-ID").val();
+    if(validateNameCheck(name)){
+        $("#input-error-full_name").css("right", "-40px");
+        $("#input-approved-full_name").css("right", "0px");
+        return true;
+    }
+    else if(name.length == 0)
+    {
+        $("#input-error-full_name").css("right", "-40px");
+        $("#input-approved-full_name").css("right", "-40px");
+    }
+    else
+    {
+        $("#input-error-full_name").css("right", "0px");
+        $("#input-approved-full_name").css("right", "-40px");
+    }
+}
+
+
+function validateNameCheck(name) 
+{
+    var regex = /\W+\S+\W+/;
+    return regex.test(name);
 }
 
 function validateEmail()
