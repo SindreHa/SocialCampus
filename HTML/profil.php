@@ -74,6 +74,14 @@ $row = $result->fetch_assoc();
 //Profilbilde for bruker
 $userPicture = !empty($row['avatar'])?$row['avatar']:'placeholder-profile.png';
 $userPictureURL = '../Pictures/upload/'.$userPicture;
+
+$sql = "SELECT * FROM user WHERE id = $userId";
+$result = mysqli_query($link, $sql);
+
+$row = mysqli_fetch_row($result);
+$username = $row[1];
+$email = $row[5];
+$name = $row[3];
 ?>
 
 
@@ -100,7 +108,7 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
                         <label id="img-name" for="avatar">Velg bilde</label>
                     </form>
 	        		</div>
-	        		<h1><?php echo htmlspecialchars($_SESSION["username"])?></h1>
+	        		<h1><?php echo $username?></h1>
 	        	</div>
 
 	        	<div class="profile-info">
@@ -108,7 +116,7 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 	        			<h3>Brukernavn</h3>
 	        			<div class="inputContainer">
                             <i class="fas fa-user"></i>
-	        				<input type="text"class="input" disabled value="<?php echo htmlspecialchars($_SESSION["username"])?>">
+	        				<input type="text"class="input" disabled value="<?php echo $username?>">
 	        			</div>
 	        		</div>
 
@@ -116,7 +124,7 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 	        			<h3>E-post</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-at"></i>
-	        				<input type="text" class="input" disabled value="eksempel@outlook.com">
+	        				<input type="text" class="input" disabled value="<?php echo $email?>">
 	        			</div>
 	        			<!-- <h4>Sindre.h@outlook.com</h4> -->
 	        		</div>
@@ -125,7 +133,7 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 	        			<h3>Fullt navn</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-address-book"></i>
-	        				<input type="text" class="input" value="Ola Nordmann" disabled>
+	        				<input type="text" class="input" value="<?php echo $name?>" disabled>
 	        			</div>
 	        		</div>
 
