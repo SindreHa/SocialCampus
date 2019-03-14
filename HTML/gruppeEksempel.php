@@ -1,5 +1,5 @@
 
-<?php include '../PHP/saveComment.php';?>
+<?php include '../PHP/savePost.php';?>
 
 <!DOCTYPE html>
 <html lang="no">
@@ -11,14 +11,10 @@
 	<!-- <section class="darken hide" id="darken"></section> -->
 	<div class="wrapper">
         
-	<?php 
-
-        include '../PHP/nav.php';?>
+	<?php include '../PHP/nav.php';?>
 
 		<section class="group-container">
 			<section class="group-info-wrapper">
-
-			
 
 			<div class="group-info">
 				<div class="info-wrapper">
@@ -52,7 +48,7 @@
 					<h2>Publiser innlegg</h2>
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>"class="form-input" id="group-form" method="post">
-					<input class="tittel" type="text" name="headline" placeholder="Tittel" id="post-title-ID">
+					<input type="text" name="headline" placeholder="Tittel" class="tittel" id="post-title-ID" autocomplete="off">
 					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="850"></textarea>
 					<div class="post-submit-container">
 						<button class="btn submit-comment" id="post-submit-ID">Publiser</button>
@@ -66,9 +62,7 @@
 
 			<section class="group-post-wrapper">
 				<div class="group-post">
-					<div>
-						<!-- Her blir kommentarene lagt inn -->
-					</div>
+				
 				</div>
 			<div class="button-wrapper">
 				<button class="btn" id="newCommentButton-ID" onclick="loadMorePosts()">Last inn innlegg</button>
@@ -83,8 +77,8 @@
 <?php include '../PHP/footer.php';?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/js.js"></script>
 <script src="../JS/PostManager.js"></script>
-<script src="../JS/Kommentarfelt.js"></script>
+<script src="../JS/PostFetch.js"></script>
+<script src="../JS/js.js"></script>
 </body>
 </html>

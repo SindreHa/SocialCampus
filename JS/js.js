@@ -4,12 +4,6 @@
 // Kart
 var map, infoWindow;
 
-//Telling av klasser
-$(document).ready(function()
-{
-var numClasses = $('.group-post-box').length + 1;
-document.documentElement.style.setProperty('--postNumber', numClasses);
-});
 
 //Variabler brukt for å hindre GMaps i å hente inn egen font
 var head = document.getElementsByTagName( 'head' )[0];
@@ -43,6 +37,15 @@ var insertBefore = head.insertBefore;
 	    	$("input").first().focus();
 		});
 	}
+
+$(function() {
+	$(".comment-collapse").click( function(e) {
+		e.preventDefault(); 
+		$(this).closest(".post-container").next().find(".comment-toggle").slideToggle();
+		return false; 
+	});
+});
+	
 
 	/*Funskjoner for scrolling til topp knapp*/ 
 	$(".toTop").click(function() {
