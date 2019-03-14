@@ -39,7 +39,7 @@ var insertBefore = head.insertBefore;
 	}
 
 $(function() {
-	$(".comment-collapse").click( function(e) {
+	$('body').on('click', '.comment-collapse', function(e) {
 		e.preventDefault(); 
 		$(this).closest(".post-container").next().find(".comment-toggle").slideToggle();
 		return false; 
