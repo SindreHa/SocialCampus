@@ -14,14 +14,12 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema application
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `application` DEFAULT CHARACTER SET latin1 ;
+CREATE SCHEMA IF NOT EXISTS `application` DEFAULT CHARACTER SET utf8 ;
 USE `application` ;
 
 -- -----------------------------------------------------
 -- Table `application`.`category`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`category` ;
-
 CREATE TABLE IF NOT EXISTS `application`.`category` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
@@ -44,8 +42,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`user` ;
-
 CREATE TABLE IF NOT EXISTS `application`.`user` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
@@ -66,11 +62,10 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`post`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`post` ;
-
 CREATE TABLE IF NOT EXISTS `application`.`post` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `content` VARCHAR(100) NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `content` VARCHAR(855) NOT NULL,
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` INT(11) NULL DEFAULT NULL,
   `status_id` INT(11) NULL DEFAULT NULL,
@@ -86,8 +81,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`commentary`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`commentary` ;
-
 CREATE TABLE IF NOT EXISTS `application`.`commentary` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `content` VARCHAR(100) NOT NULL,
@@ -109,10 +102,23 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `application`.`events`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `application`.`events` (
+  `id` INT(11) NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `start_date` VARCHAR(50) NOT NULL,
+  `end_date` VARCHAR(50) NOT NULL,
+  `created` DATETIME NOT NULL,
+  `status` TINYINT(1) NOT NULL DEFAULT '1' COMMENT '1=Active, 0=Block')
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `application`.`groups`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`groups` ;
-
 CREATE TABLE IF NOT EXISTS `application`.`groups` (
   `id` INT(11) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
@@ -131,8 +137,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`groups_has_users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`groups_has_users` ;
-
 CREATE TABLE IF NOT EXISTS `application`.`groups_has_users` (
   `groups_id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
@@ -156,8 +160,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`likes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`likes` ;
-
 CREATE TABLE IF NOT EXISTS `application`.`likes` (
   `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
@@ -182,10 +184,19 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `application`.`status`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `application`.`status` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `application`.`thread`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `application`.`thread` ;
-
 CREATE TABLE IF NOT EXISTS `application`.`thread` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `content` VARCHAR(850) NOT NULL,
@@ -205,14 +216,22 @@ CREATE TABLE IF NOT EXISTS `application`.`thread` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+
+-- -----------------------------------------------------
+-- Table `application`.`user_status`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `application`.`user_status` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
 USE `application` ;
 
 -- -----------------------------------------------------
 -- procedure newUser
 -- -----------------------------------------------------
-
-USE `application`;
-DROP procedure IF EXISTS `application`.`newUser`;
 
 DELIMITER $$
 USE `application`$$
@@ -232,9 +251,6 @@ DELIMITER ;
 -- -----------------------------------------------------
 -- procedure updateProfil
 -- -----------------------------------------------------
-
-USE `application`;
-DROP procedure IF EXISTS `application`.`updateProfil`;
 
 DELIMITER $$
 USE `application`$$

@@ -5,15 +5,20 @@ if(session_id() == '') {
 }
 // Henter config fila
 require_once "../PHP/config.php";
-//$tittel = $_POST('tittel');
-$kommentar = $title = "";
+
+$tittel = "";
+$kommentar = "";
+
 
 // Ser etter tomme felt for å hindre php error
 if (!empty($_POST)) {
-	if (isset($_POST['headline']) && isset($_POST['textarea'])) {
-		$kommentar = $_POST['textarea'];
-		$title = $_POST['headline'];
+	if (isset($_POST['tittel'])) {
+		$tittel = $_POST['tittel'];
 	}
+	if (isset($_POST['textarea'])) {
+		$kommentar = $_POST['textarea'];
+	}
+	
 }
 
 /* 
@@ -21,9 +26,9 @@ if (!empty($_POST)) {
    en refresh vil trigre POST om igjen og legge tomme kommentarer inn i
    databasen 
 */
-if (isset($_POST['textarea'])) {
+if (isset($_POST['textarea']) && isset($_POST['tittel'])) {
 
-		$sql ="INSERT INTO post (title, content) VALUES('$title', '$kommentar')";
+		$sql ="INSERT INTO post (title, content) VALUES('$tittel','$kommentar')";
 		if (mysqli_query($link, $sql)) 
 		{
 			header("gruppeEksempel.php");
@@ -33,9 +38,10 @@ if (isset($_POST['textarea'])) {
 			echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 
-	if (isset($_POST['textarea']))
+	if (isset($_POST['textarea']) && isset($_POST['tittel']))
 	{
 		$_POST['textarea'] = " ";
+		$_POST['tittel'] = " ";
 	}
 }
 
