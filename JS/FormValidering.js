@@ -38,7 +38,7 @@ function checkUsernameLength()
 function checkNameLength()
 {
     var name = $("#full_name-ID").val();
-    if(validateNameCheck(name)){
+    if(name > 0){
         $("#input-error-full_name").css("right", "-40px");
         $("#input-approved-full_name").css("right", "0px");
         return true;
@@ -58,7 +58,7 @@ function checkNameLength()
 
 function validateNameCheck(name) 
 {
-    var regex = /\W+\S+\W+/;
+    var regex = /\W\S/;
     return regex.test(name);
 }
 
