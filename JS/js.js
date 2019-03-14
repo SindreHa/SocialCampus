@@ -38,11 +38,14 @@ var insertBefore = head.insertBefore;
 		});
 	}
 
+$(function() {
 	$(".comment-collapse").click( function(e) {
 		e.preventDefault(); 
 		$(this).closest(".post-container").next().find(".comment-toggle").slideToggle();
 		return false; 
 	});
+});
+	
 
 	/*Funskjoner for scrolling til topp knapp*/ 
 	$(".toTop").click(function() {

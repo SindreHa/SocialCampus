@@ -3,7 +3,7 @@ var labelVal = document.getElementById("img-name");
 document.getElementById("avatar").addEventListener( 'change', function( e )
 {
     var fileName = this.value;
-    console.log(this.value);
+    // console.log(this.value);
     fileName = fileName.substring(fileName.lastIndexOf("\\") + 1, fileName.length);
     document.getElementById("img-name").innerHTML = fileName;
 });
