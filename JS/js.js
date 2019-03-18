@@ -31,9 +31,9 @@ var insertBefore = head.insertBefore;
 	function TooltipMessage(text) {
 		$(".tooltip p").html(text);
 			$(".tooltip").addClass('tooltip-show'); 
-			// setTimeout(function() {
-			// 	$(".tooltip").removeClass('tooltip-show'); 
-			// }, 4000);
+			 /* setTimeout(function() {
+			 	$(".tooltip").removeClass('tooltip-show'); 
+			 }, 4000); */
 	};
 
 	$(".tooltip a").click(function() {

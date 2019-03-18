@@ -508,21 +508,17 @@ input:-webkit-autofill:active  {
 
 /*Grupper*/
 
-.group-container {
-	display: flex;
-	flex-direction: row;
-}
-
 .group-container h2{
 	font-weight: 500;
 }
 
 .group-info-wrapper {
-	display: flex;
-	flex-direction: column;
-	width: 40%;
-	max-width: 500px;
-	margin: 0 20px 20px 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas: 
+		"group-info group-post-creator group-post-creator group-post-creator";
+	grid-gap: 20px;
+	/* max-width: 500px; */
 }
 
 .group-search {
@@ -530,10 +526,13 @@ input:-webkit-autofill:active  {
 }
 
 .group-info {
+	grid-area: group-info;
 	display: flex;
 	flex-direction: column;
+	/* width: 24%; */
+	/* margin-right: 20px; */
 	color: var(--light);
-	background-color: var(--dark);
+	background-color: var(--light);
 	box-shadow: var(--shadow);
 }
 
@@ -546,21 +545,31 @@ input:-webkit-autofill:active  {
 	display: flex;
 	align-items: center;
 	margin-right: 20px;
+	padding-bottom: 20px;
 }
 
 .group-info .group-name i{
 	color: var(--accent);
 }
 
+.group-info .group-stats-wrapper{
+	display: flex;
+	flex-direction: row;
+	padding-top: 20px;
+	width: 100%;
+	justify-content: space-around;
+	border-top: .5px solid var(--accent);
+}
+
 .group-info .group-stats {
 	display: flex;
 	flex-direction: column;
-	padding-left: 20px;
 }
 
-.group-info .group-stats:nth-child(3){
-	margin-left: 20px;
-	border-left: .5px solid var(--accent)
+.group-info .group-stats:nth-child(2){
+	margin-left: 10px;
+	padding-left: 10px;
+	/* border-left: .5px solid var(--accent); */
 }
 
 .group-info .group-stats h5{
@@ -577,6 +586,8 @@ input:-webkit-autofill:active  {
 
 .group-info .info-wrapper {
 	display: flex;
+	flex-direction: column;
+	background-color: var(--dark);
 	padding: 20px;
 	min-height: 50px;
 	align-items: center;
@@ -589,14 +600,16 @@ input:-webkit-autofill:active  {
 
 .group-info .group-description p{
 	margin: 0;
+	height: 100%;
 	color: black;
 }
 
 .group-post-creator-wrapper {
+	grid-area: group-post-creator;
 	background-color: var(--light);
 	box-shadow: var(--shadow);
 	color: var(--light);
-	margin: 20px 0;
+	margin: 0;
 }
 
 .post-input-header {
@@ -650,7 +663,7 @@ input:-webkit-autofill:active  {
 .form-input textarea {
 	background-color: var(--light);
 	border: 2px solid var(--dark);
-	height: 150px;
+	height: 80px;
 	font-family: inherit;
 	color: black;
 	font-size: 1rem;
@@ -718,7 +731,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 .group-post-box {
 	display: grid;
 	grid-template-columns: 140px 1fr;
-	grid-template-areas: 
+	grid-template-areas:
 		"user-container post-container"
 		"comment-container comment-container";
 	background-color: var(--primary);
@@ -775,7 +788,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 
 .group-post-box .comment-container {
 	/* display: none; */
-	background-color: var(--primary); 
+	background-color: var(--primary);
 	grid-area: comment-container;
 	/* border-top: 1px solid var(--lightGray); */
 	/* max-height: 200px;
@@ -789,7 +802,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 .group-post-box .comment-submit-container {
 	display: grid;
 	grid-template-columns: 90px 1fr;
-	grid-template-areas: 
+	grid-template-areas:
 		"user-container-comment input-content";
 	background-color: var(--light);
 	min-height: 70px;
@@ -829,7 +842,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 .group-post-box .post-comment {
 	display: grid;
 	grid-template-columns: 140px 1fr;
-	grid-template-areas: 
+	grid-template-areas:
 		"user-container-comment comment-content";
 	align-items: center;
 }
@@ -1010,7 +1023,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	display: flex;
 	flex-direction: column;
 	background: var(--primary);
-	box-shadow: var(--shadow); 
+	box-shadow: var(--shadow);
 	border: 1px solid var(--accent);
 	transition: box-shadow .6s, border-color .6s;
 	overflow: hidden;
@@ -1117,7 +1130,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	margin-bottom: 40px;
 	width: 280px;;
 	animation-name: spin;
-	animation-timing-function: cubic-bezier(0.15, 0.2, 0.3, 1.1); 
+	animation-timing-function: cubic-bezier(0.15, 0.2, 0.3, 1.1);
 	animation-duration: 4s;
 	animation-delay: .25s;
 	animation-iteration-count: infinite
@@ -1137,12 +1150,12 @@ footer {
 	grid-gap: 0px;
 	justify-content: center;
 	grid-template-columns: repeat(4, minmax(200px, 300px));
-	grid-template-areas: 
+	grid-template-areas:
 		"footer-shortcut-container footer-shortcut-container footer-shortcut-container footer-shortcut-container"
 		"footer-info footer-info footer-info footer-info";
 	background: var(--darker);
 	color: var(--light);
-	padding: .7rem 1rem; 
+	padding: .7rem 1rem;
 	margin-top: 40px;
 	font-weight: 300;
 }
@@ -1156,7 +1169,7 @@ footer p{
 	display: grid;
 	justify-content: center;
 	padding: 10px 0 60px;
-	grid-template-columns: 
+	grid-template-columns:
 		repeat(auto-fit, minmax(200px, 250px));
 }
 
@@ -1261,6 +1274,7 @@ footer p{
 	border-color: var(--accent)
 }
 
+/*Til topp knapp og meldingsboks*/
 .toTop {
 	position: fixed;
 	right: -53px;
@@ -1318,7 +1332,7 @@ footer p{
 	align-items: center;
 	background-color: var(--accent);
 	border-radius: 6px 0 0 6px;
-	height: 100%; 
+	height: 100%;
 	width: 10px;
 	text-decoration: none;
 	color: var(--light);
@@ -1345,14 +1359,14 @@ footer p{
 
 .tooltip .fas:nth-child(2) {
 	font-size: 1.5rem;
-	padding-left: 5px;
+	padding-left: 7px;
 	color: var(--accent);
 }
 
 .tooltip p{
-	max-width: 250px;
-	min-width: 240px;
-	margin: 0 0 0 5px;
+	max-width: 240px;
+	min-width: 230px;
+	margin: 0 0 0 7px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -1576,7 +1590,7 @@ footer p{
 	.error-wrapper img {
 		width: 38vw;
 	}
-	
+
 }
 
 @media(max-width: 550px) {

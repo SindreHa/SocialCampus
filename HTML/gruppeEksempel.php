@@ -29,7 +29,6 @@ include '../PHP/savePost.php';
         
 	<?php include '../PHP/nav.php';?>
 
-		<section class="group-container">
 			<section class="group-info-wrapper">
 
 			<div class="group-info">
@@ -38,26 +37,24 @@ include '../PHP/savePost.php';
 						<i class="fas fa-golf-ball fa-3x"></i>
 						<h2>Golf</h2>
 					</div>
+					<div class="group-stats-wrapper">
 					<div class="group-stats">
 						<h5><?php echo $ant_medlem; ?></h5>
 						<h6>Antall medlemmer</h6>
 					</div>
-					<div class="group-stats border">
+					<div class="group-stats">
 						<h5><?php echo $ant_poster; ?></h5>
 						<h6>Antall poster</h6>
 					</div>
+					</div>
 				</div>
 				<div class="group-description">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque officia nesciunt voluptatibus eius aliquid, reprehenderit iure quam fugit, architecto qui soluta porro accusamus veniam sequi! Obcaecati ratione expedita ea velit. 
 					</p>
 				</div>
 			</div>
-
+						
+			<?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {?>
 			<div class="group-post-creator-wrapper">
 				<div class="post-input-header">
 					<i class="far fa-comment fa-3x"></i>
@@ -73,20 +70,19 @@ include '../PHP/savePost.php';
 				</form>
 				
 			</div>
+			<?php } else { ?> <?php } ?>
 
 			</section>
 
 			<section class="group-post-wrapper">
+
 				<div class="group-post">
 				
 				</div>
 			<div class="button-wrapper">
-				<button class="btn" id="newCommentButton-ID" onclick="loadMorePosts()">Last inn innlegg</button>
+				<button class="btn" id="newCommentButton-ID" onclick="TooltipMessage('Jan vil ikke ha den knappen her')">Last inn innlegg</button>
 			</div>
 			</section>
-			
-			
-		</section>
 		
 	</div>
 		
