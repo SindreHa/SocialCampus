@@ -67,7 +67,7 @@ include '../PHP/savePost.php';
 					<input type="text" name="headline" placeholder="Tittel" class="tittel" id="post-title-ID" autocomplete="off">
 					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="850"></textarea>
 					<div class="post-submit-container">
-						<button class="btn submit-comment" id="post-submit-ID">Publiser</button>
+						<button class="btn submit-comment" onclick="TooltipMessage('Innlegg publisert')" id="post-submit-ID" >Publiser</button>
 						<h5 id="ord-teller-ID">0/850</h5>
 					</div>
 				</form>

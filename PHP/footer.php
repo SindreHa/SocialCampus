@@ -60,3 +60,8 @@
 <div class="toTop">
   <i class="fas fa-arrow-up"></i>
 </div>
+
+<div class="tooltip">
+  <a href="#/"><i class="fas fa-times"></i></a>
+  <i class="fas fa-info-circle"></i><p>Lorem ipsum dolor sit, amet</p>
+</div>

@@ -26,6 +26,20 @@ var insertBefore = head.insertBefore;
 		$(".menyToggle").toggleClass('menyToggle-darker');
 	});
 
+	
+
+	function TooltipMessage(text) {
+		$(".tooltip p").html(text);
+			$(".tooltip").addClass('tooltip-show'); 
+			// setTimeout(function() {
+			// 	$(".tooltip").removeClass('tooltip-show'); 
+			// }, 4000);
+	};
+
+	$(".tooltip a").click(function() {
+		$(".tooltip").removeClass('tooltip-show');
+	});
+
 	/*Gjør input felt aktivt ved trykk på tilhørende ikon*/
 	$(".inputContainer i").click(function() {
 	  $(this).next("input").focus();
