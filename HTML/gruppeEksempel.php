@@ -1,5 +1,21 @@
 
-<?php include '../PHP/savePost.php';?>
+<?php 
+require_once "../PHP/config.php";
+
+$sql = "SELECT COUNT(id) FROM post";
+$result = mysqli_query($link, $sql);
+$count = mysqli_fetch_row($result);
+
+$ant_poster = $count[0];
+
+$sql = "SELECT COUNT(id) FROM user";
+$result = mysqli_query($link, $sql);
+$count = mysqli_fetch_row($result);
+
+$ant_medlem = $count[0];
+
+include '../PHP/savePost.php';
+?>
 
 <!DOCTYPE html>
 <html lang="no">
@@ -23,11 +39,11 @@
 						<h2>Golf</h2>
 					</div>
 					<div class="group-stats">
-						<h5>192</h5>
+						<h5><?php echo $ant_medlem; ?></h5>
 						<h6>Antall medlemmer</h6>
 					</div>
 					<div class="group-stats border">
-						<h5>5</h5>
+						<h5><?php echo $ant_poster; ?></h5>
 						<h6>Antall poster</h6>
 					</div>
 				</div>
