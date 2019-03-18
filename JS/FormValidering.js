@@ -38,7 +38,7 @@ function checkUsernameLength()
 function checkNameLength()
 {
     var name = $("#full_name-ID").val();
-    if(validateNameCheck(name)){
+    if(name.length > 1){
         $("#input-error-full_name").css("right", "-40px");
         $("#input-approved-full_name").css("right", "0px");
         return true;
