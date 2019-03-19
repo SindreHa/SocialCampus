@@ -63,10 +63,12 @@ if(mysqli_num_rows($result) > 0)
 		</div>
 	</div>
 
+	
 	<div class="comment-container">
 			<div class="comment-toggle"> <!-- Kommentarfelt innhold -->
 
 			</div>
+			<?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {?> <!-- Skjul kommentarpublisering hvis ikke logget inn -->
 			<div class="comment-submit-container"> <!-- Kommentarfelt publisering -->
 				<div class="user-container-comment">
 					<div class="imgContainer">
@@ -85,7 +87,9 @@ if(mysqli_num_rows($result) > 0)
 				</div>
 				</form>
 			</div>
+			<?php } else { ?> <?php } ?>
 	</div>
+	
 
 </div>
 

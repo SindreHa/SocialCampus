@@ -32,6 +32,10 @@ body {
     background: var(--accent);
 }
 
+:disabled {
+	cursor: not-allowed;
+}
+
 /*Knapper*/
 
 .btn {

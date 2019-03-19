@@ -70,7 +70,22 @@ include '../PHP/savePost.php';
 				</form>
 				
 			</div>
-			<?php } else { ?> <?php } ?>
+			<?php } else { ?>
+			<div class="group-post-creator-wrapper">
+				<div class="post-input-header">
+					<i class="far fa-comment fa-3x"></i>
+					<h2>Publiser innlegg</h2>
+				</div>
+				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>"class="form-input" id="group-form" method="post">
+					<input disabled placeholder="Logg inn for å publisere innlegg" class="tittel" id="post-title-ID" autocomplete="off">
+					<textarea disabled class="innhold" name="textarea" form="group-form" placeholder="Logg inn for å publisere innlegg" id="text-area-ID"maxlength="850"></textarea>
+					<div class="post-submit-container">
+						<button class="btn submit-comment" onclick="TooltipMessage('Innlegg publisert')" id="post-submit-ID" >Publiser</button>
+						<h5 id="ord-teller-ID">0/850</h5>
+					</div>
+				</form> 
+			</div>
+			<?php } ?>
 
 			</section>
 
