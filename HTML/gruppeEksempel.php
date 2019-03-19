@@ -94,9 +94,6 @@ include '../PHP/savePost.php';
 				<div class="group-post">
 				
 				</div>
-			<div class="button-wrapper">
-				<button class="btn" id="newCommentButton-ID" onclick="TooltipMessage('Jan vil ikke ha den knappen her')">Last inn innlegg</button>
-			</div>
 			</section>
 		
 	</div>
