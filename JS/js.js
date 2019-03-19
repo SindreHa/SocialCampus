@@ -29,16 +29,23 @@ var insertBefore = head.insertBefore;
 	
 
 	function TooltipMessage(text) {
+		var timer = 4000;
 		$(".tooltip p").html(text);
 			$(".tooltip").addClass('tooltip-show'); 
-			 /* setTimeout(function() {
+			$(".tooltip a").click(function() {
+				if(timer){
+					clearTimeout(timer);
+					timer = 0;
+				}
+				$(".tooltip").removeClass('tooltip-show');
+			});
+		
+			 timer = setTimeout(function() {
 			 	$(".tooltip").removeClass('tooltip-show'); 
-			 }, 4000); */
+			 }, timer);
 	};
 
-	$(".tooltip a").click(function() {
-		$(".tooltip").removeClass('tooltip-show');
-	});
+	
 
 	/*Gjør input felt aktivt ved trykk på tilhørende ikon*/
 	$(".inputContainer i").click(function() {
