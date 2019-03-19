@@ -723,9 +723,14 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 }
 
 .group-post-wrapper {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 20px;
 	flex-direction: column;
-	width: 100%;
+}
+
+.group-post {
+	grid-column: 2/5;
 }
 
 .group-post .btn{
@@ -791,12 +796,8 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 }
 
 .group-post-box .comment-container {
-	/* display: none; */
 	background-color: var(--primary);
 	grid-area: comment-container;
-	/* border-top: 1px solid var(--lightGray); */
-	/* max-height: 200px;
-	overflow: auto; */
 }
 
 .comment-toggle {
@@ -827,7 +828,6 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 }
 
 .group-post-box .inputContainer .input{
-	/* background-color: var(--primary); */
 	resize: none;
 	font-family: inherit;
 	border: 1px solid var(--lightGray);
@@ -882,11 +882,9 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	background-color: var(--primary);
-	/* border-left: 1px solid var(--lightGray); */
 }
 
 .group-post-box .comment-submit-container .user-container-comment {
-	/* border-right: 1px solid var(--lightGray); */
 	grid-template-columns: 1fr;
 }
 
@@ -1411,23 +1409,11 @@ footer p{
 		flex-direction: column;
 	}
 	.group-info-wrapper {
-		flex-direction: row;
-		width: 100%;
-		max-width: 100%;
-	}
-	.group-info {
-		width: 50%;
-		margin: 0 20px 0 0;
-	}
-	.group-post-creator-wrapper {
-		width: 50%;
-		margin: 0;
-	}
-	.group-info .group-description {
-		height: 100%;
+		grid-template-areas: 
+			"group-info group-info group-post-creator group-post-creator"
 	}
 	.group-post {
-		width: 100%;
+		grid-column: 1/5;
 	}
 	.error-wrapper {
 		margin: 20px 0;
@@ -1468,10 +1454,6 @@ footer p{
 	}
 	.group-info-wrapper {
 		flex-direction: column;
-	}
-	.group-info {
-		width: 100%;
-		margin: 0 0 20px;
 	}
 	.group-post-creator-wrapper {
 		width: 100%;
@@ -1588,6 +1570,11 @@ footer p{
 }
 
 @media(max-width: 740px) {
+	.group-info-wrapper {
+		grid-template-areas: 
+			"group-info group-info group-info group-info"
+			"group-post-creator group-post-creator group-post-creator group-post-creator"
+	}
 	.login {
 		grid-column: 1/5;
 	}
