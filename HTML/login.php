@@ -10,6 +10,17 @@ session_start();
  
 // Include config file
 require_once "../php/config.php";
+
+
+if (isset($_GET['register'])){
+    echo '
+        <script> 
+        timer = setTimeout(function() {
+            TooltipMessage("Bruker registrert");
+        }, 200);
+        </script>
+    ';
+}
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -64,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: index.php?login=true");
+                            header("location: ../HTML/index.php?login=true");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "Feil passord";

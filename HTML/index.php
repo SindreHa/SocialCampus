@@ -3,8 +3,6 @@
 <head>
 	<title>Hjemmeside</title>
 	<?php include '../PHP/head.php';?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="../JS/js.js"></script>
 </head>
 <body>
 	<!-- <section class="darken hide" id="darken"></section> -->
@@ -14,20 +12,24 @@
 
 	session_start();
 
-
 	if (isset($_GET['logout'])){
-		echo '<script> 
-		timer = setTimeout(function() {
-			TooltipMessage("You are now logged out");
-		}, 1000);
-		 </script>';
+		echo '
+			<script> 
+			timer = setTimeout(function() {
+				TooltipMessage("Du er nå logget ut");
+			}, 200);
+			</script>
+		';
 	}
+
 	if (isset($_GET['login'])){
-		echo '<script> 
-		timer = setTimeout(function() {
-			TooltipMessage("You are now logged in!");
-		}, 1000);
-		 </script>';
+		echo '
+			<script> 
+			timer = setTimeout(function() {
+				TooltipMessage("Du er nå logget inn");
+			}, 200);
+			</script>
+		';
 	}
 
 	
