@@ -22,6 +22,14 @@
 		}, 1000);
 		 </script>';
 	}
+	if (isset($_GET['login'])){
+		echo '<script> 
+		timer = setTimeout(function() {
+			TooltipMessage("You are now logged in!");
+		}, 1000);
+		 </script>';
+	}
+
 	
 
 		// your script tag here.
