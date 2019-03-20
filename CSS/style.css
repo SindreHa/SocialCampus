@@ -1309,7 +1309,7 @@ footer p{
 	color: var(--accent);
 }
 
-.tooltip {
+#tooltip {
 	position: fixed;
 	display: flex;
 	align-items: center;
@@ -1328,7 +1328,7 @@ footer p{
 	transition-timing-function: cubic-bezier(0.41, 0.64, 0.37, 1.5);
 }
 
-.tooltip a{
+#tooltip a{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1343,20 +1343,20 @@ footer p{
 	transition-timing-function: cubic-bezier(0.41, 0.74, 0.47, 1.35);
 }
 
-.tooltip:hover a{
+#tooltip:hover a{
 	width: 25px;
 	/* background-color: var(--darker); */
 }
 
-.tooltip:hover a i{
+#tooltip:hover a i{
 	opacity: 1;
 }
 
-.tooltip a:hover{
+#tooltip a:hover{
 	color: var(--light);
 }
 
-.tooltip a i{
+#tooltip a i{
 	position: absolute;
 	top: 14px;
 	left: 7.5px;
@@ -1364,13 +1364,13 @@ footer p{
 	transition: opacity .2s;
 }
 
-.tooltip .fas:nth-child(2) {
+#tooltip .fas:nth-child(2) {
 	font-size: 1.5rem;
 	padding-left: 7px;
 	color: var(--accent);
 }
 
-.tooltip p{
+#tooltip p{
 	max-width: 240px;
 	min-width: 230px;
 	margin: 0 0 0 7px;
@@ -1380,7 +1380,7 @@ footer p{
 	color: var(--light);
 }
 
-.tooltip-show {
+#tooltip-show {
 	bottom: 15px;
 	transform: scale(1);
 }
@@ -1573,11 +1573,11 @@ footer p{
 		margin: 0;
 	}
 	
-	.tooltip a{
+	#tooltip a{
 		width: 25px;
 	}
 	
-	.tooltip a i{
+	#tooltip a i{
 		opacity: 1;
 	}
 }
