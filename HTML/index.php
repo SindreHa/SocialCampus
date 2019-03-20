@@ -9,8 +9,37 @@
 	<div class="wrapper">
         
 	<?php
-        session_start();
-        include '../PHP/nav.php';?>
+
+	session_start();
+
+
+	if (isset($_SESSION['loggedin'])) {	
+		echo 
+			'
+			<script>   
+			
+				timer = setTimeout(function() {
+					TooltipMessage("Logget inn");
+				}, 2000);
+			</script>
+			';
+	}
+	else {
+		echo 
+			'
+			<script>   
+			
+				timer = setTimeout(function() {
+					TooltipMessage("Logget ut");
+				}, 2000);
+			</script>
+			';
+	}
+
+
+		include '../PHP/nav.php';
+		
+		?>
         
 		<section class="top-container">
 			<header class="showcase">
