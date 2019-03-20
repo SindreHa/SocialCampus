@@ -46,10 +46,10 @@
     </div>
 
     <div class="footer-lang">
-            <a href="404.php">
+            <a href="javascript:TooltipMessage('Norsk er allerde valgt språk');">
               <img src="../Pictures/norwegian.svg"/>
             </a>
-            <a href="404.php">
+            <a href="javascript:TooltipMessage('Engelsk oversettelse under arbeid');">
               <img src="../Pictures/english.svg"/>
             </a>
     </div>
