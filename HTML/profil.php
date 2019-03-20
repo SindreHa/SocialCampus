@@ -194,7 +194,6 @@ $name = $row[3];
 <?php include '../PHP/footer.php';?>
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/js.js"></script>
 <script src="../JS/ImgUpload.js"></script>
 </body>
 </html>

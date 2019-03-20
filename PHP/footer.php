@@ -65,3 +65,6 @@
   <a href="#/" id="notification-exitID"><i class="fas fa-times"></i></a>
   <i class="fas fa-info-circle"></i><p id="notification-boxID">Lorem ipsum dolor sit, amet</p>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../JS/scripts.js"></script>

@@ -150,7 +150,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <?php include '../PHP/footer.php';?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/js.js"></script>
 </body>
 </html>
