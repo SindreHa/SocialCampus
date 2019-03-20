@@ -3,6 +3,8 @@
 <head>
 	<title>Hjemmeside</title>
 	<?php include '../PHP/head.php';?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../JS/js.js"></script>
 </head>
 <body>
 	<!-- <section class="darken hide" id="darken"></section> -->
@@ -13,28 +15,18 @@
 	session_start();
 
 
-	if (isset($_SESSION['loggedin'])) {	
-		echo 
-			'
-			<script>   
-			
-				timer = setTimeout(function() {
-					TooltipMessage("Logget inn");
-				}, 2000);
-			</script>
-			';
-	}
-	else {
-		echo 
-			'
-			<script>   
-			
-				timer = setTimeout(function() {
-					TooltipMessage("Logget ut");
-				}, 2000);
-			</script>
-			';
-	}
+	if (isset($_GET['logout'])):
+
+		// your script tag here.
+		echo
+		' 
+		<script language="javascript">
+			console.log("print");
+			TooltipMessage("You are now logged out");
+		</script>
+		';
+		
+		endif;
 
 
 		include '../PHP/nav.php';
@@ -103,8 +95,6 @@
         
 <?php include '../PHP/footer.php';?>
         
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/js.js"></script>
 <script src="../JS/NumberHandler.js"></script>
 </body>
 </html>
