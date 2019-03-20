@@ -140,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             if(mysqli_stmt_execute($stmt)){
                 // sender bruker til login
-                header("location: ../HTML/login.php");
+                header("location: ../HTML/login.php?register=true");
             } else{
                 echo "Something went wrong with insert. Please try again later.";
             }

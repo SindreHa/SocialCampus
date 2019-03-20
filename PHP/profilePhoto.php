@@ -13,7 +13,7 @@
             $location = '../Pictures/upload/';      
             if(move_uploaded_file($temp_name, $location.$name)){
                 $update = $link->query("UPDATE user SET avatar = '".$name."' WHERE id = $userId");
-                header("location: ../HTML/profil.php"); // Vei rundt blank skjerm
+                header("location: ../HTML/profil.php?upload=true"); // Vei rundt blank skjerm
             }
         }
         else {

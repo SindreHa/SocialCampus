@@ -7,6 +7,17 @@ if(!(isset($_SESSION['username'])))
 }
 // Definer variabler initialiser med tomme verdier
 require_once "../PHP/config.php";
+
+
+if (isset($_GET['upload'])){
+    echo '
+        <script> 
+        timer = setTimeout(function() {
+            TooltipMessage("Profilbilde oppdatert");
+        }, 200);
+        </script>
+    ';
+}
  
 // Definer variabler initialiser med tomme verdier
 $new_password = $confirm_password = "";
