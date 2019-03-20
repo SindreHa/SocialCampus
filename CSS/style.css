@@ -1316,12 +1316,12 @@ footer p{
 	flex-direction: row;
 	bottom: -56px;
 	left: 50%;
-	width: 300px;
+	width: 350px;
 	height: 45px;
-	margin-left: -150px;
+	margin-left: -175px;
 	background-color: var(--dark);
 	box-shadow: var(--shadow);
-	border: 2px solid var(--accent);
+	border: 1px solid var(--accent);
 	border-radius: 6px;
 	transform: scale(.9);
 	transition: bottom .45s, transform .45s;
@@ -1334,13 +1334,13 @@ footer p{
 	align-items: center;
 	background-color: var(--accent);
 	/* border-right: 1px solid var(--accent); */
-	/* border-radius: 4px 0 0 4px; */
+	border-radius: 4px 0 0 4px;
 	height: 100%;
 	width: 10px;
 	text-decoration: none;
 	color: var(--darker);
 	transition: width .25s, background-color .25s, color .25s;
-	transition-timing-function: cubic-bezier(0.41, 0.74, 0.47, 1.35);
+	transition-timing-function: ease-in-out;
 }
 
 .tooltip:hover a{
