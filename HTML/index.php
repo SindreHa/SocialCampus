@@ -15,18 +15,18 @@
 	session_start();
 
 
-	if (isset($_GET['logout'])):
+	if (isset($_GET['logout'])){
+		echo '<script> 
+		timer = setTimeout(function() {
+			TooltipMessage("You are now logged out");
+		}, 1000);
+		 </script>';
+	}
+	
 
 		// your script tag here.
-		echo
-		' 
-		<script language="javascript">
-			console.log("print");
-			TooltipMessage("You are now logged out");
-		</script>
-		';
-		
-		endif;
+
+
 
 
 		include '../PHP/nav.php';
