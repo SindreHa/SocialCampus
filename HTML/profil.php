@@ -196,7 +196,5 @@ $name = $row[3];
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../JS/js.js"></script>
 <script src="../JS/ImgUpload.js"></script>
-<script src="../JS/NumberHandler.js"></script>
-<script src="../JS/slider.js"></script>
 </body>
 </html>

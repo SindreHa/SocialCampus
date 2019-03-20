@@ -233,7 +233,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="button-wrapper">
                         <input type="submit" class="btn" value="Opprett bruker" id="Submit-Toggle">
                         <input type="reset" class="btn" value="Klarer felt">
-                        <button type="reset" class="btn" onclick="TooltipMessage('Test melding')">Åpne tooltip</button>
                     </div>
 
                     <p>Har du allerede en bruker? <a href="login.php">Logg inn her</a>.</p>

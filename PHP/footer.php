@@ -62,6 +62,6 @@
 </div>
 
 <div class="tooltip" id="notification-box">
-  <a href="#/"><i class="fas fa-times" id="notification-exitID"></i></a>
+  <a href="#/" id="notification-exitID"><i class="fas fa-times"></i></a>
   <i class="fas fa-info-circle"></i><p id="notification-boxID">Lorem ipsum dolor sit, amet</p>
 </div>
