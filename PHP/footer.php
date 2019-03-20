@@ -61,7 +61,7 @@
   <i class="fas fa-arrow-up"></i>
 </div>
 
-<div id="tooltip">
+<div class="tooltip" id="notification-box">
   <a href="#/"><i class="fas fa-times"></i></a>
   <i class="fas fa-info-circle"></i><p>Lorem ipsum dolor sit, amet</p>
 </div>
