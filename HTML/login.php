@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: ../HTML/index.php?login=true");
+                            header("location: ../HTML/index.php?loggedin=true");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "Feil passord";

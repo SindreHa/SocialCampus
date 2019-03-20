@@ -22,7 +22,7 @@
 		';
 	}
 
-	if (isset($_GET['login'])){
+	if (isset($_GET['loggedin'])){
 		echo '
 			<script> 
 			timer = setTimeout(function() {
