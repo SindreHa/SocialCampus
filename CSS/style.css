@@ -1319,13 +1319,13 @@ footer p{
 	width: 300px;
 	height: 45px;
 	margin-left: -150px;
-	background-color: var(--light);
+	background-color: var(--dark);
 	box-shadow: var(--shadow);
 	border: 2px solid var(--accent);
-	border-radius: 8px;
+	border-radius: 6px;
 	transform: scale(.9);
-	transition: bottom .4s, transform .4s;
-	transition-timing-function: cubic-bezier(0.41, 0.74, 0.47, 1.35);
+	transition: bottom .45s, transform .45s;
+	transition-timing-function: cubic-bezier(0.41, 0.64, 0.37, 1.5);
 }
 
 .tooltip a{
@@ -1333,22 +1333,27 @@ footer p{
 	justify-content: center;
 	align-items: center;
 	background-color: var(--accent);
-	border-radius: 6px 0 0 6px;
+	/* border-right: 1px solid var(--accent); */
+	/* border-radius: 4px 0 0 4px; */
 	height: 100%;
 	width: 10px;
 	text-decoration: none;
-	color: var(--light);
-	transition: width .25s, background-color .25s;
+	color: var(--darker);
+	transition: width .25s, background-color .25s, color .25s;
 	transition-timing-function: cubic-bezier(0.41, 0.74, 0.47, 1.35);
 }
 
 .tooltip:hover a{
 	width: 25px;
-	background-color: var(--dark)
+	/* background-color: var(--darker); */
 }
 
 .tooltip:hover a i{
 	opacity: 1;
+}
+
+.tooltip a:hover{
+	color: var(--light);
 }
 
 .tooltip a i{
@@ -1372,7 +1377,7 @@ footer p{
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	/* color: var(--light); */
+	color: var(--light);
 }
 
 .tooltip-show {
@@ -1566,6 +1571,14 @@ footer p{
 	}
 	.login {
 		margin: 0;
+	}
+	
+	.tooltip a{
+		width: 25px;
+	}
+	
+	.tooltip a i{
+		opacity: 1;
 	}
 }
 
