@@ -2,10 +2,15 @@ window.onload = function(){
     listPosts();
 }
 
-document.getElementById("post-submit-ID").addEventListener("click", function(event)
+$('body').on('click', '#submit-comment_ID', function(event)
 {
     event.preventDefault()
-  });
+});
+
+$('body').on('click', '.post-submit-ID', function(event)
+{
+    event.preventDefault()
+});
 
   function clearPostField(){
       document.getElementById("post-title-ID").value = "";
