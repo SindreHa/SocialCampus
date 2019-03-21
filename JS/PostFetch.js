@@ -26,13 +26,9 @@ function listPosts()
 $(function()
 {
     document.getElementById("post-submit-ID").disabled = true;
-    /*setInterval(function()
-    {
-        listPosts();
-    }, 1000);*/
     })
 
-    $('.submit-comment').click(function()
+    $('.submit-post').click(function()
     {
         document.getElementById("post-submit-ID").disabled = true;
         var header = $(".tittel").val();

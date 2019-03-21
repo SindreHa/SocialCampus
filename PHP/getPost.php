@@ -5,7 +5,7 @@ require_once "../PHP/config.php";
 // $_SESSION['count'] = 4;
 // $antPoster = $_SESSION['count'];
 
-$sql = "SELECT p.id, u.id, p.title, p.content, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC	;";
+$sql = "SELECT p.id, u.id, p.title, p.content, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC;";
 $result = mysqli_query($link, $sql);
 
 session_start();
@@ -80,10 +80,11 @@ if(mysqli_num_rows($result) > 0)
 					}?>
 					</div>
 				</div>
-				<form>
+				<form >
 				<div class="inputContainer">
 					<input type="text" class="input" name="kommentar" placeholder="Skriv en kommentar" autocomplete="off">
-					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
+					<input type="submit" value="Publiser" class="sumbit-comment btn" id="submit-comment_ID">
+					<input type="hidden" name="comment_post_ID" value="<?php echo $row[0]; ?>" id="comment_post_ID" />
 				</div>
 				</form>
 			</div>

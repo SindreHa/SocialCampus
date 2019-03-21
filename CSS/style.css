@@ -823,6 +823,11 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	border-radius: 5px;
 }
 
+.group-post-box .inputContainer .btn {
+	margin-left: 10px;
+	border-radius: 5px;
+}
+
 .group-post-box .comment-submit-container form{
 	background-color: var(--primary);
 }

@@ -15,6 +15,7 @@ $count = mysqli_fetch_row($result);
 $ant_medlem = $count[0];
 
 include '../PHP/savePost.php';
+// include '../PHP/saveComment.php';
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +65,7 @@ include '../PHP/savePost.php';
 					<input type="text" name="headline" placeholder="Tittel" class="tittel" id="post-title-ID" autocomplete="off">
 					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="850"></textarea>
 					<div class="post-submit-container">
-						<button class="btn submit-comment" onclick="TooltipMessage('Innlegg publisert')" id="post-submit-ID" >Publiser</button>
+						<button class="btn submit-post" onclick="TooltipMessage('Innlegg publisert')" id="post-submit-ID" >Publiser</button>
 						<h5 id="ord-teller-ID">0/850</h5>
 					</div>
 				</form>
@@ -102,5 +103,6 @@ include '../PHP/savePost.php';
 
 <script src="../JS/PostManager.js"></script>
 <script src="../JS/PostFetch.js"></script>
+<script src="../JS/CommentFetch.js"></script>
 </body>
 </html>
