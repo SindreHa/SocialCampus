@@ -18,7 +18,7 @@ if (!empty($_POST)) {
 		$innhold = $_POST['comment'];
 	}
 	if (isset($_POST['p_id'])) {
-		$post_id = $_POST['id'];
+		$post_id = $_POST['p_id'];
 	}
 	
 }
@@ -43,7 +43,7 @@ if (isset($_POST['comment']) && isset($_POST['p_id'])) {
 	if (isset($_POST['textarea']) && isset($_POST['tittel']))
 	{
 		$_POST['comment'] = " ";
-		$_POST['id'] = " ";
+		$_POST['p_id'] = " ";
 	}
 }
 

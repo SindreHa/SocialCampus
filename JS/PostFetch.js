@@ -68,13 +68,14 @@ $('body').on('click', '#submit-comment_ID', function()
     // document.getElementById("comment-submit-ID").disabled = true;
     var innhold = $(this).closest(".inputContainer").find(".input").val();
     var post_id = $(this).closest(".inputContainer").find("#comment_post_ID").val();
+    // console.log(innhold + "\n" + post_id);
     $.ajax({
         url:'../HTML/gruppeEksempel.php',
         data: { comment: innhold, p_id: post_id },
         type:'post',
         success:function()
         {
-            // listComment(post_id);
+            listComment(post_id);
             TooltipMessage('Kommentar publisert');
         },
         error: function () {

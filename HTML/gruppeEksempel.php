@@ -14,8 +14,8 @@ $count = mysqli_fetch_row($result);
 
 $ant_medlem = $count[0];
 
+
 include '../PHP/savePost.php';
-include '../PHP/saveComment.php';
 ?>
 
 <!DOCTYPE html>
