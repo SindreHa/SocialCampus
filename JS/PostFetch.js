@@ -45,8 +45,12 @@ $(function()
             success:function()
             {
                 clearPostField();
-                listPosts();       
-            }
+                listPosts();  
+                TooltipMessage('Innlegg publisert');     
+            },
+            error: function () {
+                TooltipMessage('Publisering feilet');  
+              }
         })
     })
 
