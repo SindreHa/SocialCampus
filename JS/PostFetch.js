@@ -46,7 +46,7 @@ $('.submit-post').click(function()
     var header = $(".tittel").val();
     var post = $(".innhold").val();
     $.ajax({
-        url:'../HTML/gruppeEksempel.php',
+        url:'../PHP/savePost.php',
         data: { tittel: header, textarea: post },
         type:'post',
         success:function()
@@ -70,7 +70,7 @@ $('body').on('click', '#submit-comment_ID', function()
     var post_id = $(this).closest(".inputContainer").find("#comment_post_ID").val();
     // console.log(innhold + "\n" + post_id);
     $.ajax({
-        url:'../HTML/gruppeEksempel.php',
+        url:'../PHP/saveComment.php',
         data: { comment: innhold, p_id: post_id },
         type:'post',
         success:function()

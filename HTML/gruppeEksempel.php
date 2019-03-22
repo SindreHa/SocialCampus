@@ -1,5 +1,9 @@
 
 <?php 
+if(session_id() == '') {
+    session_start();
+}
+
 require_once "../PHP/config.php";
 
 $sql = "SELECT COUNT(id) FROM post";
@@ -14,8 +18,6 @@ $count = mysqli_fetch_row($result);
 
 $ant_medlem = $count[0];
 
-
-include '../PHP/savePost.php';
 ?>
 
 <!DOCTYPE html>
