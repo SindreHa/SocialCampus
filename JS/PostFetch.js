@@ -9,7 +9,7 @@ $('body').on('click', '.post-submit-ID, #submit-comment_ID', function(event)
 
 $('body').on('keyup', '#comment-input', function(event)
 {
-    var letterNumber = /^[0-9a-zA-Z]+$/;
+    var letterNumber = /^[^-\ ][ÆØÅæøåa-zA-Z0-9_\s-]+$/;
     if ($(this).val().match(letterNumber)) {
         $(this).closest(".inputContainer").find(".sumbit-comment").prop('disabled', false)
     }
@@ -17,11 +17,6 @@ $('body').on('keyup', '#comment-input', function(event)
         $(this).closest(".inputContainer").find(".sumbit-comment").prop('disabled', true)
     }
 });
-
-function checkInput(id){
-    if($("#comment_post_ID[value='" + id + "']").closest(".inputContainer").find(".input").val() > 0)
-        $("#comment_post_ID[value='" + id + "']").closest(".inputContainer").find(".sumbit-comment").prop('disabled', false)
-}
 
 function clearPostField(){
     document.getElementById("post-title-ID").value = "";
