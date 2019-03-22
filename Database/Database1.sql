@@ -51,8 +51,6 @@ CREATE TABLE IF NOT EXISTS `application`.`user` (
   `email` VARCHAR(245) NOT NULL,
   `avatar` BLOB NOT NULL,
   `moderator` TINYINT(1) NOT NULL,
-  `last_activity` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `user_status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -68,7 +66,6 @@ CREATE TABLE IF NOT EXISTS `application`.`post` (
   `content` VARCHAR(855) NOT NULL,
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` INT(11) NULL DEFAULT NULL,
-  `status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `user_id_idx` (`user_id` ASC),
   CONSTRAINT `post_foreign_key1`
@@ -87,7 +84,6 @@ CREATE TABLE IF NOT EXISTS `application`.`commentary` (
   `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `post_id` INT(11) NULL DEFAULT NULL,
   `user_id` INT(11) NULL DEFAULT NULL,
-  `status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `post_id` (`post_id` ASC),
   INDEX `user_id` (`user_id` ASC),
@@ -203,7 +199,6 @@ CREATE TABLE IF NOT EXISTS `application`.`thread` (
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `post_id` INT(11) NULL DEFAULT NULL,
   `user_id` INT(11) NULL DEFAULT NULL,
-  `status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `post_id` (`post_id` ASC),
   INDEX `user_id` (`user_id` ASC),
