@@ -76,7 +76,7 @@ if(mysqli_num_rows($resultPost) > 0)
 			<div class="comment-toggle"> <!-- Kommentarfelt innhold -->
 			<?php
 			
-			$sqlCom = "SELECT c.*, u.username FROM application.commentary AS c, application.user AS u WHERE c.user_id = u.id AND c.post_id = $rowPost[0];";
+			$sqlCom = "SELECT c.*, u.username FROM application.commentary AS c, application.user AS u WHERE c.user_id = u.id AND c.post_id = $rowPost[0] ORDER BY made DESC;";
 			$resultCom = mysqli_query($link, $sqlCom);
 
 			while($rowCom=mysqli_fetch_row($resultCom))
