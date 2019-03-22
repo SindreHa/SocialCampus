@@ -119,12 +119,12 @@ if(mysqli_num_rows($resultPost) > 0)
 					}?>
 					</div>
 				</div>
-				<form >
-				<div class="inputContainer">
-					<input type="text" class="input" name="kommentar" placeholder="Skriv en kommentar" autocomplete="off">
-					<input type="submit" value="Publiser" class="sumbit-comment btn" id="submit-comment_ID">
-					<input type="hidden" name="comment_post_ID" value="<?php echo $row[0]; ?>" id="comment_post_ID" />
-				</div>
+				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>" method="post">
+					<div class="inputContainer">
+						<input type="text" class="input" name="kommentar" placeholder="Skriv en kommentar" autocomplete="off">
+						<input type="submit" value="Publiser" class="sumbit-comment btn" id="submit-comment_ID">
+						<input type="hidden" name="comment_post_ID" value="<?php echo $rowPost[0]; ?>" id="comment_post_ID" />
+					</div>
 				</form>
 			</div>
 			<?php } else { ?> <?php } ?>
