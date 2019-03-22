@@ -28,7 +28,7 @@ function listPosts()
 function listComment(id)
 {
     $.ajax({
-        url:'../PHP/getPost.php',
+        url:'../PHP/getComment.php?postId=' + id,
         success:function(response){
             $("#comment_post_ID[value='" + id + "']").closest(".comment-container").find(".comment-toggle").html(response);
             // $('.comment-toggle').html(response);

@@ -105,6 +105,5 @@ $ant_medlem = $count[0];
 
 <script src="../JS/PostManager.js"></script>
 <script src="../JS/PostFetch.js"></script>
-<script src="../JS/CommentFetch.js"></script>
 </body>
 </html>
