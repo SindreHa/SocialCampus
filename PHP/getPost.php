@@ -121,8 +121,8 @@ if(mysqli_num_rows($resultPost) > 0)
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>" method="post">
 					<div class="inputContainer">
-						<input type="text" class="input" name="kommentar" placeholder="Skriv en kommentar" autocomplete="off">
-						<input type="submit" value="Publiser" class="sumbit-comment btn" id="submit-comment_ID">
+						<input type="text" class="input" id ="comment-input" name="kommentar" placeholder="Skriv en kommentar" autocomplete="off">
+						<input type="submit" disabled value="Publiser" class="sumbit-comment btn" id="submit-comment_ID">
 						<input type="hidden" name="comment_post_ID" value="<?php echo $rowPost[0]; ?>" id="comment_post_ID" />
 					</div>
 				</form>
