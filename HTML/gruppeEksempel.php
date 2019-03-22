@@ -1,5 +1,9 @@
 
 <?php 
+if(session_id() == '') {
+    session_start();
+}
+
 require_once "../PHP/config.php";
 
 $sql = "SELECT COUNT(id) FROM post";
@@ -14,7 +18,6 @@ $count = mysqli_fetch_row($result);
 
 $ant_medlem = $count[0];
 
-include '../PHP/savePost.php';
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +67,7 @@ include '../PHP/savePost.php';
 					<input type="text" name="headline" placeholder="Tittel" class="tittel" id="post-title-ID" autocomplete="off">
 					<textarea class="innhold" name="textarea" form="group-form" placeholder="Tekst" id="text-area-ID"maxlength="850"></textarea>
 					<div class="post-submit-container">
-						<button class="btn submit-comment" onclick="TooltipMessage('Innlegg publisert')" id="post-submit-ID" >Publiser</button>
+						<button class="btn submit-post" id="post-submit-ID" >Publiser</button>
 						<h5 id="ord-teller-ID">0/850</h5>
 					</div>
 				</form>

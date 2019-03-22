@@ -6,7 +6,7 @@ if(session_id() == '') {
 // Henter config fil
 require_once "../PHP/config.php";
 
-$tittel = $innhold = $user_id = "";
+$innhold = $post_id = $user_id = "";
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
@@ -14,12 +14,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
 // Ser etter tomme felt for å hindre php error
 if (!empty($_POST)) {
-	if (isset($_POST['tittel'])) {
-		$tittel = $_POST['tittel'];
-		?> <script> console.log(<?php $tittel ?>); </script> <?php
+	if (isset($_POST['comment'])) {
+		$innhold = $_POST['comment'];
 	}
-	if (isset($_POST['textarea'])) {
-		$innhold = $_POST['textarea'];
+	if (isset($_POST['p_id'])) {
+		$post_id = $_POST['p_id'];
 	}
 	
 }
@@ -29,9 +28,9 @@ if (!empty($_POST)) {
    en refresh vil trigre POST om igjen og legge tomme innhold inn i
    databasen 
 */
-if (isset($_POST['textarea']) && isset($_POST['tittel'])) {
+if (isset($_POST['comment']) && isset($_POST['p_id'])) {
 
-		$sql ="INSERT INTO post (title, content, user_id) VALUES('$tittel','$innhold', '$user_id')";
+		$sql ="INSERT INTO commentary (content, post_id, user_id) VALUES('$innhold','$post_id', '$user_id')";
 		if (mysqli_query($link, $sql)) 
 		{
 			header("gruppeEksempel.php");
@@ -43,11 +42,12 @@ if (isset($_POST['textarea']) && isset($_POST['tittel'])) {
 
 	if (isset($_POST['textarea']) && isset($_POST['tittel']))
 	{
-		$_POST['textarea'] = " ";
-		$_POST['tittel'] = " ";
+		$_POST['comment'] = " ";
+		$_POST['p_id'] = " ";
 	}
 }
 
 mysqli_close($link);
 include '../HTML/gruppeEksempel.php';
 ?>
+
