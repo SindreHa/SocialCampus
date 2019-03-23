@@ -1,41 +1,57 @@
+/*  
+    Filen inneholder primært kode som sørger for å legge inn
+    poster og kommentarer inn og ut av database via ajax.
+*/
+
+
 window.onload = function(){
     listPosts();
 }
 
+$(function()
+{
+    document.getElementById("post-submit-ID").disabled = true;
+});
+
+/*  
+    preventDefualt på submit knapp ignorer href hendelse, sånn at ajax heller kan
+    laste inn deler av siden.
+*/
 $('body').on('click', '.post-submit-ID, #submit-comment_ID', function(event)
 {
     event.preventDefault()
 });
 
-$('body').on('keyup', '#comment-input', function(event)
-{
-    var textRegex = /^\s*$/;
-    if (!$(this).val().match(textRegex)) {
-        $(this).closest(".inputContainer").find(".sumbit-comment").prop('disabled', false)
-    }
-    else {
-        $(this).closest(".inputContainer").find(".sumbit-comment").prop('disabled', true)
-    }
-});
 
+/*
+    Funksjon som sletter tekst på tekstfelt (utføres etter bruker poster innlegg)
+*/
 function clearPostField(){
     document.getElementById("post-title-ID").value = "";
     document.getElementById("text-area-ID").value = "";
 }
 
+/*
+    Funksjon som sletter tekst på tekstfelt (utføres etter bruker poster kommentar)
+*/
 function clearCommentField(id){
     $("#comment_post_ID[value='" + id + "']").closest(".inputContainer").find(".input").val("");
     $("#comment_post_ID[value='" + id + "']").closest(".inputContainer").find(".sumbit-comment").prop('disabled', true)
 }
 
+/*
+   Funksjon som viser kommentarfelt og din kommentar når man poster
+*/
 function showNewComment(id) {
-    console.log("brukes");
     $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").addClass('new-comment').delay(2000);
     setTimeout(function() {
         $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").removeClass('new-comment');
     }, 4000);
 }
 
+/*
+    Kaller på getPost.php som henter ut alle poster via ajax, og legger den inn i group-post (som ligger i html kode for grupper)
+*/
 function listPosts()
 {
     $.ajax({
@@ -45,7 +61,9 @@ function listPosts()
         }
     })
 }
-
+/*
+    Funksjonen kaller på getComment.php som henter ut alle kommentarer under en post via ajax
+*/
 function listComment(id)
 {
     var com_id = "";
@@ -58,11 +76,11 @@ function listComment(id)
         }
     })
 }
-$(function()
-{
-    document.getElementById("post-submit-ID").disabled = true;
-});
 
+/*
+    Henter informasjonen fra tittel og innhold når man trykker submit, og sender det til savePost som legger det inn i databasen.
+    Kjører også funksjonen listPosts() på success som henter de ut igjen fra database.
+*/
 $('.submit-post').click(function()
 {
     document.getElementById("post-submit-ID").disabled = true;
@@ -84,7 +102,10 @@ $('.submit-post').click(function()
     })
 });
 
-
+/*
+    Henter informasjon fra kommentar tekst-felt, og sender det til saveComment.php som legger det inn i database.
+    På success kjører den også listComment som legger kommentarer ut igjen fra database, og under posten den hører til.
+*/
 $('body').on('click', '#submit-comment_ID', function()
 {
     var innhold = $(this).closest(".inputContainer").find(".input").val();
