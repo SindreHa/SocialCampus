@@ -14,6 +14,7 @@ while($rowCom=mysqli_fetch_row($resultCom))
 { 
 	?>
 	<div class="post-comment">
+	<input type="hidden" name="comment_ID" value="<?php echo $rowCom[0]; ?>" id="comment_ID" />
 	<div class="user-container-comment">
 		<div class="imgContainer">
 			<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">

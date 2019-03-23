@@ -887,6 +887,8 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	background-color: var(--primary);
+	box-shadow: inset 0px 0 0px 0px var(--accent);
+	transition: box-shadow .3s ease-in-out;
 }
 
 .group-post-box .comment-submit-container .user-container-comment {
@@ -900,6 +902,10 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.new-comment{
+	box-shadow: inset 8px 0 0px 0px var(--accent) !important;
 }
 
 .group-post-box .comment-container .user-container-comment .comment-vote p{

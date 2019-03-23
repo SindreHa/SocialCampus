@@ -28,7 +28,12 @@ function clearCommentField(id){
     $("#comment_post_ID[value='" + id + "']").closest(".inputContainer").find(".sumbit-comment").prop('disabled', true)
 }
 
-var submit = document.getElementById("post-submit-ID");
+function showNewComment(id) {
+    $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").addClass('new-comment').delay(2000);
+    setTimeout(function() {
+        $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").removeClass('new-comment');
+    }, 2000);
+}
 
 function listPosts()
 {
@@ -42,10 +47,13 @@ function listPosts()
 
 function listComment(id)
 {
+    var com_id = "";
     $.ajax({
         url:'../PHP/getComment.php?postId=' + id,
         success:function(response){
+            com_id = $(response).find("#comment_ID").val();
             $("#comment_post_ID[value='" + id + "']").closest(".comment-container").find(".comment-toggle").html(response);
+            showNewComment(com_id);
         }
     })
 }

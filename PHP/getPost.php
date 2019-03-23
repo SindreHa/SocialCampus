@@ -83,7 +83,7 @@ if(mysqli_num_rows($resultPost) > 0)
 			{ 
 				?>
 				<div class="post-comment">
-				<div class="user-container-comment">
+				<div class="user-container-comment new-comment">
 					<div class="imgContainer">
 						<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
 					</div>
