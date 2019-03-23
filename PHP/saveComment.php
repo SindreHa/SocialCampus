@@ -15,7 +15,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 // Ser etter tomme felt for å hindre php error
 if (!empty($_POST)) {
 	if (isset($_POST['comment'])) {
-		$innhold = $_POST['comment'];
+		$innhold = trim($_POST['comment']);
 	}
 	if (isset($_POST['p_id'])) {
 		$post_id = $_POST['p_id'];

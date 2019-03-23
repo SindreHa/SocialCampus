@@ -9,8 +9,8 @@ $('body').on('click', '.post-submit-ID, #submit-comment_ID', function(event)
 
 $('body').on('keyup', '#comment-input', function(event)
 {
-    var letterNumber = /^[^-\ ][ÆØÅæøåa-zA-Z0-9_\s-]+$/;
-    if ($(this).val().match(letterNumber)) {
+    var textRegex = /^\s*$/;
+    if (!$(this).val().match(textRegex)) {
         $(this).closest(".inputContainer").find(".sumbit-comment").prop('disabled', false)
     }
     else {

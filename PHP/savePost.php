@@ -15,11 +15,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 // Ser etter tomme felt for å hindre php error
 if (!empty($_POST)) {
 	if (isset($_POST['tittel'])) {
-		$tittel = $_POST['tittel'];
-		?> <script> console.log(<?php $tittel ?>); </script> <?php
+		$tittel = trim($_POST['tittel']);
 	}
 	if (isset($_POST['textarea'])) {
-		$innhold = $_POST['textarea'];
+		$innhold = trim($_POST['textarea']);
 	}
 	
 }

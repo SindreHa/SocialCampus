@@ -1,8 +1,6 @@
 
 var maxOrd = 850;
 var ord = document.getElementById("ord-teller-ID");
-var ordBoks = document.getElementById("text-area-ID");
-var tittel = document.getElementById("post-title-ID")
 
 
 $("#text-area-ID, #post-title-ID").keyup(function()
@@ -24,22 +22,24 @@ function publishToggle()
     
 function checkCharactersLength()
 {
-    if(ordBoks.value.length == 0)
-    {
+    var ordBoks = $("#text-area-ID").val();
+    var textRegex = /^\s*$/;
+    if (ordBoks.match(textRegex)) {
         ord.innerHTML = "0/" + maxOrd;
         return false;
     }
     else
     {
-        ord.innerHTML = ordBoks.value.length + "/" + maxOrd;
+        ord.innerHTML = ordBoks.length + "/" + maxOrd;
         return true;
     }
 }
 
 function checkTitleLength()
 {
-    if(tittel.value.length == 0)
-    {
+    var tittel = $("#post-title-ID").val();
+    var textRegex = /^\s*$/;
+    if (tittel.match(textRegex)) {
         return false;
     }
     else
