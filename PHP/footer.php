@@ -46,7 +46,7 @@
     </div>
 
     <div class="footer-lang">
-            <a href="javascript:TooltipMessage('Norsk er allerde valgt språk');">
+            <a href="javascript:TooltipMessage('Norsk er allerede valgt språk');">
               <img src="../Pictures/norwegian.svg"/>
             </a>
             <a href="javascript:TooltipMessage('Engelsk oversettelse under arbeid');">

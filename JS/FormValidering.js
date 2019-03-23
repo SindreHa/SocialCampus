@@ -16,7 +16,8 @@ $(document).ready(function ()
 function checkUsernameLength()
 {
     var username = $("#Username-ID").val();
-    if(username.length > 4 && username.length < 20){
+    var usernameRegex = /^[ÆØÅæøåA-Za-z0-9_-]{4,50}$/;
+    if(username.match(usernameRegex)){
         $("#input-error-username").css("right", "-40px");
         $("#input-approved-username").css("right", "0px");
         return true;
@@ -36,7 +37,8 @@ function checkUsernameLength()
 function checkNameLength()
 {
     var name = $("#full_name-ID").val();
-    if(name.length > 1){
+    var nameRegex = /^[ÆØÅæøåa-zA-Z]+[ ]+[ÆØÅæøåa-zA-Z]{1,50}$/; 
+    if (name.match(nameRegex)) {
         $("#input-error-full_name").css("right", "-40px");
         $("#input-approved-full_name").css("right", "0px");
         return true;
@@ -56,7 +58,8 @@ function checkNameLength()
 function validateEmail()
 {
     var email = $("#Email-ID").val();
-    if (validateEmailCheck(email)) 
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/; 
+    if (email.match(emailRegex)) 
     {
         $("#input-error-email").css("right", "-40px"); 
         $("#input-approved-email").css("right", "0px");
@@ -75,17 +78,12 @@ function validateEmail()
     }
 }
 
-function validateEmailCheck(email) 
-{
-    var regex = /\S+@\S+\.\S+/;
-    return regex.test(email);
-}
-
 function checkPasswordLength()
 {
     checkPasswordMatch();
     var password = $("#Password-ID").val();
-    if(password.length >= 8 && password.length <= 20)
+    var passwordRegex = /^[ÆØÅæøåa-z0-9_-]{8,50}$/;
+    if(password.match(passwordRegex))
     {
         $("#input-error-password").css("right", "-40px");
         $("#input-approved-password").css("right", "0px");
@@ -101,26 +99,6 @@ function checkPasswordLength()
         $("#input-error-password").css("right", "0px");
         $("#input-approved-password").css("right", "-40px");
     }
-    $('#Password-ID').on('blur', function()
-    {
-        
-        if(this.value.length < 8 && this.value.length > 0)
-        { 
-            $("#input-error-password").css("right", "0px");
-            $("#input-approved-password").css("right", "-40px");
-            return false; 
-        }
-        else
-        {
-            $("#input-error-password").css("right", "-40px");
-            $("#input-approved-password").css("right", "0px");
-        }
-        if(this.value.length == 0)
-        {
-            $("#input-error-password").css("right", "-40px");
-            $("#input-approved-password").css("right", "-40px");
-        } 
-    });
 }
 
 function checkPasswordMatch() 

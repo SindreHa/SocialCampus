@@ -83,16 +83,12 @@ $result = $link->query("SELECT * FROM user WHERE id = $userId");
 $row = $result->fetch_assoc();
 
 //Profilbilde for bruker
-$userPicture = !empty($row['avatar'])?$row['avatar']:'placeholder-profile.png';
+$userPicture = !empty($row['avatar'])?$row['avatar']:'placeholder-profile.png'; //Hvis avatar ikke tom så bruk avatar id hvis ikke brukes placeholder.png
 $userPictureURL = '../Pictures/upload/'.$userPicture;
 
 $sql = "SELECT * FROM user WHERE id = $userId";
 $result = mysqli_query($link, $sql);
-
-$row = mysqli_fetch_row($result);
-$username = $row[1];
-$email = $row[5];
-$name = $row[3];
+$rowUser = mysqli_fetch_row($result);
 ?>
 
 
@@ -119,7 +115,7 @@ $name = $row[3];
                         <label id="img-name" for="avatar">Velg bilde</label>
                     </form>
 	        		</div>
-	        		<h1><?php echo $username?></h1>
+	        		<h1><?php echo $rowUser[1]?></h1>
 	        	</div>
 
 	        	<div class="profile-info">
@@ -127,7 +123,7 @@ $name = $row[3];
 	        			<h3>Brukernavn</h3>
 	        			<div class="inputContainer">
                             <i class="fas fa-user"></i>
-	        				<input type="text"class="input" disabled value="<?php echo $username?>">
+	        				<input type="text"class="input" disabled value="<?php echo $rowUser[1]?>">
 	        			</div>
 	        		</div>
 
@@ -135,7 +131,7 @@ $name = $row[3];
 	        			<h3>E-post</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-at"></i>
-	        				<input type="text" class="input" disabled value="<?php echo $email?>">
+	        				<input type="text" class="input" disabled value="<?php echo $rowUser[5]?>">
 	        			</div>
 	        			<!-- <h4>Sindre.h@outlook.com</h4> -->
 	        		</div>
@@ -144,7 +140,7 @@ $name = $row[3];
 	        			<h3>Fullt navn</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-address-book"></i>
-	        				<input type="text" class="input" value="<?php echo $name?>" disabled>
+	        				<input type="text" class="input" value="<?php echo $rowUser[3]?>" disabled>
 	        			</div>
 	        		</div>
 
