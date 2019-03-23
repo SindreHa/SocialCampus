@@ -2,8 +2,6 @@
 
 require_once "../PHP/config.php";
 
-session_start();
-
 $post_ID = $_GET['postId'];
 
 $sqlCom = "SELECT c.*, u.username FROM application.commentary AS c, application.user AS u WHERE c.user_id = u.id AND c.post_id = $post_ID ORDER BY made DESC;";

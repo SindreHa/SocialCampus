@@ -1,16 +1,6 @@
 <?php
-// Initialize the session
-session_start();
- 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//   header("location: index.php");
-//   exit;
-// }
- 
 // Include config file
 require_once "../php/config.php";
-
 
 if (isset($_GET['register'])){
     echo '
@@ -105,48 +95,48 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <?php include '../PHP/head.php';?>
 </head>
 <body>
-    <div class="wrapper">
-        
-        <?php include '../PHP/nav.php';?>
+<div class="wrapper">
+    
+    <?php include '../PHP/nav.php';?>
 
-        <div class="login-wrapper">
-            <section class="login">
+    <div class="login-wrapper">
+        <section class="login">
 
-                <div class="login-header">
-                    <h1><i class="fas fa-sign-in-alt"></i>Logg inn</h1>
-                    <p>Fyll ut brukernavn og passord.</p>
+            <div class="login-header">
+                <h1><i class="fas fa-sign-in-alt"></i>Logg inn</h1>
+                <p>Fyll ut brukernavn og passord.</p>
+            </div>
+
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-login <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <label>Brukernavn</label>
+                    <div class="inputContainer">
+                        <i class="fas fa-user-tag"></i>
+                        <input type="text" name="username" placeholder="OlaNord123" class="input" value="<?php echo $username; ?>">
+                    <i class="fas fa-exclamation input-error"></i>
+                    </div>
+                    <span class="help-block"><?php echo $username_err; ?></span>
+                </div>    
+                <div class="form-login <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                    <label>Passord</label>
+                    <div class="inputContainer">
+                        <i class="fas fa-key"></i>
+                        <input type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>">
+                    <i class="fas fa-exclamation input-error"></i>
+                    </div>
+                    <span class="help-block"><?php echo $password_err; ?></span>
+                </div>
+                <div class="button-wrapper">
+                    <input type="submit" class="btn" value="Logg inn">
                 </div>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                    <div class="form-login <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                        <label>Brukernavn</label>
-                        <div class="inputContainer">
-                            <i class="fas fa-user-tag"></i>
-                            <input type="text" name="username" placeholder="OlaNord123" class="input" value="<?php echo $username; ?>">
-                        <i class="fas fa-exclamation input-error"></i>
-                        </div>
-                        <span class="help-block"><?php echo $username_err; ?></span>
-                    </div>    
-                    <div class="form-login <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                        <label>Passord</label>
-                        <div class="inputContainer">
-                            <i class="fas fa-key"></i>
-                            <input type="password" name="password" placeholder="••••••••••" class="input" value="<?php echo $password; ?>">
-                        <i class="fas fa-exclamation input-error"></i>
-                        </div>
-                        <span class="help-block"><?php echo $password_err; ?></span>
-                    </div>
-                    <div class="button-wrapper">
-                        <input type="submit" class="btn" value="Logg inn">
-                    </div>
+                <p>Har du ikke en bruker? <a href="register.php">Registrer deg her</a>.</p>
 
-                    <p>Har du ikke en bruker? <a href="register.php">Registrer deg her</a>.</p>
-
-                </form>
-            </section>
-        </div>
-        
-    </div>  
+            </form>
+        </section>
+    </div>
+    
+</div>  
 
 <?php include '../PHP/footer.php';?>
 

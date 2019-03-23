@@ -1,8 +1,4 @@
-
 <?php 
-if(session_id() == '') {
-    session_start();
-}
 
 require_once "../PHP/config.php";
 
@@ -93,9 +89,8 @@ $ant_medlem = $count[0];
 			</section>
 
 			<section class="group-post-wrapper">
-
 				<div class="group-post">
-				
+				<!-- Plassering av poster -->
 				</div>
 			</section>
 		

@@ -1,5 +1,4 @@
 <?php
-session_start();
  
 // Definer variabler initialiser med tomme verdier
 require_once "config.php";

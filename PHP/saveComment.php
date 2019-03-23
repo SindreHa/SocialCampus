@@ -1,8 +1,4 @@
 <?php
-// Sjekker om session er aktive, om ikke, lager ny
-if(session_id() == '') {
-    session_start();
-}
 // Henter config fil
 require_once "../PHP/config.php";
 

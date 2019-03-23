@@ -1,7 +1,6 @@
 <?php
     //Inkluder config fil for databasen
     include_once 'config.php';
-    session_start();
     //Konfigurer filopplastning
   
     $userId = $_SESSION['id'];

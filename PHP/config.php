@@ -8,4 +8,9 @@ define('DB_NAME', 'application');
 /* Connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
+if(session_id() == '') {
+    session_start();
+}
+
 ?>
+

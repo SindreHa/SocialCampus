@@ -29,6 +29,7 @@ function clearCommentField(id){
 }
 
 function showNewComment(id) {
+    console.log("brukes");
     $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").addClass('new-comment').delay(2000);
     setTimeout(function() {
         $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").removeClass('new-comment');

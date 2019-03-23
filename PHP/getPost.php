@@ -8,7 +8,6 @@ require_once "../PHP/config.php";
 $sqlPost = "SELECT p.id, u.id, p.title, p.content, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC;";
 $resultPost = mysqli_query($link, $sqlPost);
 
-session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
 }
@@ -83,7 +82,7 @@ if(mysqli_num_rows($resultPost) > 0)
 			{ 
 				?>
 				<div class="post-comment">
-				<div class="user-container-comment new-comment">
+				<div class="user-container-comment">
 					<div class="imgContainer">
 						<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
 					</div>
