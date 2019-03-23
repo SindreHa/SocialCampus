@@ -32,7 +32,7 @@ function showNewComment(id) {
     $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").addClass('new-comment').delay(2000);
     setTimeout(function() {
         $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").removeClass('new-comment');
-    }, 2000);
+    }, 4000);
 }
 
 function listPosts()

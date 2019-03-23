@@ -30,7 +30,7 @@ while($rowCom=mysqli_fetch_row($resultCom))
 		</div>
 	</div>
 	<div class="comment-content">
-		<h3><?php echo $rowCom[6]; ?></h3>
+		<h3><?php echo $rowCom[5]; ?></h3>
 		<p><?php echo $rowCom[1]; ?></p>
 		<p><?php echo $rowCom[2]; ?></p>
 	</div>
