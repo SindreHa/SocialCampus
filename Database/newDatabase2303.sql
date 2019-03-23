@@ -7,14 +7,12 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema application
--- -----------------------------------------------------
 
 -- -----------------------------------------------------
 -- Schema application
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `application` DEFAULT CHARACTER SET latin1 ;
+DROP SCHEMA IF EXISTS 'application';
+CREATE SCHEMA IF NOT EXISTS `application` DEFAULT CHARACTER SET utf8 ;
 USE `application` ;
 
 -- -----------------------------------------------------
