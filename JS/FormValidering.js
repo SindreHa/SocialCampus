@@ -1,8 +1,22 @@
+/*
+    Fila inneholder funksjoner som validerer form-input. Om ikke visse kondisjoner er møtt,
+    vil det ikke være mulig å registrere ny bruker.
+*/
+
+/*
+    Submit starter som disabled
+*/
 window.onload = function()
 {
     document.getElementById('Submit-Toggle').setAttribute("disabled","disabled");
 }
 
+/*
+    Her er det lagt til en keyup funksjon på alle funksjonene i fila. Det betyr at alle funksjonene blir triggered
+    hver gang en bruker trykker en tast.
+    Funksjonen SubmitToggle blir også kjørt en gang per tastetrykk på alle felt,
+    på den måten kan man sjekke alle felt uavhengig av hvilket felt brukeren befinner seg.
+*/
 $(document).ready(function () 
 {
     $("#Username-ID").keyup(checkUsernameLength);
@@ -13,6 +27,10 @@ $(document).ready(function ()
     $("#Username-ID, #Email-ID, #Password-ID, #ConfirmPassword-ID").keyup(SubmitToggle);
 });
 
+/*
+    Funksjon sjekker om brukernavn er større enn 4 bokstaver.
+    Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
+*/
 function checkUsernameLength()
 {
     var username = $("#Username-ID").val();
@@ -34,6 +52,10 @@ function checkUsernameLength()
     }
 }
 
+/*
+    Funksjon sjekker at navn har minst et mellomrom (Pga etternavn)
+    Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
+*/
 function checkNameLength()
 {
     var name = $("#full_name-ID").val();
@@ -55,6 +77,10 @@ function checkNameLength()
     }
 }
 
+/*
+    Funksjon sjekker at email gyldig
+    Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
+*/
 function validateEmail()
 {
     var email = $("#Email-ID").val();
@@ -78,6 +104,10 @@ function validateEmail()
     }
 }
 
+/*
+    Funksjon sjekker at passord er høyere enn 8 tegn
+    Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
+*/
 function checkPasswordLength()
 {
     checkPasswordMatch();
@@ -100,7 +130,10 @@ function checkPasswordLength()
         $("#input-approved-password").css("right", "-40px");
     }
 }
-
+/*
+    Funksjon sjekker om confirm-password matcher med passord.
+    Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
+*/
 function checkPasswordMatch() 
 {
     var password = $("#Password-ID").val();
@@ -126,6 +159,9 @@ function checkPasswordMatch()
     
 }
 
+/*
+    Funksjon sjekker om alle felt er valide. Om alle returner true, kan man trykke submit og registrere bruker
+*/
 function SubmitToggle()
 {
     if(checkUsernameLength() && validateEmail() && checkPasswordLength() && checkPasswordMatch()){
