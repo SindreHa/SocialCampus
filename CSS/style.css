@@ -639,55 +639,46 @@ input:-webkit-autofill:active  {
 	padding: 20px;
 }
 
-.form-input input {
-	border: 2px solid var(--dark);
+.form-input input, .form-input textarea {
 	background-color: var(--light);
+	border: 1px solid var(--lightGray);
+	border-radius: 5px;
 	color: black;
 	font-size: 1rem;
 	padding: 10px;
-	margin-bottom: 10px;
 	outline: none;
-	transition: border-color .2s ease-in-out;
+	transition: border-color .3s ease-out, box-shadow .3s ease-out;
 }
 
-.form-input input:focus {
-	border-color: var(--accent);
-	background-color: var(--light);
-	color: black;
-}
-
-.form-input input::placeholder {
-	color: black;
-}
-
-.form-input input:focus::placeholder {
-	color: transparent;
+.form-input input {
+	border-color: var(--lightDark);
+	margin-bottom: 10px;
 }
 
 .form-input textarea {
-	background-color: var(--light);
-	border: 2px solid var(--dark);
 	height: 80px;
 	font-family: inherit;
-	color: black;
-	font-size: 1rem;
 	line-height: 1.4;
 	resize: none;
-	padding: 10px;
-	outline: none;
-	transition: border-color .2s ease-in-out;
 }
 
-.form-input textarea:focus {
+.form-input .btn {
+	border-radius: 5px;
+}
+
+.form-input input:focus, .form-input textarea:focus {
 	border-color: var(--accent);
+	background-color: var(--light);
+	color: black;
+	box-shadow: inset 0px 0px 0px 1px var(--accent);
 }
 
-.form-input textarea::placeholder {
+.form-input input::placeholder, .form-input textarea::placeholder {
 	color: black;
 }
 
-.form-input textarea:focus::placeholder {
-	color: transparent;
+.form-input input:focus::placeholder, .form-input textarea:focus::placeholder {
+	color: var(--lightGray);
 }
 
 textarea::-webkit-scrollbar, .comment-container::-webkit-scrollbar {
@@ -837,7 +828,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	font-family: inherit;
 	border: 1px solid var(--lightGray);
 	border-radius: 5px;
-	transition: border-color .3s ease-out;
+	transition: border-color .3s ease-out, box-shadow .3s ease-out;
 }
 
 .group-post-box .inputContainer .input:focus::placeholder{
@@ -846,6 +837,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 
 .group-post-box .inputContainer .input:focus{
 	border-color: var(--accent);
+	box-shadow: inset 0px 0px 0px 1px var(--accent);
 }
 
 .group-post-box .post-comment {
