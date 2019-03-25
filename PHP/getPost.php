@@ -27,7 +27,7 @@ if(mysqli_num_rows($resultPost) > 0)
     {
 				?>
 <div class="group-post-box">
-
+	<div class="post-wrapper">
 	<div class="user-container">
 		<div class="user-container-comment">
 			<div class="imgContainer">
@@ -40,12 +40,12 @@ if(mysqli_num_rows($resultPost) > 0)
 				}?>
 			</div>
 		</div>
-		<h4><?php echo $rowPost[5]; ?></h4> <!-- Brukernavn for innlegg -->
+		<h4><?php echo $rowPost[5]; ?><p>Publisert: <?php echo $rowPost[4]; ?></p></h4> <!-- Brukernavn for innlegg -->
 	</div>
 
 	<div class="post-container">
 		<h2><?php echo $rowPost[2]; ?></h2> <!-- Tittel på innlegg -->
-		<p><?php echo $rowPost[3]; ?> </p> <!-- Innlegg innhold -->
+		<p><?php echo $rowPost[3]; ?></p> <!-- Innlegg innhold -->
 		<div class="post-stats">
 				<div>
 					<a href="#/" class="like-button" onclick="IncrementPostLikes(this)">
@@ -64,10 +64,15 @@ if(mysqli_num_rows($resultPost) > 0)
 			if($rowComCount[0] === "1") { $comString = " kommentar"; }
 			else{ $comString = " kommentarer"; }
 			?>
-			<h4><a class="comment-collapse" href="#/"><?php  echo $rowComCount[0] . $comString;  ?></a></h4> <!-- Antall kommentarer -->
-			<h4>Publisert</h4>
-			<h4><?php echo $rowPost[4]; ?></h4> <!-- PHP DATO -->
+			<h4><a class="comment-collapse" href="#/">
+			<p><?php  echo $rowComCount[0] . $comString;  ?></p>
+			<i class="far fa-comment-alt"><p><?php  echo $rowComCount[0]?></p></i>
+			</a></h4> <!-- Antall kommentarer -->
+			<h4 class="comment-date">
+			<p>Publisert <?php echo $rowPost[4]; ?></p>
+			</h4>
 		</div>
+	</div>
 	</div>
 
 	
@@ -97,7 +102,12 @@ if(mysqli_num_rows($resultPost) > 0)
 					</div>
 				</div>
 				<div class="comment-content">
+					<div class="comment-poster-photo">
+						<div class="imgContainer">
+							<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
+						</div>
 					<h3><?php echo $rowCom[5]; ?></h3>
+					</div>
 					<p><?php echo $rowCom[1]; ?></p>
 					<p><?php echo $rowCom[2]; ?></p>
 				</div>
@@ -121,7 +131,7 @@ if(mysqli_num_rows($resultPost) > 0)
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>" method="post">
 					<div class="inputContainer">
 						<input type="text" class="input" id ="comment-input" name="kommentar" placeholder="Skriv en kommentar" autocomplete="off">
-						<input type="submit" disabled value="Publiser" class="submit-comment btn" id="submit-comment_ID">
+						<button type="submit" disabled class="submit-comment btn" id="submit-comment_ID"><i class="far fa-comment-dots"></i></button>
 						<input type="hidden" name="comment_post_ID" value="<?php echo $rowPost[0]; ?>" id="comment_post_ID" />
 					</div>
 				</form>

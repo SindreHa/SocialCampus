@@ -36,14 +36,17 @@ function clearPostField(){
 */
 function clearCommentField(id){
     $("#comment_post_ID[value='" + id + "']").closest(".inputContainer").find(".input").val("");
-    $("#comment_post_ID[value='" + id + "']").closest(".inputContainer").find(".sumbit-comment").prop('disabled', true)
+    $("#comment_post_ID[value='" + id + "']").closest(".inputContainer").find(".submit-comment").prop('disabled', true)
 }
 
 /*
    Funksjon som viser kommentarfelt og din kommentar når man poster
 */
 function showNewComment(id) {
-    $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").addClass('new-comment').delay(2000);
+    $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").addClass('new-comment');
+    $("#comment_ID[value='" + id + "']").closest(".group-post-box").find(".comment-collapse").addClass('comment-show');
+    var currentComCount = parseInt($("#comment_ID[value='" + id + "']").closest(".group-post-box").find(".comment-collapse i").text().trim()) + 1;
+    $("#comment_ID[value='" + id + "']").closest(".group-post-box").find(".comment-collapse i").html("<p>" + currentComCount + "</p>");
     setTimeout(function() {
         $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").removeClass('new-comment');
     }, 4000);

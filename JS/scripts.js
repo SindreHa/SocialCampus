@@ -1,6 +1,31 @@
 
 /* Variabler */
 
+/* Funksjon som disabler hover state på touch enheter
+function hasTouch() {
+	return 'ontouchstart' in document.documentElement
+				 || navigator.maxTouchPoints > 0
+				 || navigator.msMaxTouchPoints > 0;
+}
+
+if (hasTouch()) { // remove all :hover stylesheets
+	try { // prevent exception on browsers not supporting DOM styleSheets properly
+			for (var si in document.styleSheets) {
+					var styleSheet = document.styleSheets[si];
+					if (!styleSheet.rules) continue;
+
+					for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+							if (!styleSheet.rules[ri].selectorText) continue;
+
+							if (styleSheet.rules[ri].selectorText.match(':hover')) {
+									styleSheet.deleteRule(ri);
+							}
+					}
+			}
+	} catch (ex) {}
+}
+*/
+
 // Kart
 var map, infoWindow;
 
@@ -41,7 +66,8 @@ var insertBefore = head.insertBefore;
 $(function() {
 	$('body').on('click', '.comment-collapse', function(e) {
 		e.preventDefault(); 
-		$(this).closest(".post-container").next().find(".comment-toggle").slideToggle();
+		$(this).closest(".post-wrapper").next().find(".comment-toggle").slideToggle();
+		$(this).toggleClass('comment-show');
 		return false; 
 	});
 });
@@ -67,7 +93,7 @@ $(function() {
 	*/ 
 	$(document).scroll(function() {
 		var y = $(this).scrollTop();
-		if (getScrollPercent() > 75) {
+		if (getScrollPercent() > 30) {
 			$('.toTop').addClass('show-toTop');
 		} else {
 			$('.toTop').removeClass('show-toTop');
@@ -78,8 +104,6 @@ $(function() {
 			$('.toTop').css("bottom", "20px");
 		}
 	});
-
-
 
 	function readURL(input) {
 		if (input.files && input.files[0]) {

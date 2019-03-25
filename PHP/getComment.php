@@ -28,8 +28,13 @@ while($rowCom=mysqli_fetch_row($resultCom))
 		</div>
 	</div>
 	<div class="comment-content">
+		<div class="comment-poster-photo">
+		<div class="imgContainer">
+			<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
+		</div>
 		<h3><?php echo $rowCom[5]; ?></h3>
-		<p><?php echo $rowCom[1]; ?></p>
+		</div>
+		<p class="comment-text"><?php echo $rowCom[1]; ?></p>
 		<p><?php echo $rowCom[2]; ?></p>
 	</div>
 </div>
