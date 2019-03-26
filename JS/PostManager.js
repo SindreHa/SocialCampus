@@ -83,12 +83,6 @@ $('body').on('keyup', '#comment-input', function(event)
 */
 function IncrementPostLikes(element)
 {
-    element.nextElementSibling.innerHTML++;
-}
-/*
-    Funksjon for å redusere likes på parameter(element)
-*/
-function DecrementPostLikes(element)
-{
-    element.parentElement.children[1].innerHTML--;
+    element.parentElement.submit(); //Kjører submit på form
+    element.children[1].innerHTML++; //Øker likes med 1
 }

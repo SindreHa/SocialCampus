@@ -29,13 +29,15 @@ while($rowCom=mysqli_fetch_row($resultCom))
 	</div>
 	<div class="comment-content">
 		<div class="comment-poster-photo">
-		<div class="imgContainer">
-			<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
+			<div class="imgContainer">
+				<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
+			</div>
 		</div>
-		<h3><?php echo $rowCom[5]; ?></h3>
+		<div class="text-container">
+			<h3><?php echo $rowCom[5]; ?></h3> <!-- Brukernavn -->
+			<p><?php echo $rowCom[1]; ?></p> <!-- Kommentar innhold -->
+			<p><?php echo $rowCom[2]; ?></p> <!-- Kommentar dato -->
 		</div>
-		<p class="comment-text"><?php echo $rowCom[1]; ?></p>
-		<p><?php echo $rowCom[2]; ?></p>
 	</div>
 </div>
 <?php

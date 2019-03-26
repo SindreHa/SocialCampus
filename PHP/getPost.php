@@ -44,17 +44,18 @@ if(mysqli_num_rows($resultPost) > 0)
 	</div>
 
 	<div class="post-container">
-		<h2><?php echo $rowPost[2]; ?></h2> <!-- Tittel på innlegg -->
-		<p><?php echo $rowPost[3]; ?></p> <!-- Innlegg innhold -->
+		<div class="text-container">
+			<h2><?php echo $rowPost[2]; ?></h2> <!-- Tittel på innlegg -->
+			<p><?php echo $rowPost[3]; ?></p> <!-- Innlegg innhold -->
+		</div>
 		<div class="post-stats">
-				<div>
-					<a href="#/" class="like-button" onclick="IncrementPostLikes(this)">
-						<i class="fas fa-caret-up"></i>
-					</a>
-					<p class="ant-likes">0</p> <!-- Antall likes -->
-					<a href="#/" class="like-button" onclick="DecrementPostLikes(this)">
-						<i class="fas fa-caret-down"></i>
-					</a>
+				<div class="like-button">
+					<form method="post" action="">
+						<a href="#/" onclick="IncrementPostLikes(this)">
+						<i class="fas fa-thumbs-up"></i>
+							<p class="ant-likes">0</p> <!-- Antall likes -->
+						</a>
+					</form>
 				</div>
 			<?php
 		
