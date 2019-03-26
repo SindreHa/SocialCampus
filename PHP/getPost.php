@@ -55,6 +55,7 @@ if(mysqli_num_rows($resultPost) > 0)
 						<i class="fas fa-thumbs-up"></i>
 							<p class="ant-likes">0</p> <!-- Antall likes -->
 						</a>
+						<input type="hidden" name="comment_post_ID" value="<?php echo $rowPost[0]; ?>" id="comment_post_ID" />
 					</form>
 				</div>
 			<?php
@@ -91,15 +92,6 @@ if(mysqli_num_rows($resultPost) > 0)
 				<div class="user-container-comment">
 					<div class="imgContainer">
 						<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
-					</div>
-					<div class="comment-vote">
-						<a href="#/" onclick="IncrementPostLikes(this)">
-							<i class="fas fa-caret-up"></i>
-						</a>
-						<p class="ant-likes">0</p> <!-- Antall likes -->
-						<a href="#/" onclick="DecrementPostLikes(this)">
-							<i class="fas fa-caret-down"></i>
-						</a>
 					</div>
 				</div>
 				<div class="comment-content">
