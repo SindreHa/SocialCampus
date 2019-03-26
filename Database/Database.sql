@@ -7,27 +7,25 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema application
--- -----------------------------------------------------
 
 -- -----------------------------------------------------
 -- Schema application
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `application`;
 CREATE SCHEMA IF NOT EXISTS `application` DEFAULT CHARACTER SET utf8 ;
 USE `application` ;
 
 -- -----------------------------------------------------
 -- Table `application`.`category`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`category` ;
+
 CREATE TABLE IF NOT EXISTS `application`.`category` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
   `creator` INT(11) NOT NULL,
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status_id` INT(11) NOT NULL,
-  `user_status_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `creator_idx` (`creator` ASC),
   CONSTRAINT `category_foreign_key3`
@@ -42,6 +40,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`user`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`user` ;
+
 CREATE TABLE IF NOT EXISTS `application`.`user` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `application`.`user` (
   `full_name` VARCHAR(255) NOT NULL,
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `email` VARCHAR(245) NOT NULL,
-  `avatar` BLOB NOT NULL,
+  `avatar` VARCHAR(100) NOT NULL,
   `moderator` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
@@ -60,6 +60,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`post`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`post` ;
+
 CREATE TABLE IF NOT EXISTS `application`.`post` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
@@ -78,9 +80,11 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`commentary`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`commentary` ;
+
 CREATE TABLE IF NOT EXISTS `application`.`commentary` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `content` VARCHAR(100) NOT NULL,
+  `content` VARCHAR(850) NOT NULL,
   `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `post_id` INT(11) NULL DEFAULT NULL,
   `user_id` INT(11) NULL DEFAULT NULL,
@@ -100,14 +104,15 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`events`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`events` ;
+
 CREATE TABLE IF NOT EXISTS `application`.`events` (
   `id` INT(11) NOT NULL,
   `title` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   `start_date` VARCHAR(50) NOT NULL,
   `end_date` VARCHAR(50) NOT NULL,
-  `created` DATETIME NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT '1' COMMENT '1=Active, 0=Block')
+  `created` DATETIME NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -115,6 +120,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`groups`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`groups` ;
+
 CREATE TABLE IF NOT EXISTS `application`.`groups` (
   `id` INT(11) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
@@ -133,6 +140,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`groups_has_users`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`groups_has_users` ;
+
 CREATE TABLE IF NOT EXISTS `application`.`groups_has_users` (
   `groups_id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
@@ -156,6 +165,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `application`.`likes`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`likes` ;
+
 CREATE TABLE IF NOT EXISTS `application`.`likes` (
   `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
@@ -178,60 +189,39 @@ CREATE TABLE IF NOT EXISTS `application`.`likes` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-
--- -----------------------------------------------------
--- Table `application`.`status`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `application`.`status` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `application`.`thread`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `application`.`thread` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `content` VARCHAR(850) NOT NULL,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `post_id` INT(11) NULL DEFAULT NULL,
-  `user_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `post_id` (`post_id` ASC),
-  INDEX `user_id` (`user_id` ASC),
-  CONSTRAINT `thread_foreign_key1`
-    FOREIGN KEY (`post_id`)
-    REFERENCES `application`.`post` (`id`),
-  CONSTRAINT `thread_foreign_key2`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `application`.`user` (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `application`.`user_status`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `application`.`user_status` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
 USE `application` ;
+
+-- -----------------------------------------------------
+-- procedure newCat
+-- -----------------------------------------------------
+
+USE `application`;
+DROP procedure IF EXISTS `application`.`newCat`;
+
+DELIMITER $$
+USE `application`$$
+CREATE DEFINER=`root`@`%` PROCEDURE `newCat`(
+	in p_username varchar(45),
+	in p_description varchar(45)
+)
+begin
+	insert into category (username, description)
+    values (p_username, p_description);
+end$$
+
+DELIMITER ;
 
 -- -----------------------------------------------------
 -- procedure newUser
 -- -----------------------------------------------------
 
+USE `application`;
+DROP procedure IF EXISTS `application`.`newUser`;
+
 DELIMITER $$
 USE `application`$$
 CREATE DEFINER=`root`@`127.0.0.1` PROCEDURE `newUser`(
-	in p_username varchar(50),
+in p_username varchar(50),
     in p_password varchar(255),
     in p_email varchar(245)
 )
@@ -244,22 +234,42 @@ end$$
 DELIMITER ;
 
 -- -----------------------------------------------------
+-- procedure showCat
+-- -----------------------------------------------------
+
+USE `application`;
+DROP procedure IF EXISTS `application`.`showCat`;
+
+DELIMITER $$
+USE `application`$$
+CREATE DEFINER=`root`@`%` PROCEDURE `showCat`()
+begin
+	select username, description
+    from category;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
 -- procedure updateProfil
 -- -----------------------------------------------------
+
+USE `application`;
+DROP procedure IF EXISTS `application`.`updateProfil`;
 
 DELIMITER $$
 USE `application`$$
 CREATE DEFINER=`root`@`127.0.0.1` PROCEDURE `updateProfil`(
-	in p_id int(11),
-	in p_full_name varchar(255),
+in p_id int(11),
+in p_full_name varchar(255),
     in p_picture blob
 )
 begin
-	update user
-	set
-		full_name = p_full_name,
+update user
+set
+full_name = p_full_name,
         picture = p_picture
-	where id = p_id;
+where id = p_id;
 end$$
 
 DELIMITER ;
