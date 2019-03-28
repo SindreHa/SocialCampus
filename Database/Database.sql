@@ -171,12 +171,8 @@ DROP TABLE IF EXISTS `application`.`likes` ;
 CREATE TABLE IF NOT EXISTS `application`.`likes` (
   `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
-  `rating` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`user_id`, `post_id`),
-  UNIQUE INDEX `UC_rating_info` (`user_id` ASC, `post_id` ASC),
-  UNIQUE INDEX `user_user_info` (`user_id` ASC, `post_id` ASC),
-  INDEX `fk_user_has_post_idx1` (`post_id` ASC),
-  INDEX `fk_user_has_post_idx2` (`user_id` ASC),
+  `id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
   CONSTRAINT `likes_foreign_key1`
     FOREIGN KEY (`user_id`)
     REFERENCES `application`.`user` (`id`)
