@@ -93,6 +93,15 @@ if(mysqli_num_rows($resultPost) > 0)
 					<div class="imgContainer">
 						<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
 					</div>
+					<div class="like-button">
+					<form method="post" action="">
+						<a href="#/" onclick="IncrementPostLikes(this)">
+						<i class="fas fa-thumbs-up"></i>
+							<p class="ant-likes">0</p> <!-- Antall likes -->
+						</a>
+						<input type="hidden" name="comment_ID" value="<?php echo $rowCom[0]; ?>" id="comment_ID" />
+					</form>
+					</div>
 				</div>
 				<div class="comment-content">
 					<div class="comment-poster-photo">

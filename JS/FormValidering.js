@@ -112,7 +112,7 @@ function checkPasswordLength()
 {
     checkPasswordMatch();
     var password = $("#Password-ID").val();
-    var passwordRegex = /^[ÆØÅæøåa-z0-9_-]{8,50}$/;
+    var passwordRegex = /^[ÆØÅæøåA-Za-z0-9_-]{8,50}$/;
     if(password.match(passwordRegex))
     {
         $("#input-error-password").css("right", "-40px");
