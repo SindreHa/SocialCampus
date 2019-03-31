@@ -9,6 +9,46 @@ if(!(isset($_SESSION['username'])))
 require_once "../PHP/config.php";
 
 
+// Link innlogget bruker til session ID
+$userId = $_SESSION['id'];
+
+
+
+// Henter informasjon om likes for innlogget bruker og oppdaterer likes antall ved klikk
+
+if (isset($_POST['liked'])) {
+		$postid = $_POST['postid'];
+		$result = mysqli_query($link, "SELECT * FROM post WHERE id=$postid");
+		$row = mysqli_fetch_array($result);
+		$n = $row['likes'];
+
+		mysqli_query($link, "INSERT INTO likes (userid, postid) VALUES ($userId, $postid)");
+		mysqli_query($link, "UPDATE post SET likes=$n+1 WHERE id=$postid");
+
+		echo $n+1;
+		exit();
+	}
+	if (isset($_POST['unliked'])) {
+		$postid = $_POST['postid'];
+		$result = mysqli_query($con, "SELECT * FROM post WHERE id=$postid");
+		$row = mysqli_fetch_array($result);
+		$n = $row['likes'];
+
+		mysqli_query($link, "DELETE FROM likes WHERE postid=$postid AND userid=$userId");
+		mysqli_query($link, "UPDATE posts SET likes=$n-1 WHERE id=$postid");
+		
+		echo $n-1;
+		exit();
+	}
+
+
+
+
+
+
+
+
+
 if (isset($_GET['upload'])){
     echo '
         <script> 
@@ -74,9 +114,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Lukk connection
     mysqli_close($link);
 }
-
-//Get current user ID from session
-$userId = $_SESSION['id'];
 
 //Get user data from database
 $result = $link->query("SELECT * FROM user WHERE id = $userId");
