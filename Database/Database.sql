@@ -157,9 +157,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `application`.`likes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `application`.`likes` (
+  `id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
-  `id` INT(11) NOT NULL,
   `like_unlike` INT(2) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `likes_foreign_key1` (`user_id` ASC),
