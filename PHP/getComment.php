@@ -17,14 +17,14 @@ while($rowCom=mysqli_fetch_row($resultCom))
 		<div class="imgContainer">
 			<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
 		</div>
-		<div class="comment-vote">
+		<div class="like-button">
+		<form method="post" action="">
 			<a href="#/" onclick="IncrementPostLikes(this)">
-				<i class="fas fa-caret-up"></i>
+			<i class="fas fa-thumbs-up"></i>
+				<p class="ant-likes">0</p> <!-- Antall likes -->
 			</a>
-			<p class="ant-likes">0</p> <!-- Antall likes -->
-			<a href="#/" onclick="DecrementPostLikes(this)">
-				<i class="fas fa-caret-down"></i>
-			</a>
+			<input type="hidden" name="comment_ID" value="<?php echo $rowCom[0]; ?>" id="comment_ID" />
+		</form>
 		</div>
 	</div>
 	<div class="comment-content">

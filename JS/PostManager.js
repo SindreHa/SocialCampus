@@ -77,12 +77,3 @@ $('body').on('keyup', '#comment-input', function(event)
         $(this).closest(".inputContainer").find(".submit-comment").prop('disabled', true)
     }
 });
-
-/*
-    Funksjon for å øke likes på parameter(element)
-*/
-function IncrementPostLikes(element)
-{
-    element.parentElement.submit(); //Kjører submit på form
-    element.children[1].innerHTML++; //Øker likes med 1
-}

@@ -5,7 +5,7 @@ require_once "../PHP/config.php";
 // $_SESSION['count'] = 4;
 // $antPoster = $_SESSION['count'];
 
-$sqlPost = "SELECT p.id, u.id, p.title, p.content, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC;";
+$sqlPost = "SELECT p.id, u.id, p.title, p.content, p.likes, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC;";
 $resultPost = mysqli_query($link, $sqlPost);
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
@@ -40,7 +40,7 @@ if(mysqli_num_rows($resultPost) > 0)
 				}?>
 			</div>
 		</div>
-		<h4><?php echo $rowPost[5]; ?><p>Publisert: <?php echo $rowPost[4]; ?></p></h4> <!-- Brukernavn for innlegg -->
+		<h4><?php echo $rowPost[6]; ?><p>Publisert: <?php echo $rowPost[5]; ?></p></h4> <!-- Brukernavn for innlegg -->
 	</div>
 
 	<div class="post-container">
@@ -50,13 +50,26 @@ if(mysqli_num_rows($resultPost) > 0)
 		</div>
 		<div class="post-stats">
 				<div class="like-button">
-					<form method="post" action="">
-						<a href="#/" onclick="IncrementPostLikes(this)">
-						<i class="fas fa-thumbs-up"></i>
-							<p class="ant-likes">0</p> <!-- Antall likes -->
-						</a>
-						<input type="hidden" name="comment_post_ID" value="<?php echo $rowPost[0]; ?>" id="comment_post_ID" />
-					</form>
+							<?php 
+						// determine if user has already liked this post
+							$sqlLikes = "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$rowPost[0];";
+							$resultLikes = mysqli_query($link, $sqlLikes);
+
+							if (mysqli_num_rows($resultLikes) == 1 ) { ?>
+								<!-- user already likes post -->
+								<a class="unlike" href="#/" data-id="<?php echo $rowPost[0];?>">
+									<i class="unliked fas fa-thumbs-up"></i> 
+									<i class="liked hide fas fa-thumbs-up"></i> 
+									<p class="ant-likes"><?php echo $rowPost[4];?></p>
+								</a>
+							<?php } else { ?>
+								<!-- user has not yet liked post -->
+								<a class="like" href="#/" data-id="<?php echo $rowPost[0];?>">
+									<i class="liked fas fa-thumbs-up"></i>
+									<i class="unliked hide fas fa-thumbs-up"></i> 
+									<p class="ant-likes"><?php echo $rowPost[4];?></p>
+								</a>
+							<?php }?>
 				</div>
 			<?php
 		
@@ -67,11 +80,11 @@ if(mysqli_num_rows($resultPost) > 0)
 			else{ $comString = " kommentarer"; }
 			?>
 			<h4><a class="comment-collapse" href="#/">
-			<p><?php  echo $rowComCount[0] . $comString;  ?></p>
-			<i class="far fa-comment-alt"><p><?php  echo $rowComCount[0]?></p></i>
+				<p><?php  echo $rowComCount[0] . $comString;  ?></p>
+				<i class="far fa-comment-alt"><p><?php  echo $rowComCount[0]?></p></i>
 			</a></h4> <!-- Antall kommentarer -->
 			<h4 class="comment-date">
-			<p>Publisert <?php echo $rowPost[4]; ?></p>
+				<p>Publisert <?php echo $rowPost[5]; ?></p>
 			</h4>
 		</div>
 	</div>

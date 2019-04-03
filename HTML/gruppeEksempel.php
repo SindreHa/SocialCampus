@@ -14,6 +14,32 @@ $count = mysqli_fetch_row($result);
 
 $ant_medlem = $count[0];
 
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+	$user_id = $_SESSION['id'];
+}
+
+if (isset($_POST['liked'])) {
+	$postid = $_POST['postid'];
+	$result = mysqli_query($link, "SELECT * FROM application.post WHERE id=$postid");
+	$row = mysqli_fetch_array($result);
+	$n = $row['likes'];
+
+	mysqli_query($link, "INSERT INTO application.likes (user_id, post_id) VALUES ($user_id, $postid)");
+	mysqli_query($link, "UPDATE application.post SET likes=$n+1 WHERE id=$postid");
+	exit();
+}
+
+if (isset($_POST['unliked'])) {
+	$postid = $_POST['postid'];
+	$result = mysqli_query($link, "SELECT * FROM application.post WHERE id=$postid");
+	$row = mysqli_fetch_array($result);
+	$n = $row['likes'];
+
+	mysqli_query($link, "DELETE FROM application.likes WHERE post_id=$postid AND user_id=$user_id");
+	mysqli_query($link, "UPDATE application.post SET likes=$n-1 WHERE id=$postid");
+	exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +103,7 @@ $ant_medlem = $count[0];
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>"class="form-input" id="group-form" method="post">
 					<input disabled placeholder="Logg inn for å publisere innlegg" class="tittel" id="post-title-ID" autocomplete="off">
-					<textarea disabled class="innhold" name="textarea" form="group-form" placeholder="Logg inn for å publisere innlegg" id="text-area-ID"maxlength="850"></textarea>
+					<textarea disabled class="innhold" name="textarea" form="group-form" id="text-area-ID"maxlength="850"></textarea>
 					<div class="post-submit-container">
 						<button class="btn submit-comment" onclick="TooltipMessage('Innlegg publisert')" id="post-submit-ID" >Publiser</button>
 						<h5 id="ord-teller-ID">0/850</h5>
@@ -100,5 +126,6 @@ $ant_medlem = $count[0];
 
 <script src="../JS/PostManager.js"></script>
 <script src="../JS/PostFetch.js"></script>
+<script src="../JS/likes.js"></script>
 </body>
 </html>

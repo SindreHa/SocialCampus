@@ -36,6 +36,10 @@ body {
 	cursor: not-allowed;
 }
 
+.hide {
+	display: none !important;
+}
+
 /*Knapper*/
 
 .btn {
@@ -686,7 +690,9 @@ textarea::-webkit-scrollbar, .comment-container::-webkit-scrollbar {
 }
 
 textarea::-webkit-scrollbar-track, .comment-container::-webkit-scrollbar-track {
-	background: var(--light);
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 4px;
 }
 
 .comment-container::-webkit-scrollbar-track {
@@ -695,6 +701,8 @@ textarea::-webkit-scrollbar-track, .comment-container::-webkit-scrollbar-track {
 
 textarea::-webkit-scrollbar-thumb, .comment-container::-webkit-scrollbar-thumb {
 	background: var(--primary);
+	border: 2px solid transparent;
+	border-radius: 4px;
 }
 
 textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-thumb:hover {
@@ -1028,31 +1036,38 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 
 .group-post-box .like-button a{
 	display: flex;
-	/* background-color: var(--white); */
-	/* border: 1px solid var(--lightGray); */
 	padding: 5px;
 	align-items: center;
-	/* border-radius: 5px; */
+	color: var(--dark);
 	text-decoration: none;
-	/* background-color: var(--primary); */
+	transition: background-color .1s ease-out;
+}
+
+.group-post-box .post-stats .like-button a{
+	background-color: var(--primary);
+}
+
+.group-post-box .post-stats .like-button a:hover{
+	background-color: #ccc;
 }
 
 .group-post-box .like-button p {
-	padding-left: 5px;
+	padding: 0 5px;
 	margin: 0;
 	border-radius: 0 4px 4px 0;
 	border: none;
-	/* background-color: var(--light); */
-	/* border-left: 1px solid var(--lightGray) */
 }
 
 .group-post-box .like-button i {
 	margin: 5px;
-	color: var(--lightDark);
 	transition: color .2s ease-out;
 }
 
-.group-post-box .like-button a:hover i{
+.group-post-box .like-button .liked {
+	color: var(--dark);
+}
+
+.group-post-box .like-button .unliked {
 	color: var(--accent);
 }
 
