@@ -8,9 +8,10 @@ require_once "../PHP/config.php";
 $sqlPost = "SELECT p.id, u.id, p.title, p.content, p.likes, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC;";
 $resultPost = mysqli_query($link, $sqlPost);
 
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) 
 	$user_id = $_SESSION['id'];
-}
+else
+	$user_id = 0;
 
 if ( false===$resultPost) 
 {
@@ -51,25 +52,32 @@ if(mysqli_num_rows($resultPost) > 0)
 		<div class="post-stats">
 				<div class="like-button">
 							<?php 
-						// determine if user has already liked this post
+							if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 							$sqlLikes = "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$rowPost[0];";
 							$resultLikes = mysqli_query($link, $sqlLikes);
 
 							if (mysqli_num_rows($resultLikes) == 1 ) { ?>
-								<!-- user already likes post -->
+								<!-- Bruker har allerede likt post -->
 								<a class="unlike" href="#/" data-id="<?php echo $rowPost[0];?>">
 									<i class="unliked fas fa-thumbs-up"></i> 
 									<i class="liked hide fas fa-thumbs-up"></i> 
 									<p class="ant-likes"><?php echo $rowPost[4];?></p>
 								</a>
 							<?php } else { ?>
-								<!-- user has not yet liked post -->
+								<!-- Bruker har ikke likt post -->
 								<a class="like" href="#/" data-id="<?php echo $rowPost[0];?>">
 									<i class="liked fas fa-thumbs-up"></i>
 									<i class="unliked hide fas fa-thumbs-up"></i> 
 									<p class="ant-likes"><?php echo $rowPost[4];?></p>
 								</a>
-							<?php }?>
+							<?php } 
+							} else { ?>
+								<!-- Bruker ikke logget inn -->
+								<a href="#/" class="disabled">
+									<i class="liked fas fa-thumbs-up"></i> 
+									<p class="ant-likes"><?php echo $rowPost[4];?></p>
+								</a>
+							<?php } ?>
 				</div>
 			<?php
 		

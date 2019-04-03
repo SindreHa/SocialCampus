@@ -32,7 +32,7 @@ body {
     background: var(--accent);
 }
 
-:disabled {
+:disabled, .disabled {
 	cursor: not-allowed;
 }
 
