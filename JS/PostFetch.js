@@ -47,7 +47,12 @@ function showNewComment(id) {
     $comment = $("#comment_ID[value='" + id + "']");
     var currentComCount = parseInt($comment.closest(".group-post-box").find(".comment-collapse i").text().trim());
 
-    $comment.closest(".post-comment").find(".user-container-comment").addClass('new-comment');
+    if(screen.width > 740) {
+        $comment.closest(".post-comment").find(".user-container-comment").addClass('new-comment');
+    } else {
+        $comment.closest(".post-comment").find(".comment-content").addClass('new-comment');
+    }
+
     $comment.closest(".group-post-box").find(".comment-collapse").addClass('comment-show');
     
     if(currentComCount == 0) {
@@ -59,6 +64,7 @@ function showNewComment(id) {
 
     setTimeout(function() {
         $comment.closest(".post-comment").find(".user-container-comment").removeClass('new-comment');
+        $comment.closest(".post-comment").find(".comment-content").removeClass('new-comment');
     }, 4000);
 }
 

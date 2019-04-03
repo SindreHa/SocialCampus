@@ -928,7 +928,6 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	background-color: var(--primary);
-	box-shadow: inset 0px 0 0px 0px var(--accent);
 	transition: box-shadow .3s ease-in-out;
 }
 
@@ -1770,6 +1769,7 @@ footer p{
 	.group-post-box .comment-container .comment-content {
 		display: flex;
 		flex: row;
+		transition: box-shadow .3s ease-in-out;
 	}
 	.group-post-box .comment-container .comment-content h3{
 		margin: 0 0 0 10px;
