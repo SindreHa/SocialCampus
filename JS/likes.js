@@ -17,6 +17,7 @@ $(document).ready(function(){
                 $post.find('.ant-likes').text(antLikes+1);
                 $post.find('.liked').addClass('hide');
                 $post.find('.unliked').removeClass('hide');
+                $post.find('.unliked').addClass('like-animation');
                 $post.removeClass('like');
                 $post.addClass('unlike');
             }
@@ -41,6 +42,7 @@ $(document).ready(function(){
                 $post.find('.ant-likes').html(antLikes-1);
                 $post.find('.unliked').addClass('hide');
                 $post.find('.liked').removeClass('hide');
+                $post.find('.liked').addClass('dislike-animation');
                 $post.removeClass('unlike');
                 $post.addClass('like');
             }

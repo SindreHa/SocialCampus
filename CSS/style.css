@@ -1071,6 +1071,34 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	color: var(--accent);
 }
 
+.group-post-box .like-button .like-animation {
+	animation-name: liked;
+	animation-timing-function: ease-in-out;
+	animation-duration: 550ms;
+	animation-iteration-count: 1;
+	transform-origin: bottom left;
+}
+
+@keyframes liked {
+	0% {transform: scale(1); color: var(--dark)}
+	35% {transform: scale(1.2) rotate(-6deg); color: var(--accent)}
+	/* 85% {transform: scale(.95)} */
+	100% {transform: scale(1)}
+}
+
+.group-post-box .like-button .dislike-animation {
+	animation-name: disliked;
+	animation-timing-function: ease-in-out;
+	animation-duration: 550ms;
+	animation-iteration-count: 1;
+}
+
+@keyframes disliked {
+	0% {transform: scale(1); color: var(--accent)}
+	35% {transform: scale(.9); color: var(--lightDark)}
+	100% {transform: scale(1); color: var(--dark)}
+}
+
  /*Om oss*/
 
 .aboutUs {
