@@ -1733,6 +1733,9 @@ footer p{
 	.group-post-box .comment-container .comment-stats .like-button {
 		display: flex;
 	}
+	.group-post-box .post-stats .like-button a:hover, .group-post-box .post-stats .comment-collapse:hover{
+		background-color: var(--primary);
+	}
 	.group-post-box .comment-stats p:first-child {
 		border-right: 1px solid var(--accent);
 	}

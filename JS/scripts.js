@@ -1,31 +1,5 @@
 
 /* Variabler */
-
-/* Funksjon som disabler hover state på touch enheter
-function hasTouch() {
-	return 'ontouchstart' in document.documentElement
-				 || navigator.maxTouchPoints > 0
-				 || navigator.msMaxTouchPoints > 0;
-}
-
-if (hasTouch()) { // remove all :hover stylesheets
-	try { // prevent exception on browsers not supporting DOM styleSheets properly
-			for (var si in document.styleSheets) {
-					var styleSheet = document.styleSheets[si];
-					if (!styleSheet.rules) continue;
-
-					for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
-							if (!styleSheet.rules[ri].selectorText) continue;
-
-							if (styleSheet.rules[ri].selectorText.match(':hover')) {
-									styleSheet.deleteRule(ri);
-							}
-					}
-			}
-	} catch (ex) {}
-}
-*/
-
 // Kart
 var map, infoWindow;
 
@@ -131,88 +105,23 @@ $(function() {
 	/*Google maps*/
 	function myMap() 
 	{
+		var pos = {lat: 59.408640, lng: 9.059762}
 		// Oppretter instans av kart fra Google api
 		map = new google.maps.Map(document.getElementById('mapContainer'), 
 		{
-			center: {lat: 59.408640, lng: 9.059762}, zoom: 13,
+			center: pos, zoom: 14,
 		});
 	    //Viser markør på USN
 		var marker = new google.maps.Marker(
 		{
-			position: {lat: 59.408640, lng: 9.059762}, map: map,
-	    });
+			position: pos, 
+			map: map,
+		});
+
+		var infoWindow = new google.maps.InfoWindow
+		({
+			content: 'Vi befinner oss her'
+		});
+			
+			infoWindow.open(map, marker);
 	}
-
-	function logginn(form)
-	{
-		empty(form);
-			login(form);
-	}
-
-	function login(form)
-	{
-	 if(form.brukernavn.value == "test" && form.passord.value == "test")
-	  {
-	  	window.open('omoss.html'/*,'_self'*/);
-	  }
-	 else
-	 {
-		// document.getElementById("feil").style.display="block";
-		// empty() = false;
-	   // alert("Feil brukernavn eller passord")/*displays error message*/
-	  }
-	}
-
-	function checkPsw(form) 
-	{
-	if (form.brukernavn.value != "test" || form.passord.value != "test") {
-        document.getElementById("feil").style.display="block";
-        return false;
-    }
-    else
-    	login(form)
-	}
-	
-
-/* Utkast av funksjoner */
-
-
-	/*Viser og skjuler logg inn boks ved trykk på "logg inn" i navbar*/
-	// function toggleClass() 
-	// {
-	// 	var element1 = document.getElementById("dropdown");
-	// 	element1.classList.toggle('hide');
-	// 	// var element2 = document.getElementById("darken");
-	// 	// element2.classList.toggle('show');
-	// }
-
-	/* Automatisk posisjon i kart */
-
-    /*infoWindow = new google.maps.InfoWindow;
-    Henter posisjon, krever godkjenning fra bruker
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        // infoWindow.setPosition(pos);
-        // infoWindow.setContent('Du er her');
-        infoWindow.open(map);
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-
-	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-	  infoWindow.setPosition(pos);
-	  infoWindow.setContent(browserHasGeolocation ?
-	                        'Error: Automatisk posisjon fungerer ikke' :
-	                        'Error: Nettleseren din støtter ikke autmatisk posisjon');
-	  infoWindow.open(map);
-	}*/
