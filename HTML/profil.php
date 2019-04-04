@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
     // Se etter input-error før insetting i database
     if(empty($new_password_err) && empty($confirm_password_err)){
-        $sql = "UPDATE bruker SET password = ? WHERE id = ?";
+        $sql = "UPDATE user SET password = ? WHERE id = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "si", $param_password, $param_id);
