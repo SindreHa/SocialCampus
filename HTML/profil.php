@@ -75,10 +75,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 
-//Get current user ID from session
+// Gi innlogget bruker en session ID
 $userId = $_SESSION['id'];
 
-//Get user data from database
+// Fetch data om brukeren fra databasen
 $result = $link->query("SELECT * FROM user WHERE id = $userId");
 $row = $result->fetch_assoc();
 
