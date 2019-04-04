@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
          
-        // Close username statement       
+        // Lukk statement    
         mysqli_stmt_close($stmt);
     }
     
@@ -120,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
          
-        // Close userfull_name statement       
+        // Lukke statement     
         mysqli_stmt_close($stmt);
     }
     
