@@ -1,5 +1,5 @@
 <?php
-// Include config file
+// Inkluder config fil for tilkobling til database
 require_once "../php/config.php";
 
 if (isset($_GET['register'])){
@@ -12,79 +12,77 @@ if (isset($_GET['register'])){
     ';
 }
  
-// Define variables and initialize with empty values
+// Definer variabler med tomme verdier
 $username = $password = "";
 $username_err = $password_err = "";
- 
-// Processing form data when form is submitted
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Check if username is empty
+    // Se om brukernavn er tomt
     if(empty(trim($_POST["username"]))){
         $username_err = "Vennligst oppgi brukernavn";
     } else{
         $username = trim($_POST["username"]);
     }
     
-    // Check if password is empty
+    // Se om passord er tomt
     if(empty(trim($_POST["password"]))){
         $password_err = "Vennligst oppgi passord";
     } else{
         $password = trim($_POST["password"]);
     }
     
-    // Validate credentials
+    // Valider passord og brukernavn
     if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
+        // Gjør klar en select spørring
         $sql = "SELECT id, username, password FROM user WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            // Koble variabler til spørringen
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
-            // Set parameters
+            //  Velg parametere
             $param_username = $username;
             
-            // Attempt to execute the prepared statement
+            // Utfør spørring
             if(mysqli_stmt_execute($stmt)){
-                // Store result
+                // Lagre resultat
                 mysqli_stmt_store_result($stmt);
                 
-                // Check if username exists, if yes then verify password
+                // Se om brukernavn eksister, hvis den gjør så valideres passord
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    // Bind result variables
                     mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
+                            // Riktig passord, ny sesjon startes
                             session_start();
                             
-                            // Store data in session variables
+                            // Lagre data for bruker i sessions
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
-                            // Redirect user to welcome page
+                            // Send bruker til hjemmesiden
                             header("location: ../HTML/index.php?loggedin=true");
                         } else{
-                            // Display an error message if password is not valid
+                            // Hvis feilmelding om passord er feil
                             $password_err = "Feil passord";
                         }
                     }
                 } else{
-                    // Display an error message if username doesn't exist
+                    // Vis feilmelding om brukenavn ikke finnes
                     $username_err = "Ingen bruker funnet med det brukernavnet";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Woops! Her skjedde det noe feil";
             }
         }
         
-        // Close statement
+        // Lukk statement
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
+    // Lukk tilkobling til database
     mysqli_close($link);
 }
 ?>
