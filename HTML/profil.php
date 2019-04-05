@@ -79,16 +79,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 $userId = $_SESSION['id'];
 
 // Fetch data om brukeren fra databasen
-$result = $link->query("SELECT * FROM user WHERE id = $userId");
-$row = $result->fetch_assoc();
+$result = mysqli_query($link, "SELECT * FROM user WHERE id = $userId");
+$rowUser = mysqli_fetch_row($result);
 
 //Profilbilde for bruker
-$userPicture = !empty($row['avatar'])?$row['avatar']:'placeholder-profile.png'; //Hvis avatar ikke tom så bruk avatar id hvis ikke brukes placeholder.png
+$userPicture = !empty($rowUser[6]) ? $rowUser[6] : 'placeholder-profile.png'; //Hvis avatar ikke tom så bruk avatar id hvis ikke brukes placeholder.png
 $userPictureURL = '../Pictures/upload/'.$userPicture;
 
-$sql = "SELECT * FROM user WHERE id = $userId";
-$result = mysqli_query($link, $sql);
-$rowUser = mysqli_fetch_row($result);
 ?>
 
 

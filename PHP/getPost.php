@@ -22,6 +22,14 @@ if ( false===$resultPost)
     //echo 'done.';
   }
 
+// Fetch data om brukeren fra databasen
+$resultUser = mysqli_query($link, "SELECT * FROM user WHERE id = $user_id");
+$rowUser = mysqli_fetch_row($resultUser);
+
+//Profilbilde for bruker
+$userPicture = !empty($rowUser[6]) ? $rowUser[6] : 'placeholder-profile.png'; //Hvis avatar ikke tom så bruk avatar id hvis ikke brukes placeholder.png
+$userPictureURL = '../Pictures/upload/'.$userPicture;
+
 if(mysqli_num_rows($resultPost) > 0)
 {
     while($rowPost=mysqli_fetch_row($resultPost))
@@ -155,12 +163,7 @@ if(mysqli_num_rows($resultPost) > 0)
 			<div class="comment-submit-container"> <!-- Kommentarfelt publisering -->
 				<div class="user-container-comment">
 					<div class="imgContainer">
-					<?php if(empty($user_id)) {?>
-						<img src="../Pictures/upload/placeholder-profile.png">
-					<?php } 
-						else {?> 
-							<img src="../Pictures/upload/USER_<?php echo $user_id; ?> ProfilePhoto.png"> <!-- Bilde av innlogget bruker --> <?php 
-					}?>
+						<img src="<?php echo $userPictureURL;?>">
 					</div>
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>" method="post">
