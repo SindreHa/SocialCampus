@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
     // Se etter input-error før insetting i database
     if(empty($new_password_err) && empty($confirm_password_err)){
-        $sql = "UPDATE bruker SET password = ? WHERE id = ?";
+        $sql = "UPDATE user SET password = ? WHERE id = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "si", $param_password, $param_id);
@@ -75,20 +75,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 
-//Get current user ID from session
+// Gi innlogget bruker en session ID
 $userId = $_SESSION['id'];
 
-//Get user data from database
-$result = $link->query("SELECT * FROM user WHERE id = $userId");
-$row = $result->fetch_assoc();
+// Fetch data om brukeren fra databasen
+$result = mysqli_query($link, "SELECT * FROM user WHERE id = $userId");
+$rowUser = mysqli_fetch_row($result);
 
 //Profilbilde for bruker
-$userPicture = !empty($row['avatar'])?$row['avatar']:'placeholder-profile.png'; //Hvis avatar ikke tom så bruk avatar id hvis ikke brukes placeholder.png
+$userPicture = !empty($rowUser[6]) ? $rowUser[6] : 'placeholder-profile.png'; //Hvis avatar ikke tom så bruk avatar id hvis ikke brukes placeholder.png
 $userPictureURL = '../Pictures/upload/'.$userPicture;
 
-$sql = "SELECT * FROM user WHERE id = $userId";
-$result = mysqli_query($link, $sql);
-$rowUser = mysqli_fetch_row($result);
 ?>
 
 
