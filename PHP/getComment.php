@@ -9,7 +9,7 @@ $resultCom = mysqli_query($link, $sqlCom);
 
 while($rowCom=mysqli_fetch_row($resultCom))
 { 
-	if(empty($rowCom[6])) {$rowCom[6] = 'placeholder-profile.png';}
+	if(empty($rowCom[6])) {$rowCom[6] = 'placeholder-profile.png';} // Sjekker om bruker har profilbilde lastet opp
 	?>
 	<div class="post-comment">
 	<input type="hidden" name="comment_ID" value="<?php echo $rowCom[0]; ?>" id="comment_ID" />
@@ -30,7 +30,7 @@ while($rowCom=mysqli_fetch_row($resultCom))
 	<div class="comment-content">
 		<div class="comment-poster-photo">
 			<div class="imgContainer">
-				<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
+				<img src="../Pictures/upload/<?php echo $rowCom[6]; ?>"> <!-- Bilde av poster -->
 			</div>
 		</div>
 		<div class="text-container">

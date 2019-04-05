@@ -131,7 +131,7 @@ if(mysqli_num_rows($resultPost) > 0)
 				<div class="comment-content">
 					<div class="comment-poster-photo">
 						<div class="imgContainer">
-							<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
+							<img src="../Pictures/upload/<?php echo $rowCom[6]; ?>"> <!-- Bilde av poster -->
 						</div>
 					</div>
 					<div class="text-container">
