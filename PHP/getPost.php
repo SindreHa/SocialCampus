@@ -5,7 +5,7 @@ require_once "../PHP/config.php";
 // $_SESSION['count'] = 4;
 // $antPoster = $_SESSION['count'];
 
-$sqlPost = "SELECT p.id, u.id, p.title, p.content, p.likes, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC;";
+$sqlPost = "SELECT p.id, u.id, u.avatar, p.title, p.content, p.likes, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC;";
 $resultPost = mysqli_query($link, $sqlPost);
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) 
@@ -34,28 +34,23 @@ if(mysqli_num_rows($resultPost) > 0)
 {
     while($rowPost=mysqli_fetch_row($resultPost))
     {
+			if(empty($rowPost[2])) {$rowPost[2] = 'placeholder-profile.png';} // Sjekker om bruker har profilbilde lastet opp
 				?>
 <div class="group-post-box">
 	<div class="post-wrapper">
 	<div class="user-container">
 		<div class="user-container-comment">
 			<div class="imgContainer">
-				<?php if(empty($rowPost[1])) 
-				{?>
-					<img src="../Pictures/upload/placeholder-profile.png">
-				<?php } 
-				else {?> 
-					<img src="../Pictures/upload/USER_<?php echo $rowPost[1]; ?> ProfilePhoto.png"> <!-- Bilde av poster --> <?php 
-				}?>
+					<img src="../Pictures/upload/<?php echo $rowPost[2]; ?>"> <!-- Bilde av poster --> 
 			</div>
 		</div>
-		<h4><?php echo $rowPost[6]; ?><p>Publisert: <?php echo $rowPost[5]; ?></p></h4> <!-- Brukernavn for innlegg -->
+		<h4><?php echo $rowPost[7]; ?><p>Publisert: <?php echo $rowPost[6]; ?></p></h4> <!-- Brukernavn for innlegg -->
 	</div>
 
 	<div class="post-container">
 		<div class="text-container">
-			<h2><?php echo $rowPost[2]; ?></h2> <!-- Tittel på innlegg -->
-			<p><?php echo $rowPost[3]; ?></p> <!-- Innlegg innhold -->
+			<h2><?php echo $rowPost[3]; ?></h2> <!-- Tittel på innlegg -->
+			<p><?php echo $rowPost[4]; ?></p> <!-- Innlegg innhold -->
 		</div>
 		<div class="post-stats">
 				<div class="like-button">
@@ -69,21 +64,21 @@ if(mysqli_num_rows($resultPost) > 0)
 								<a class="unlike" href="#/" data-id="<?php echo $rowPost[0];?>">
 									<i class="unliked fas fa-thumbs-up"></i> 
 									<i class="liked hide fas fa-thumbs-up"></i> 
-									<p class="ant-likes"><?php echo $rowPost[4];?></p>
+									<p class="ant-likes"><?php echo $rowPost[5];?></p>
 								</a>
 							<?php } else { ?>
 								<!-- Bruker har ikke likt post -->
 								<a class="like" href="#/" data-id="<?php echo $rowPost[0];?>">
 									<i class="liked fas fa-thumbs-up"></i>
 									<i class="unliked hide fas fa-thumbs-up"></i> 
-									<p class="ant-likes"><?php echo $rowPost[4];?></p>
+									<p class="ant-likes"><?php echo $rowPost[5];?></p>
 								</a>
 							<?php } 
 							} else { ?>
 								<!-- Bruker ikke logget inn -->
 								<a href="#/" class="disabled">
 									<i class="liked fas fa-thumbs-up"></i> 
-									<p class="ant-likes"><?php echo $rowPost[4];?></p>
+									<p class="ant-likes"><?php echo $rowPost[5];?></p>
 								</a>
 							<?php } ?>
 				</div>
@@ -100,7 +95,7 @@ if(mysqli_num_rows($resultPost) > 0)
 				<i class="far fa-comment-alt"><p><?php  echo $rowComCount[0]?></p></i>
 			</a></h4> <!-- Antall kommentarer -->
 			<h4 class="comment-date">
-				<p>Publisert <?php echo $rowPost[5]; ?></p>
+				<p>Publisert <?php echo $rowPost[6]; ?></p>
 			</h4>
 		</div>
 	</div>
@@ -111,16 +106,17 @@ if(mysqli_num_rows($resultPost) > 0)
 			<div class="comment-toggle"> <!-- Kommentarfelt innhold -->
 			<?php
 			
-			$sqlCom = "SELECT c.*, u.username FROM application.commentary AS c, application.user AS u WHERE c.user_id = u.id AND c.post_id = $rowPost[0] ORDER BY made DESC;";
+			$sqlCom = "SELECT c.*, u.username, u.avatar FROM application.commentary AS c, application.user AS u WHERE c.user_id = u.id AND c.post_id = $rowPost[0] ORDER BY made DESC;";
 			$resultCom = mysqli_query($link, $sqlCom);
 
 			while($rowCom=mysqli_fetch_row($resultCom))
 			{ 
+				if(empty($rowCom[6])) {$rowCom[6] = 'placeholder-profile.png';} // Sjekker om bruker har profilbilde lastet opp
 				?>
 				<div class="post-comment">
 				<div class="user-container-comment">
 					<div class="imgContainer">
-						<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
+						<img src="../Pictures/upload/<?php echo $rowCom[6]; ?>"> <!-- Bilde av poster -->
 					</div>
 					<div class="like-button">
 					<form method="post" action="">

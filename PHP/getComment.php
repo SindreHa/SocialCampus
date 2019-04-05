@@ -4,18 +4,18 @@ require_once "../PHP/config.php";
 
 $post_ID = $_GET['postId'];
 
-$sqlCom = "SELECT c.*, u.username FROM application.commentary AS c, application.user AS u WHERE c.user_id = u.id AND c.post_id = $post_ID ORDER BY made DESC;";
+$sqlCom = "SELECT c.*, u.username, u.avatar FROM application.commentary AS c, application.user AS u WHERE c.user_id = u.id AND c.post_id = $post_ID ORDER BY made DESC;";
 $resultCom = mysqli_query($link, $sqlCom);
-
 
 while($rowCom=mysqli_fetch_row($resultCom))
 { 
+	if(empty($rowCom[6])) {$rowCom[6] = 'placeholder-profile.png';}
 	?>
 	<div class="post-comment">
 	<input type="hidden" name="comment_ID" value="<?php echo $rowCom[0]; ?>" id="comment_ID" />
 	<div class="user-container-comment">
 		<div class="imgContainer">
-			<img src="../Pictures/upload/USER_<?php echo $rowCom[4]; ?> ProfilePhoto.png">
+			<img src="../Pictures/upload/<?php echo $rowCom[6]; ?>"> <!-- Bilde av poster -->
 		</div>
 		<div class="like-button">
 		<form method="post" action="">
