@@ -1406,7 +1406,7 @@ footer p{
 	height: 45px;
 	margin-left: -175px;
 	background-color: var(--dark);
-	box-shadow: var(--shadow);
+	/* box-shadow: var(--shadow); */
 	border: 1px solid var(--accent);
 	border-radius: 6px;
 	transform: scale(.9);
