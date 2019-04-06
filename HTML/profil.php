@@ -96,7 +96,6 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 	<?php include '../PHP/head.php';?>
 </head>
 <body>
-	<!-- <section class="darken hide" id="darken"></section> -->
 	<div class="wrapper">
 
 	<?php
@@ -107,8 +106,7 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 	        		<div class="imgContainer img-upload">
                     <form id="img-upload-post" method="post" action="../PHP/profilePhoto.php" enctype="multipart/form-data">
 	        		    <img id="img-upload-result" src="<?php echo $userPictureURL; ?>">
-                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="postImg()">
-                        <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1">
+                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="checkImgFileSize(this)"> <!-- Kjører opplastning av bilde -->
                         <label id="img-name" for="avatar">Velg bilde</label>
                     </form>
 	        		</div>
@@ -130,7 +128,6 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 	        				<i class="fas fa-at"></i>
 	        				<input type="text" class="input" disabled value="<?php echo $rowUser[5]?>">
 	        			</div>
-	        			<!-- <h4>Sindre.h@outlook.com</h4> -->
 	        		</div>
 
 	        		<div class="container">
@@ -153,32 +150,33 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 	        			</div>
 	        		</div>
 
-	        	      <div class="container 
-        	<?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
-            <h3>Nytt passord</h3>
-            <div class="inputContainer">
-                <i class="fas fa-key"></i>
-                <input class="input" type="password" name="new_password" placeholder="••••••••••" autocomplete="false""
-                <?php echo $new_password; ?>">
-                <span class="help-block">
-                <?php echo $new_password_err; ?></span>
-            </div>
-        </div>
-                    
-        <div class="container">
-            <h3>Bekreft passord</h3>
-            <div class="inputContainer <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <i class="fas fa-key"></i>
-                <input class="input" type="password" ame="confirm_password" placeholder="••••••••••">
-                <span class="help-block">
-                <?php echo $confirm_password_err; ?></span>
-            </div>
-        </div>
-	        	<div class="button-wrapper">
-                <input type="submit" class="btn btn-primary" value="Lagre endringer">
-                </div>
+                    <div class="container 
+                    <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
+                    <h3>Nytt passord</h3>
+                    <div class="inputContainer">
+                        <i class="fas fa-key"></i>
+                        <input class="input" type="password" name="new_password" placeholder="••••••••••" autocomplete="false""
+                        <?php echo $new_password; ?>">
+                        <span class="help-block">
+                        <?php echo $new_password_err; ?></span>
+                    </div>
+                    </div>
+                        
+                    <div class="container">
+                    <h3>Bekreft passord</h3>
+                    <div class="inputContainer <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                        <i class="fas fa-key"></i>
+                        <input class="input" type="password" ame="confirm_password" placeholder="••••••••••">
+                        <span class="help-block">
+                        <?php echo $confirm_password_err; ?></span>
+                    </div>
+                    </div>
 
-	        </div>
+                    <div class="button-wrapper">
+                        <input type="submit" class="btn btn-primary" value="Lagre endringer">
+                    </div>
+
+	            </div>
         	</div>
         </section>
         
@@ -187,6 +185,5 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 <?php include '../PHP/footer.php';?>
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../JS/ImgUpload.js"></script>
 </body>
 </html>

@@ -37,14 +37,14 @@ var insertBefore = head.insertBefore;
 		});
 	}
 
-$(function() {
-	$('body').on('click', '.comment-collapse', function(e) {
-		e.preventDefault(); 
-		$(this).closest(".post-wrapper").next().find(".comment-toggle").slideToggle();
-		$(this).toggleClass('comment-show');
-		return false; 
+	$(function() {
+		$('body').on('click', '.comment-collapse', function(e) {
+			e.preventDefault(); 
+			$(this).closest(".post-wrapper").next().find(".comment-toggle").slideToggle();
+			$(this).toggleClass('comment-show');
+			return false; 
+		});
 	});
-});
 	
 
 	/*Funskjoner for scrolling til topp knapp*/ 
@@ -79,18 +79,17 @@ $(function() {
 		}
 	});
 
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-				var reader = new FileReader();
-
-				reader.onload = function (e) {
-						$('#img-upload-result')
-								.attr('src', e.target.result)
-				};
-
-				reader.readAsDataURL(input.files[0]);
+	function checkImgFileSize(inputFile) {
+		var max =  2097152; // 2MB
+		
+		if (inputFile.files && inputFile.files[0].size > max) {
+			TooltipMessage("Filen er for stor. Maks 2MB"); // Varsle bruker om for stor filstørrelse
+			inputFile.value = null; // Klarer input
+		   }
+		else {
+			$("#img-upload-post").submit();
 		}
-	}
+	};
 
 	/*Hinder GMaps i å hente egen font*/
 	head.insertBefore = function( newElement, referenceElement ) {
