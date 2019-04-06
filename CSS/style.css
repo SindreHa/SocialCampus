@@ -398,11 +398,11 @@ form {
 
 .box {
 	background: var(--primary);
+	color: var(--dark);
 	text-align: center;
 	padding: 1.5rem 2rem;
+	text-decoration: none;
 	box-shadow: var(--shadow); 
-	/*transition: outline-color .2s;*/
-	outline: 1px solid var(--primary);
 }
 
 .box p{
@@ -410,18 +410,11 @@ form {
 }
 
 .box, .box i{
-	transition: outline-color .2s, color .2s;
+	transition: color 150ms ease-out, box-shadow 150ms ease-out;
 }
 
-.boxes a {
-	text-decoration: none;
-	color: var(--dark);
-	transition: box-shadow .2s;
-}
-
-.box:hover, .boxes a:hover{
-	box-shadow: var(--shadowWide);
-	outline-color: var(--accent);
+.box:hover{
+	box-shadow: var(--shadow), inset 0px 0px 0px 3px var(--accent);
 	/*background: var(--light);*/
 }
 
