@@ -3,9 +3,10 @@ $(document).ready(function(){
     $(".input").keyup(function() { //For hvert tastetrykk kjøres søket
         
         var input = $(".input").val().toLowerCase(); //Henter input fra søkefelt og gjør om til lowercase
-        
+        var teller = 0;
+        var antall = 0;
         $(".box").each(function() { //Funksjon som itererer over alle elementer som har klassen .box
-            
+            antall++;
             var gruppe = $(this).find("h3").text().toLowerCase();
             
             if (gruppe.includes(input)) 
@@ -14,10 +15,21 @@ $(document).ready(function(){
             } else 
             {
                 $(this).hide();
+                teller ++;
             }
-
+            
         });
+        
+        if(teller == antall) { //Hvis søk ikke gir noe resultat
+            $(".boxes h4").fadeIn("fast");
+        }
+        else {
+            $(".boxes h4").hide();
+        }
+        
 
     });
+
+
 
 });

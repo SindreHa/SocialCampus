@@ -87,6 +87,7 @@ include '../PHP/nav.php';
 			<h3>Bokklubb</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
 		</a>
+		<h4>¯\_(ツ)_/¯<br>Søket ga ingen treff</h4>
 	</section>
 </div>
         
