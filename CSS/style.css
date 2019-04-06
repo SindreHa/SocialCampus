@@ -1116,11 +1116,16 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	overflow: hidden;
 }
 
-.personBox h2{
+.personBox h2, .personBox h3{
 	text-align: center;
-	margin: 0 20px 20px;
+	margin: 0 0 5px;
 	font-weight: 500;
 	color: var(--light)
+}
+
+.personBox h3{
+	margin-bottom: 10px;
+	font-size: 1rem;
 }
 
 .personBox p{
@@ -1141,14 +1146,14 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 
 .personBox-image-wrapper {
 	background-color: var(--darker);
-	height: 293px;
+	max-height: 335px;
 }
 
 .imgContainer {
 	box-sizing: border-box;
 	height: 200px;
 	width: 200px;
-	margin: 20px auto;
+	margin: 20px auto 10px;
 	overflow: hidden;
 	border-radius: 50%;
 	border:	5px solid var(--light);

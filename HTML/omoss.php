@@ -14,10 +14,10 @@ include '../PHP/nav.php';
 <section class="top-container-double">
 	<header class="showcase usn">
 		<h1>Om oss</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod
-		consequat. Duis aute irure dolor in reprehenderit.</p>
+		<p>SIDENAVN er en nettside som ble startet utviklingen på i slutten av 2018. 
+		Bak kulissene er det 4 talenter som du kan lese mer om her på denne siden. 
+		Rundt om på dette nettstedet skal du kunne finne deg nye venner 
+		med samme interresser som deg og ha et sted å snakke om disse.</p>
 	</header>
 	<div id="mapContainer"></div>
 </section>
@@ -28,7 +28,8 @@ include '../PHP/nav.php';
 			<div class="imgContainer">
 				<img src="../Pictures/Sindre.jpg">
 			</div>
-			<h2>Sindre - Webdesign</h2>
+			<h2>Sindre Haavaldsen</h2>
+			<h3>Webdesign</h3>
 		</div>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -42,7 +43,8 @@ include '../PHP/nav.php';
 			<div class="imgContainer">
 				<img src="../Pictures/Kristian.jpg">
 			</div>
-			<h2>Kristian - PHP</h2>
+			<h2>Kristian Kløvstad</h2>
+			<h3>PHP</h3>
 		</div>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -55,7 +57,8 @@ include '../PHP/nav.php';
 			<div class="imgContainer">
 				<img src="../Pictures/Torbjorn.jpg">
 			</div>
-			<h2>Torbjørn - Database</h2>
+			<h2>Torbjørn Lunde Olaisen</h2>
+			<h3>Database</h3>
 		</div>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -69,7 +72,8 @@ include '../PHP/nav.php';
 			<div class="imgContainer">
 				<img src="../Pictures/Jan.png">
 			</div>
-			<h2>Jan - JavaScript</h2>
+			<h2>Jan Andreas Sletta</h2>
+			<h3>Javascript</h3>
 		</div>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
