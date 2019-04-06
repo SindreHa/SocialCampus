@@ -12,21 +12,29 @@ $(document).ready(function(){
             if (gruppe.includes(input)) 
             {
                 $(this).fadeIn("fast"); //Hvis gruppen eksisterer vises den, hvis ikke skjules den på else
-            } else 
-            {
+            } 
+            else {
                 $(this).hide();
                 teller ++;
             }
             
         });
         
+        if(teller == antall-1 && screen.width > 750) { //hvis skjermbredde over 750px og 1 søkeresultat
+            $(".boxes").css("grid-template-columns", "repeat(auto-fit, minmax(300px, .5fr))"); //boks fyller halve bredden
+            $(".box").css("margin-right", "10px");
+        }
+        else {
+            $(".boxes").css("grid-template-columns", "repeat(auto-fit, minmax(300px, 1fr))");
+            $(".box").css("margin-right", "0px"); 
+        }
+        
         if(teller == antall) { //Hvis søk ikke gir noe resultat
-            $(".boxes h4").fadeIn("fast");
+            $(".boxes h4").show();
         }
         else {
             $(".boxes h4").hide();
         }
-        
 
     });
 
