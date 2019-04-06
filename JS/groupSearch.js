@@ -30,7 +30,7 @@ $(document).ready(function(){
         }
         
         if(teller == antall) { //Hvis søk ikke gir noe resultat
-            $(".boxes h4").show();
+            $(".boxes h4").fadeIn(150);
         }
         else {
             $(".boxes h4").hide();
