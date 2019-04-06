@@ -9,13 +9,13 @@ $resultCom = mysqli_query($link, $sqlCom);
 
 while($rowCom=mysqli_fetch_row($resultCom))
 { 
-	if(empty($rowCom[6])) {$rowCom[6] = 'placeholder-profile.png';} // Sjekker om bruker har profilbilde lastet opp
+	if(empty($rowCom[7])) {$rowCom[7] = 'placeholder-profile.png';} // Sjekker om bruker har profilbilde lastet opp
 	?>
 	<div class="post-comment">
 	<input type="hidden" name="comment_ID" value="<?php echo $rowCom[0]; ?>" id="comment_ID" />
 	<div class="user-container-comment">
 		<div class="imgContainer">
-			<img src="../Pictures/upload/<?php echo $rowCom[6]; ?>"> <!-- Bilde av poster -->
+			<img src="../Pictures/upload/<?php echo $rowCom[7]; ?>"> <!-- Bilde av poster -->
 		</div>
 		<div class="like-button">
 		<form method="post" action="">
@@ -30,11 +30,11 @@ while($rowCom=mysqli_fetch_row($resultCom))
 	<div class="comment-content">
 		<div class="comment-poster-photo">
 			<div class="imgContainer">
-				<img src="../Pictures/upload/<?php echo $rowCom[6]; ?>"> <!-- Bilde av poster -->
+				<img src="../Pictures/upload/<?php echo $rowCom[7]; ?>"> <!-- Bilde av poster -->
 			</div>
 		</div>
 		<div class="text-container">
-			<h3><?php echo $rowCom[5]; ?></h3> <!-- Brukernavn -->
+			<h3><?php echo $rowCom[6]; ?></h3> <!-- Brukernavn -->
 			<p><?php echo $rowCom[1]; ?></p> <!-- Kommentar innhold -->
 			<div class="comment-stats">
 				<p><?php echo $rowCom[2]; ?></p>
