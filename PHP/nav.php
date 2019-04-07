@@ -1,5 +1,7 @@
-<?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {?>
-
+<?php 
+	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+?>
+ 
 <nav class="main-nav">
 	<ul>
 		<li class="menu"><a href="#" class="menyToggle">

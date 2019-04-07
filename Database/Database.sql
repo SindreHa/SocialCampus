@@ -99,20 +99,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `application`.`events`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `application`.`events` (
-  `id` INT(11) NOT NULL,
-  `title` VARCHAR(255) NOT NULL,
-  `description` VARCHAR(255) NOT NULL,
-  `start_date` VARCHAR(50) NOT NULL,
-  `end_date` VARCHAR(50) NOT NULL,
-  `created` DATETIME NOT NULL)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `application`.`groups`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `application`.`groups` (
