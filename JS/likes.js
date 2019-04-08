@@ -1,7 +1,8 @@
 $(document).ready(function(){
     // Når bruker trykker like
     $('body').on('click', '.like', function(){
-        var postid = $(this).data('id');
+        var post_id = $(this).data('post-id');
+        var com_id = $(this).data('com-id');
         $post = $(this);
         var antLikes = parseInt($(this).find('.ant-likes').text());
 
@@ -10,7 +11,8 @@ $(document).ready(function(){
             type: 'post',
             data: {
                 'liked': 1,
-                'postid': postid
+                'post-id': post_id,
+                'com-id': com_id
             },
             success: function(response){
                 // console.log("Likt");
@@ -26,7 +28,8 @@ $(document).ready(function(){
 
     // når bruker trykker vekk like
     $('body').on('click', '.unlike', function(){
-        var postid = $(this).data('id');
+        var post_id = $(this).data('post-id');
+        var com_id = $(this).data('com-id');
         $post = $(this);
         var antLikes = parseInt($(this).find('.ant-likes').text());
 
@@ -35,7 +38,8 @@ $(document).ready(function(){
             type: 'post',
             data: {
                 'unliked': 1,
-                'postid': postid
+                'post-id': post_id,
+                'com-id': com_id
             },
             success: function(response){
                 // console.log("Ulikt");

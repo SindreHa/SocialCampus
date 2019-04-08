@@ -57,18 +57,18 @@ if(mysqli_num_rows($resultPost) > 0)
 							<?php 
 							if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
-							$sqlLikes = mysqli_query($link, "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$rowPost[0] AND comment_id IS NULL;");
+							$sqlLikes = mysqli_query($link, "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$rowPost[0] AND commentary_id IS NULL;");
 
 							if (mysqli_num_rows($sqlLikes) == 1 ) { ?>
 								<!-- Bruker har allerede likt post -->
-								<a class="unlike" href="#/" data-id="<?php echo $rowPost[0];?>">
+								<a class="unlike" href="#/" data-post-id="<?php echo $rowPost[0];?>">
 									<i class="unliked fas fa-thumbs-up"></i> 
 									<i class="liked hide fas fa-thumbs-up"></i> 
 									<p class="ant-likes"><?php echo $rowPost[5];?></p>
 								</a>
 							<?php } else { ?>
 								<!-- Bruker har ikke likt post -->
-								<a class="like" href="#/" data-id="<?php echo $rowPost[0];?>">
+								<a class="like" href="#/" data-post-id="<?php echo $rowPost[0];?>">
 									<i class="liked fas fa-thumbs-up"></i>
 									<i class="unliked hide fas fa-thumbs-up"></i> 
 									<p class="ant-likes"><?php echo $rowPost[5];?></p>
@@ -122,18 +122,18 @@ if(mysqli_num_rows($resultPost) > 0)
 							<?php 
 							if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
-							$resultLikes = mysqli_query($link, "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$rowCom[4] AND comment_id=$rowCom[0];");
+							$resultLikes = mysqli_query($link, "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$rowCom[4] AND commentary_id=$rowCom[0];");
 
 							if (mysqli_num_rows($resultLikes) == 1 ) { ?>
-								<!-- Bruker har allerede likt post -->
-								<a class="unlike" href="#/" data-id="<?php echo $rowCom[0];?>">
+								<!-- Bruker har allerede likt kommentar -->
+								<a class="unlike" href="#/" data-post-id="<?php echo $rowPost[0];?>" data-com-id="<?php echo $rowCom[0];?>">
 									<i class="unliked fas fa-thumbs-up"></i> 
 									<i class="liked hide fas fa-thumbs-up"></i> 
 									<p class="ant-likes"><?php echo $rowCom[3];?></p>
 								</a>
 							<?php } else { ?>
-								<!-- Bruker har ikke likt post -->
-								<a class="like" href="#/" data-id="<?php echo $rowCom[0];?>">
+								<!-- Bruker har ikke likt kommentar -->
+								<a class="like" href="#/" data-post-id="<?php echo $rowPost[0];?>" data-com-id="<?php echo $rowCom[0];?>">
 									<i class="liked fas fa-thumbs-up"></i>
 									<i class="unliked hide fas fa-thumbs-up"></i> 
 									<p class="ant-likes"><?php echo $rowCom[3];?></p>
