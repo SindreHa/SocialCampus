@@ -14,7 +14,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema application
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `application` DEFAULT CHARACTER SET latin1 ;
+DROP SCHEMA IF EXISTS `application`;
+CREATE SCHEMA IF NOT EXISTS `application` DEFAULT CHARACTER SET utf8 ;
 USE `application` ;
 
 -- -----------------------------------------------------
@@ -31,9 +32,9 @@ CREATE TABLE IF NOT EXISTS `application`.`user` (
   `email` VARCHAR(245) NOT NULL,
   `avatar` VARCHAR(100) NOT NULL,
   `moderator` TINYINT(1) NOT NULL,
+  UNIQUE INDEX username_unique (username),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -62,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `application`.`post` (
   `post_id` INT(11) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
   `content` VARCHAR(855) NOT NULL,
-  `likes` INT(11) NULL DEFAULT NULL,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `likes` INT(11) NULL DEFAULT '0',
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` INT(11) NULL DEFAULT NULL,
   `groups_id` INT(11) NOT NULL,
   PRIMARY KEY (`post_id`),
@@ -75,7 +76,6 @@ CREATE TABLE IF NOT EXISTS `application`.`post` (
     REFERENCES `groups` (`id`)
 )
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -87,7 +87,8 @@ DROP TABLE IF EXISTS `application`.`commentary` ;
 CREATE TABLE IF NOT EXISTS `application`.`commentary` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `content` VARCHAR(850) NOT NULL,
-  `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `made` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `likes` INT(11) NOT NULL DEFAULT '0',
   `post_id` INT(11) NULL DEFAULT NULL,
   `user_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -100,7 +101,6 @@ CREATE TABLE IF NOT EXISTS `application`.`commentary` (
     FOREIGN KEY (`user_id`)
     REFERENCES `application`.`user` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -135,16 +135,20 @@ CREATE TABLE IF NOT EXISTS `application`.`likes` (
   `id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
+  `commentary_id` INT(11) NULL,
   `like_unlike` INT(2) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `likes_foreign_key1` (`user_id` ASC),
   INDEX `likes_foreign_key2` (`post_id` ASC),
-  CONSTRAINT `likes_foreign_key1`
+  CONSTRAINT `user_foreign_key`
     FOREIGN KEY (`user_id`)
     REFERENCES `application`.`user` (`id`)
-  CONSTRAINT `likes_foreign_key2`
+  CONSTRAINT `post_foreign_key`
     FOREIGN KEY (`post_id`)
     REFERENCES `application`.`post` (`post_id`)
+  CONSTRAINT `commentary_foreign_key`
+    FOREIGN KEY (`commentary_id`)
+    REFERENCES `application`.`commentary` (`id`)
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
