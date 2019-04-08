@@ -24,7 +24,7 @@ $(document).ready(function ()
     $("#full_name-ID").keyup(checkNameLength);
     $("#Password-ID").keyup(checkPasswordLength);
     $("#ConfirmPassword-ID").keyup(checkPasswordMatch);
-    $("#Username-ID, #Email-ID, #Password-ID, #ConfirmPassword-ID").keyup(SubmitToggle);
+    $("#Username-ID, #Email-ID, #Password-ID, #ConfirmPassword-ID, #full_name-ID").keyup(SubmitToggle);
 });
 
 /*
@@ -49,6 +49,7 @@ function checkUsernameLength()
     {
         $("#input-error-username").css("right", "0px");
         $("#input-approved-username").css("right", "-40px");
+        return false;
     }
 }
 
@@ -74,6 +75,7 @@ function checkNameLength()
     {
         $("#input-error-full_name").css("right", "0px");
         $("#input-approved-full_name").css("right", "-40px");
+        return false;
     }
 }
 
@@ -128,6 +130,7 @@ function checkPasswordLength()
     {
         $("#input-error-password").css("right", "0px");
         $("#input-approved-password").css("right", "-40px");
+        return false;
     }
 }
 /*
@@ -164,7 +167,7 @@ function checkPasswordMatch()
 */
 function SubmitToggle()
 {
-    if(checkUsernameLength() && validateEmail() && checkPasswordLength() && checkPasswordMatch()){
+    if(checkUsernameLength() && validateEmail() && checkPasswordLength() && checkPasswordMatch() && checkNameLength()){
         document.getElementById('Submit-Toggle').removeAttribute("disabled");
     }
     else

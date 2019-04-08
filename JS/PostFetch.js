@@ -40,15 +40,31 @@ function clearCommentField(id){
 }
 
 /*
-   Funksjon som viser kommentarfelt og din kommentar når man poster
+   Funksjon som viser kommentarfelt og din kommentar når man poster.
+   Øker også telleren for antall kommentarer.
 */
 function showNewComment(id) {
-    $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").addClass('new-comment');
-    $("#comment_ID[value='" + id + "']").closest(".group-post-box").find(".comment-collapse").addClass('comment-show');
-    var currentComCount = parseInt($("#comment_ID[value='" + id + "']").closest(".group-post-box").find(".comment-collapse i").text().trim()) + 1;
-    $("#comment_ID[value='" + id + "']").closest(".group-post-box").find(".comment-collapse i").html("<p>" + currentComCount + "</p>");
+    $comment = $("#comment_ID[value='" + id + "']");
+    var currentComCount = parseInt($comment.closest(".group-post-box").find(".comment-collapse i").text().trim());
+
+    if(screen.width > 740) {
+        $comment.closest(".post-comment").find(".user-container-comment").addClass('new-comment');
+    } else {
+        $comment.closest(".post-comment").find(".comment-content").addClass('new-comment');
+    }
+
+    $comment.closest(".group-post-box").find(".comment-collapse").addClass('comment-show');
+    
+    if(currentComCount == 0) {
+        $comment.closest(".group-post-box").find(".comment-collapse p").html("<p>" + (currentComCount+1) + " kommentar</p>"); }
+    else {
+        $comment.closest(".group-post-box").find(".comment-collapse p").html("<p>" + (currentComCount+1) + " kommentarer</p>"); }
+    
+    $comment.closest(".group-post-box").find(".comment-collapse i").html("<p>" + (currentComCount+1) + "</p>");
+
     setTimeout(function() {
-        $("#comment_ID[value='" + id + "']").closest(".post-comment").find(".user-container-comment").removeClass('new-comment');
+        $comment.closest(".post-comment").find(".user-container-comment").removeClass('new-comment');
+        $comment.closest(".post-comment").find(".comment-content").removeClass('new-comment');
     }, 4000);
 }
 
@@ -101,7 +117,7 @@ $('.submit-post').click(function()
         },
         error: function () {
             TooltipMessage('Publisering feilet');  
-            }
+        }
     })
 });
 

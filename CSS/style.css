@@ -32,8 +32,12 @@ body {
     background: var(--accent);
 }
 
-:disabled {
+:disabled, .disabled {
 	cursor: not-allowed;
+}
+
+.hide {
+	display: none !important;
 }
 
 /*Knapper*/
@@ -392,13 +396,20 @@ form {
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
 }
 
+.boxes h4{
+	font-size: 1.6rem;
+	text-align: center; 
+	display: none;
+	font-weight: 500;
+}
+
 .box {
 	background: var(--primary);
+	color: var(--dark);
 	text-align: center;
 	padding: 1.5rem 2rem;
+	text-decoration: none;
 	box-shadow: var(--shadow); 
-	/*transition: outline-color .2s;*/
-	outline: 1px solid var(--primary);
 }
 
 .box p{
@@ -406,18 +417,11 @@ form {
 }
 
 .box, .box i{
-	transition: outline-color .2s, color .2s;
+	transition: color 150ms ease-out, box-shadow 150ms ease-out;
 }
 
-.boxes a {
-	text-decoration: none;
-	color: var(--dark);
-	transition: box-shadow .2s;
-}
-
-.box:hover, .boxes a:hover{
-	box-shadow: var(--shadowWide);
-	outline-color: var(--accent);
+.box:hover{
+	box-shadow: var(--shadow), inset 0px 0px 0px 3px var(--accent);
 	/*background: var(--light);*/
 }
 
@@ -686,7 +690,9 @@ textarea::-webkit-scrollbar, .comment-container::-webkit-scrollbar {
 }
 
 textarea::-webkit-scrollbar-track, .comment-container::-webkit-scrollbar-track {
-	background: var(--light);
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 4px;
 }
 
 .comment-container::-webkit-scrollbar-track {
@@ -695,6 +701,8 @@ textarea::-webkit-scrollbar-track, .comment-container::-webkit-scrollbar-track {
 
 textarea::-webkit-scrollbar-thumb, .comment-container::-webkit-scrollbar-thumb {
 	background: var(--primary);
+	border: 2px solid transparent;
+	border-radius: 4px;
 }
 
 textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-thumb:hover {
@@ -920,7 +928,6 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	background-color: var(--primary);
-	box-shadow: inset 0px 0 0px 0px var(--accent);
 	transition: box-shadow .3s ease-in-out;
 }
 
@@ -1028,32 +1035,67 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 
 .group-post-box .like-button a{
 	display: flex;
-	/* background-color: var(--white); */
-	/* border: 1px solid var(--lightGray); */
 	padding: 5px;
 	align-items: center;
-	/* border-radius: 5px; */
+	color: var(--dark);
 	text-decoration: none;
-	/* background-color: var(--primary); */
+	transition: background-color .1s ease-out;
+}
+
+.group-post-box .post-stats .like-button a{
+	background-color: var(--primary);
+}
+
+.group-post-box .post-stats .like-button a:hover{
+	background-color: #ccc;
 }
 
 .group-post-box .like-button p {
-	padding-left: 5px;
+	padding: 0 5px;
 	margin: 0;
 	border-radius: 0 4px 4px 0;
 	border: none;
-	/* background-color: var(--light); */
-	/* border-left: 1px solid var(--lightGray) */
 }
 
 .group-post-box .like-button i {
 	margin: 5px;
-	color: var(--lightDark);
 	transition: color .2s ease-out;
 }
 
-.group-post-box .like-button a:hover i{
+.group-post-box .like-button .liked {
+	color: var(--dark);
+}
+
+.group-post-box .like-button .unliked {
 	color: var(--accent);
+}
+
+.group-post-box .like-button .like-animation {
+	animation-name: liked;
+	animation-timing-function: ease-in-out;
+	animation-duration: 550ms;
+	animation-iteration-count: 1;
+	transform-origin: bottom left;
+}
+
+@keyframes liked {
+	0% {transform: scale(1); color: var(--dark)}
+	35% {transform: scale(1.2) rotate(-6deg); color: var(--accent)}
+	/* 85% {transform: scale(.95)} */
+	100% {transform: scale(1)}
+}
+
+.group-post-box .like-button .dislike-animation {
+	animation-name: disliked;
+	animation-timing-function: ease-in-out;
+	animation-duration: 550ms;
+	animation-iteration-count: 1;
+}
+
+@keyframes disliked {
+	0% {transform: scale(1); color: var(--accent)}
+	35% {transform: scale(.9); color: var(--lightDark)}
+	100% {transform: scale(1); color: var(--dark)}
 }
 
  /*Om oss*/
@@ -1074,11 +1116,16 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	overflow: hidden;
 }
 
-.personBox h2{
+.personBox h2, .personBox h3{
 	text-align: center;
-	margin: 0 20px 20px;
+	margin: 0 0 5px;
 	font-weight: 500;
 	color: var(--light)
+}
+
+.personBox h3{
+	margin-bottom: 10px;
+	font-size: 1rem;
 }
 
 .personBox p{
@@ -1099,14 +1146,14 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 
 .personBox-image-wrapper {
 	background-color: var(--darker);
-	height: 293px;
+	max-height: 335px;
 }
 
 .imgContainer {
 	box-sizing: border-box;
 	height: 200px;
 	width: 200px;
-	margin: 20px auto;
+	margin: 20px auto 10px;
 	overflow: hidden;
 	border-radius: 50%;
 	border:	5px solid var(--light);
@@ -1364,7 +1411,7 @@ footer p{
 	height: 45px;
 	margin-left: -175px;
 	background-color: var(--dark);
-	box-shadow: var(--shadow);
+	/* box-shadow: var(--shadow); */
 	border: 1px solid var(--accent);
 	border-radius: 6px;
 	transform: scale(.9);
@@ -1718,12 +1765,16 @@ footer p{
 	.group-post-box .comment-container .comment-stats .like-button {
 		display: flex;
 	}
+	.group-post-box .post-stats .like-button a:hover, .group-post-box .post-stats .comment-collapse:hover{
+		background-color: var(--primary);
+	}
 	.group-post-box .comment-stats p:first-child {
 		border-right: 1px solid var(--accent);
 	}
 	.group-post-box .comment-container .comment-content {
 		display: flex;
 		flex: row;
+		transition: box-shadow .3s ease-in-out;
 	}
 	.group-post-box .comment-container .comment-content h3{
 		margin: 0 0 0 10px;
