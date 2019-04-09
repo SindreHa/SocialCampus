@@ -2,17 +2,19 @@
 
 require_once "../PHP/config.php";
 
-$sql = "SELECT COUNT(id) FROM post";
-$result = mysqli_query($link, $sql);
-$count = mysqli_fetch_row($result);
+$postCountResult = mysqli_query($link, "SELECT COUNT(id) FROM post");
+$postCount = mysqli_fetch_row($postCountResult);
 
-$ant_poster = $count[0];
+$ant_poster = $postCount[0];
 
-$sql = "SELECT COUNT(id) FROM user";
-$result = mysqli_query($link, $sql);
-$count = mysqli_fetch_row($result);
+$userCountResult = mysqli_query($link, "SELECT COUNT(id) FROM user");
+$userCount = mysqli_fetch_row($userCountResult);
 
-$ant_medlem = $count[0];
+$ant_medlem = $userCount[0];
+
+$group_id = "1";
+$groupSql = mysqli_query($link, "SELECT * FROM application.groups WHERE id=$group_id");
+$groupResult = mysqli_fetch_array($groupSql); 
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
@@ -127,8 +129,8 @@ if (isset($_POST['unliked'])) {
 					<h2>Publiser innlegg</h2>
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>"class="form-input" id="group-form" method="post">
-					<input disabled placeholder="Logg inn for å publisere innlegg" class="tittel" id="post-title-ID" autocomplete="off">
-					<textarea disabled class="innhold" name="textarea" form="group-form" id="text-area-ID"maxlength="850"></textarea>
+					<input disabled placeholder="Logg inn for å publisere innlegg" class="tittel" id="post-title-ID" autocomplete="off" maxlength="255">
+					<textarea disabled class="innhold" name="textarea" form="group-form" id="text-area-ID" maxlength="850"></textarea>
 					<div class="post-submit-container">
 						<button class="btn submit-comment" onclick="TooltipMessage('Innlegg publisert')" id="post-submit-ID" >Publiser</button>
 						<h5 id="ord-teller-ID">0/850</h5>

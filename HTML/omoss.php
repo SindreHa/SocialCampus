@@ -29,7 +29,7 @@ include '../PHP/nav.php';
 				<img src="../Pictures/Sindre.jpg">
 			</div>
 			<h2>Sindre Haavaldsen</h2>
-			<h3>Webdesign</h3>
+			<h3>Full Stack</h3>
 		</div>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -73,7 +73,7 @@ include '../PHP/nav.php';
 				<img src="../Pictures/Jan.png">
 			</div>
 			<h2>Jan Andreas Sletta</h2>
-			<h3>Javascript</h3>
+			<h3>JavaScript</h3>
 		</div>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
