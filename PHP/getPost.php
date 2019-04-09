@@ -111,7 +111,7 @@ if(mysqli_num_rows($resultPost) > 0)
 
 			while($rowCom=mysqli_fetch_array($resultCom))
 			{ 
-				if(empty($rowCom['avatar'])) {$rowCom['aatar'] = 'placeholder-profile.png';} // Sjekker om bruker har profilbilde lastet opp
+				if(empty($rowCom['avatar'])) {$rowCom['avatar'] = 'placeholder-profile.png';} // Sjekker om bruker har profilbilde lastet opp
 				?>
 				<div class="post-comment">
 				<div class="user-container-comment">
