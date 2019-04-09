@@ -105,6 +105,8 @@ $('.submit-post').click(function()
     document.getElementById("post-submit-ID").disabled = true;
     var header = $(".tittel").val();
     var post = $(".innhold").val();
+    $antPost = $('body').find(".info-wrapper").find("#num-posts").html();
+    var antPost = parseInt($antPost);
     $.ajax({
         url:'../PHP/savePost.php',
         data: { tittel: header, textarea: post },
@@ -113,7 +115,8 @@ $('.submit-post').click(function()
         {
             clearPostField();
             listPosts();  
-            TooltipMessage('Innlegg publisert');     
+            TooltipMessage('Innlegg publisert');
+            $('body').find(".info-wrapper").find("#num-posts").html(antPost+1);
         },
         error: function () {
             TooltipMessage('Publisering feilet');  
