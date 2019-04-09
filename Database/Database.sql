@@ -46,7 +46,7 @@ DROP TABLE IF EXISTS `application`.`groups` ;
 CREATE TABLE IF NOT EXISTS `application`.`groups` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(180) NOT NULL,
   UNIQUE INDEX groups_name_unique(`name`),
   PRIMARY KEY (`id`)
 )
@@ -106,7 +106,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `application`.`groups_has_users` ;
 
 CREATE TABLE IF NOT EXISTS `application`.`groups_has_users` (
-  `groups_id` INT(11) NOT NULL,
+  `group_id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
   PRIMARY KEY (`groups_id`, `user_id`),
   INDEX `fk_groups_has_users1_idx` (`user_id` ASC),
@@ -153,3 +153,9 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+-- INSERT setninger for grupper --
+
+INSERT INTO application.groups (id, name, description)
+VALUES('1', 'Golf', 'Golf er en sport der enkeltspillere slÃ¥r en liten ball ved hjelp av forskjellige kÃ¸ller, med mÃ¥l om at den havner i et bestemt hull.'); 

@@ -42,8 +42,5 @@ if (isset($_POST['comment']) && isset($_POST['p_id'])) {
 		$_POST['p_id'] = " ";
 	}
 }
-
-mysqli_close($link);
-include '../HTML/gruppeEksempel.php';
 ?>
 

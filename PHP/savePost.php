@@ -42,7 +42,4 @@ if (isset($_POST['textarea']) && isset($_POST['tittel'])) {
 		$_POST['tittel'] = " ";
 	}
 }
-
-mysqli_close($link);
-include '../HTML/gruppeEksempel.php';
 ?>
