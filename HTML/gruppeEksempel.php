@@ -2,17 +2,18 @@
 
 require_once "../PHP/config.php";
 
+$group_id = "1";
+
 $postCountResult = mysqli_query($link, "SELECT COUNT(id) FROM post");
 $postCount = mysqli_fetch_row($postCountResult);
 
 $ant_poster = $postCount[0];
 
-$userCountResult = mysqli_query($link, "SELECT COUNT(id) FROM user");
+$userCountResult = mysqli_query($link, "SELECT COUNT(group_id) FROM groups_has_users WHERE group_id=$group_id");
 $userCount = mysqli_fetch_row($userCountResult);
 
 $ant_medlem = $userCount[0];
 
-$group_id = "1";
 $groupSql = mysqli_query($link, "SELECT * FROM application.groups WHERE id=$group_id");
 $groupResult = mysqli_fetch_array($groupSql); 
 
@@ -20,52 +21,21 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
 }
 
-if (isset($_POST['liked'])) {
-	$post_id = $_POST['post-id'];
-	$com_id = $_POST['com-id'];
+if (isset($_POST['member'])) {
+	$is_member = $_POST['member'];
 
-	if(empty($com_id)) { //Hvis det ikke er sendt inn noen kommentar-id er det likes på post
-		$result = mysqli_query($link, "SELECT * FROM application.post WHERE id=$post_id");
-		$row = mysqli_fetch_array($result); 
-		$n = $row['likes'];
-
-		mysqli_query($link, "INSERT INTO application.likes (user_id, post_id) VALUES ($user_id, $post_id)");
-		mysqli_query($link, "UPDATE application.post SET likes=$n+1 WHERE id=$post_id");
+	if($is_member == 0) {
+		mysqli_query($link, "INSERT INTO application.groups_has_users (group_id, user_id) VALUES ($group_id, $user_id)");
 		exit();
 	} else {
-		$result = mysqli_query($link, "SELECT * FROM application.commentary WHERE id=$com_id");
-		$row = mysqli_fetch_array($result); 
-		$n = $row['likes'];
-
-		mysqli_query($link, "INSERT INTO application.likes (user_id, post_id, commentary_id) VALUES ($user_id, $post_id, $com_id)");
-		mysqli_query($link, "UPDATE application.commentary SET likes=$n+1 WHERE id=$com_id");
+		mysqli_query($link, "DELETE FROM application.groups_has_users WHERE group_id=$group_id AND user_id=$user_id");
 		exit();
 	}
 }
 
-if (isset($_POST['unliked'])) {
-	$post_id = $_POST['post-id'];
-	$com_id = $_POST['com-id'];
-	
-	if(empty($com_id)) { //Hvis det ikke er sendt inn noen kommentar-id er det dislikes på post
-		$post_id = $_POST['post-id'];
-		$result = mysqli_query($link, "SELECT * FROM application.post WHERE id=$post_id");
-		$row = mysqli_fetch_array($result);
-		$n = $row['likes'];
-
-		mysqli_query($link, "DELETE FROM application.likes WHERE post_id=$post_id AND user_id=$user_id");
-		mysqli_query($link, "UPDATE application.post SET likes=$n-1 WHERE id=$post_id");
-		exit();
-	} else {
-		$result = mysqli_query($link, "SELECT * FROM application.commentary WHERE id=$com_id");
-		$row = mysqli_fetch_array($result); 
-		$n = $row['likes'];
-
-		mysqli_query($link, "DELETE FROM application.likes WHERE commentary_id=$com_id AND user_id=$user_id");
-		mysqli_query($link, "UPDATE application.commentary SET likes=$n-1 WHERE id=$com_id");
-		exit();
-	}
-}
+include '../PHP/likes.php';
+include '../PHP/savePost.php';
+include '../PHP/saveComment.php';
 
 ?>
 
@@ -87,22 +57,31 @@ if (isset($_POST['unliked'])) {
 				<div class="info-wrapper">
 					<div class="group-name">
 						<i class="fas fa-golf-ball fa-3x"></i>
-						<h2>Golf</h2>
+						<h2><?php echo $groupResult['name']?></h2>
 					</div>
 					<div class="group-stats-wrapper">
 					<div class="group-stats">
-						<h5><?php echo $ant_medlem; ?></h5>
+						<h5 id="ant-medlem"><?php echo $ant_medlem; ?></h5>
 						<h6>Antall medlemmer</h6>
 					</div>
 					<div class="group-stats">
-						<h5><?php echo $ant_poster; ?></h5>
+						<h5 id="num-posts"><?php echo $ant_poster; ?></h5>
 						<h6>Antall poster</h6>
 					</div>
 					</div>
 				</div>
 				<div class="group-description">
-					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque officia nesciunt voluptatibus eius aliquid, reprehenderit iure quam fugit, architecto qui soluta porro accusamus veniam sequi! Obcaecati ratione expedita ea velit. 
-					</p>
+					<p><?php echo $groupResult['description']?></p>
+						<?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+						$userMemberSql = mysqli_query($link, "SELECT * FROM application.groups_has_users WHERE user_id=$user_id AND group_id=$group_id;");
+
+						if(mysqli_num_rows($userMemberSql) == 1) { ?>
+							<a id="become-member" class="btn member" href="gruppeEksempel.php">Fjern medlemskap</a>
+							<a id="become-member" class="btn not-member hide" href="gruppeEksempel.php">Bli medlem</a>
+						<?php } else { ?>
+							<a id="become-member" class="btn member hide" href="gruppeEksempel.php">Fjern medlemskap</a>
+							<a id="become-member" class="btn not-member" href="gruppeEksempel.php">Bli medlem</a>
+						<?php } }?>
 				</div>
 			</div>
 						

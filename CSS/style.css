@@ -535,8 +535,9 @@ input:-webkit-autofill:active  {
 
 .group-info {
 	grid-area: group-info;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 175px 1fr;
 	/* width: 24%; */
 	/* margin-right: 20px; */
 	color: var(--light);
@@ -603,13 +604,30 @@ input:-webkit-autofill:active  {
 
 .group-info .group-description {
 	padding: 20px;
-	background-color: var(--light)
+	background-color: var(--light);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between
 }
 
 .group-info .group-description p{
-	margin: 0;
-	height: 100%;
+	margin: 0 0 10px;
 	color: black;
+}
+
+.group-info .group-description .btn{
+	margin-right: auto; 
+	border-radius: 5px;
+	padding: 8px .6rem;
+}
+
+.group-info .group-description .member{
+	background-color: var(--light);
+	color: black;
+}
+
+.group-info .group-description .member:hover{
+	border-color: var(--error);
 }
 
 .group-post-creator-wrapper {
@@ -660,7 +678,7 @@ input:-webkit-autofill:active  {
 }
 
 .form-input textarea {
-	height: 80px;
+	height: 90px;
 	font-family: inherit;
 	line-height: 1.4;
 	resize: none;
@@ -1035,7 +1053,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 
 .group-post-box .like-button a{
 	display: flex;
-	padding: 5px;
+	padding: 6px;
 	align-items: center;
 	color: var(--dark);
 	text-decoration: none;
