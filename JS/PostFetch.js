@@ -5,7 +5,7 @@
 
 
 window.onload = function(){
-    listPosts();
+    listPosts(getGroupId());
 }
 
 $(function()
@@ -71,14 +71,19 @@ function showNewComment(id) {
 /*
     Kaller på getPost.php som henter ut alle poster via ajax, og legger den inn i group-post (som ligger i html kode for grupper)
 */
-function listPosts()
+function listPosts(groupId)
 {
     $.ajax({
-        url:'../PHP/getPost.php',
+        url:'../PHP/getPost.php?group_id=' + getGroupId(),
         success:function(response){
             $('.group-post').html(response);
         }
     })
+}
+
+function getGroupId() {
+    var groupId = $('body').find(".group-name").data('group-id');
+    return groupId;
 }
 /*
     Funksjonen kaller på getComment.php som henter ut alle kommentarer under en post via ajax
@@ -105,11 +110,12 @@ $('.submit-post').click(function()
     document.getElementById("post-submit-ID").disabled = true;
     var header = $(".tittel").val();
     var post = $(".innhold").val();
+    var groupId = getGroupId();
     $antPost = $('body').find(".info-wrapper").find("#num-posts").html();
     var antPost = parseInt($antPost);
     $.ajax({
         url:'../PHP/savePost.php',
-        data: { tittel: header, textarea: post },
+        data: { tittel: header, textarea: post, group_id: groupId },
         type:'post',
         success:function()
         {

@@ -8,7 +8,8 @@
 <!-- <section class="darken hide" id="darken"></section> -->
 <div class="wrapper">  
 <?php
-session_start();
+
+require_once "../PHP/config.php";
 
 if (isset($_GET['logout'])){
 	echo '
@@ -47,46 +48,16 @@ include '../PHP/nav.php';
 		</div>
 	</section>
 	<section class="boxes">
-		<a href="#" class="box">
-			<i class="fas fa-table-tennis fa-4x"></i>
-			<h3>Bordtennis</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+		<?php 
+		$sqlGroupBox = mysqli_query($link, "SELECT * FROM application.groups");
+		while($rowGroupBox = mysqli_fetch_array($sqlGroupBox)) {
+		?>
+		<a href="<?php echo $rowGroupBox['name'];?>.php" class="box">
+			<i class="<?php echo $rowGroupBox['group_icon'];?> fa-4x"></i>
+			<h3><?php echo $rowGroupBox['name'];?></h3>
+			<p><?php echo $rowGroupBox['description'];?></p>
 		</a>
-		<a href="#" class="box">
-			<i class="fas fa-futbol fa-4x"></i>
-			<h3>Fotball</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-		</a>
-		<a href="#" class="box">
-			<i class="fas fa-volleyball-ball fa-4x"></i>
-			<h3>Volleyball</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-		</a>
-		<a href="#" class="box">
-			<i class="fas fa-basketball-ball fa-4x"></i>
-			<h3>Basketball</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-		</a>
-		<a href="gruppeEksempel.php" class="box">
-			<i class="fas fa-golf-ball fa-4x"></i>
-			<h3>Golf</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-		</a>
-		<a href="#" class="box">
-			<i class="fas fa-gamepad fa-4x"></i>
-			<h3>Spilling</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-		</a>
-		<a href="#" class="box">
-			<i class="fas fa-camera fa-4x"></i>
-			<h3>Fotografering</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-		</a>
-		<a href="#" class="box">
-			<i class="fas fa-book fa-4x"></i>
-			<h3>Bokklubb</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-		</a>
+		<?php } ?>
 		<h4>¯\_(ツ)_/¯<br>Søket ga ingen treff</h4>
 	</section>
 </div>

@@ -2,8 +2,6 @@
 // Henter config fil
 require_once "../PHP/config.php";
 
-$tittel = $innhold = $user_id = "";
-
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
 }
@@ -16,7 +14,9 @@ if (!empty($_POST)) {
 	if (isset($_POST['textarea'])) {
 		$innhold = trim($_POST['textarea']);
 	}
-	
+	if (isset($_POST['group_id'])) {
+		$group_id = trim($_POST['group_id']);
+	}
 }
 
 /* 
@@ -26,7 +26,7 @@ if (!empty($_POST)) {
 */
 if (isset($_POST['textarea']) && isset($_POST['tittel'])) {
 
-		$sql ="INSERT INTO application.post (title, content, user_id) VALUES('$tittel','$innhold', '$user_id')";
+		$sql ="INSERT INTO application.post (title, content, user_id, group_id) VALUES('$tittel','$innhold', '$user_id', $group_id)";
 		if (mysqli_query($link, $sql)) 
 		{
 			header("gruppeEksempel.php");

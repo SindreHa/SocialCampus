@@ -2,10 +2,14 @@
 
 require_once "../PHP/config.php";
 
+if (isset($_GET['group_id'])){
+	$group_id = $_GET['group_id'];
+}
+
 // $_SESSION['count'] = 4;
 // $antPoster = $_SESSION['count'];
 
-$sqlPost = "SELECT p.id, u.id, u.avatar, p.title, p.content, p.likes, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id ORDER BY p.id DESC;";
+$sqlPost = "SELECT p.id, u.id, u.avatar, p.title, p.content, p.likes, p.created, u.username FROM application.post AS p, application.user AS u WHERE p.user_id = u.id AND group_id=$group_id ORDER BY p.id DESC;";
 $resultPost = mysqli_query($link, $sqlPost);
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) 

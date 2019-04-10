@@ -529,10 +529,6 @@ input:-webkit-autofill:active  {
 	/* max-width: 500px; */
 }
 
-.group-search {
-	margin: 0 0 20px;
-}
-
 .group-info {
 	grid-area: group-info;
 	display: grid;
@@ -553,7 +549,6 @@ input:-webkit-autofill:active  {
 .group-info .group-name {
 	display: flex;
 	align-items: center;
-	margin-right: 20px;
 	padding-bottom: 20px;
 }
 

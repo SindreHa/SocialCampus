@@ -66,10 +66,14 @@ CREATE TABLE IF NOT EXISTS `application`.`post` (
   `likes` INT(11) NULL DEFAULT '0',
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` INT(11) NULL DEFAULT NULL,
+  `group_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_post_user`
     FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`)
+    REFERENCES `user` (`id`),
+  CONSTRAINT `fk_post_group_id`
+    FOREIGN KEY (`group_id`)
+    REFERENCES `groups` (`id`)
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -132,7 +136,6 @@ CREATE TABLE IF NOT EXISTS `application`.`likes` (
   `user_id` INT(11) NOT NULL,
   `post_id` INT(11) NOT NULL,
   `commentary_id` INT(11) NULL,
-  `like_unlike` INT(2) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `likes_foreign_key1` (`user_id` ASC),
   INDEX `likes_foreign_key2` (`post_id` ASC),
@@ -157,5 +160,13 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- INSERT setninger for grupper --
 
-INSERT INTO application.groups (id, name, description)
-VALUES('1', 'Golf', 'Golf er en sport der enkeltspillere slÃ¥r en liten ball ved hjelp av forskjellige kÃ¸ller, med mÃ¥l om at den havner i et bestemt hull.'); 
+INSERT INTO application.groups (id, name, description, group_icon)
+VALUES
+  ('1', 'Golf', 'Golf er en sport der enkeltspillere slÃ¥r en liten ball ved hjelp av forskjellige kÃ¸ller, med mÃ¥l om at den havner i et bestemt hull.', 'fas fa-golf-ball'),
+  ('2', 'Bordtennis', 'Bordtennis er en racketsport som spilles, vanligvis innendÃ¸rs. Spillerne slÃ¥r med smÃ¥ racketer.', 'fas fa-table-tennis'), 
+  ('3', 'Fotball', 'Fotball er en ballidrett mellom to lag, hvert bestÃ¥ende av elleve spillere, hvor formÃ¥let er Ã¥ fÃ¥ ballen flest ganger inn i motstanderlagets mÃ¥l.', 'fas fa-futbol'),
+  ('4', 'Volleyball', 'Volleyball er en ballidrett med seks spillere pÃ¥ banen for hvert lag. Spillerne roterer med klokken rundt pÃ¥ banen slik at alle kommer pÃ¥ de ulike posisjonene.', 'fas fa-volleyball-ball'),
+  ('5', 'Basketball', 'Basketball, basket eller kurvball er en lagsport der to lag, bestÃ¥ende av fem spillere, prÃ¸ver Ã¥ score poeng mot hverandre ved Ã¥ kaste en ball gjennom en ring.', 'fas fa-basketball-ball'),
+  ('6', 'Spilling', 'Videospill er spill der deltakeren bruker elektronisk utstyr og en bildeskjerm. Slike spill innebÃ¦rer interaksjon med et brukergrensesnitt for Ã¥ generere en visuell tilbakemelding.', 'fas fa-gamepad'),
+  ('7', 'Fotografering', 'Fotografi er en permanent gjengivelse av et bilde ved hjelp av lys, optikk og lysfÃ¸lsomme komponenter som kan lagre bildeinformasjonen.', 'fas fa-camera'),
+  ('8', 'Bokklubb', 'Bok er en sammenbinding av flere blad av papir, pergament eller annet egnet materiale. Materialet er sammenfÃ¸yd langs en side, ryggen, og som regel innbundet i et mer robust materiale.', 'fas fa-book');
