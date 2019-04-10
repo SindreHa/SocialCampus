@@ -56,7 +56,7 @@ include '../PHP/saveComment.php';
 			<div class="group-info">
 				<div class="info-wrapper">
 					<div class="group-name" data-group-id="<?php echo $group_id?>">
-						<i class="<?php echo $groupResult['group_icon']?> fa-3x"></i>
+						<i class="<?php echo $groupResult['group_icon']?>"></i>
 						<h2><?php echo $groupResult['name']?></h2>
 					</div>
 					<div class="group-stats-wrapper">

@@ -533,7 +533,7 @@ input:-webkit-autofill:active  {
 	grid-area: group-info;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 175px 1fr;
+	grid-template-rows: 160px 1fr;
 	/* width: 24%; */
 	/* margin-right: 20px; */
 	color: var(--light);
@@ -542,7 +542,8 @@ input:-webkit-autofill:active  {
 }
 
 .group-info h2{
-	font-size: 2rem;
+	font-size: 1.8rem;
+	font-weight: 500;
 	margin: 0 0 0 10px;
 }
 
@@ -554,6 +555,7 @@ input:-webkit-autofill:active  {
 
 .group-info .group-name i{
 	color: var(--accent);
+	font-size: 2.5rem;
 }
 
 .group-info .group-stats-wrapper{
@@ -644,6 +646,7 @@ input:-webkit-autofill:active  {
 .post-input-header h2 {
 	margin: 0px;
 	font-size: 2rem;
+	font-weight: 500;
 }
 
 .post-input-header i {
