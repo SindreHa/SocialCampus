@@ -22,13 +22,13 @@
 			<i class="fas fa-info"></i>
 			Om Oss
 		</a></li>
-		<li><a href="gruppeEksempel.php">
+		<li><a href="javascript:TooltipMessage('Side under arbeid');">
 			<i class="far fa-bookmark"></i>
-			Grupper
+			Arrangementer
 		</a></li>
 		<li><a href="profil.php">
 			<i class="fas fa-user"></i>
-			min Profil
+			Min Profil
 		</a></li>
 	</ul>
 </nav>
@@ -55,9 +55,9 @@
 			<i class="fas fa-info"></i>
 			Om Oss
 		</a></li>
-		<li><a href="gruppeEksempel.php">
+		<li><a href="javascript:TooltipMessage('Side under arbeid');">
 			<i class="far fa-bookmark"></i>
-			Grupper
+			Arrangementer
 		</a></li>
 		<li><a href="login.php">
 			<i class="fas fa-sign-in-alt"></i>
