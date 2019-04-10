@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `application`.`groups` (
   `id` INT(11) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(180) NOT NULL,
+  `group_icon` VARCHAR(50) NOT NULL,
   UNIQUE INDEX groups_name_unique(`name`),
   PRIMARY KEY (`id`)
 )
