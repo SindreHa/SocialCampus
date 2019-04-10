@@ -223,5 +223,7 @@ if(mysqli_num_rows($resultPost) > 0)
 <?php
 
     }
-}
-?>
+} else { ?>
+	<h5>¯\_(ツ)_/¯</h5>
+	<h5>Ingen innlegg publisert</h5>
+<?php }	?>

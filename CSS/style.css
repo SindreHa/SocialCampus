@@ -745,6 +745,13 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	grid-column: 2/5;
 }
 
+.group-post h5{
+	font-weight: 500;
+	font-size: 1.6rem;
+	text-align: center;
+	margin: 15px 0;
+}
+
 .group-post .btn{
 	margin: 0 auto;
 }
