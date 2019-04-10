@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `application`.`user` (
   `username` VARCHAR(50) NOT NULL,
   `password` VARCHAR(255) NULL DEFAULT NULL,
   `full_name` VARCHAR(255) NOT NULL,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email` VARCHAR(245) NOT NULL,
   `avatar` VARCHAR(100) NOT NULL,
   `moderator` TINYINT(1) NOT NULL,
@@ -44,7 +44,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `application`.`groups` ;
 
 CREATE TABLE IF NOT EXISTS `application`.`groups` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(180) NOT NULL,
   UNIQUE INDEX groups_name_unique(`name`),
@@ -108,14 +108,14 @@ DROP TABLE IF EXISTS `application`.`groups_has_users` ;
 CREATE TABLE IF NOT EXISTS `application`.`groups_has_users` (
   `group_id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
-  PRIMARY KEY (`groups_id`, `user_id`),
+  PRIMARY KEY (`group_id`, `user_id`),
   INDEX `fk_groups_has_users1_idx` (`user_id` ASC),
-  INDEX `fk_groups_has_users2_idx` (`groups_id` ASC),
+  INDEX `fk_groups_has_users2_idx` (`group_id` ASC),
   CONSTRAINT `groups_has_users_foreign_key1`
     FOREIGN KEY (`user_id`)
     REFERENCES `application`.`user` (`id`),
   CONSTRAINT `groups_has_users_foreign_key2`
-    FOREIGN KEY (`groups_id`)
+    FOREIGN KEY (`group_id`)
     REFERENCES `application`.`groups` (`id`)
 )
 ENGINE = InnoDB
