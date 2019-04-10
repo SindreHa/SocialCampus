@@ -4,8 +4,8 @@
       	<h3>Snareveier</h3>
         <p><a href="404.php">Mine grupper</a></p>
         <p><a href="profil.php">Mine profilinstillinger</a></p>
-        <p><a href="404.php">Labore et dolore</a></p>
-        <p><a href="404.php">Lorem ipsum</a></p>
+        <p><a href="404.php">Mine venner</a></p>
+        <p><a href="404.php">Mine arrangement</a></p>
 	</div>
 
 	<div class="footer-shortcut">
@@ -19,10 +19,10 @@
 	<div class="footer-shortcut">
       	<h3>Støtte</h3>
         <p><a href="404.php">Kontakt informasjon</a></p>
-        <p><a href="404.php">Dolor sit amet</a></p>
-        <p><a href="404.php">Consectetur adipisicing elit</a></p>
-        <p><a href="404.php">Labore et dolore</a></p>
-        <p><a href="404.php">Lorem ipsum</a></p>
+        <p><a href="404.php">Brukskatalog</a></p>
+        <p><a href="404.php">Rapporter misbruk av siden</a></p>
+        <p><a href="404.php">Stjålen identitet</a></p>
+        <p><a href="404.php">Rapporter identitets-løgn</a></p>
 	</div>
 
 	<div class="footer-shortcut">
