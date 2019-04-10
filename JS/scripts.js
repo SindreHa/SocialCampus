@@ -110,10 +110,12 @@ var insertBefore = head.insertBefore;
 					$button.parent().find('.member').removeClass('hide');
 					$button.parent().find('.not-member').addClass('hide');
 					$button.closest(".group-info").find(".info-wrapper").find("#ant-medlem").html(antMedlem+1);
+					TooltipMessage("Meldt inn i " + $button.closest(".group-info").find(".group-name").find("h2").html());
 				} else { //Hvis bruker allerede er medlem
 					$button.parent().find('.not-member').removeClass('hide');
 					$button.parent().find('.member').addClass('hide');
 					$button.closest(".group-info").find(".info-wrapper").find("#ant-medlem").html(antMedlem-1);
+					TooltipMessage("Meldt ut av " + $button.closest(".group-info").find(".group-name").find("h2").html());
 				}
             }
         });
