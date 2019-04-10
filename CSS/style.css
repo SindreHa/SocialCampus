@@ -53,6 +53,7 @@ body {
 		color .2s ease-out,
 		border-color .2s ease-out;
 	font-size: 1rem;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .btn:hover {
@@ -125,6 +126,9 @@ img {
 }
 .menu {
 	display: none;
+}
+.menyToggle {
+	-webkit-tap-highlight-color: transparent;
 }
 
 /*Logg inn og registrer*/
@@ -961,6 +965,11 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 .group-post-box .user-container-comment .like-button a{
 	justify-content: center;
 }
+
+.like {
+	-webkit-tap-highlight-color: transparent;
+}
+
 .new-comment{
 	box-shadow: inset 8px 0 0px 0px var(--accent) !important;
 }
@@ -1008,6 +1017,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 
 .group-post-box .post-stats .comment-collapse{
 	background-color: var(--primary);
+	-webkit-tap-highlight-color: transparent;
 }
 
 .group-post-box .post-stats .comment-collapse:hover{
@@ -1405,6 +1415,7 @@ footer p{
 	color: white;
 	background-color: var(--dark);
 	border: 1px solid var(--accent);
+	-webkit-tap-highlight-color: transparent;
 	/* box-shadow: var(--shadow); */
 	cursor: pointer;
 	transition: right .3s , bottom .3s;
@@ -1821,6 +1832,9 @@ footer p{
 		height: 45px;
 		width: 45px;
 		display: flex;
+	}
+	.toTop:hover i{
+		color: var(--light);
 	}
 }
 
