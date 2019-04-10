@@ -76,11 +76,11 @@ include '../PHP/saveComment.php';
 						$userMemberSql = mysqli_query($link, "SELECT * FROM application.groups_has_users WHERE user_id=$user_id AND group_id=$group_id;");
 
 						if(mysqli_num_rows($userMemberSql) == 1) { ?>
-							<a id="become-member" class="btn member" href="gruppeEksempel.php">Forlat gruppe</a>
-							<a id="become-member" class="btn not-member hide" href="gruppeEksempel.php">Bli medlem</a>
+							<a id="become-member" class="btn member" href="<?php echo $groupResult['name']; ?>.php">Forlat gruppe</a>
+							<a id="become-member" class="btn not-member hide" href="<?php echo $groupResult['name']; ?>.php">Bli medlem</a>
 						<?php } else { ?>
-							<a id="become-member" class="btn member hide" href="gruppeEksempel.php">Forlat gruppe</a>
-							<a id="become-member" class="btn not-member" href="gruppeEksempel.php">Bli medlem</a>
+							<a id="become-member" class="btn member hide" href="<?php echo $groupResult['name']; ?>.php">Forlat gruppe</a>
+							<a id="become-member" class="btn not-member" href="<?php echo $groupResult['name']; ?>.php">Bli medlem</a>
 						<?php } }?>
 				</div>
 			</div>
