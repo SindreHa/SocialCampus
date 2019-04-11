@@ -2,7 +2,11 @@
 
 require_once "../PHP/config.php";
 
-$post_ID = $_GET['postId'];
+$post_ID = $_GET['post_id'];
+
+if (isset($_GET['group_id'])){
+	$group_id = $_GET['group_id'];
+}
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) 
 	$user_id = $_SESSION['id'];
@@ -11,6 +15,9 @@ else
 
 $sqlCom = "SELECT c.*, u.username, u.avatar FROM application.commentary AS c, application.user AS u WHERE c.user_id = u.id AND c.post_id = $post_ID ORDER BY made DESC;";
 $resultCom = mysqli_query($link, $sqlCom);
+
+$resultGroupName = mysqli_query($link, "SELECT name FROM application.groups WHERE id=$group_id;");
+$group_name = mysqli_fetch_array($resultGroupName);
 
 while($rowCom=mysqli_fetch_array($resultCom))
 { 
@@ -30,14 +37,14 @@ while($rowCom=mysqli_fetch_array($resultCom))
 
 			if (mysqli_num_rows($resultLikes) == 1 ) { ?>
 				<!-- Bruker har allerede likt kommentar -->
-				<a class="unlike" href="#/" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
-					<i class="unliked fas fa-thumbs-up"></i> 
-					<i class="liked hide fas fa-thumbs-up"></i> 
+				<a class="unlike" href="<?php echo $group_name['name']?>.php" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
+					<i class="unliked fas fa-thumbs-up"></i>
+					<i class="liked hide fas fa-thumbs-up"></i>
 					<p class="ant-likes"><?php echo $rowCom['likes'];?></p>
 				</a>
 			<?php } else { ?>
 				<!-- Bruker har ikke likt kommentar -->
-				<a class="like" href="#/" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
+				<a class="like" href="<?php echo $group_name['name']?>.php" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
 					<i class="liked fas fa-thumbs-up"></i>
 					<i class="unliked hide fas fa-thumbs-up"></i> 
 					<p class="ant-likes"><?php echo $rowCom['likes'];?></p>

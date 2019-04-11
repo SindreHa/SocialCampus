@@ -1,13 +1,15 @@
 $(document).ready(function(){
     // Når bruker trykker like
-    $('body').on('click', '.like', function(){
+    $('body').on('click', '.like', function(e){
+        e.preventDefault();
+        var url = $(this).attr('href');
         var post_id = $(this).data('post-id');
         var com_id = $(this).data('com-id');
         $post = $(this);
         var antLikes = parseInt($(this).find('.ant-likes').text());
 
         $.ajax({
-            url: 'gruppeEksempel.php',
+            url: url,
             type: 'post',
             data: {
                 'liked': 1,
@@ -27,14 +29,16 @@ $(document).ready(function(){
     });
 
     // når bruker trykker vekk like
-    $('body').on('click', '.unlike', function(){
+    $('body').on('click', '.unlike', function(e){
+        e.preventDefault();
+        var url = $(this).attr('href');
         var post_id = $(this).data('post-id');
         var com_id = $(this).data('com-id');
         $post = $(this);
         var antLikes = parseInt($(this).find('.ant-likes').text());
 
         $.ajax({
-            url: 'gruppeEksempel.php',
+            url: url,
             type: 'post',
             data: {
                 'unliked': 1,

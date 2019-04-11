@@ -40,7 +40,7 @@ if (isset($_POST['unliked'])) {
 		$row = mysqli_fetch_array($result);
 		$n = $row['likes'];
 
-		mysqli_query($link, "DELETE FROM application.likes WHERE post_id=$post_id AND user_id=$user_id");
+		mysqli_query($link, "DELETE FROM application.likes WHERE post_id=$post_id AND user_id=$user_id AND commentary_id IS NULL");
 		mysqli_query($link, "UPDATE application.post SET likes=$n-1 WHERE id=$post_id");
 		exit();
 	} else {
