@@ -400,11 +400,15 @@ form {
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
 }
 
+.boxes h4:first-child{
+	margin-top: 20px;
+}
 .boxes h4{
 	font-size: 1.6rem;
 	text-align: center; 
 	display: none;
 	font-weight: 500;
+	margin: 10px 0;
 }
 
 .box {

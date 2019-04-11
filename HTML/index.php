@@ -58,7 +58,9 @@ include '../PHP/nav.php';
 			<p><?php echo $rowGroupBox['description'];?></p>
 		</a>
 		<?php } ?>
-		<h4>¯\_(ツ)_/¯<br>Søket ga ingen treff</h4>
+		<div>
+		<h4>(╯°□°)╯︵ ┻━┻</h4><h4>Søket ga ingen treff</h4>
+		</div>
 	</section>
 </div>
         
