@@ -92,7 +92,7 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title>Hjemmeside</title>
+	<title>Min profil</title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>

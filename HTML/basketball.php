@@ -42,7 +42,7 @@ include '../PHP/saveComment.php';
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title>Golf</title>
+	<title><?php echo $groupResult['name']?></title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>
