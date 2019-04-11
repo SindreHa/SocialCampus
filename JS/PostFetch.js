@@ -71,7 +71,7 @@ function showNewComment(id) {
 /*
     Kaller på getPost.php som henter ut alle poster via ajax, og legger den inn i group-post (som ligger i html kode for grupper)
 */
-function listPosts(groupId)
+function listPosts(postId, groupId)
 {
     $.ajax({
         url:'../PHP/getPost.php?group_id=' + getGroupId(),
@@ -88,14 +88,16 @@ function getGroupId() {
 /*
     Funksjonen kaller på getComment.php som henter ut alle kommentarer under en post via ajax
 */
-function listComment(id)
+function listComment(postId, groupId)
 {
+    var postId = postId;
+    var groupId = groupId;
     var com_id = "";
     $.ajax({
-        url:'../PHP/getComment.php?postId=' + id,
+        url:'../PHP/getComment.php?group_id=' + groupId + "&post_id=" + postId,
         success:function(response){
             com_id = $(response).find("#comment_ID").val();
-            $("#comment_post_ID[value='" + id + "']").closest(".comment-container").find(".comment-toggle").html(response);
+            $("#comment_post_ID[value='" + postId + "']").closest(".comment-container").find(".comment-toggle").html(response);
             showNewComment(com_id);
         }
     })
@@ -136,16 +138,17 @@ $('.submit-post').click(function()
 */
 $('body').on('click', '#submit-comment_ID', function()
 {
+    var groupId = getGroupId();
     var innhold = $(this).closest(".inputContainer").find(".input").val();
     var post_id = $(this).closest(".inputContainer").find("#comment_post_ID").val();
     $(this).closest(".comment-container").find(".comment-toggle").slideDown();
     $.ajax({
         url:'../PHP/saveComment.php',
-        data: { comment: innhold, p_id: post_id },
+        data: { comment: innhold, p_id: post_id, group_id: groupId },
         type:'post',
         success:function()
         {
-            listComment(post_id);
+            listComment(post_id, groupId);
             clearCommentField(post_id);
             TooltipMessage('Kommentar publisert');
         },
