@@ -5,7 +5,7 @@
 
 
 window.onload = function(){
-    listPosts(getGroupId());
+    listPosts();
 }
 
 $(function()
@@ -71,7 +71,7 @@ function showNewComment(id) {
 /*
     Kaller på getPost.php som henter ut alle poster via ajax, og legger den inn i group-post (som ligger i html kode for grupper)
 */
-function listPosts(postId, groupId)
+function listPosts()
 {
     $.ajax({
         url:'../PHP/getPost.php?group_id=' + getGroupId(),

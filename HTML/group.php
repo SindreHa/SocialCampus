@@ -2,7 +2,9 @@
 
 require_once "../PHP/config.php";
 
-$group_id = "6";
+if (isset($_GET['group_id'])){
+	$group_id = $_GET['group_id'];
+}
 
 $postCountResult = mysqli_query($link, "SELECT COUNT(id) FROM post WHERE group_id=$group_id");
 $postCount = mysqli_fetch_row($postCountResult);
@@ -46,7 +48,6 @@ include '../PHP/saveComment.php';
 	<?php include '../PHP/head.php';?>
 </head>
 <body>
-	<!-- <section class="darken hide" id="darken"></section> -->
 	<div class="wrapper">
         
 	<?php include '../PHP/nav.php';?>

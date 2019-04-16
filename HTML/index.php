@@ -5,7 +5,6 @@
 	<?php include '../PHP/head.php';?>
 </head>
 <body>
-<!-- <section class="darken hide" id="darken"></section> -->
 <div class="wrapper">  
 <?php
 
@@ -52,7 +51,7 @@ include '../PHP/nav.php';
 		$sqlGroupBox = mysqli_query($link, "SELECT * FROM application.groups");
 		while($rowGroupBox = mysqli_fetch_array($sqlGroupBox)) {
 		?>
-		<a href="<?php echo $rowGroupBox['name'];?>.php" class="box">
+		<a href="group.php?group_id=<?php echo $rowGroupBox['id'];?>" class="box">
 			<i class="<?php echo $rowGroupBox['group_icon'];?> fa-4x"></i>
 			<h3><?php echo $rowGroupBox['name'];?></h3>
 			<p><?php echo $rowGroupBox['description'];?></p>
