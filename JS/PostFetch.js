@@ -158,6 +158,33 @@ $('body').on('click', '#submit-comment_ID', function()
     })
 });
 
+$('body').on('click', '.delete a', function()
+{
+    $modal = $(this).closest(".post-wrapper").find(".modal");
+    $modal.css("display", "flex");
+    $modal.hide();
+    $modal.fadeIn("fast");
+});
+
+$('body').on('click', '.modal-btn a', function()
+{
+    var post_id = $(this).closest('.post-wrapper').find(".delete a").data("post-id");
+    if($(this).hasClass("deleteC")) {
+        $.ajax({
+            url:'../HTML/group.php',
+            data: { deletePost: post_id},
+            type:'post',
+            success:function()
+            {
+                TooltipMessage('Innlegg slettet');
+                listPosts();
+            }
+        })
+    } else {
+        $(this).closest(".modal").fadeOut("fast");
+    }
+});
+
 
 
 

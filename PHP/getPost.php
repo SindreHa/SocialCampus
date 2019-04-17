@@ -60,34 +60,47 @@ if(mysqli_num_rows($resultPost) > 0)
 			<p><?php echo $rowPost['content']; ?></p> <!-- Innlegg innhold -->
 		</div>
 		<div class="post-stats">
+
+				<?php 
+					if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+
+					$sqlUserP = mysqli_query($link, "SELECT * FROM application.post WHERE user_id=$user_id AND id=$rowPost[0]");
+
+					if (mysqli_num_rows($sqlUserP) == 1 ) { ?>
+					<!-- Hvis bruker har publisert gjeldende innlegg får den opp en slette knapp -->
+					<div class="delete">
+						<a href="#/" data-post-id="<?php echo $rowPost[0];?>"><i class="fas fa-trash-alt"></i></a>
+					</div>
+				<?php } }?>
+
 				<div class="like-button">
-							<?php 
-							if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+					<?php 
+					if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
-							$sqlLikes = mysqli_query($link, "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$rowPost[0] AND commentary_id IS NULL;");
+					$sqlLikes = mysqli_query($link, "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$rowPost[0] AND commentary_id IS NULL;");
 
-							if (mysqli_num_rows($sqlLikes) == 1 ) { ?>
-								<!-- Bruker har allerede likt post -->
-								<a class="unlike" href="<?php echo $group_name['name']?>.php" data-post-id="<?php echo $rowPost[0];?>">
-									<i class="unliked fas fa-thumbs-up"></i> 
-									<i class="liked hide fas fa-thumbs-up"></i> 
-									<p class="ant-likes"><?php echo $rowPost['likes'];?></p>
-								</a>
-							<?php } else { ?>
-								<!-- Bruker har ikke likt post -->
-								<a class="like" href="<?php echo $group_name['name']?>.php" data-post-id="<?php echo $rowPost[0];?>">
-									<i class="liked fas fa-thumbs-up"></i>
-									<i class="unliked hide fas fa-thumbs-up"></i> 
-									<p class="ant-likes"><?php echo $rowPost['likes'];?></p>
-								</a>
-							<?php } 
-							} else { ?>
-								<!-- Bruker ikke logget inn -->
-								<a href="#/" class="disabled">
-									<i class="liked fas fa-thumbs-up"></i> 
-									<p class="ant-likes"><?php echo $rowPost['likes'];?></p>
-								</a>
-							<?php } ?>
+					if (mysqli_num_rows($sqlLikes) == 1 ) { ?>
+						<!-- Bruker har allerede likt post -->
+						<a class="unlike" href="group.php" data-post-id="<?php echo $rowPost[0];?>">
+							<i class="unliked fas fa-thumbs-up"></i> 
+							<i class="liked hide fas fa-thumbs-up"></i> 
+							<p class="ant-likes"><?php echo $rowPost['likes'];?></p>
+						</a>
+					<?php } else { ?>
+						<!-- Bruker har ikke likt post -->
+						<a class="like" href="group.php" data-post-id="<?php echo $rowPost[0];?>">
+							<i class="liked fas fa-thumbs-up"></i>
+							<i class="unliked hide fas fa-thumbs-up"></i> 
+							<p class="ant-likes"><?php echo $rowPost['likes'];?></p>
+						</a>
+					<?php } 
+					} else { ?>
+						<!-- Bruker ikke logget inn -->
+						<a href="#/" class="disabled">
+							<i class="liked fas fa-thumbs-up"></i> 
+							<p class="ant-likes"><?php echo $rowPost['likes'];?></p>
+						</a>
+					<?php } ?>
 				</div>
 			<?php
 		
@@ -97,13 +110,20 @@ if(mysqli_num_rows($resultPost) > 0)
 			if($rowComCount[0] === "1") { $comString = " kommentar"; }
 			else{ $comString = " kommentarer"; }
 			?>
-			<h4><a class="comment-collapse" href="#/">
+			<h4 class="comment-counter"><a class="comment-collapse" href="#/">
 				<p><?php  echo $rowComCount[0] . $comString;  ?></p>
 				<i class="far fa-comment-alt"><p><?php  echo $rowComCount[0]?></p></i>
 			</a></h4> <!-- Antall kommentarer -->
 			<h4 class="comment-date">
 				<p>Publisert <?php echo $rowPost['created']; ?></p>
 			</h4>
+		</div>
+	</div>
+	<div class="modal">
+		<h5>Er du sikker på at du vil slette innlegget?</h5>
+		<div class="modal-btn">
+			<a href="#/" class="btn deleteC">Slett innlegg</a>
+			<a href="#/" class="btn cancel">Avbryt</a>
 		</div>
 	</div>
 	</div>
@@ -133,14 +153,14 @@ if(mysqli_num_rows($resultPost) > 0)
 
 							if (mysqli_num_rows($resultLikes) == 1 ) { ?>
 								<!-- Bruker har allerede likt kommentar -->
-								<a class="unlike" href="<?php echo $group_name['name']?>.php" data-post-id="<?php echo $rowCom['post_id'];?>" data-com-id="<?php echo $rowCom['id'];?>">
+								<a class="unlike" href="group.php" data-post-id="<?php echo $rowCom['post_id'];?>" data-com-id="<?php echo $rowCom['id'];?>">
 									<i class="unliked fas fa-thumbs-up"></i> 
 									<i class="liked hide fas fa-thumbs-up"></i> 
 									<p class="ant-likes"><?php echo $rowCom['likes'];?></p>
 								</a>
 							<?php } else { ?>
 								<!-- Bruker har ikke likt kommentar -->
-								<a class="like" href="<?php echo $group_name['name']?>.php" data-post-id="<?php echo $rowCom['post_id'];?>" data-com-id="<?php echo $rowCom['id'];?>">
+								<a class="like" href="group.php" data-post-id="<?php echo $rowCom['post_id'];?>" data-com-id="<?php echo $rowCom['id'];?>">
 									<i class="liked fas fa-thumbs-up"></i>
 									<i class="unliked hide fas fa-thumbs-up"></i> 
 									<p class="ant-likes"><?php echo $rowCom['likes'];?></p>
