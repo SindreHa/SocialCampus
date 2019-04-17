@@ -79,3 +79,16 @@ begin
     where p_id = id;
 end$$
 DELIMITER ;
+
+
+DELIMITER $$
+drop procedure IF EXISTS `deletePost`$$
+CREATE PROCEDURE `deletePost` (
+    in p_id int (11)
+)
+begin
+    DELETE FROM likes WHERE post_id = p_id:
+    DELETE FROM commentary WHERE post_id = p_id;
+    DELETE FROM post WHERE id = p_id;
+end$$
+DELIMITER ;

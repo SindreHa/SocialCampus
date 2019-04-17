@@ -1041,13 +1041,13 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	align-items: center;
 }
 
-.group-post-box .post-stats h4:nth-child(2){
+.group-post-box .post-stats .comment-counter{
 	margin-left: 10px;
 	padding-left: 10px;
 	border-left: 1px solid var(--accent)
 }
 
-.group-post-box .post-stats h4:nth-child(3){
+.group-post-box .post-stats .comment-date{
 	margin-left: 10px;
 	padding: 8px 0px 8px 10px;
 	border-left: 1px solid var(--accent)
@@ -1070,7 +1070,13 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	padding-right: 5px;
 }
 
-.group-post-box .like-button a{
+.group-post-box .delete{
+	margin-right: 10px;
+	padding-right: 10px;
+	border-right: 1px solid var(--accent);
+}
+
+.group-post-box .like-button a, .group-post-box .delete a{
 	display: flex;
 	padding: 6px;
 	align-items: center;
@@ -1079,12 +1085,16 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	transition: background-color .1s ease-out;
 }
 
-.group-post-box .post-stats .like-button a{
+.group-post-box .post-stats .like-button a, .group-post-box .post-stats .delete a{
 	background-color: var(--primary);
 }
 
-.group-post-box .post-stats .like-button a:hover{
+.group-post-box .post-stats .like-button a:hover, .group-post-box .post-stats .delete a:hover{
 	background-color: #ccc;
+}
+
+.group-post-box .post-stats .delete a:hover i{
+	color: var(--error);
 }
 
 .group-post-box .like-button p {
@@ -1094,7 +1104,7 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	border: none;
 }
 
-.group-post-box .like-button i {
+.group-post-box .like-button i, .group-post-box .delete i {
 	margin: 5px;
 	transition: color .2s ease-out;
 }
@@ -1133,6 +1143,50 @@ textarea::-webkit-scrollbar-thumb:hover, .comment-container::-webkit-scrollbar-t
 	0% {transform: scale(1); color: var(--accent)}
 	35% {transform: scale(.9); color: var(--lightDark)}
 	100% {transform: scale(1); color: var(--dark)}
+}
+
+.group-post-box .post-wrapper {
+	position: relative;
+}
+
+.group-post-box .modal {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.75);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.group-post-box .modal-btn {
+	margin: 10px 0;
+}
+
+.group-post-box .modal-btn .btn{
+	border-radius: 5px;
+	border-color: var(--lightDark);
+}
+
+
+.group-post-box .modal-btn .btn:first-child{
+	margin-right: 5px;
+}
+
+.group-post-box .modal-btn .btn:first-child:hover{
+	border-color: var(--error);
+	color: var(--light);
+	background-color: var(--dark);
+}
+
+.group-post-box .modal h5{
+	color: var(--light);
+	margin: 0 15px 10px;
+
 }
 
  /*Om oss*/
@@ -1803,7 +1857,7 @@ footer p{
 	.group-post-box .comment-container .comment-stats .like-button {
 		display: flex;
 	}
-	.group-post-box .post-stats .like-button a:hover, .group-post-box .post-stats .comment-collapse:hover{
+	.group-post-box .post-stats .like-button a:hover, .group-post-box .post-stats .comment-collapse:hover, .group-post-box .post-stats .delete a:hover{
 		background-color: var(--primary);
 	}
 	.group-post-box .comment-stats p:first-child {

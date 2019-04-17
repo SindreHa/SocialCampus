@@ -37,14 +37,14 @@ while($rowCom=mysqli_fetch_array($resultCom))
 
 			if (mysqli_num_rows($resultLikes) == 1 ) { ?>
 				<!-- Bruker har allerede likt kommentar -->
-				<a class="unlike" href="<?php echo $group_name['name']?>.php" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
+				<a class="unlike" href="group.php" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
 					<i class="unliked fas fa-thumbs-up"></i>
 					<i class="liked hide fas fa-thumbs-up"></i>
 					<p class="ant-likes"><?php echo $rowCom['likes'];?></p>
 				</a>
 			<?php } else { ?>
 				<!-- Bruker har ikke likt kommentar -->
-				<a class="like" href="<?php echo $group_name['name']?>.php" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
+				<a class="like" href="group.php" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
 					<i class="liked fas fa-thumbs-up"></i>
 					<i class="unliked hide fas fa-thumbs-up"></i> 
 					<p class="ant-likes"><?php echo $rowCom['likes'];?></p>

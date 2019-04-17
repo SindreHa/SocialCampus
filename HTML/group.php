@@ -19,6 +19,11 @@ $ant_medlem = $userCount[0];
 $groupSql = mysqli_query($link, "SELECT * FROM application.groups WHERE id=$group_id");
 $groupResult = mysqli_fetch_array($groupSql); 
 
+if(isset($_POST["deletePost"])) {
+	$post_id = $_POST["deletePost"];
+	$delete = mysqli_query($link, "CALL deletePost($post_id)");
+}
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
 }
@@ -77,11 +82,11 @@ include '../PHP/saveComment.php';
 						$userMemberSql = mysqli_query($link, "SELECT * FROM application.groups_has_users WHERE user_id=$user_id AND group_id=$group_id;");
 
 						if(mysqli_num_rows($userMemberSql) == 1) { ?>
-							<a id="become-member" class="btn member" href="<?php echo $groupResult['name']; ?>.php">Forlat gruppe</a>
-							<a id="become-member" class="btn not-member hide" href="<?php echo $groupResult['name']; ?>.php">Bli medlem</a>
+							<a id="become-member" class="btn member" href="group.php">Forlat gruppe</a>
+							<a id="become-member" class="btn not-member hide" href="group.php">Bli medlem</a>
 						<?php } else { ?>
-							<a id="become-member" class="btn member hide" href="<?php echo $groupResult['name']; ?>.php">Forlat gruppe</a>
-							<a id="become-member" class="btn not-member" href="<?php echo $groupResult['name']; ?>.php">Bli medlem</a>
+							<a id="become-member" class="btn member hide" href="group.php">Forlat gruppe</a>
+							<a id="become-member" class="btn not-member" href="group.php">Bli medlem</a>
 						<?php } }?>
 				</div>
 			</div>
