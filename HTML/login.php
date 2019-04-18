@@ -66,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: ../HTML/index.php?loggedin=true");
                         } else{
                             // Vis feilmelding om passord er feil
-                            $password_err = "Feil passord";
+                            $password_err = "Feil brukernavn eller passord";
                         }
                     }
                 } else{
