@@ -35,7 +35,7 @@
 
 	<div class="footer-info">
     <div class="footer-copy">
-      <p>Gruppe 7 &copy; <?php echo date("Y");?></p>
+      <p>SocialCampus &copy; <?php echo date("Y");?></p>
       <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) 
       {?>
       <p><a href="../PHP/logout.php"><i class="fas fa-sign-out-alt"></i>Logg ut</a></p>

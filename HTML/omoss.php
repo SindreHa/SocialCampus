@@ -14,7 +14,7 @@ include '../PHP/nav.php';
 <section class="top-container-double">
 	<header class="showcase usn">
 		<h1>Om oss</h1>
-		<p>SIDENAVN er en nettside som ble startet utviklingen på i slutten av 2018. 
+		<p>SocialCampus er en nettside som ble startet utviklingen på i slutten av 2018. 
 		Bak kulissene er det 4 talenter som du kan lese mer om her på denne siden. 
 		Rundt om på dette nettstedet skal du kunne finne deg nye venner 
 		med samme interresser som deg og ha et sted å snakke om disse.</p>

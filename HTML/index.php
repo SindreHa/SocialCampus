@@ -35,7 +35,7 @@ include '../PHP/nav.php';
         
 	<section class="top-container">
 		<header class="showcase">
-			<h1>Velkommen</h1>
+			<h1>Velkommen til SocialCampus</h1>
 			<p>Velg en gruppe og møt mennesker med felles interesser!</p>
 		</header>
 	</section>
