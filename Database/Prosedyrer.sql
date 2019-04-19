@@ -82,13 +82,13 @@ DELIMITER ;
 
 
 DELIMITER $$
-drop procedure IF EXISTS `deletePost`$$
+DROP PROCEDURE IF EXISTS `deletePost`$$
 CREATE PROCEDURE `deletePost` (
-    in p_id int (11)
+    IN p_id INT (11)
 )
-begin
-    DELETE FROM likes WHERE post_id = p_id:
+BEGIN
+    DELETE FROM likes WHERE post_id = p_id;
     DELETE FROM commentary WHERE post_id = p_id;
     DELETE FROM post WHERE id = p_id;
-end$$
+END$$
 DELIMITER ;
