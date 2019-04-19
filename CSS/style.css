@@ -357,7 +357,7 @@ form {
 }
 
 .showcase {
-	min-height: 250px;
+	min-height: 180px;
 	background-image: url(../Pictures/Tennis.jpg);
 	background-size: cover;
 	background-position: center;
@@ -383,6 +383,7 @@ form {
 
 .showcase h1 {
 	font-size: 4rem;
+	font-weight: 500;
 	margin: 0;
 	color: var(--light);
 }
