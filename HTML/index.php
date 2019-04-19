@@ -10,6 +10,11 @@
 
 require_once "../PHP/config.php";
 
+/*
+	Lyttere som sjekker om det blir sendt inn en php variabel, hvis f.eks logout blir sendt inn 
+	blir TooltipMessage kalt med parameter "Du er nå logget ut".
+*/
+
 if (isset($_GET['logout'])){
 	echo '
 		<script> 
@@ -30,6 +35,7 @@ if (isset($_GET['loggedin'])){
 	';
 }
 
+//Inkluderer topp meny bar fra php fil.
 include '../PHP/nav.php';
 ?>
         
@@ -49,21 +55,21 @@ include '../PHP/nav.php';
 	<section class="boxes">
 		<?php 
 		$sqlGroupBox = mysqli_query($link, "SELECT * FROM application.groups");
-		while($rowGroupBox = mysqli_fetch_array($sqlGroupBox)) {
+		while($rowGroupBox = mysqli_fetch_array($sqlGroupBox)) { //Henter inn en og en gruppeboks fra database
 		?>
-		<a href="group.php?group_id=<?php echo $rowGroupBox['id'];?>" class="box">
+		<a href="group.php?group_id=<?php echo $rowGroupBox['id'];?>" class="box"> <!-- Her sendes gruppeid inn med url -->
 			<i class="<?php echo $rowGroupBox['group_icon'];?> fa-4x"></i>
 			<h3><?php echo $rowGroupBox['name'];?></h3>
 			<p><?php echo $rowGroupBox['description'];?></p>
 		</a>
 		<?php } ?>
 		<div>
-		<h4>(╯°□°)╯︵ ┻━┻</h4><h4>Søket ga ingen treff</h4>
+		<h4>(╯°□°)╯︵ ┻━┻</h4><h4>Søket ga ingen treff</h4> <!-- Vises hvis søk gir ingen treff -->
 		</div>
 	</section>
 </div>
         
-<?php include '../PHP/footer.php';?>
-<script src="../JS/groupSearch.js"></script>
+<?php include '../PHP/footer.php';?> <!-- Inkludering av footer fra php fil -->
+<script src="../JS/groupSearch.js"></script> <!-- Javascript for søk-->
 </body>
 </html>
