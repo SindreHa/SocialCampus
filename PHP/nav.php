@@ -1,7 +1,8 @@
 <?php 
 	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 ?>
- 
+
+<!-- Hvis bruker er logget inn vises link til min profil -->
 <nav class="main-nav">
 	<ul>
 		<li class="menu"><a href="#" class="menyToggle">
@@ -34,7 +35,7 @@
 </nav>
 
 <?php } else { ?>
-
+<!-- Hvis bruker ikke er loggen inn vises link til å logge inn -->
  <nav class="main-nav">
 	<ul>
 		<li class="menu"><a href="#" class="menyToggle">
