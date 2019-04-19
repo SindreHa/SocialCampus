@@ -25,13 +25,13 @@ $ant_medlem = $userCount[0];
 $groupSql = mysqli_query($link, "SELECT * FROM application.groups WHERE id=$group_id");
 $groupResult = mysqli_fetch_array($groupSql); 
 
-/*Sletting av poster. Bruker prosedyre i db. Kjøres når ajax sender inn deletePost fra PostFetch.php*/
+/*Sletting av poster. Bruker prosedyre i db. Kjøres når ajax sender inn deletePost fra GroupFunctions.php*/
 if(isset($_POST["deletePost"])) {
 	$post_id = $_POST["deletePost"];
 	$delete = mysqli_query($link, "CALL deletePost($post_id)");
 }
 
-/*Bli medlem funksjon. Hvis verdi av 'member' er 0 settes bruker inn som ny medlem. Ajax skjer i PostFetch.php*/
+/*Bli medlem funksjon. Hvis verdi av 'member' er 0 settes bruker inn som ny medlem. Ajax skjer i GroupFunctions.php*/
 if (isset($_POST['member'])) {
 	$is_member = $_POST['member'];
 	$groupId = $_POST['groupId'];
@@ -142,11 +142,11 @@ include '../PHP/saveComment.php';
 		
 <?php include '../PHP/footer.php';?>
 
-<script src="../JS/PostManager.js"></script>
+<script src="../JS/PostPublish.js"></script>
 <script type="text/javascript">
     var groupId = "<?php echo $group_id; ?>"; /*Sender inn gruppe id til javascript, en rotete måte men fungerer.*/
 </script>
-<script src="../JS/PostFetch.js"></script>
+<script src="../JS/GroupFunctions.js"></script>
 <script src="../JS/likes.js"></script>
 </body>
 </html>

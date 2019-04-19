@@ -4,17 +4,12 @@
 */
 
 /*
-    Kjører listPosts når dokumentet er lastet inn
-*/
-window.onload = function(){
-    listPosts();
-}
-
-/*
-    Setter disabled på publiserings knapp
+    Kjører listPosts når dokumentet er lastet inn.
+    Setter også disabled på publiserings knapp
 */
 $(function()
 {
+    listPosts();
     document.getElementById("post-submit-ID").disabled = true;
 });
 
@@ -233,5 +228,3 @@ $('body').on('click', '#become-member', function(e){
         }
     });
 });
-
-
