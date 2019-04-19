@@ -180,6 +180,8 @@ $('body').on('click', '.delete a', function()
 $('body').on('click', '.modal-btn a', function()
 {
     var post_id = $(this).closest('.post-wrapper').find(".delete a").data("post-id");
+    $antPost = $('body').find(".info-wrapper").find("#num-posts").html();
+    var antPost = parseInt($antPost);
     if($(this).hasClass("deleteC")) {
         $.ajax({
             url:'../HTML/group.php',
@@ -188,6 +190,7 @@ $('body').on('click', '.modal-btn a', function()
             success:function()
             {
                 TooltipMessage('Innlegg slettet');
+                $('body').find(".info-wrapper").find("#num-posts").html(antPost-1);
                 listPosts();
             }
         })
