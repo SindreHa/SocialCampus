@@ -3,11 +3,16 @@
     poster og kommentarer inn og ut av database via ajax.
 */
 
-
+/*
+    Kjører listPosts når dokumentet er lastet inn
+*/
 window.onload = function(){
     listPosts();
 }
 
+/*
+    Setter disabled på publiserings knapp
+*/
 $(function()
 {
     document.getElementById("post-submit-ID").disabled = true;
@@ -81,6 +86,9 @@ function listPosts()
     })
 }
 
+/*
+    Henter ut gruppe id via å finne HTML elementet med data id'en
+*/
 function getGroupId() {
     var groupId = $('body').find(".group-name").data('group-id');
     return groupId;
@@ -158,6 +166,9 @@ $('body').on('click', '#submit-comment_ID', function()
     })
 });
 
+/*
+    Viser modal vindu som ber om bekreftelse fra bruker om å slette innlegg
+*/
 $('body').on('click', '.delete a', function()
 {
     $modal = $(this).closest(".post-wrapper").find(".modal");
@@ -166,6 +177,11 @@ $('body').on('click', '.delete a', function()
     $modal.fadeIn("fast");
 });
 
+/*
+    Funksjon for knappene Slett innlegg og Avbryt. Hvis knappen som trykker har
+    klassen "deleteC" som er knappen for å slette, kjøres ajax.
+    Hvis ikke skjules modal vinduet igjen.
+*/
 $('body').on('click', '.modal-btn a', function()
 {
     var post_id = $(this).closest('.post-wrapper').find(".delete a").data("post-id");
@@ -185,7 +201,11 @@ $('body').on('click', '.modal-btn a', function()
     }
 });
 
-
+/*
+    Bli medlem funksjon. Hvis knappen som trykkes har klassen not-member er ikke brukeren medlem fra før
+    og verdien blir til 0. Trykk på knappen vil da sende inn verdien 0 til php som kjører insert til db
+    for ny medlem. Gruppe id sendes også inn via post. Teller for antall medlemmer økes/faller også med 1
+*/
 $('body').on('click', '#become-member', function(e){
     e.preventDefault(); 
     $button = $(this);
