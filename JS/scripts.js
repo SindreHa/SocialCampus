@@ -18,7 +18,7 @@ var insertBefore = head.insertBefore;
 		$(".menyToggle").toggleClass('menyToggle-darker');
 	});
 
-	/* Gjør så man kan trykke på strekene på Meny bar */
+	/* Gjør så man kan trykke på hamburger ikonet på Meny bar */
 	$(".hamburger-icon span").click(function() {
 		$(this).closest(".main-nav").toggleClass('menu-show');
 		$(".hamburger-icon").toggleClass('open');
@@ -37,6 +37,7 @@ var insertBefore = head.insertBefore;
 		});
 	}
 
+	/*Funksjon for å vise/skjule kommentarfelt*/
 	$(function() {
 		$('body').on('click', '.comment-collapse', function(e) {
 			e.preventDefault(); 
@@ -46,13 +47,13 @@ var insertBefore = head.insertBefore;
 		});
 	});
 	
-
 	/*Funskjoner for scrolling til topp knapp*/ 
 	$(".toTop").click(function() {
 		$("html, body").animate({ scrollTop: 0 }, "slow");
   	return false;
 	});
 
+	/*Kalkulerer om scrollposisjon til prosentverdi av siden*/
 	function getScrollPercent() {
     var h = document.documentElement, 
         b = document.body,
@@ -79,6 +80,7 @@ var insertBefore = head.insertBefore;
 		}
 	});
 
+	/*Funksjon som sjekker størrelse på profilbildeopplastning, tillater maks 2MB*/
 	function checkImgFileSize(inputFile) {
 		var max =  2097152; // 2MB
 		
