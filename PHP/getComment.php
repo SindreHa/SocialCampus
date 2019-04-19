@@ -71,13 +71,33 @@ while($rowCom=mysqli_fetch_array($resultCom))
 			<div class="comment-stats">
 				<p><?php echo $rowCom['made']; ?></p>
 				<div class="like-button">
-				<form method="post" action="">
-					<a href="#/" onclick="IncrementPostLikes(this)">
-					<i class="fas fa-thumbs-up"></i>
-						<p class="ant-likes">0</p> <!-- Antall likes -->
+				<?php 
+				if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+
+				$resultLikes = mysqli_query($link, "SELECT * FROM application.likes WHERE user_id=$user_id AND post_id=$post_ID AND commentary_id=$rowCom[0];");
+
+				if (mysqli_num_rows($resultLikes) == 1 ) { ?>
+					<!-- Bruker har allerede likt kommentar -->
+					<a class="unlike" href="group.php" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
+						<i class="unliked fas fa-thumbs-up"></i>
+						<i class="liked hide fas fa-thumbs-up"></i>
+						<p class="ant-likes"><?php echo $rowCom['likes'];?></p>
 					</a>
-					<input type="hidden" name="comment_ID" value="<?php echo $rowCom['id']; ?>" id="comment_ID" />
-				</form>
+				<?php } else { ?>
+					<!-- Bruker har ikke likt kommentar -->
+					<a class="like" href="group.php" data-post-id="<?php echo $post_ID;?>" data-com-id="<?php echo $rowCom['id'];?>">
+						<i class="liked fas fa-thumbs-up"></i>
+						<i class="unliked hide fas fa-thumbs-up"></i> 
+						<p class="ant-likes"><?php echo $rowCom['likes'];?></p>
+					</a>
+				<?php } 
+				} else { ?>
+					<!-- Bruker ikke logget inn -->
+					<a href="#/" class="disabled">
+						<i class="liked fas fa-thumbs-up"></i> 
+						<p class="ant-likes"><?php echo $rowCom['likes'];?></p>
+					</a>
+				<?php } ?>
 				</div>
 			</div> <!-- Kommentar dato -->
 		</div>

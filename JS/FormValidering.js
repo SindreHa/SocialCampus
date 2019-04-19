@@ -28,7 +28,7 @@ $(document).ready(function ()
 });
 
 /*
-    Funksjon sjekker om brukernavn er større enn 4 bokstaver.
+    Funksjon sjekker om brukernavn oppfyller regex, regex her krever et sammensatt ord mellom 4-50 tegn.
     Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
 */
 function checkUsernameLength()
@@ -54,7 +54,7 @@ function checkUsernameLength()
 }
 
 /*
-    Funksjon sjekker at navn har minst et mellomrom (Pga etternavn)
+    Funksjon sjekker at navn oppfyller regex. Regex her krever 2 ord.
     Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
 */
 function checkNameLength()
@@ -80,7 +80,8 @@ function checkNameLength()
 }
 
 /*
-    Funksjon sjekker at email gyldig
+    Funksjon sjekker at email oppfyller regex. Regex her krever et sammensatt ord med eller uten tegn så 
+    en @ etterfulgt av et ord og så . og et ord mellom 2-4 tegn.
     Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
 */
 function validateEmail()
@@ -107,7 +108,7 @@ function validateEmail()
 }
 
 /*
-    Funksjon sjekker at passord er høyere enn 8 tegn
+    Funksjon sjekker at passord oppfyller regex. Regex her krever et sammensatt ord mellom 8-50 tegn.
     Det er også lagt inn en hake/kryss animasjon for validerings-kondisjonen.
 */
 function checkPasswordLength()

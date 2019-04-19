@@ -18,7 +18,7 @@ var insertBefore = head.insertBefore;
 		$(".menyToggle").toggleClass('menyToggle-darker');
 	});
 
-	/* Gjør så man kan trykke på strekene på Meny bar */
+	/* Gjør så man kan trykke på hamburger ikonet på Meny bar */
 	$(".hamburger-icon span").click(function() {
 		$(this).closest(".main-nav").toggleClass('menu-show');
 		$(".hamburger-icon").toggleClass('open');
@@ -37,6 +37,7 @@ var insertBefore = head.insertBefore;
 		});
 	}
 
+	/*Funksjon for å vise/skjule kommentarfelt*/
 	$(function() {
 		$('body').on('click', '.comment-collapse', function(e) {
 			e.preventDefault(); 
@@ -46,13 +47,13 @@ var insertBefore = head.insertBefore;
 		});
 	});
 	
-
 	/*Funskjoner for scrolling til topp knapp*/ 
 	$(".toTop").click(function() {
 		$("html, body").animate({ scrollTop: 0 }, "slow");
   	return false;
 	});
 
+	/*Kalkulerer om scrollposisjon til prosentverdi av siden*/
 	function getScrollPercent() {
     var h = document.documentElement, 
         b = document.body,
@@ -79,6 +80,7 @@ var insertBefore = head.insertBefore;
 		}
 	});
 
+	/*Funksjon som sjekker størrelse på profilbildeopplastning, tillater maks 2MB*/
 	function checkImgFileSize(inputFile) {
 		var max =  2097152; // 2MB
 		
@@ -91,35 +93,6 @@ var insertBefore = head.insertBefore;
 		}
 	};
 
-	$('body').on('click', '#become-member', function(e){
-		e.preventDefault(); 
-		$button = $(this);
-		$antMedlem = $button.closest(".group-info").find(".info-wrapper").find("#ant-medlem").html();
-		var antMedlem = parseInt($antMedlem);
-		var member = 1;
-		if($button.hasClass('not-member')) {member = 0}
-		var url = $button.attr('href');
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: {
-                'member': member
-			},
-            success: function(response){
-				if(member==0) { //Hvis bruker velger å bli medlem
-					$button.parent().find('.member').removeClass('hide');
-					$button.parent().find('.not-member').addClass('hide');
-					$button.closest(".group-info").find(".info-wrapper").find("#ant-medlem").html(antMedlem+1);
-					TooltipMessage("Meldt inn i " + $button.closest(".group-info").find(".group-name").find("h2").html());
-				} else { //Hvis bruker allerede er medlem
-					$button.parent().find('.not-member').removeClass('hide');
-					$button.parent().find('.member').addClass('hide');
-					$button.closest(".group-info").find(".info-wrapper").find("#ant-medlem").html(antMedlem-1);
-					TooltipMessage("Meldt ut av " + $button.closest(".group-info").find(".group-name").find("h2").html());
-				}
-            }
-        });
-    });
 
 	/*Hinder GMaps i å hente egen font*/
 	head.insertBefore = function( newElement, referenceElement ) {

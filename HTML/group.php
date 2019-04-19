@@ -2,44 +2,50 @@
 
 require_once "../PHP/config.php";
 
+/*Deklarering av gruppe og bruker id*/
 if (isset($_GET['group_id'])){
 	$group_id = $_GET['group_id'];
-}
-
-$postCountResult = mysqli_query($link, "SELECT COUNT(id) FROM post WHERE group_id=$group_id");
-$postCount = mysqli_fetch_row($postCountResult);
-
-$ant_poster = $postCount[0];
-
-$userCountResult = mysqli_query($link, "SELECT COUNT(group_id) FROM groups_has_users WHERE group_id=$group_id");
-$userCount = mysqli_fetch_row($userCountResult);
-
-$ant_medlem = $userCount[0];
-
-$groupSql = mysqli_query($link, "SELECT * FROM application.groups WHERE id=$group_id");
-$groupResult = mysqli_fetch_array($groupSql); 
-
-if(isset($_POST["deletePost"])) {
-	$post_id = $_POST["deletePost"];
-	$delete = mysqli_query($link, "CALL deletePost($post_id)");
 }
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
 }
 
+/*Spørring for å sjekke antall poster i gruppen*/
+$postCountResult = mysqli_query($link, "SELECT COUNT(id) FROM post WHERE group_id=$group_id");
+$postCount = mysqli_fetch_row($postCountResult);
+$ant_poster = $postCount[0];
+
+/*Spørring for å sjekke antall medlemmer i gruppen*/
+$userCountResult = mysqli_query($link, "SELECT COUNT(group_id) FROM groups_has_users WHERE group_id=$group_id");
+$userCount = mysqli_fetch_row($userCountResult);
+$ant_medlem = $userCount[0];
+
+/*Spørring som henter all informasjon om gjeldende gruppe*/
+$groupSql = mysqli_query($link, "SELECT * FROM application.groups WHERE id=$group_id");
+$groupResult = mysqli_fetch_array($groupSql); 
+
+/*Sletting av poster. Bruker prosedyre i db. Kjøres når ajax sender inn deletePost fra PostFetch.php*/
+if(isset($_POST["deletePost"])) {
+	$post_id = $_POST["deletePost"];
+	$delete = mysqli_query($link, "CALL deletePost($post_id)");
+}
+
+/*Bli medlem funksjon. Hvis verdi av 'member' er 0 settes bruker inn som ny medlem. Ajax skjer i PostFetch.php*/
 if (isset($_POST['member'])) {
 	$is_member = $_POST['member'];
+	$groupId = $_POST['groupId'];
 
 	if($is_member == 0) {
-		mysqli_query($link, "INSERT INTO application.groups_has_users (group_id, user_id) VALUES ($group_id, $user_id)");
+		mysqli_query($link, "INSERT INTO groups_has_users (group_id, user_id) VALUES ($groupId, $user_id)");
 		exit();
 	} else {
-		mysqli_query($link, "DELETE FROM application.groups_has_users WHERE group_id=$group_id AND user_id=$user_id");
+		mysqli_query($link, "DELETE FROM groups_has_users WHERE group_id=$groupId AND user_id=$user_id");
 		exit();
 	}
 }
 
+/*Inkluderer egne php script filer for likes, lagring av poster og kommentarer*/
 include '../PHP/likes.php';
 include '../PHP/savePost.php';
 include '../PHP/saveComment.php';
@@ -82,11 +88,11 @@ include '../PHP/saveComment.php';
 						$userMemberSql = mysqli_query($link, "SELECT * FROM application.groups_has_users WHERE user_id=$user_id AND group_id=$group_id;");
 
 						if(mysqli_num_rows($userMemberSql) == 1) { ?>
-							<a id="become-member" class="btn member" href="group.php">Forlat gruppe</a>
-							<a id="become-member" class="btn not-member hide" href="group.php">Bli medlem</a>
+							<a id="become-member" class="btn member" href="#/" data-group-id=<?php echo $group_id; ?>>Forlat gruppe</a>
+							<a id="become-member" class="btn not-member hide" href="#/" data-group-id=<?php echo $group_id; ?>>Bli medlem</a>
 						<?php } else { ?>
-							<a id="become-member" class="btn member hide" href="group.php">Forlat gruppe</a>
-							<a id="become-member" class="btn not-member" href="group.php">Bli medlem</a>
+							<a id="become-member" class="btn member hide" href="#/" data-group-id=<?php echo $group_id; ?>>Forlat gruppe</a>
+							<a id="become-member" class="btn not-member" href="#/" data-group-id=<?php echo $group_id; ?>>Bli medlem</a>
 						<?php } }?>
 				</div>
 			</div>
@@ -138,7 +144,7 @@ include '../PHP/saveComment.php';
 
 <script src="../JS/PostManager.js"></script>
 <script type="text/javascript">
-    var groupId = "<?php echo $group_id; ?>"; 
+    var groupId = "<?php echo $group_id; ?>"; /*Sender inn gruppe id til javascript, en rotete måte men fungerer.*/
 </script>
 <script src="../JS/PostFetch.js"></script>
 <script src="../JS/likes.js"></script>

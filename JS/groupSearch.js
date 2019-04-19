@@ -1,3 +1,9 @@
+
+/*
+    Søkefunksjon på hjemmeside. Fungerer som en filtrering av grupper. En bruker kan
+    skrive inn "ball" og få opp alle grupper med ordet "ball" i seg. Nyttig spesielt for smalere skjermer.
+*/
+
 $(document).ready(function(){
 
     $(".input").keyup(function() { //For hvert tastetrykk kjøres søket
