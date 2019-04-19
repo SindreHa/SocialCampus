@@ -86,6 +86,8 @@ $rowUser = mysqli_fetch_row($result);
 $userPicture = !empty($rowUser[6]) ? $rowUser[6] : 'placeholder-profile.png'; //Hvis avatar ikke tom så bruk avatar id hvis ikke brukes placeholder.png
 $userPictureURL = '../Pictures/upload/'.$userPicture;
 
+include '../PHP/reset.php';
+
 ?>
 
 
@@ -141,39 +143,36 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 	        		<div class="container">
 	        			<h2>Endre passord</h2>
 	        		</div>
-
+                    
 	        		<div class="container">
 	        			<h3>Gammelt passord</h3>
 	        			<div class="inputContainer">
 	        				<i class="fas fa-key"></i>
-	        				<input class="input" type="password" placeholder="••••••••••" autocomplete="false">
+                            <input class="input" id="oldPsw" type="password" placeholder="••••••••••" autocomplete="false">
 	        			</div>
+                            <span class="help-block"><?php echo $password_err; ?></span>
 	        		</div>
 
-                    <div class="container 
-                    <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
+                    <div class="container">
                     <h3>Nytt passord</h3>
                     <div class="inputContainer">
                         <i class="fas fa-key"></i>
-                        <input class="input" type="password" name="new_password" placeholder="••••••••••" autocomplete="false""
-                        <?php echo $new_password; ?>">
-                        <span class="help-block">
-                        <?php echo $new_password_err; ?></span>
+                        <input class="input" id="newPsw" type="password" name="new_password" placeholder="••••••••••" autocomplete="false">
                     </div>
+                        <span class="help-block"><?php echo $new_password_err; ?></span>
                     </div>
                         
                     <div class="container">
                     <h3>Bekreft passord</h3>
-                    <div class="inputContainer <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                    <div class="inputContainer">
                         <i class="fas fa-key"></i>
-                        <input class="input" type="password" ame="confirm_password" placeholder="••••••••••">
-                        <span class="help-block">
-                        <?php echo $confirm_password_err; ?></span>
+                        <input class="input" id="conPsw" type="password" name="confirm_password" placeholder="••••••••••">
                     </div>
+                        <span class="help-block"><?php echo $confirm_password_err; ?></span>
                     </div>
 
                     <div class="button-wrapper">
-                        <input type="submit" class="btn btn-primary" value="Lagre endringer">
+                        <a href="#/" class="btn password-reset">Lagre endringer</a>
                     </div>
 
 	            </div>
@@ -185,5 +184,6 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 <?php include '../PHP/footer.php';?>
         
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../JS/passwordReset.js"></script>
 </body>
 </html>
