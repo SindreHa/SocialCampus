@@ -8,7 +8,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
 }
 
-// Ser etter tomme felt for å hindre php error
+// Deklarerer variabler for innhold og post id
 if (!empty($_POST)) {
 	if (isset($_POST['comment'])) {
 		$innhold = trim($_POST['comment']);
@@ -20,9 +20,7 @@ if (!empty($_POST)) {
 }
 
 /* 
-   Hindrer POST funksjonen i å trigre når man refresher siden, med at
-   en refresh vil trigre POST om igjen og legge tomme innhold inn i
-   databasen 
+   Setter inn kommentarinnhold i databasen med tilhørende post id og bruker id
 */
 if (isset($_POST['comment']) && isset($_POST['p_id'])) {
 
@@ -36,11 +34,11 @@ if (isset($_POST['comment']) && isset($_POST['p_id'])) {
 			echo "Error: " . $sql . "<br>" . mysqli_error($link);
 		}
 
-	if (isset($_POST['textarea']) && isset($_POST['tittel']))
+	// Klarerer POST verdier etter vellykket innsetting
+	if (isset($_POST['comment']) && isset($_POST['p_id']))
 	{
 		$_POST['comment'] = " ";
 		$_POST['p_id'] = " ";
 	}
 }
 ?>
-
