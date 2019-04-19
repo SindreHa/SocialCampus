@@ -30,12 +30,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
 if (isset($_POST['member'])) {
 	$is_member = $_POST['member'];
+	$groupId = $_POST['groupId'];
 
 	if($is_member == 0) {
-		mysqli_query($link, "INSERT INTO application.groups_has_users (group_id, user_id) VALUES ($group_id, $user_id)");
+		mysqli_query($link, "INSERT INTO groups_has_users (group_id, user_id) VALUES ($groupId, $user_id)");
 		exit();
 	} else {
-		mysqli_query($link, "DELETE FROM application.groups_has_users WHERE group_id=$group_id AND user_id=$user_id");
+		mysqli_query($link, "DELETE FROM groups_has_users WHERE group_id=$groupId AND user_id=$user_id");
 		exit();
 	}
 }
@@ -49,7 +50,7 @@ include '../PHP/saveComment.php';
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title><?php echo $groupResult['name']?></title>
+	<title><?php echo $group_id?> <?php echo $user_id?></title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>
@@ -82,11 +83,11 @@ include '../PHP/saveComment.php';
 						$userMemberSql = mysqli_query($link, "SELECT * FROM application.groups_has_users WHERE user_id=$user_id AND group_id=$group_id;");
 
 						if(mysqli_num_rows($userMemberSql) == 1) { ?>
-							<a id="become-member" class="btn member" href="group.php">Forlat gruppe</a>
-							<a id="become-member" class="btn not-member hide" href="group.php">Bli medlem</a>
+							<a id="become-member" class="btn member" href="#/" data-group-id=<?php echo $group_id; ?>>Forlat gruppe</a>
+							<a id="become-member" class="btn not-member hide" href="#/" data-group-id=<?php echo $group_id; ?>>Bli medlem</a>
 						<?php } else { ?>
-							<a id="become-member" class="btn member hide" href="group.php">Forlat gruppe</a>
-							<a id="become-member" class="btn not-member" href="group.php">Bli medlem</a>
+							<a id="become-member" class="btn member hide" href="#/" data-group-id=<?php echo $group_id; ?>>Forlat gruppe</a>
+							<a id="become-member" class="btn not-member" href="#/" data-group-id=<?php echo $group_id; ?>>Bli medlem</a>
 						<?php } }?>
 				</div>
 			</div>

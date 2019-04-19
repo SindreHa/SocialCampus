@@ -186,5 +186,32 @@ $('body').on('click', '.modal-btn a', function()
 });
 
 
+$('body').on('click', '#become-member', function(e){
+    e.preventDefault(); 
+    $button = $(this);
+    $antMedlem = $button.closest(".group-info").find(".info-wrapper").find("#ant-medlem").html();
+    var antMedlem = parseInt($antMedlem);
+    var ismember = 1;
+    if($button.hasClass('not-member')) {ismember = 0};
+    var groupId = $button.data('group-id');
+    $.ajax({
+        url:'../HTML/group.php',
+        data: { member: ismember, groupId: groupId },
+        type:'post',
+        success: function(){
+            if(ismember==0) { //Hvis bruker velger å bli medlem
+                $button.parent().find('.member').removeClass('hide');
+                $button.parent().find('.not-member').addClass('hide');
+                $button.closest(".group-info").find(".info-wrapper").find("#ant-medlem").html(antMedlem+1);
+                TooltipMessage("Meldt inn i " + $button.closest(".group-info").find(".group-name").find("h2").html());
+            } else { //Hvis bruker allerede er medlem
+                $button.parent().find('.not-member').removeClass('hide');
+                $button.parent().find('.member').addClass('hide');
+                $button.closest(".group-info").find(".info-wrapper").find("#ant-medlem").html(antMedlem-1);
+                TooltipMessage("Meldt ut av " + $button.closest(".group-info").find(".group-name").find("h2").html());
+            }
+        }
+    });
+});
 
 
