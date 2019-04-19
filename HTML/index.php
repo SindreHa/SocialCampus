@@ -54,17 +54,30 @@ include '../PHP/nav.php';
 	</section>
 	<section class="boxes">
 		<?php 
-		$sqlGroupBox = mysqli_query($link, "SELECT * FROM application.groups");
-		while($rowGroupBox = mysqli_fetch_array($sqlGroupBox)) { //Henter inn en og en gruppeboks fra database
+			$sqlGroupBox = mysqli_query($link, "SELECT * FROM application.groups");
+			
+			while($rowGroupBox = mysqli_fetch_array($sqlGroupBox)) { //Henter inn en og en gruppeboks fra database
+			
+			//Tell antall medlemmer i gruppen
+			$countAntUser = mysqli_query($link, "SELECT COUNT(gusers.user_id) FROM groups_has_users AS gusers WHERE group_id = $rowGroupBox[0];");
+			$antUser = mysqli_fetch_array($countAntUser);
+		
+			//Tell antall poster i gruppen
+			$countAntPost = mysqli_query($link, "SELECT COUNT(p.id) FROM application.post AS p WHERE p.group_id = $rowGroupBox[0];");
+			$antPost = mysqli_fetch_array($countAntPost);
 		?>
-		<a href="group.php?group_id=<?php echo $rowGroupBox['id'];?>" class="box"> <!-- Her sendes gruppeid inn med url -->
-			<i class="<?php echo $rowGroupBox['group_icon'];?> fa-4x"></i>
-			<h3><?php echo $rowGroupBox['name'];?></h3>
-			<p><?php echo $rowGroupBox['description'];?></p>
-		</a>
+			<a href="group.php?group_id=<?php echo $rowGroupBox['id'];?>" class="box"> <!-- Her sendes gruppeid inn med url -->
+				<i class="<?php echo $rowGroupBox['group_icon'];?> fa-4x"></i>
+				<h3><?php echo $rowGroupBox['name'];?></h3>
+				<div class="group-stat">
+					<i class="fas fa-user"><p><?php echo $antUser[0];?></p></i>
+					<i class="fas fa-comment"><p><?php echo $antPost[0];?></p></i>
+				</div>
+				<p><?php echo $rowGroupBox['description'];?></p>
+			</a>
 		<?php } ?>
 		<div>
-		<h4>(╯°□°)╯︵ ┻━┻</h4><h4>Søket ga ingen treff</h4> <!-- Vises hvis søk gir ingen treff -->
+			<h4>(╯°□°)╯︵ ┻━┻</h4><h4>Søket ga ingen treff</h4> <!-- Vises hvis søk gir ingen treff -->
 		</div>
 	</section>
 </div>

@@ -420,8 +420,16 @@ form {
 	box-shadow: var(--shadow); 
 }
 
+.box h3{
+	margin: 10px 0;
+}
+
 .box p{
+	border-top: 1px solid var(--dark);
 	font-weight: 300;
+	padding-top: 10px;
+	margin-bottom: 0;
+	transition: border-color 150ms ease-out
 }
 
 .box, .box i{
@@ -436,6 +444,34 @@ form {
 .box:hover i{
 	color: var(--accent);
 	/*background: var(--light);*/
+}
+
+.box:hover p{
+	border-color: var(--accent);
+}
+
+.box:hover .group-stat i{
+	color: black;
+}
+
+.box .group-stat{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.box .group-stat i{
+	display: flex;
+	flex-direction: row;
+	margin: 0 10px;
+}
+
+.box .group-stat i p{
+	border-top: none;
+	font-family: "Roboto";
+	margin: 0 5px;
+	padding: 0;
 }
 
 /*Søkefelt*/
