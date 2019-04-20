@@ -73,12 +73,14 @@ include '../PHP/nav.php';
 			//Antall nye poster
 			if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 				$newPostCountSql = mysqli_query($link, "SELECT count(DISTINCT(post.id)) AS Antall
-				FROM post, user_visited
+				FROM post, user_visited, groups_has_users
 				WHERE post.created > user_visited.visited 
 				AND post.group_id = $rowGroupBox[0] 
 				AND post.user_id != $user_id 
 				AND user_visited.group_id = $rowGroupBox[0]
-				AND user_visited.user_id = $user_id;");
+				AND user_visited.user_id = $user_id
+				AND groups_has_users.user_id = $user_id
+				AND groups_has_users.group_id = $rowGroupBox[0];");
 				$newPostCount = mysqli_fetch_row($newPostCountSql);
 			}
 		?>
