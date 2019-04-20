@@ -35,6 +35,10 @@ if (isset($_GET['loggedin'])){
 	';
 }
 
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+	$user_id = $_SESSION['id'];
+}
+
 //Inkluderer topp meny bar fra php fil.
 include '../PHP/nav.php';
 ?>
@@ -65,8 +69,27 @@ include '../PHP/nav.php';
 			//Tell antall poster i gruppen
 			$countAntPost = mysqli_query($link, "SELECT COUNT(p.id) FROM application.post AS p WHERE p.group_id = $rowGroupBox[0];");
 			$antPost = mysqli_fetch_array($countAntPost);
+
+			//Antall nye poster
+			if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+				$newPostCountSql = mysqli_query($link, "SELECT count(DISTINCT(post.id)) AS Antall
+				FROM post, user_visited
+				WHERE post.created > user_visited.visited 
+				AND post.group_id = $rowGroupBox[0] 
+				AND post.user_id != $user_id 
+				AND user_visited.group_id = $rowGroupBox[0]
+				AND user_visited.user_id = $user_id;");
+				$newPostCount = mysqli_fetch_row($newPostCountSql);
+			}
 		?>
 			<a href="group.php?group_id=<?php echo $rowGroupBox['id'];?>" class="box"> <!-- Her sendes gruppeid inn med url -->
+				<?php 
+					if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+					if($newPostCount[0] > 0 && $_SESSION["loggedin"] === true) {
+					
+					if($newPostCount[0] == 1) {$newPostString = " nytt innlegg";} else {$newPostString = " nye innlegg";}?>
+					<p class="new-post"><?php echo $newPostCount[0];?><?php echo $newPostString;?></p>
+				<?php } } else {} ?>
 				<i class="<?php echo $rowGroupBox['group_icon'];?> fa-4x"></i>
 				<h3><?php echo $rowGroupBox['name'];?></h3>
 				<div class="group-stat">
