@@ -56,6 +56,25 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `application`.`user_visited`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `application`.`user_visited` ;
+
+CREATE TABLE IF NOT EXISTS `application`.`user_visited` (
+  `user_id` INT(11) NOT NULL,
+  `group_id` INT(11) NOT NULL,
+  `visited` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT `fk_user_visited_gid`
+    FOREIGN KEY (`group_id`)
+    REFERENCES `groups` (`id`),
+  CONSTRAINT `fk_user_visited_uid`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
 -- Table `application`.`post`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `application`.`post` ;
@@ -159,8 +178,38 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
--- INSERT setninger for grupper --
+-- Prosedyrer for å slette poster og varsel på nye innlegg --
 
+DELIMITER $$
+drop procedure IF EXISTS `deletePost`$$
+CREATE PROCEDURE `deletePost` (
+    in p_id int (11)
+)
+begin
+    DELETE FROM likes WHERE post_id = p_id;
+    DELETE FROM commentary WHERE post_id = p_id;
+    DELETE FROM post WHERE id = p_id;
+end$$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `newPosts`$$
+CREATE PROCEDURE `newPosts` (
+    IN g_id INT (11),
+    IN u_id INT (11)
+)
+BEGIN
+    SELECT count(DISTINCT(post.id)) AS Antall
+    FROM post, user_visited
+    WHERE post.created > user_visited.visited 
+    AND post.group_id = g_id 
+    AND post.user_id != u_id 
+    AND user_visited.group_id = g_id
+    AND user_visited.user_id = u_id;
+END$$
+DELIMITER ;
+
+-- INSERT setninger for grupper --
 INSERT INTO application.groups (id, name, description, group_icon)
 VALUES
   ('1', 'Golf', 'Golf er en sport der enkeltspillere slÃ¥r en liten ball ved hjelp av forskjellige kÃ¸ller, med mÃ¥l om at den havner i et bestemt hull.', 'fas fa-golf-ball'),

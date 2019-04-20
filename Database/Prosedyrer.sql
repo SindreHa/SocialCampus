@@ -92,3 +92,38 @@ BEGIN
     DELETE FROM post WHERE id = p_id;
 END$$
 DELIMITER ;
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `newPosts`$$
+CREATE PROCEDURE `newPosts` (
+    IN g_id INT (11),
+    IN u_id INT (11)
+)
+BEGIN
+    SELECT count(DISTINCT(post.id)) AS Antall
+    FROM post, user_visited
+    WHERE post.created > user_visited.visited 
+    AND post.group_id = g_id 
+    AND post.user_id != u_id 
+    AND user_visited.group_id = g_id
+    AND user_visited.user_id = u_id;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `userVisit`$$
+CREATE PROCEDURE `userVisit` (
+    IN g_id INT (11),
+    IN u_id INT (11)
+)
+BEGIN
+    SELECT count(DISTINCT(post.id)) AS Antall
+    FROM post, user_visited
+    WHERE post.created > user_visited.visited 
+    AND post.group_id = g_id 
+    AND user_visited.group_id = g_id
+    AND post.user_id != u_id 
+    AND user_visited.user_id != u_id; 
+END$$
+DELIMITER ;
