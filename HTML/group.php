@@ -9,7 +9,16 @@ if (isset($_GET['group_id'])){
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	$user_id = $_SESSION['id'];
+	
+	$userVisitedSql = mysqli_query($link, "SELECT * FROM user_visited WHERE user_id = $user_id AND group_id = $group_id");
+	if(mysqli_num_rows($userVisitedSql) == 1) {
+		$updateUserVisited = mysqli_query($link, "UPDATE user_visited SET visited = CURRENT_TIMESTAMP WHERE group_id = $group_id AND user_id = $user_id");
+	} else {
+		$updateUserVisited = mysqli_query($link, "INSERT INTO user_visited (user_id, group_id) VALUES ($user_id, $group_id)");
+	}
 }
+
+
 
 /*Spørring for å sjekke antall poster i gruppen*/
 $postCountResult = mysqli_query($link, "SELECT COUNT(id) FROM post WHERE group_id=$group_id");
@@ -55,7 +64,7 @@ include '../PHP/saveComment.php';
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title><?php echo $groupResult['name']?></title>
+	<title><?php echo $group_id?></title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>
