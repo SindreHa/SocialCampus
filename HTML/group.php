@@ -19,7 +19,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 }
 
 
-
 /*Spørring for å sjekke antall poster i gruppen*/
 $postCountResult = mysqli_query($link, "SELECT COUNT(id) FROM post WHERE group_id=$group_id");
 $postCount = mysqli_fetch_row($postCountResult);
@@ -64,7 +63,7 @@ include '../PHP/saveComment.php';
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title><?php echo $group_id?></title>
+	<title><?php echo $groupResult['name']?></title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>

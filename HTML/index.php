@@ -86,11 +86,10 @@ include '../PHP/nav.php';
 		?>
 			<a href="group.php?group_id=<?php echo $rowGroupBox['id'];?>" class="box"> <!-- Her sendes gruppeid inn med url -->
 				<?php 
-					if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-					if($newPostCount[0] > 0 && $_SESSION["loggedin"] === true) {
-					
-					if($newPostCount[0] == 1) {$newPostString = " nytt innlegg";} else {$newPostString = " nye innlegg";}?>
-					<p class="new-post"><?php echo $newPostCount[0];?><?php echo $newPostString;?></p>
+				if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+					if($newPostCount[0] > 0) {
+						if($newPostCount[0] == 1) {$newPostString = " nytt innlegg";} else {$newPostString = " nye innlegg";}?>
+						<p class="new-post"><?php echo $newPostCount[0];?><?php echo $newPostString;?></p>
 				<?php } } else {} ?>
 				<i class="<?php echo $rowGroupBox['group_icon'];?> fa-4x"></i>
 				<h3><?php echo $rowGroupBox['name'];?></h3>
