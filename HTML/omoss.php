@@ -26,7 +26,7 @@ include '../PHP/nav.php';
 	<div class="personBox">
 		<div class="personBox-image-wrapper">
 			<div class="imgContainer">
-				<img src="../Pictures/Sindre.jpg">
+				<img src="../Pictures/Sindre.jpg" alr="Sindre">
 			</div>
 			<h2>Sindre Haavaldsen</h2>
 			<h3>Full Stack</h3>
@@ -41,7 +41,7 @@ include '../PHP/nav.php';
 	<div class="personBox">
 		<div class="personBox-image-wrapper">
 			<div class="imgContainer">
-				<img src="../Pictures/Kristian.jpg">
+				<img src="../Pictures/Kristian.jpg" alt="Kristian">
 			</div>
 			<h2>Kristian Kløvstad</h2>
 			<h3>PHP</h3>
@@ -55,7 +55,7 @@ include '../PHP/nav.php';
 	<div class="personBox">
 		<div class="personBox-image-wrapper">
 			<div class="imgContainer">
-				<img src="../Pictures/Torbjorn.jpg">
+				<img src="../Pictures/Torbjorn.jpg" alt="Torbjørn">
 			</div>
 			<h2>Torbjørn Lunde Olaisen</h2>
 			<h3>Database</h3>
@@ -70,7 +70,7 @@ include '../PHP/nav.php';
 	<div class="personBox">
 		<div class="personBox-image-wrapper">
 			<div class="imgContainer">
-				<img src="../Pictures/Jan.png">
+				<img src="../Pictures/Jan.png" alt="Jan">
 			</div>
 			<h2>Jan Andreas Sletta</h2>
 			<h3>JavaScript</h3>

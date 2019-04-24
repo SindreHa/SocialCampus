@@ -27,7 +27,7 @@ while($rowCom=mysqli_fetch_array($resultCom))
 	<input type="hidden" name="comment_ID" value="<?php echo $rowCom['id']; ?>" id="comment_ID" />
 	<div class="user-container-comment">
 		<div class="imgContainer">
-			<img src="../Pictures/upload/<?php echo $rowCom['avatar']; ?>"> <!-- Bilde av poster -->
+			<img src="../Pictures/upload/<?php echo $rowCom['avatar']; ?>" alt="Profilbilde"> <!-- Bilde av poster -->
 		</div>
 		<div class="like-button">
 			<?php 
@@ -62,7 +62,7 @@ while($rowCom=mysqli_fetch_array($resultCom))
 	<div class="comment-content">
 		<div class="comment-poster-photo">
 			<div class="imgContainer">
-				<img src="../Pictures/upload/<?php echo $rowCom['avatar']; ?>"> <!-- Bilde av poster -->
+				<img src="../Pictures/upload/<?php echo $rowCom['avatar']; ?>" alt="Profilbilde"> <!-- Bilde av poster -->
 			</div>
 		</div>
 		<div class="text-container">

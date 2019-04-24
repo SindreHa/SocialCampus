@@ -8,7 +8,7 @@
 <div class="error wrapper">
     <section class="error-wrapper">
             <h1>Woopsie daisy!</h1>
-        <img src="../Pictures/404.png">
+        <img src="../Pictures/404.png" alt="Homer">
         <div>
             <p>Siden du leter etter finnes ikke!</p>
             <input type="button" class="btn btn-wrapper" value="Flykt hjem" onclick="window.location.href='index.php'">
