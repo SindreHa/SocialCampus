@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Logg inn</title>
+    <title>Logg inn - SocialCampus</title>
     <?php include '../PHP/head.php';?>
 </head>
 <body>

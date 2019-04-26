@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title>Om Oss</title>
+	<title>Om Oss - SocialCampus</title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>

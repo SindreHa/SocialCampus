@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title>Hjemmeside</title>
+	<title>Hjem - SocialCampus</title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>

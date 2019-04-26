@@ -63,7 +63,7 @@ include '../PHP/saveComment.php';
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title><?php echo $groupResult['name']?></title>
+	<title><?php echo $groupResult['name']?> - SocialCampus</title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>

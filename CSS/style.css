@@ -1838,6 +1838,9 @@ footer p{
 	.login {
 		grid-column: 1/5;
 	}
+	.login form a{
+		color: var(--link);
+	}
 	.error-wrapper img {
 		width: 38vw;
 	}

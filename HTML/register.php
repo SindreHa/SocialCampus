@@ -157,7 +157,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Registrer deg</title>
+    <title>Registrer deg - SocialCampus</title>
     <?php include '../PHP/head.php';?>
 </head>
 <body>

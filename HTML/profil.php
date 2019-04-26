@@ -92,7 +92,7 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title>Min profil</title>
+	<title>Min profil - SocialCampus</title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body>
@@ -110,7 +110,8 @@ $userPictureURL = '../Pictures/upload/'.$userPicture;
                         <label id="img-name" for="avatar">Velg bilde</label>
                     </form>
 	        		</div>
-	        		<h1><?php echo $rowUser[1]?></h1>
+                    <h1><?php echo $rowUser[1]?></h1>
+                    <!-- <p><a href="../PHP/logout.php"><i class="fas fa-sign-out-alt"></i>Logg ut</a></p> -->
 	        	</div>
 
 	        	<div class="profile-info">

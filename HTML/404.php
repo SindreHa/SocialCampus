@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<title>404</title>
+	<title>Error 404</title>
 	<?php include '../PHP/head.php';?>
 </head>
 <body style="margin: 0">
