@@ -27,9 +27,9 @@
 
 	<div class="footer-shortcut">
       	<h3>Sosiale medier</h3>
-      	<a href="404.php"><img src="../Pictures/Facebook.png">Facebook</a>
-      	<a href="404.php"><img src="../Pictures/Twitter.png">Twitter</a>
-      	<a href="404.php"><img src="../Pictures/SNapchat.png">Snapchat</a>
+      	<a href="404.php"><img src="../Pictures/Facebook.png" alt="Facebook">Facebook</a>
+      	<a href="404.php"><img src="../Pictures/Twitter.png" alt="Twitter">Twitter</a>
+      	<a href="404.php"><img src="../Pictures/SNapchat.png" alt="Snapchat">Snapchat</a>
 	</div>
 	</div>
 
@@ -47,10 +47,10 @@
 
     <div class="footer-lang">
             <a href="javascript:TooltipMessage('Norsk er allerede valgt språk');">
-              <img src="../Pictures/norwegian.svg"/>
+              <img src="../Pictures/norwegian.svg" alt="Norwegian">
             </a>
             <a href="javascript:TooltipMessage('Engelsk oversettelse under arbeid');">
-              <img src="../Pictures/english.svg"/>
+              <img src="../Pictures/english.svg" alt="English">
             </a>
     </div>
 	</div>
